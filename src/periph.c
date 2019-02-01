@@ -101,9 +101,10 @@ void USART6_init(void){
     USART6->CR1 |= USART_CR1_UE
 				|  USART_CR1_RXNEIE;
 }
+
 void dma1ini(void) {
     USART2->CR1 &= ~(USART_CR1_RXNEIE   //rx interrupt
-                    |USART_CR1_UE);     //USART2 enable
+                    | USART_CR1_UE);     //USART2 enable
     USART2->CR3 |= USART_CR3_DMAR;		//Enable DMA for USART2
     USART2->CR1 |= USART_CR1_UE;		//запуск uart
 
@@ -136,18 +137,18 @@ void dma2ini(void) {
 	DMA2_Stream6->CR = 0;               //Обнуляем значение регистра
 	DMA2_Stream6->PAR = (uint32_t)&USART6->DR;          //Адрес КУДА
 	DMA2_Stream6->M0AR = (uint32_t)&recString0; //Адрес OTКУДA
-	DMA2_Stream6->NDTR = 80;              // Количество даних для передачи 
+	DMA2_Stream6->NDTR = 10;              // Количество даних для передачи 
 	DMA2_Stream6->CR |= DMA_SxCR_CHSEL_2 	// channel 5
 					 |  DMA_SxCR_CHSEL_0	// channel 5
 					 |  DMA_SxCR_PL_1		//1 - priority level High
 					 |  DMA_SxCR_MINC		//4 - memory address pointer increment
 //					 |  DMA_SxCR_CIRC		//circular mode
-					 | DMA_SxCR_DIR_0		//Memory to peripheral
+					 | DMA_SxCR_DIR_0		//peripheral to Memory
 					 | 	DMA_SxCR_TCIE;   	//Transfer complete interrupt enable    
 //					 |  DMA_SxCR_DBM;		//Double buffer mode
 	DMA2->HIFCR |= DMA_HIFCR_CTCIF5;        //Сбросить бит прервания
     NVIC_EnableIRQ(DMA2_Stream6_IRQn);      //вкл обработку прер для
-//    DMA2_Stream6->CR |= DMA_SxCR_EN;		//DMA -> EN
+    DMA2_Stream6->CR |= DMA_SxCR_EN;		//DMA -> EN
 	NVIC_SetPriority(DMA2_Stream6_IRQn, 16);
 
 }

@@ -7,6 +7,7 @@
 #include "algorithm.h"
 #include "gpio.h"
 #include "periph.h"
+#include <stdlib.h>
 
 #define strlen 80            //Максимальная длина строки
 char recString0[strlen];     //this will hold the recieved stringw
@@ -41,14 +42,15 @@ int main(void)
 	__enable_irq();
 	USART2_init();
 	USART6_init();
-	dma1ini();
+	//dma1ini();
+	dma2ini();
 /*----------------------*/
 	
 
-	xTaskCreate( receiveFromDMA, "Receive ", 500, NULL, 2, NULL);
+	//xTaskCreate( receiveFromDMA, "Receive ", 500, NULL, 2, NULL);
 	xTaskCreate(tempTask, "temp", 30, NULL, 1, NULL);
 	xTaskCreate(tempTask2, "temdp", 30, NULL, 1, NULL);
-	xTaskCreate(Usart6DataSend, "USART6", 30, (void *) recString0[0], 1, NULL);
+	//xTaskCreate(Usart6DataSend, "USART6", 30, (void *) recString0[0], 1, NULL);
 	
 	vTaskStartScheduler();
 
@@ -83,16 +85,20 @@ void DMA1_Stream5_IRQHandler(){
 
 	}
 }
-/*
+
 void DMA2_Stream6_IRQHandler(){
-	xHigherPriorityTaskWoken = pdFALSE;
-	if( (DMA1->HISR & DMA_HISR_TCIF5 ) == DMA_HISR_TCIF5){
+	//if( (DMA2->HISR & DMA_HISR_TCIF6 ) == DMA_HISR_TCIF6){
+		DMA2_Stream6->CR 	&= ~DMA_SxCR_EN;		//DMA -> EN
+		LCD_Send_String(0, recString0);
+		regToDisplay(DMA2_Stream6->CR, 0);
+		DMA1_Stream5->M0AR = (uint32_t)&recString0; //Адрес КУДA
+		regToDisplay(DMA2_Stream6->M0AR, 1);
 
-
-
-
-	}
-}*/
+		DMA2_Stream6->NDTR   = 80;
+		DMA2->HIFCR 		|= DMA_HIFCR_CTCIF6;        //Сбросить бит прервания	    
+		DMA2_Stream6->CR 	|= DMA_SxCR_EN;		//DMA -> EN
+//	}
+}
 void USART6_IRQHandler(){
 	char t;
 	if(USART6->SR >> 5 &0x01 != 0){
