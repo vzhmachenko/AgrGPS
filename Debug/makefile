@@ -28,13 +28,13 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: rtos.elf
+all: AgrGPS.elf
 
 # Tool invocations
-rtos.elf: $(OBJS) $(USER_OBJS) /home/valentyn/workspace/rtos/LinkerScript.ld
+AgrGPS.elf: $(OBJS) $(USER_OBJS) /home/valentyn/workspace/AgrGPS/LinkerScript.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"/home/valentyn/workspace/rtos/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "rtos.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"/home/valentyn/workspace/AgrGPS/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "AgrGPS.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
@@ -46,8 +46,8 @@ clean:
 
 post-build:
 	-@echo 'Generating binary and Printing size information:'
-	arm-none-eabi-objcopy -O binary "rtos.elf" "rtos.bin"
-	arm-none-eabi-size "rtos.elf"
+	arm-none-eabi-objcopy -O binary "AgrGPS.elf" "AgrGPS.bin"
+	arm-none-eabi-size "AgrGPS.elf"
 	-@echo ' '
 
 .PHONY: all clean dependents

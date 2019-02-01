@@ -110,8 +110,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0xc0 RTOS/src/croutine.o
  .debug_macro   0x0000000000000000       0x8c RTOS/src/croutine.o
  .debug_macro   0x0000000000000000       0x43 RTOS/src/croutine.o
- .debug_line    0x0000000000000000      0x3c2 RTOS/src/croutine.o
- .debug_str     0x0000000000000000     0x7a8f RTOS/src/croutine.o
+ .debug_line    0x0000000000000000      0x3c4 RTOS/src/croutine.o
+ .debug_str     0x0000000000000000     0x7a91 RTOS/src/croutine.o
  .comment       0x0000000000000000       0x7f RTOS/src/croutine.o
  .ARM.attributes
                 0x0000000000000000       0x39 RTOS/src/croutine.o
@@ -208,8 +208,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x8c RTOS/src/event_groups.o
  .debug_macro   0x0000000000000000       0x91 RTOS/src/event_groups.o
  .debug_macro   0x0000000000000000       0x19 RTOS/src/event_groups.o
- .debug_line    0x0000000000000000      0x6d7 RTOS/src/event_groups.o
- .debug_str     0x0000000000000000     0xb0a6 RTOS/src/event_groups.o
+ .debug_line    0x0000000000000000      0x6d9 RTOS/src/event_groups.o
+ .debug_str     0x0000000000000000     0xb0a8 RTOS/src/event_groups.o
  .comment       0x0000000000000000       0x7f RTOS/src/event_groups.o
  .debug_frame   0x0000000000000000      0x180 RTOS/src/event_groups.o
  .ARM.attributes
@@ -800,8 +800,6 @@ Discarded input sections
  .group         0x0000000000000000        0xc src/main.o
  .text          0x0000000000000000        0x0 src/main.o
  .bss           0x0000000000000000        0x0 src/main.o
- .text.Usart6DataSend
-                0x0000000000000000       0x34 src/main.o
  .debug_macro   0x0000000000000000      0xa66 src/main.o
  .debug_macro   0x0000000000000000       0x6b src/main.o
  .debug_macro   0x0000000000000000       0x3b src/main.o
@@ -960,7 +958,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 startup/sysmem.o
  .debug_macro   0x0000000000000000      0x16f startup/sysmem.o
  .debug_line    0x0000000000000000      0x41e startup/sysmem.o
- .debug_str     0x0000000000000000     0x78ee startup/sysmem.o
+ .debug_str     0x0000000000000000     0x78f0 startup/sysmem.o
  .comment       0x0000000000000000       0x7f startup/sysmem.o
  .debug_frame   0x0000000000000000       0x34 startup/sysmem.o
  .ARM.attributes
@@ -1084,7 +1082,7 @@ LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-non
                 0x0000000008000000                g_pfnVectors
                 0x00000000080001a8                . = ALIGN (0x4)
 
-.text           0x00000000080001b0     0x358c
+.text           0x00000000080001b0     0x35e8
                 0x00000000080001b0                . = ALIGN (0x4)
  *(.text)
  .text          0x00000000080001b0       0x40 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
@@ -1311,239 +1309,242 @@ LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-non
  .text.LCD_Send_String
                 0x0000000008002d0c       0xbc src/gpio.o
                 0x0000000008002d0c                LCD_Send_String
- .text.main     0x0000000008002dc8       0xa8 src/main.o
-                0x0000000008002dc8                main
+ .text.Usart6DataSend
+                0x0000000008002dc8       0x34 src/main.o
+                0x0000000008002dc8                Usart6DataSend
+ .text.main     0x0000000008002dfc       0xd0 src/main.o
+                0x0000000008002dfc                main
  .text.DMA1_Stream5_IRQHandler
-                0x0000000008002e70       0xc8 src/main.o
-                0x0000000008002e70                DMA1_Stream5_IRQHandler
+                0x0000000008002ecc       0xc8 src/main.o
+                0x0000000008002ecc                DMA1_Stream5_IRQHandler
  .text.USART6_IRQHandler
-                0x0000000008002f38       0x38 src/main.o
-                0x0000000008002f38                USART6_IRQHandler
+                0x0000000008002f94       0x38 src/main.o
+                0x0000000008002f94                USART6_IRQHandler
  .text.NVIC_EnableIRQ
-                0x0000000008002f70       0x34 src/periph.o
+                0x0000000008002fcc       0x34 src/periph.o
  .text.NVIC_SetPriority
-                0x0000000008002fa4       0x54 src/periph.o
+                0x0000000008003000       0x54 src/periph.o
  .text.gpio_ini
-                0x0000000008002ff8       0xac src/periph.o
-                0x0000000008002ff8                gpio_ini
+                0x0000000008003054       0xac src/periph.o
+                0x0000000008003054                gpio_ini
  .text.RCC_Init
-                0x00000000080030a4       0x94 src/periph.o
-                0x00000000080030a4                RCC_Init
+                0x0000000008003100       0x94 src/periph.o
+                0x0000000008003100                RCC_Init
  .text.USART2_init
-                0x0000000008003138       0x7c src/periph.o
-                0x0000000008003138                USART2_init
+                0x0000000008003194       0x7c src/periph.o
+                0x0000000008003194                USART2_init
  .text.USART6_init
-                0x00000000080031b4       0x80 src/periph.o
-                0x00000000080031b4                USART6_init
- .text.dma1ini  0x0000000008003234       0xb8 src/periph.o
-                0x0000000008003234                dma1ini
+                0x0000000008003210       0x80 src/periph.o
+                0x0000000008003210                USART6_init
+ .text.dma1ini  0x0000000008003290       0xb8 src/periph.o
+                0x0000000008003290                dma1ini
  .text.SystemInit
-                0x00000000080032ec       0x70 src/system_stm32f4xx.o
-                0x00000000080032ec                SystemInit
+                0x0000000008003348       0x70 src/system_stm32f4xx.o
+                0x0000000008003348                SystemInit
  .text.SetSysClock
-                0x000000000800335c       0xf8 src/system_stm32f4xx.o
+                0x00000000080033b8       0xf8 src/system_stm32f4xx.o
  .text.SystemInit_ExtMemCtl
-                0x0000000008003454      0x118 src/system_stm32f4xx.o
+                0x00000000080034b0      0x118 src/system_stm32f4xx.o
  .text.Reset_Handler
-                0x000000000800356c       0x50 startup/startup_stm32.o
-                0x000000000800356c                Reset_Handler
+                0x00000000080035c8       0x50 startup/startup_stm32.o
+                0x00000000080035c8                Reset_Handler
  .text.Default_Handler
-                0x00000000080035bc        0x2 startup/startup_stm32.o
-                0x00000000080035bc                RTC_Alarm_IRQHandler
-                0x00000000080035bc                HASH_RNG_IRQHandler
-                0x00000000080035bc                EXTI2_IRQHandler
-                0x00000000080035bc                TIM8_CC_IRQHandler
-                0x00000000080035bc                DebugMon_Handler
-                0x00000000080035bc                TIM1_CC_IRQHandler
-                0x00000000080035bc                DMA2_Stream5_IRQHandler
-                0x00000000080035bc                HardFault_Handler
-                0x00000000080035bc                PVD_IRQHandler
-                0x00000000080035bc                SDIO_IRQHandler
-                0x00000000080035bc                TAMP_STAMP_IRQHandler
-                0x00000000080035bc                NMI_Handler
-                0x00000000080035bc                CAN2_RX1_IRQHandler
-                0x00000000080035bc                EXTI3_IRQHandler
-                0x00000000080035bc                TIM8_TRG_COM_TIM14_IRQHandler
-                0x00000000080035bc                TIM1_UP_TIM10_IRQHandler
-                0x00000000080035bc                TIM8_UP_TIM13_IRQHandler
-                0x00000000080035bc                I2C3_ER_IRQHandler
-                0x00000000080035bc                LCD_TFT_IRQHandler
-                0x00000000080035bc                EXTI0_IRQHandler
-                0x00000000080035bc                I2C2_EV_IRQHandler
-                0x00000000080035bc                DMA1_Stream2_IRQHandler
-                0x00000000080035bc                CAN1_RX0_IRQHandler
-                0x00000000080035bc                FPU_IRQHandler
-                0x00000000080035bc                OTG_HS_WKUP_IRQHandler
-                0x00000000080035bc                UsageFault_Handler
-                0x00000000080035bc                CAN2_SCE_IRQHandler
-                0x00000000080035bc                DMA2_Stream2_IRQHandler
-                0x00000000080035bc                SPI1_IRQHandler
-                0x00000000080035bc                TIM6_DAC_IRQHandler
-                0x00000000080035bc                TIM1_BRK_TIM9_IRQHandler
-                0x00000000080035bc                DCMI_IRQHandler
-                0x00000000080035bc                CAN2_RX0_IRQHandler
-                0x00000000080035bc                DMA2_Stream3_IRQHandler
-                0x00000000080035bc                USART3_IRQHandler
-                0x00000000080035bc                CRYP_IRQHandler
-                0x00000000080035bc                CAN1_RX1_IRQHandler
-                0x00000000080035bc                UART5_IRQHandler
-                0x00000000080035bc                DMA2_Stream0_IRQHandler
-                0x00000000080035bc                TIM4_IRQHandler
-                0x00000000080035bc                I2C1_EV_IRQHandler
-                0x00000000080035bc                DMA1_Stream6_IRQHandler
-                0x00000000080035bc                DMA1_Stream1_IRQHandler
-                0x00000000080035bc                UART4_IRQHandler
-                0x00000000080035bc                LCD_TFT_1_IRQHandler
-                0x00000000080035bc                TIM3_IRQHandler
-                0x00000000080035bc                RCC_IRQHandler
-                0x00000000080035bc                TIM8_BRK_TIM12_IRQHandler
-                0x00000000080035bc                Default_Handler
-                0x00000000080035bc                EXTI15_10_IRQHandler
-                0x00000000080035bc                ADC_IRQHandler
-                0x00000000080035bc                DMA1_Stream7_IRQHandler
-                0x00000000080035bc                TIM7_IRQHandler
-                0x00000000080035bc                CAN2_TX_IRQHandler
-                0x00000000080035bc                TIM5_IRQHandler
-                0x00000000080035bc                DMA2_Stream7_IRQHandler
-                0x00000000080035bc                I2C3_EV_IRQHandler
-                0x00000000080035bc                EXTI9_5_IRQHandler
-                0x00000000080035bc                RTC_WKUP_IRQHandler
-                0x00000000080035bc                ETH_WKUP_IRQHandler
-                0x00000000080035bc                SPI2_IRQHandler
-                0x00000000080035bc                OTG_HS_EP1_IN_IRQHandler
-                0x00000000080035bc                MemManage_Handler
-                0x00000000080035bc                DMA1_Stream0_IRQHandler
-                0x00000000080035bc                CAN1_TX_IRQHandler
-                0x00000000080035bc                EXTI4_IRQHandler
-                0x00000000080035bc                FSMC_IRQHandler
-                0x00000000080035bc                ETH_IRQHandler
-                0x00000000080035bc                OTG_HS_EP1_OUT_IRQHandler
-                0x00000000080035bc                WWDG_IRQHandler
-                0x00000000080035bc                TIM2_IRQHandler
-                0x00000000080035bc                OTG_FS_WKUP_IRQHandler
-                0x00000000080035bc                TIM1_TRG_COM_TIM11_IRQHandler
-                0x00000000080035bc                OTG_HS_IRQHandler
-                0x00000000080035bc                EXTI1_IRQHandler
-                0x00000000080035bc                USART2_IRQHandler
-                0x00000000080035bc                I2C2_ER_IRQHandler
-                0x00000000080035bc                DMA2_Stream1_IRQHandler
-                0x00000000080035bc                CAN1_SCE_IRQHandler
-                0x00000000080035bc                DMA2_Stream4_IRQHandler
-                0x00000000080035bc                BusFault_Handler
-                0x00000000080035bc                USART1_IRQHandler
-                0x00000000080035bc                OTG_FS_IRQHandler
-                0x00000000080035bc                SPI3_IRQHandler
-                0x00000000080035bc                DMA1_Stream4_IRQHandler
-                0x00000000080035bc                I2C1_ER_IRQHandler
-                0x00000000080035bc                DMA2_Stream6_IRQHandler
-                0x00000000080035bc                DMA1_Stream3_IRQHandler
- *fill*         0x00000000080035be        0x2 
+                0x0000000008003618        0x2 startup/startup_stm32.o
+                0x0000000008003618                RTC_Alarm_IRQHandler
+                0x0000000008003618                HASH_RNG_IRQHandler
+                0x0000000008003618                EXTI2_IRQHandler
+                0x0000000008003618                TIM8_CC_IRQHandler
+                0x0000000008003618                DebugMon_Handler
+                0x0000000008003618                TIM1_CC_IRQHandler
+                0x0000000008003618                DMA2_Stream5_IRQHandler
+                0x0000000008003618                HardFault_Handler
+                0x0000000008003618                PVD_IRQHandler
+                0x0000000008003618                SDIO_IRQHandler
+                0x0000000008003618                TAMP_STAMP_IRQHandler
+                0x0000000008003618                NMI_Handler
+                0x0000000008003618                CAN2_RX1_IRQHandler
+                0x0000000008003618                EXTI3_IRQHandler
+                0x0000000008003618                TIM8_TRG_COM_TIM14_IRQHandler
+                0x0000000008003618                TIM1_UP_TIM10_IRQHandler
+                0x0000000008003618                TIM8_UP_TIM13_IRQHandler
+                0x0000000008003618                I2C3_ER_IRQHandler
+                0x0000000008003618                LCD_TFT_IRQHandler
+                0x0000000008003618                EXTI0_IRQHandler
+                0x0000000008003618                I2C2_EV_IRQHandler
+                0x0000000008003618                DMA1_Stream2_IRQHandler
+                0x0000000008003618                CAN1_RX0_IRQHandler
+                0x0000000008003618                FPU_IRQHandler
+                0x0000000008003618                OTG_HS_WKUP_IRQHandler
+                0x0000000008003618                UsageFault_Handler
+                0x0000000008003618                CAN2_SCE_IRQHandler
+                0x0000000008003618                DMA2_Stream2_IRQHandler
+                0x0000000008003618                SPI1_IRQHandler
+                0x0000000008003618                TIM6_DAC_IRQHandler
+                0x0000000008003618                TIM1_BRK_TIM9_IRQHandler
+                0x0000000008003618                DCMI_IRQHandler
+                0x0000000008003618                CAN2_RX0_IRQHandler
+                0x0000000008003618                DMA2_Stream3_IRQHandler
+                0x0000000008003618                USART3_IRQHandler
+                0x0000000008003618                CRYP_IRQHandler
+                0x0000000008003618                CAN1_RX1_IRQHandler
+                0x0000000008003618                UART5_IRQHandler
+                0x0000000008003618                DMA2_Stream0_IRQHandler
+                0x0000000008003618                TIM4_IRQHandler
+                0x0000000008003618                I2C1_EV_IRQHandler
+                0x0000000008003618                DMA1_Stream6_IRQHandler
+                0x0000000008003618                DMA1_Stream1_IRQHandler
+                0x0000000008003618                UART4_IRQHandler
+                0x0000000008003618                LCD_TFT_1_IRQHandler
+                0x0000000008003618                TIM3_IRQHandler
+                0x0000000008003618                RCC_IRQHandler
+                0x0000000008003618                TIM8_BRK_TIM12_IRQHandler
+                0x0000000008003618                Default_Handler
+                0x0000000008003618                EXTI15_10_IRQHandler
+                0x0000000008003618                ADC_IRQHandler
+                0x0000000008003618                DMA1_Stream7_IRQHandler
+                0x0000000008003618                TIM7_IRQHandler
+                0x0000000008003618                CAN2_TX_IRQHandler
+                0x0000000008003618                TIM5_IRQHandler
+                0x0000000008003618                DMA2_Stream7_IRQHandler
+                0x0000000008003618                I2C3_EV_IRQHandler
+                0x0000000008003618                EXTI9_5_IRQHandler
+                0x0000000008003618                RTC_WKUP_IRQHandler
+                0x0000000008003618                ETH_WKUP_IRQHandler
+                0x0000000008003618                SPI2_IRQHandler
+                0x0000000008003618                OTG_HS_EP1_IN_IRQHandler
+                0x0000000008003618                MemManage_Handler
+                0x0000000008003618                DMA1_Stream0_IRQHandler
+                0x0000000008003618                CAN1_TX_IRQHandler
+                0x0000000008003618                EXTI4_IRQHandler
+                0x0000000008003618                FSMC_IRQHandler
+                0x0000000008003618                ETH_IRQHandler
+                0x0000000008003618                OTG_HS_EP1_OUT_IRQHandler
+                0x0000000008003618                WWDG_IRQHandler
+                0x0000000008003618                TIM2_IRQHandler
+                0x0000000008003618                OTG_FS_WKUP_IRQHandler
+                0x0000000008003618                TIM1_TRG_COM_TIM11_IRQHandler
+                0x0000000008003618                OTG_HS_IRQHandler
+                0x0000000008003618                EXTI1_IRQHandler
+                0x0000000008003618                USART2_IRQHandler
+                0x0000000008003618                I2C2_ER_IRQHandler
+                0x0000000008003618                DMA2_Stream1_IRQHandler
+                0x0000000008003618                CAN1_SCE_IRQHandler
+                0x0000000008003618                DMA2_Stream4_IRQHandler
+                0x0000000008003618                BusFault_Handler
+                0x0000000008003618                USART1_IRQHandler
+                0x0000000008003618                OTG_FS_IRQHandler
+                0x0000000008003618                SPI3_IRQHandler
+                0x0000000008003618                DMA1_Stream4_IRQHandler
+                0x0000000008003618                I2C1_ER_IRQHandler
+                0x0000000008003618                DMA2_Stream6_IRQHandler
+                0x0000000008003618                DMA1_Stream3_IRQHandler
+ *fill*         0x000000000800361a        0x2 
  .text.__libc_init_array
-                0x00000000080035c0       0x48 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
-                0x00000000080035c0                __libc_init_array
+                0x000000000800361c       0x48 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
+                0x000000000800361c                __libc_init_array
  .text.startup.register_fini
-                0x0000000008003608       0x14 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
- .text.atexit   0x000000000800361c        0xc /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
-                0x000000000800361c                atexit
+                0x0000000008003664       0x14 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+ .text.atexit   0x0000000008003678        0xc /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
+                0x0000000008003678                atexit
  .text.__libc_fini_array
-                0x0000000008003628       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
-                0x0000000008003628                __libc_fini_array
+                0x0000000008003684       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
+                0x0000000008003684                __libc_fini_array
  .text.__retarget_lock_acquire_recursive
-                0x000000000800365c        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
-                0x000000000800365c                __retarget_lock_acquire_recursive
+                0x00000000080036b8        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+                0x00000000080036b8                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x0000000008003660        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
-                0x0000000008003660                __retarget_lock_release_recursive
+                0x00000000080036bc        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+                0x00000000080036bc                __retarget_lock_release_recursive
  .text.__register_exitproc
-                0x0000000008003664       0xc0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
-                0x0000000008003664                __register_exitproc
+                0x00000000080036c0       0xc0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
+                0x00000000080036c0                __register_exitproc
  *(.glue_7)
- .glue_7        0x0000000008003724        0x0 linker stubs
+ .glue_7        0x0000000008003780        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000000008003724        0x0 linker stubs
+ .glue_7t       0x0000000008003780        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0000000008003724        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .eh_frame      0x0000000008003780        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
  *(.init)
- .init          0x0000000008003724        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
-                0x0000000008003724                _init
- .init          0x0000000008003728        0x8 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+ .init          0x0000000008003780        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x0000000008003780                _init
+ .init          0x0000000008003784        0x8 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
  *(.fini)
- .fini          0x0000000008003730        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
-                0x0000000008003730                _fini
- .fini          0x0000000008003734        0x8 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
-                0x000000000800373c                . = ALIGN (0x4)
-                0x000000000800373c                _etext = .
+ .fini          0x000000000800378c        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x000000000800378c                _fini
+ .fini          0x0000000008003790        0x8 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+                0x0000000008003798                . = ALIGN (0x4)
+                0x0000000008003798                _etext = .
 
-.vfp11_veneer   0x000000000800373c        0x0
- .vfp11_veneer  0x000000000800373c        0x0 linker stubs
+.vfp11_veneer   0x0000000008003798        0x0
+ .vfp11_veneer  0x0000000008003798        0x0 linker stubs
 
-.v4_bx          0x000000000800373c        0x0
- .v4_bx         0x000000000800373c        0x0 linker stubs
+.v4_bx          0x0000000008003798        0x0
+ .v4_bx         0x0000000008003798        0x0 linker stubs
 
-.iplt           0x000000000800373c        0x0
- .iplt          0x000000000800373c        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+.iplt           0x0000000008003798        0x0
+ .iplt          0x0000000008003798        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
 
-.rodata         0x000000000800373c       0x60
-                0x000000000800373c                . = ALIGN (0x4)
+.rodata         0x0000000008003798       0x68
+                0x0000000008003798                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x000000000800373c        0x5 RTOS/src/tasks.o
- *fill*         0x0000000008003741        0x3 
- .rodata        0x0000000008003744        0xd RTOS/src/timers.o
- *fill*         0x0000000008003751        0x3 
- .rodata        0x0000000008003754        0xc src/algorithm.o
- .rodata        0x0000000008003760        0x4 src/gpio.o
- .rodata        0x0000000008003764       0x33 src/main.o
+ .rodata        0x0000000008003798        0x5 RTOS/src/tasks.o
+ *fill*         0x000000000800379d        0x3 
+ .rodata        0x00000000080037a0        0xd RTOS/src/timers.o
+ *fill*         0x00000000080037ad        0x3 
+ .rodata        0x00000000080037b0        0xc src/algorithm.o
+ .rodata        0x00000000080037bc        0x4 src/gpio.o
+ .rodata        0x00000000080037c0       0x3b src/main.o
  *(.rodata*)
- *fill*         0x0000000008003797        0x1 
+ *fill*         0x00000000080037fb        0x1 
  .rodata._global_impure_ptr
-                0x0000000008003798        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
-                0x0000000008003798                _global_impure_ptr
-                0x000000000800379c                . = ALIGN (0x4)
+                0x00000000080037fc        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+                0x00000000080037fc                _global_impure_ptr
+                0x0000000008003800                . = ALIGN (0x4)
 
-.rel.dyn        0x000000000800379c        0x0
- .rel.iplt      0x000000000800379c        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+.rel.dyn        0x0000000008003800        0x0
+ .rel.iplt      0x0000000008003800        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
 
-.ARM.extab      0x000000000800379c        0x0
-                0x000000000800379c                . = ALIGN (0x4)
+.ARM.extab      0x0000000008003800        0x0
+                0x0000000008003800                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x000000000800379c                . = ALIGN (0x4)
+                0x0000000008003800                . = ALIGN (0x4)
 
-.ARM            0x000000000800379c        0x0
-                0x000000000800379c                . = ALIGN (0x4)
-                0x000000000800379c                __exidx_start = .
+.ARM            0x0000000008003800        0x0
+                0x0000000008003800                . = ALIGN (0x4)
+                0x0000000008003800                __exidx_start = .
  *(.ARM.exidx*)
-                0x000000000800379c                __exidx_end = .
-                0x000000000800379c                . = ALIGN (0x4)
+                0x0000000008003800                __exidx_end = .
+                0x0000000008003800                . = ALIGN (0x4)
 
-.preinit_array  0x000000000800379c        0x0
-                0x000000000800379c                . = ALIGN (0x4)
-                0x000000000800379c                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x0000000008003800        0x0
+                0x0000000008003800                . = ALIGN (0x4)
+                0x0000000008003800                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x000000000800379c                PROVIDE (__preinit_array_end, .)
-                0x000000000800379c                . = ALIGN (0x4)
+                0x0000000008003800                PROVIDE (__preinit_array_end, .)
+                0x0000000008003800                . = ALIGN (0x4)
 
-.init_array     0x000000000800379c        0x8
-                0x000000000800379c                . = ALIGN (0x4)
-                0x000000000800379c                PROVIDE (__init_array_start, .)
+.init_array     0x0000000008003800        0x8
+                0x0000000008003800                . = ALIGN (0x4)
+                0x0000000008003800                PROVIDE (__init_array_start, .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x000000000800379c        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+                0x0000000008003800        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x00000000080037a0        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
-                0x00000000080037a4                PROVIDE (__init_array_end, .)
-                0x00000000080037a4                . = ALIGN (0x4)
+ .init_array    0x0000000008003804        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x0000000008003808                PROVIDE (__init_array_end, .)
+                0x0000000008003808                . = ALIGN (0x4)
 
-.fini_array     0x00000000080037a4        0x4
-                0x00000000080037a4                . = ALIGN (0x4)
-                0x00000000080037a4                PROVIDE (__fini_array_start, .)
+.fini_array     0x0000000008003808        0x4
+                0x0000000008003808                . = ALIGN (0x4)
+                0x0000000008003808                PROVIDE (__fini_array_start, .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x00000000080037a4        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
-                0x00000000080037a8                PROVIDE (__fini_array_end, .)
-                0x00000000080037a8                . = ALIGN (0x4)
-                0x00000000080037a8                _sidata = LOADADDR (.data)
+ .fini_array    0x0000000008003808        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x000000000800380c                PROVIDE (__fini_array_end, .)
+                0x000000000800380c                . = ALIGN (0x4)
+                0x000000000800380c                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000      0x444 load address 0x00000000080037a8
+.data           0x0000000020000000      0x444 load address 0x000000000800380c
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -1561,11 +1562,11 @@ LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-non
                 0x0000000020000444                . = ALIGN (0x4)
                 0x0000000020000444                _edata = .
 
-.igot.plt       0x0000000020000444        0x0 load address 0x0000000008003bec
+.igot.plt       0x0000000020000444        0x0 load address 0x0000000008003c50
  .igot.plt      0x0000000020000444        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
                 0x0000000020000444                . = ALIGN (0x4)
 
-.bss            0x0000000020000444     0x7b84 load address 0x0000000008003bec
+.bss            0x0000000020000444     0x7b84 load address 0x0000000008003c50
                 0x0000000020000444                _sbss = .
                 0x0000000020000444                __bss_start__ = _sbss
  *(.bss)
@@ -1606,7 +1607,7 @@ LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-non
                 0x0000000020007fc8                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020007fc8      0x400 load address 0x0000000008003bec
+                0x0000000020007fc8      0x400 load address 0x0000000008003c50
                 0x0000000020007fc8                . = ALIGN (0x8)
                 0x0000000020007fc8                PROVIDE (end, .)
                 [!provide]                        PROVIDE (_end, .)
@@ -1669,7 +1670,7 @@ LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-non
                 0x0000000000000442       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
  .ARM.attributes
                 0x0000000000000476       0x22 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
-OUTPUT(rtos.elf elf32-littlearm)
+OUTPUT(AgrGPS.elf elf32-littlearm)
 
 .debug_info     0x0000000000000000     0x971f
  .debug_info    0x0000000000000000      0xbef RTOS/src/heap_4.o
@@ -1766,45 +1767,45 @@ OUTPUT(rtos.elf elf32-littlearm)
  .debug_macro   0x000000000000b409       0xc0 src/periph.o
  .debug_macro   0x000000000000b4c9       0xe1 src/system_stm32f4xx.o
 
-.debug_line     0x0000000000000000     0x4d56
- .debug_line    0x0000000000000000      0x58c RTOS/src/heap_4.o
- .debug_line    0x000000000000058c      0x4b7 RTOS/src/list.o
- .debug_line    0x0000000000000a43      0x5b0 RTOS/src/port.o
- .debug_line    0x0000000000000ff3      0xc28 RTOS/src/queue.o
- .debug_line    0x0000000000001c1b      0xf5e RTOS/src/tasks.o
- .debug_line    0x0000000000002b79      0x7a9 RTOS/src/timers.o
- .debug_line    0x0000000000003322      0x600 src/algorithm.o
- .debug_line    0x0000000000003922      0x506 src/gpio.o
- .debug_line    0x0000000000003e28      0x555 src/main.o
- .debug_line    0x000000000000437d      0x4d6 src/periph.o
- .debug_line    0x0000000000004853      0x487 src/system_stm32f4xx.o
- .debug_line    0x0000000000004cda       0x7c startup/startup_stm32.o
+.debug_line     0x0000000000000000     0x4d84
+ .debug_line    0x0000000000000000      0x58e RTOS/src/heap_4.o
+ .debug_line    0x000000000000058e      0x4b9 RTOS/src/list.o
+ .debug_line    0x0000000000000a47      0x5b2 RTOS/src/port.o
+ .debug_line    0x0000000000000ff9      0xc2a RTOS/src/queue.o
+ .debug_line    0x0000000000001c23      0xf60 RTOS/src/tasks.o
+ .debug_line    0x0000000000002b83      0x7ab RTOS/src/timers.o
+ .debug_line    0x000000000000332e      0x608 src/algorithm.o
+ .debug_line    0x0000000000003936      0x50c src/gpio.o
+ .debug_line    0x0000000000003e42      0x55f src/main.o
+ .debug_line    0x00000000000043a1      0x4dc src/periph.o
+ .debug_line    0x000000000000487d      0x48b src/system_stm32f4xx.o
+ .debug_line    0x0000000000004d08       0x7c startup/startup_stm32.o
 
-.debug_str      0x0000000000000000    0x46d6c
- .debug_str     0x0000000000000000     0xa2be RTOS/src/heap_4.o
-                                       0xa50f (size before relaxing)
- .debug_str     0x000000000000a2be      0x12a RTOS/src/list.o
-                                       0x9dff (size before relaxing)
- .debug_str     0x000000000000a3e8      0x80c RTOS/src/port.o
-                                       0x7d51 (size before relaxing)
- .debug_str     0x000000000000abf4      0xf6e RTOS/src/queue.o
-                                       0xb38f (size before relaxing)
- .debug_str     0x000000000000bb62     0x18fc RTOS/src/tasks.o
-                                       0xbe20 (size before relaxing)
- .debug_str     0x000000000000d45e      0x3fe RTOS/src/timers.o
-                                       0xb802 (size before relaxing)
- .debug_str     0x000000000000d85c    0x38a4b src/algorithm.o
-                                      0x427e7 (size before relaxing)
- .debug_str     0x00000000000462a7      0x262 src/gpio.o
-                                      0x3c7ac (size before relaxing)
- .debug_str     0x0000000000046509       0xf3 src/main.o
-                                      0x407e6 (size before relaxing)
- .debug_str     0x00000000000465fc      0x622 src/periph.o
-                                      0x3c898 (size before relaxing)
- .debug_str     0x0000000000046c1e      0x124 src/system_stm32f4xx.o
-                                      0x3c390 (size before relaxing)
- .debug_str     0x0000000000046d42       0x2a startup/startup_stm32.o
-                                         0x4e (size before relaxing)
+.debug_str      0x0000000000000000    0x46d6e
+ .debug_str     0x0000000000000000     0xa2c0 RTOS/src/heap_4.o
+                                       0xa511 (size before relaxing)
+ .debug_str     0x000000000000a2c0      0x12a RTOS/src/list.o
+                                       0x9e01 (size before relaxing)
+ .debug_str     0x000000000000a3ea      0x80c RTOS/src/port.o
+                                       0x7d53 (size before relaxing)
+ .debug_str     0x000000000000abf6      0xf6e RTOS/src/queue.o
+                                       0xb391 (size before relaxing)
+ .debug_str     0x000000000000bb64     0x18fc RTOS/src/tasks.o
+                                       0xbe22 (size before relaxing)
+ .debug_str     0x000000000000d460      0x3fe RTOS/src/timers.o
+                                       0xb804 (size before relaxing)
+ .debug_str     0x000000000000d85e    0x38a4b src/algorithm.o
+                                      0x427e9 (size before relaxing)
+ .debug_str     0x00000000000462a9      0x262 src/gpio.o
+                                      0x3c7ae (size before relaxing)
+ .debug_str     0x000000000004650b       0xf3 src/main.o
+                                      0x407e8 (size before relaxing)
+ .debug_str     0x00000000000465fe      0x622 src/periph.o
+                                      0x3c89a (size before relaxing)
+ .debug_str     0x0000000000046c20      0x124 src/system_stm32f4xx.o
+                                      0x3c392 (size before relaxing)
+ .debug_str     0x0000000000046d44       0x2a startup/startup_stm32.o
+                                         0x50 (size before relaxing)
 
 .comment        0x0000000000000000       0x7e
  .comment       0x0000000000000000       0x7e RTOS/src/heap_4.o
