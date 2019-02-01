@@ -1,0 +1,1840 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
+                              startup/sysmem.o (__errno)
+/home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-exit.o)
+                              /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o (exit)
+/home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+                              /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-exit.o) (_global_impure_ptr)
+/home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
+                              /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o (__libc_init_array)
+/home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+                              RTOS/src/queue.o (memcpy)
+/home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
+                              /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o (memset)
+/home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+                              /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-exit.o) (__call_exitprocs)
+/home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
+                              /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o) (atexit)
+/home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
+                              /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o) (__libc_fini_array)
+/home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+                              /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o) (__retarget_lock_acquire_recursive)
+/home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
+                              /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o) (__register_exitproc)
+
+Allocating common symbols
+Common symbol       size              file
+
+receivePointer      0x4               src/algorithm.o
+xStatus             0x4               src/main.o
+__lock___atexit_recursive_mutex
+                    0x1               /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+__lock___arc4random_mutex
+                    0x1               /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+recString1          0x50              src/main.o
+xQueueRegistry      0x40              RTOS/src/queue.o
+__lock___env_recursive_mutex
+                    0x1               /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+__lock___sinit_recursive_mutex
+                    0x1               /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+toUSART6            0x50              src/main.o
+__lock___malloc_recursive_mutex
+                    0x1               /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+xHigherPriorityTaskWoken
+                    0x4               src/main.o
+xpQueue             0x4               src/main.o
+xStatus1            0x4               src/algorithm.o
+bufferedData        0xa0              src/main.o
+__lock___at_quick_exit_mutex
+                    0x1               /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+recString0          0x50              src/main.o
+__lock___dd_hash_mutex
+                    0x1               /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+__lock___tz_mutex   0x1               /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+__lock___sfp_recursive_mutex
+                    0x1               /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+ .data          0x0000000000000000        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .text          0x0000000000000000       0x74 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .ARM.extab     0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .ARM.exidx     0x0000000000000000        0x8 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .ARM.attributes
+                0x0000000000000000       0x20 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/croutine.o
+ .text          0x0000000000000000        0x0 RTOS/src/croutine.o
+ .data          0x0000000000000000        0x0 RTOS/src/croutine.o
+ .bss           0x0000000000000000        0x0 RTOS/src/croutine.o
+ .debug_info    0x0000000000000000       0x76 RTOS/src/croutine.o
+ .debug_abbrev  0x0000000000000000       0x29 RTOS/src/croutine.o
+ .debug_aranges
+                0x0000000000000000       0x18 RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0xe4 RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000      0xa66 RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000      0x174 RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0x22 RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0x87 RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0x51 RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0xef RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0x6a RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000      0x1df RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000      0x11f RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000      0x168 RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0xeb RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0x10 RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000      0x3de RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0xc0 RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0x8c RTOS/src/croutine.o
+ .debug_macro   0x0000000000000000       0x43 RTOS/src/croutine.o
+ .debug_line    0x0000000000000000      0x3c2 RTOS/src/croutine.o
+ .debug_str     0x0000000000000000     0x7a8f RTOS/src/croutine.o
+ .comment       0x0000000000000000       0x7f RTOS/src/croutine.o
+ .ARM.attributes
+                0x0000000000000000       0x39 RTOS/src/croutine.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/event_groups.o
+ .text          0x0000000000000000        0x0 RTOS/src/event_groups.o
+ .data          0x0000000000000000        0x0 RTOS/src/event_groups.o
+ .bss           0x0000000000000000        0x0 RTOS/src/event_groups.o
+ .text.xEventGroupCreate
+                0x0000000000000000       0x2e RTOS/src/event_groups.o
+ .text.xEventGroupSync
+                0x0000000000000000      0x154 RTOS/src/event_groups.o
+ .text.xEventGroupWaitBits
+                0x0000000000000000      0x190 RTOS/src/event_groups.o
+ .text.xEventGroupClearBits
+                0x0000000000000000       0x6c RTOS/src/event_groups.o
+ .text.xEventGroupGetBitsFromISR
+                0x0000000000000000       0x46 RTOS/src/event_groups.o
+ .text.xEventGroupSetBits
+                0x0000000000000000      0x112 RTOS/src/event_groups.o
+ .text.vEventGroupDelete
+                0x0000000000000000       0x60 RTOS/src/event_groups.o
+ .text.vEventGroupSetBitsCallback
+                0x0000000000000000       0x1a RTOS/src/event_groups.o
+ .text.vEventGroupClearBitsCallback
+                0x0000000000000000       0x1a RTOS/src/event_groups.o
+ .text.prvTestWaitCondition
+                0x0000000000000000       0x44 RTOS/src/event_groups.o
+ .debug_info    0x0000000000000000     0x1096 RTOS/src/event_groups.o
+ .debug_abbrev  0x0000000000000000      0x309 RTOS/src/event_groups.o
+ .debug_aranges
+                0x0000000000000000       0x68 RTOS/src/event_groups.o
+ .debug_ranges  0x0000000000000000       0x58 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000      0x1d4 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000      0xa66 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x17 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x22 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x52 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x35 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x9c RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000      0x10e RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x57 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x58 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x43 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x20 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000      0x18e RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000      0x330 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x29 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0xef RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x6a RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000      0x1df RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000      0x11f RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000      0x168 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0xeb RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x10 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000      0x3de RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0xc0 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x8c RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x91 RTOS/src/event_groups.o
+ .debug_macro   0x0000000000000000       0x19 RTOS/src/event_groups.o
+ .debug_line    0x0000000000000000      0x6d7 RTOS/src/event_groups.o
+ .debug_str     0x0000000000000000     0xb0a6 RTOS/src/event_groups.o
+ .comment       0x0000000000000000       0x7f RTOS/src/event_groups.o
+ .debug_frame   0x0000000000000000      0x180 RTOS/src/event_groups.o
+ .ARM.attributes
+                0x0000000000000000       0x39 RTOS/src/event_groups.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/heap_4.o
+ .text          0x0000000000000000        0x0 RTOS/src/heap_4.o
+ .data          0x0000000000000000        0x0 RTOS/src/heap_4.o
+ .rodata        0x0000000000000000        0x4 RTOS/src/heap_4.o
+ .text.xPortGetFreeHeapSize
+                0x0000000000000000       0x18 RTOS/src/heap_4.o
+ .text.xPortGetMinimumEverFreeHeapSize
+                0x0000000000000000       0x18 RTOS/src/heap_4.o
+ .text.vPortInitialiseBlocks
+                0x0000000000000000        0xe RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000      0xa66 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x17 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x22 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x52 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x35 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x9c RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000      0x10e RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x57 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x58 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x43 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x20 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000      0x18e RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000      0x330 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x29 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0xef RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x6a RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000      0x1df RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000      0x11f RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000      0x168 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0xeb RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x10 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000      0x3de RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0xc0 RTOS/src/heap_4.o
+ .debug_macro   0x0000000000000000       0x8c RTOS/src/heap_4.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/list.o
+ .text          0x0000000000000000        0x0 RTOS/src/list.o
+ .data          0x0000000000000000        0x0 RTOS/src/list.o
+ .bss           0x0000000000000000        0x0 RTOS/src/list.o
+ .debug_macro   0x0000000000000000      0xa66 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x17 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x22 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x52 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x35 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x9c RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/list.o
+ .debug_macro   0x0000000000000000      0x10e RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x57 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x58 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x43 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x20 RTOS/src/list.o
+ .debug_macro   0x0000000000000000      0x18e RTOS/src/list.o
+ .debug_macro   0x0000000000000000      0x330 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x29 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0xef RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x6a RTOS/src/list.o
+ .debug_macro   0x0000000000000000      0x1df RTOS/src/list.o
+ .debug_macro   0x0000000000000000      0x11f RTOS/src/list.o
+ .debug_macro   0x0000000000000000      0x168 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0xeb RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x10 RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/list.o
+ .debug_macro   0x0000000000000000      0x3de RTOS/src/list.o
+ .debug_macro   0x0000000000000000       0xc0 RTOS/src/list.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/port.o
+ .text          0x0000000000000000        0x0 RTOS/src/port.o
+ .rodata        0x0000000000000000        0x4 RTOS/src/port.o
+ .text.vPortEndScheduler
+                0x0000000000000000       0x34 RTOS/src/port.o
+ .debug_macro   0x0000000000000000      0xa66 RTOS/src/port.o
+ .debug_macro   0x0000000000000000      0x174 RTOS/src/port.o
+ .debug_macro   0x0000000000000000       0x22 RTOS/src/port.o
+ .debug_macro   0x0000000000000000       0x87 RTOS/src/port.o
+ .debug_macro   0x0000000000000000       0x51 RTOS/src/port.o
+ .debug_macro   0x0000000000000000       0xef RTOS/src/port.o
+ .debug_macro   0x0000000000000000       0x6a RTOS/src/port.o
+ .debug_macro   0x0000000000000000      0x1df RTOS/src/port.o
+ .debug_macro   0x0000000000000000      0x11f RTOS/src/port.o
+ .debug_macro   0x0000000000000000      0x168 RTOS/src/port.o
+ .debug_macro   0x0000000000000000       0xeb RTOS/src/port.o
+ .debug_macro   0x0000000000000000       0x10 RTOS/src/port.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/port.o
+ .debug_macro   0x0000000000000000      0x3de RTOS/src/port.o
+ .debug_macro   0x0000000000000000       0xc0 RTOS/src/port.o
+ .debug_macro   0x0000000000000000       0x8c RTOS/src/port.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/queue.o
+ .text          0x0000000000000000        0x0 RTOS/src/queue.o
+ .data          0x0000000000000000        0x0 RTOS/src/queue.o
+ .bss           0x0000000000000000        0x0 RTOS/src/queue.o
+ .text.prvInitialiseMutex
+                0x0000000000000000       0x34 RTOS/src/queue.o
+ .text.xQueueCreateMutex
+                0x0000000000000000       0x30 RTOS/src/queue.o
+ .text.xQueueGiveMutexRecursive
+                0x0000000000000000       0x66 RTOS/src/queue.o
+ .text.xQueueTakeMutexRecursive
+                0x0000000000000000       0x6e RTOS/src/queue.o
+ .text.xQueueCreateCountingSemaphore
+                0x0000000000000000       0x62 RTOS/src/queue.o
+ .text.xQueueGiveFromISR
+                0x0000000000000000      0x112 RTOS/src/queue.o
+ .text.xQueueReceiveFromISR
+                0x0000000000000000       0xfa RTOS/src/queue.o
+ .text.xQueuePeekFromISR
+                0x0000000000000000       0xca RTOS/src/queue.o
+ .text.uxQueueMessagesWaiting
+                0x0000000000000000       0x3a RTOS/src/queue.o
+ .text.uxQueueSpacesAvailable
+                0x0000000000000000       0x44 RTOS/src/queue.o
+ .text.uxQueueMessagesWaitingFromISR
+                0x0000000000000000       0x36 RTOS/src/queue.o
+ .text.vQueueDelete
+                0x0000000000000000       0x3a RTOS/src/queue.o
+ .text.xQueueIsQueueEmptyFromISR
+                0x0000000000000000       0x42 RTOS/src/queue.o
+ .text.xQueueIsQueueFullFromISR
+                0x0000000000000000       0x46 RTOS/src/queue.o
+ .text.pcQueueGetName
+                0x0000000000000000       0x4c RTOS/src/queue.o
+ .text.vQueueUnregisterQueue
+                0x0000000000000000       0x54 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000      0xa66 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x17 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x22 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x52 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x35 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x9c RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000      0x10e RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x57 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x58 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x43 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x20 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000      0x18e RTOS/src/queue.o
+ .debug_macro   0x0000000000000000      0x330 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x29 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0xef RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x6a RTOS/src/queue.o
+ .debug_macro   0x0000000000000000      0x1df RTOS/src/queue.o
+ .debug_macro   0x0000000000000000      0x11f RTOS/src/queue.o
+ .debug_macro   0x0000000000000000      0x168 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0xeb RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x10 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/queue.o
+ .debug_macro   0x0000000000000000      0x3de RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0xc0 RTOS/src/queue.o
+ .debug_macro   0x0000000000000000       0x8c RTOS/src/queue.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/tasks.o
+ .text          0x0000000000000000        0x0 RTOS/src/tasks.o
+ .data          0x0000000000000000        0x0 RTOS/src/tasks.o
+ .text.vTaskDelete
+                0x0000000000000000      0x11c RTOS/src/tasks.o
+ .text.vTaskDelayUntil
+                0x0000000000000000       0xf4 RTOS/src/tasks.o
+ .text.uxTaskPriorityGet
+                0x0000000000000000       0x34 RTOS/src/tasks.o
+ .text.uxTaskPriorityGetFromISR
+                0x0000000000000000       0x58 RTOS/src/tasks.o
+ .text.vTaskPrioritySet
+                0x0000000000000000      0x15c RTOS/src/tasks.o
+ .text.vTaskSuspend
+                0x0000000000000000      0x110 RTOS/src/tasks.o
+ .text.prvTaskIsTaskSuspended
+                0x0000000000000000       0x74 RTOS/src/tasks.o
+ .text.vTaskResume
+                0x0000000000000000       0xb8 RTOS/src/tasks.o
+ .text.xTaskResumeFromISR
+                0x0000000000000000       0xe0 RTOS/src/tasks.o
+ .text.vTaskEndScheduler
+                0x0000000000000000       0x30 RTOS/src/tasks.o
+ .text.xTaskGetTickCountFromISR
+                0x0000000000000000       0x24 RTOS/src/tasks.o
+ .text.uxTaskGetNumberOfTasks
+                0x0000000000000000       0x18 RTOS/src/tasks.o
+ .text.pcTaskGetName
+                0x0000000000000000       0x48 RTOS/src/tasks.o
+ .text.vTaskPlaceOnUnorderedEventList
+                0x0000000000000000       0x74 RTOS/src/tasks.o
+ .text.xTaskRemoveFromUnorderedEventList
+                0x0000000000000000       0xcc RTOS/src/tasks.o
+ .text.xTaskGetCurrentTaskHandle
+                0x0000000000000000       0x20 RTOS/src/tasks.o
+ .text.uxTaskResetEventItemValue
+                0x0000000000000000       0x30 RTOS/src/tasks.o
+ .text.ulTaskNotifyTake
+                0x0000000000000000       0x90 RTOS/src/tasks.o
+ .text.xTaskNotifyWait
+                0x0000000000000000       0xb4 RTOS/src/tasks.o
+ .text.xTaskGenericNotify
+                0x0000000000000000      0x140 RTOS/src/tasks.o
+ .text.xTaskGenericNotifyFromISR
+                0x0000000000000000      0x18c RTOS/src/tasks.o
+ .text.vTaskNotifyGiveFromISR
+                0x0000000000000000      0x120 RTOS/src/tasks.o
+ .text.xTaskNotifyStateClear
+                0x0000000000000000       0x4c RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000      0xa66 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x17 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x22 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x52 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x35 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x9c RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000      0x10e RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x57 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x58 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x43 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x20 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000      0x18e RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000      0x330 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x29 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x35 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0xef RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x6a RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000      0x1df RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000      0x11f RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000      0x168 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0xeb RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x10 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000      0x3de RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0xc0 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x8c RTOS/src/tasks.o
+ .debug_macro   0x0000000000000000       0x91 RTOS/src/tasks.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .group         0x0000000000000000        0xc RTOS/src/timers.o
+ .text          0x0000000000000000        0x0 RTOS/src/timers.o
+ .data          0x0000000000000000        0x0 RTOS/src/timers.o
+ .text.xTimerCreate
+                0x0000000000000000       0x3a RTOS/src/timers.o
+ .text.prvInitialiseNewTimer
+                0x0000000000000000       0x62 RTOS/src/timers.o
+ .text.xTimerGetTimerDaemonTaskHandle
+                0x0000000000000000       0x38 RTOS/src/timers.o
+ .text.xTimerGetPeriod
+                0x0000000000000000       0x36 RTOS/src/timers.o
+ .text.xTimerGetExpiryTime
+                0x0000000000000000       0x3a RTOS/src/timers.o
+ .text.pcTimerGetName
+                0x0000000000000000       0x36 RTOS/src/timers.o
+ .text.xTimerIsTimerActive
+                0x0000000000000000       0x48 RTOS/src/timers.o
+ .text.pvTimerGetTimerID
+                0x0000000000000000       0x3e RTOS/src/timers.o
+ .text.vTimerSetTimerID
+                0x0000000000000000       0x3e RTOS/src/timers.o
+ .debug_macro   0x0000000000000000      0xa66 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x17 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x22 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x52 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x35 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x9c RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000      0x10e RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x8d RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x57 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x58 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x43 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x20 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000      0x18e RTOS/src/timers.o
+ .debug_macro   0x0000000000000000      0x330 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x16 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x29 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0xef RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x6a RTOS/src/timers.o
+ .debug_macro   0x0000000000000000      0x1df RTOS/src/timers.o
+ .debug_macro   0x0000000000000000      0x11f RTOS/src/timers.o
+ .debug_macro   0x0000000000000000      0x168 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0xeb RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x10 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x1f RTOS/src/timers.o
+ .debug_macro   0x0000000000000000      0x3de RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0xc0 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x8c RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x94 RTOS/src/timers.o
+ .debug_macro   0x0000000000000000       0x91 RTOS/src/timers.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .group         0x0000000000000000        0xc src/algorithm.o
+ .text          0x0000000000000000        0x0 src/algorithm.o
+ .data          0x0000000000000000        0x0 src/algorithm.o
+ .bss           0x0000000000000000        0x6 src/algorithm.o
+ .text.isStringFull
+                0x0000000000000000       0x3e src/algorithm.o
+ .text.regToDisplay
+                0x0000000000000000       0x7c src/algorithm.o
+ .debug_macro   0x0000000000000000      0xa66 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x22 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x87 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x51 src/algorithm.o
+ .debug_macro   0x0000000000000000       0xef src/algorithm.o
+ .debug_macro   0x0000000000000000       0x6a src/algorithm.o
+ .debug_macro   0x0000000000000000      0x1df src/algorithm.o
+ .debug_macro   0x0000000000000000      0x174 src/algorithm.o
+ .debug_macro   0x0000000000000000      0x168 src/algorithm.o
+ .debug_macro   0x0000000000000000       0xeb src/algorithm.o
+ .debug_macro   0x0000000000000000       0x10 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x1f src/algorithm.o
+ .debug_macro   0x0000000000000000      0x3de src/algorithm.o
+ .debug_macro   0x0000000000000000       0x94 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x17 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x35 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x9c src/algorithm.o
+ .debug_macro   0x0000000000000000       0x58 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x1f src/algorithm.o
+ .debug_macro   0x0000000000000000       0x43 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x20 src/algorithm.o
+ .debug_macro   0x0000000000000000      0x18e src/algorithm.o
+ .debug_macro   0x0000000000000000      0x330 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x35 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x16 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x16 src/algorithm.o
+ .debug_macro   0x0000000000000000       0x29 src/algorithm.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .group         0x0000000000000000        0xc src/gpio.o
+ .text          0x0000000000000000        0x0 src/gpio.o
+ .data          0x0000000000000000        0x0 src/gpio.o
+ .bss           0x0000000000000000        0x0 src/gpio.o
+ .debug_macro   0x0000000000000000      0xa66 src/gpio.o
+ .debug_macro   0x0000000000000000       0x6b src/gpio.o
+ .debug_macro   0x0000000000000000       0x3b src/gpio.o
+ .debug_macro   0x0000000000000000       0x22 src/gpio.o
+ .debug_macro   0x0000000000000000       0x87 src/gpio.o
+ .debug_macro   0x0000000000000000       0x51 src/gpio.o
+ .debug_macro   0x0000000000000000       0xef src/gpio.o
+ .debug_macro   0x0000000000000000       0x6a src/gpio.o
+ .debug_macro   0x0000000000000000      0x1df src/gpio.o
+ .debug_macro   0x0000000000000000       0x50 src/gpio.o
+ .debug_macro   0x0000000000000000      0xe43 src/gpio.o
+ .debug_macro   0x0000000000000000     0x91de src/gpio.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .group         0x0000000000000000        0xc src/main.o
+ .text          0x0000000000000000        0x0 src/main.o
+ .bss           0x0000000000000000        0x0 src/main.o
+ .text.Usart6DataSend
+                0x0000000000000000       0x34 src/main.o
+ .debug_macro   0x0000000000000000      0xa66 src/main.o
+ .debug_macro   0x0000000000000000       0x6b src/main.o
+ .debug_macro   0x0000000000000000       0x3b src/main.o
+ .debug_macro   0x0000000000000000       0x22 src/main.o
+ .debug_macro   0x0000000000000000       0x87 src/main.o
+ .debug_macro   0x0000000000000000       0x51 src/main.o
+ .debug_macro   0x0000000000000000       0xef src/main.o
+ .debug_macro   0x0000000000000000       0x6a src/main.o
+ .debug_macro   0x0000000000000000      0x1df src/main.o
+ .debug_macro   0x0000000000000000       0x50 src/main.o
+ .debug_macro   0x0000000000000000      0xe43 src/main.o
+ .debug_macro   0x0000000000000000     0x91de src/main.o
+ .debug_macro   0x0000000000000000      0x11f src/main.o
+ .debug_macro   0x0000000000000000      0x174 src/main.o
+ .debug_macro   0x0000000000000000      0x168 src/main.o
+ .debug_macro   0x0000000000000000       0xeb src/main.o
+ .debug_macro   0x0000000000000000       0x10 src/main.o
+ .debug_macro   0x0000000000000000       0x1f src/main.o
+ .debug_macro   0x0000000000000000      0x3de src/main.o
+ .debug_macro   0x0000000000000000       0xc0 src/main.o
+ .debug_macro   0x0000000000000000       0x8c src/main.o
+ .debug_macro   0x0000000000000000       0x94 src/main.o
+ .debug_macro   0x0000000000000000       0xb2 src/main.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .group         0x0000000000000000        0xc src/periph.o
+ .text          0x0000000000000000        0x0 src/periph.o
+ .data          0x0000000000000000        0x0 src/periph.o
+ .bss           0x0000000000000000        0x0 src/periph.o
+ .text.dma2ini  0x0000000000000000       0xa4 src/periph.o
+ .debug_macro   0x0000000000000000      0xa66 src/periph.o
+ .debug_macro   0x0000000000000000       0x6b src/periph.o
+ .debug_macro   0x0000000000000000       0x3b src/periph.o
+ .debug_macro   0x0000000000000000       0x22 src/periph.o
+ .debug_macro   0x0000000000000000       0x87 src/periph.o
+ .debug_macro   0x0000000000000000       0x51 src/periph.o
+ .debug_macro   0x0000000000000000       0xef src/periph.o
+ .debug_macro   0x0000000000000000       0x6a src/periph.o
+ .debug_macro   0x0000000000000000      0x1df src/periph.o
+ .debug_macro   0x0000000000000000       0x50 src/periph.o
+ .debug_macro   0x0000000000000000      0xe43 src/periph.o
+ .debug_macro   0x0000000000000000     0x91de src/periph.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .group         0x0000000000000000        0xc src/system_stm32f4xx.o
+ .text          0x0000000000000000        0x0 src/system_stm32f4xx.o
+ .data          0x0000000000000000       0x14 src/system_stm32f4xx.o
+ .bss           0x0000000000000000        0x0 src/system_stm32f4xx.o
+ .text.SystemCoreClockUpdate
+                0x0000000000000000       0xf8 src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000      0xa66 src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000       0x6b src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000       0x3b src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000       0x22 src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000       0x87 src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000       0x51 src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000       0xef src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000       0x6a src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000      0x1df src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000       0x50 src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000      0xe43 src/system_stm32f4xx.o
+ .debug_macro   0x0000000000000000     0x91de src/system_stm32f4xx.o
+ .text          0x0000000000000000       0x14 startup/startup_stm32.o
+ .data          0x0000000000000000        0x0 startup/startup_stm32.o
+ .bss           0x0000000000000000        0x0 startup/startup_stm32.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .group         0x0000000000000000        0xc startup/sysmem.o
+ .text          0x0000000000000000        0x0 startup/sysmem.o
+ .data          0x0000000000000000        0x0 startup/sysmem.o
+ .bss           0x0000000000000000        0x4 startup/sysmem.o
+ .text._sbrk    0x0000000000000000       0x58 startup/sysmem.o
+ .debug_info    0x0000000000000000      0x92c startup/sysmem.o
+ .debug_abbrev  0x0000000000000000      0x1f1 startup/sysmem.o
+ .debug_aranges
+                0x0000000000000000       0x20 startup/sysmem.o
+ .debug_ranges  0x0000000000000000       0x10 startup/sysmem.o
+ .debug_macro   0x0000000000000000      0x1ae startup/sysmem.o
+ .debug_macro   0x0000000000000000      0xa66 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x10 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x22 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x52 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x17 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x8d startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x35 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x9c startup/sysmem.o
+ .debug_macro   0x0000000000000000      0x174 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x57 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x58 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x1f startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x43 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x20 startup/sysmem.o
+ .debug_macro   0x0000000000000000      0x18e startup/sysmem.o
+ .debug_macro   0x0000000000000000      0x23b startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x16 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x35 startup/sysmem.o
+ .debug_macro   0x0000000000000000      0x330 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x10 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x10 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x6a startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x1c startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x52 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x40 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x10 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x40 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0xd7 startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x1c startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x3d startup/sysmem.o
+ .debug_macro   0x0000000000000000       0x16 startup/sysmem.o
+ .debug_macro   0x0000000000000000      0x16f startup/sysmem.o
+ .debug_line    0x0000000000000000      0x41e startup/sysmem.o
+ .debug_str     0x0000000000000000     0x78ee startup/sysmem.o
+ .comment       0x0000000000000000       0x7f startup/sysmem.o
+ .debug_frame   0x0000000000000000       0x34 startup/sysmem.o
+ .ARM.attributes
+                0x0000000000000000       0x39 startup/sysmem.o
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
+ .text.__errno  0x0000000000000000        0xc /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
+ .debug_frame   0x0000000000000000       0x20 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
+ .ARM.attributes
+                0x0000000000000000       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-exit.o)
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-exit.o)
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-exit.o)
+ .text.exit     0x0000000000000000       0x20 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-exit.o)
+ .debug_frame   0x0000000000000000       0x28 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-exit.o)
+ .ARM.attributes
+                0x0000000000000000       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-exit.o)
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x0000000000000000        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
+ .text.memset   0x0000000000000000       0x94 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
+ .debug_frame   0x0000000000000000       0x38 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
+ .ARM.attributes
+                0x0000000000000000       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+ .text.__call_exitprocs
+                0x0000000000000000       0xe8 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_init
+                0x0000000000000000        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_init_recursive
+                0x0000000000000000        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_close
+                0x0000000000000000        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_close_recursive
+                0x0000000000000000        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_acquire
+                0x0000000000000000        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_try_acquire
+                0x0000000000000000        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_try_acquire_recursive
+                0x0000000000000000        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .text.__retarget_lock_release
+                0x0000000000000000        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+ .eh_frame      0x0000000000000000        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+ .ARM.attributes
+                0x0000000000000000       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+ .text          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+ .data          0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+ .bss           0x0000000000000000        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x0000000020000000 0x0000000000020000 xrw
+ROM              0x0000000008000000 0x0000000000100000 xr
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/crt0.o
+LOAD RTOS/src/croutine.o
+LOAD RTOS/src/event_groups.o
+LOAD RTOS/src/heap_4.o
+LOAD RTOS/src/list.o
+LOAD RTOS/src/port.o
+LOAD RTOS/src/queue.o
+LOAD RTOS/src/tasks.o
+LOAD RTOS/src/timers.o
+LOAD src/algorithm.o
+LOAD src/gpio.o
+LOAD src/main.o
+LOAD src/periph.o
+LOAD src/system_stm32f4xx.o
+LOAD startup/startup_stm32.o
+LOAD startup/sysmem.o
+LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a
+START GROUP
+LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a
+LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a
+END GROUP
+LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtend.o
+LOAD /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+                0x0000000020020000                _estack = 0x20020000
+                0x0000000000000000                _Min_Heap_Size = 0x0
+                0x0000000000000400                _Min_Stack_Size = 0x400
+
+.isr_vector     0x0000000008000000      0x1a8
+                0x0000000008000000                . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x0000000008000000      0x1a8 startup/startup_stm32.o
+                0x0000000008000000                g_pfnVectors
+                0x00000000080001a8                . = ALIGN (0x4)
+
+.text           0x00000000080001b0     0x358c
+                0x00000000080001b0                . = ALIGN (0x4)
+ *(.text)
+ .text          0x00000000080001b0       0x40 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .text          0x00000000080001f0      0x134 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+                0x00000000080001f0                memcpy
+ *(.text*)
+ .text.pvPortMalloc
+                0x0000000008000324      0x184 RTOS/src/heap_4.o
+                0x0000000008000324                pvPortMalloc
+ .text.vPortFree
+                0x00000000080004a8       0xb0 RTOS/src/heap_4.o
+                0x00000000080004a8                vPortFree
+ .text.prvHeapInit
+                0x0000000008000558       0xc4 RTOS/src/heap_4.o
+ .text.prvInsertBlockIntoFreeList
+                0x000000000800061c       0xb4 RTOS/src/heap_4.o
+ .text.vListInitialise
+                0x00000000080006d0       0x40 RTOS/src/list.o
+                0x00000000080006d0                vListInitialise
+ .text.vListInitialiseItem
+                0x0000000008000710       0x1a RTOS/src/list.o
+                0x0000000008000710                vListInitialiseItem
+ .text.vListInsertEnd
+                0x000000000800072a       0x48 RTOS/src/list.o
+                0x000000000800072a                vListInsertEnd
+ .text.vListInsert
+                0x0000000008000772       0x72 RTOS/src/list.o
+                0x0000000008000772                vListInsert
+ .text.uxListRemove
+                0x00000000080007e4       0x54 RTOS/src/list.o
+                0x00000000080007e4                uxListRemove
+ .text.pxPortInitialiseStack
+                0x0000000008000838       0x68 RTOS/src/port.o
+                0x0000000008000838                pxPortInitialiseStack
+ .text.prvTaskExitError
+                0x00000000080008a0       0x3c RTOS/src/port.o
+ *fill*         0x00000000080008dc        0x4 
+ .text.SVC_Handler
+                0x00000000080008e0       0x28 RTOS/src/port.o
+                0x00000000080008e0                SVC_Handler
+ .text.prvPortStartFirstTask
+                0x0000000008000908       0x20 RTOS/src/port.o
+ .text.xPortStartScheduler
+                0x0000000008000928      0x118 RTOS/src/port.o
+                0x0000000008000928                xPortStartScheduler
+ .text.vPortEnterCritical
+                0x0000000008000a40       0x5c RTOS/src/port.o
+                0x0000000008000a40                vPortEnterCritical
+ .text.vPortExitCritical
+                0x0000000008000a9c       0x50 RTOS/src/port.o
+                0x0000000008000a9c                vPortExitCritical
+ *fill*         0x0000000008000aec        0x4 
+ .text.PendSV_Handler
+                0x0000000008000af0       0x68 RTOS/src/port.o
+                0x0000000008000af0                PendSV_Handler
+ .text.SysTick_Handler
+                0x0000000008000b58       0x40 RTOS/src/port.o
+                0x0000000008000b58                SysTick_Handler
+ .text.vPortSetupTimerInterrupt
+                0x0000000008000b98       0x28 RTOS/src/port.o
+                0x0000000008000b98                vPortSetupTimerInterrupt
+ .text.vPortEnableVFP
+                0x0000000008000bc0       0x14 RTOS/src/port.o
+ .text.vPortValidateInterruptPriority
+                0x0000000008000bd4       0x7c RTOS/src/port.o
+                0x0000000008000bd4                vPortValidateInterruptPriority
+ .text.xQueueGenericReset
+                0x0000000008000c50       0xd0 RTOS/src/queue.o
+                0x0000000008000c50                xQueueGenericReset
+ .text.xQueueGenericCreate
+                0x0000000008000d20       0x72 RTOS/src/queue.o
+                0x0000000008000d20                xQueueGenericCreate
+ .text.prvInitialiseNewQueue
+                0x0000000008000d92       0x3e RTOS/src/queue.o
+ .text.xQueueGenericSend
+                0x0000000008000dd0      0x1f4 RTOS/src/queue.o
+                0x0000000008000dd0                xQueueGenericSend
+ .text.xQueueGenericSendFromISR
+                0x0000000008000fc4      0x128 RTOS/src/queue.o
+                0x0000000008000fc4                xQueueGenericSendFromISR
+ .text.xQueueGenericReceive
+                0x00000000080010ec      0x224 RTOS/src/queue.o
+                0x00000000080010ec                xQueueGenericReceive
+ .text.prvCopyDataToQueue
+                0x0000000008001310       0xd4 RTOS/src/queue.o
+ .text.prvCopyDataFromQueue
+                0x00000000080013e4       0x4c RTOS/src/queue.o
+ .text.prvUnlockQueue
+                0x0000000008001430       0xa4 RTOS/src/queue.o
+ .text.prvIsQueueEmpty
+                0x00000000080014d4       0x2c RTOS/src/queue.o
+ .text.prvIsQueueFull
+                0x0000000008001500       0x30 RTOS/src/queue.o
+ .text.vQueueAddToRegistry
+                0x0000000008001530       0x50 RTOS/src/queue.o
+                0x0000000008001530                vQueueAddToRegistry
+ .text.vQueueWaitForMessageRestricted
+                0x0000000008001580       0x68 RTOS/src/queue.o
+                0x0000000008001580                vQueueWaitForMessageRestricted
+ .text.xTaskCreate
+                0x00000000080015e8       0x82 RTOS/src/tasks.o
+                0x00000000080015e8                xTaskCreate
+ .text.prvInitialiseNewTask
+                0x000000000800166a       0xfc RTOS/src/tasks.o
+ *fill*         0x0000000008001766        0x2 
+ .text.prvAddNewTaskToReadyList
+                0x0000000008001768       0xd4 RTOS/src/tasks.o
+ .text.vTaskDelay
+                0x000000000800183c       0x68 RTOS/src/tasks.o
+                0x000000000800183c                vTaskDelay
+ .text.vTaskStartScheduler
+                0x00000000080018a4       0x98 RTOS/src/tasks.o
+                0x00000000080018a4                vTaskStartScheduler
+ .text.vTaskSuspendAll
+                0x000000000800193c       0x1c RTOS/src/tasks.o
+                0x000000000800193c                vTaskSuspendAll
+ .text.xTaskResumeAll
+                0x0000000008001958      0x138 RTOS/src/tasks.o
+                0x0000000008001958                xTaskResumeAll
+ .text.xTaskGetTickCount
+                0x0000000008001a90       0x20 RTOS/src/tasks.o
+                0x0000000008001a90                xTaskGetTickCount
+ .text.xTaskIncrementTick
+                0x0000000008001ab0      0x178 RTOS/src/tasks.o
+                0x0000000008001ab0                xTaskIncrementTick
+ .text.vTaskSwitchContext
+                0x0000000008001c28       0xb4 RTOS/src/tasks.o
+                0x0000000008001c28                vTaskSwitchContext
+ .text.vTaskPlaceOnEventList
+                0x0000000008001cdc       0x48 RTOS/src/tasks.o
+                0x0000000008001cdc                vTaskPlaceOnEventList
+ .text.vTaskPlaceOnEventListRestricted
+                0x0000000008001d24       0x54 RTOS/src/tasks.o
+                0x0000000008001d24                vTaskPlaceOnEventListRestricted
+ .text.xTaskRemoveFromEventList
+                0x0000000008001d78       0xc4 RTOS/src/tasks.o
+                0x0000000008001d78                xTaskRemoveFromEventList
+ .text.vTaskSetTimeOutState
+                0x0000000008001e3c       0x48 RTOS/src/tasks.o
+                0x0000000008001e3c                vTaskSetTimeOutState
+ .text.xTaskCheckForTimeOut
+                0x0000000008001e84       0xbc RTOS/src/tasks.o
+                0x0000000008001e84                xTaskCheckForTimeOut
+ .text.vTaskMissedYield
+                0x0000000008001f40       0x18 RTOS/src/tasks.o
+                0x0000000008001f40                vTaskMissedYield
+ .text.prvIdleTask
+                0x0000000008001f58       0x30 RTOS/src/tasks.o
+ .text.prvInitialiseTaskLists
+                0x0000000008001f88       0x80 RTOS/src/tasks.o
+ .text.prvCheckTasksWaitingTermination
+                0x0000000008002008       0x78 RTOS/src/tasks.o
+ .text.prvDeleteTCB
+                0x0000000008002080       0x20 RTOS/src/tasks.o
+ .text.prvResetNextTaskUnblockTime
+                0x00000000080020a0       0x4c RTOS/src/tasks.o
+ .text.xTaskGetSchedulerState
+                0x00000000080020ec       0x3c RTOS/src/tasks.o
+                0x00000000080020ec                xTaskGetSchedulerState
+ .text.vTaskPriorityInherit
+                0x0000000008002128       0xec RTOS/src/tasks.o
+                0x0000000008002128                vTaskPriorityInherit
+ .text.xTaskPriorityDisinherit
+                0x0000000008002214      0x108 RTOS/src/tasks.o
+                0x0000000008002214                xTaskPriorityDisinherit
+ .text.pvTaskIncrementMutexHeldCount
+                0x000000000800231c       0x28 RTOS/src/tasks.o
+                0x000000000800231c                pvTaskIncrementMutexHeldCount
+ .text.prvAddCurrentTaskToDelayedList
+                0x0000000008002344       0xcc RTOS/src/tasks.o
+ .text.xTimerCreateTimerTask
+                0x0000000008002410       0x60 RTOS/src/timers.o
+                0x0000000008002410                xTimerCreateTimerTask
+ .text.xTimerGenericCommand
+                0x0000000008002470       0x98 RTOS/src/timers.o
+                0x0000000008002470                xTimerGenericCommand
+ .text.prvProcessExpiredTimer
+                0x0000000008002508       0x80 RTOS/src/timers.o
+ .text.prvTimerTask
+                0x0000000008002588       0x24 RTOS/src/timers.o
+ .text.prvProcessTimerOrBlockTask
+                0x00000000080025ac       0x9c RTOS/src/timers.o
+ .text.prvGetNextExpireTime
+                0x0000000008002648       0x48 RTOS/src/timers.o
+ .text.prvSampleTimeNow
+                0x0000000008002690       0x40 RTOS/src/timers.o
+ .text.prvInsertTimerInActiveList
+                0x00000000080026d0       0x84 RTOS/src/timers.o
+ .text.prvProcessReceivedCommands
+                0x0000000008002754      0x124 RTOS/src/timers.o
+ .text.prvSwitchTimerLists
+                0x0000000008002878       0xc0 RTOS/src/timers.o
+ .text.prvCheckForValidListAndQueue
+                0x0000000008002938       0x6c RTOS/src/timers.o
+ .text.receiveFromDMA
+                0x00000000080029a4       0x4c src/algorithm.o
+                0x00000000080029a4                receiveFromDMA
+ .text.tempTask2
+                0x00000000080029f0       0x24 src/algorithm.o
+                0x00000000080029f0                tempTask2
+ .text.tempTask
+                0x0000000008002a14       0x20 src/algorithm.o
+                0x0000000008002a14                tempTask
+ .text.timerini2
+                0x0000000008002a34       0x30 src/gpio.o
+                0x0000000008002a34                timerini2
+ .text.delay_ms
+                0x0000000008002a64       0x54 src/gpio.o
+                0x0000000008002a64                delay_ms
+ .text.GPIO_WritePin
+                0x0000000008002ab8       0x30 src/gpio.o
+                0x0000000008002ab8                GPIO_WritePin
+ .text.LCD_Set_Data
+                0x0000000008002ae8      0x134 src/gpio.o
+                0x0000000008002ae8                LCD_Set_Data
+ .text.LCD_SendCommand
+                0x0000000008002c1c       0x48 src/gpio.o
+                0x0000000008002c1c                LCD_SendCommand
+ .text.LCD_SendData
+                0x0000000008002c64       0x48 src/gpio.o
+                0x0000000008002c64                LCD_SendData
+ .text.LCD_ini  0x0000000008002cac       0x60 src/gpio.o
+                0x0000000008002cac                LCD_ini
+ .text.LCD_Send_String
+                0x0000000008002d0c       0xbc src/gpio.o
+                0x0000000008002d0c                LCD_Send_String
+ .text.main     0x0000000008002dc8       0xa8 src/main.o
+                0x0000000008002dc8                main
+ .text.DMA1_Stream5_IRQHandler
+                0x0000000008002e70       0xc8 src/main.o
+                0x0000000008002e70                DMA1_Stream5_IRQHandler
+ .text.USART6_IRQHandler
+                0x0000000008002f38       0x38 src/main.o
+                0x0000000008002f38                USART6_IRQHandler
+ .text.NVIC_EnableIRQ
+                0x0000000008002f70       0x34 src/periph.o
+ .text.NVIC_SetPriority
+                0x0000000008002fa4       0x54 src/periph.o
+ .text.gpio_ini
+                0x0000000008002ff8       0xac src/periph.o
+                0x0000000008002ff8                gpio_ini
+ .text.RCC_Init
+                0x00000000080030a4       0x94 src/periph.o
+                0x00000000080030a4                RCC_Init
+ .text.USART2_init
+                0x0000000008003138       0x7c src/periph.o
+                0x0000000008003138                USART2_init
+ .text.USART6_init
+                0x00000000080031b4       0x80 src/periph.o
+                0x00000000080031b4                USART6_init
+ .text.dma1ini  0x0000000008003234       0xb8 src/periph.o
+                0x0000000008003234                dma1ini
+ .text.SystemInit
+                0x00000000080032ec       0x70 src/system_stm32f4xx.o
+                0x00000000080032ec                SystemInit
+ .text.SetSysClock
+                0x000000000800335c       0xf8 src/system_stm32f4xx.o
+ .text.SystemInit_ExtMemCtl
+                0x0000000008003454      0x118 src/system_stm32f4xx.o
+ .text.Reset_Handler
+                0x000000000800356c       0x50 startup/startup_stm32.o
+                0x000000000800356c                Reset_Handler
+ .text.Default_Handler
+                0x00000000080035bc        0x2 startup/startup_stm32.o
+                0x00000000080035bc                RTC_Alarm_IRQHandler
+                0x00000000080035bc                HASH_RNG_IRQHandler
+                0x00000000080035bc                EXTI2_IRQHandler
+                0x00000000080035bc                TIM8_CC_IRQHandler
+                0x00000000080035bc                DebugMon_Handler
+                0x00000000080035bc                TIM1_CC_IRQHandler
+                0x00000000080035bc                DMA2_Stream5_IRQHandler
+                0x00000000080035bc                HardFault_Handler
+                0x00000000080035bc                PVD_IRQHandler
+                0x00000000080035bc                SDIO_IRQHandler
+                0x00000000080035bc                TAMP_STAMP_IRQHandler
+                0x00000000080035bc                NMI_Handler
+                0x00000000080035bc                CAN2_RX1_IRQHandler
+                0x00000000080035bc                EXTI3_IRQHandler
+                0x00000000080035bc                TIM8_TRG_COM_TIM14_IRQHandler
+                0x00000000080035bc                TIM1_UP_TIM10_IRQHandler
+                0x00000000080035bc                TIM8_UP_TIM13_IRQHandler
+                0x00000000080035bc                I2C3_ER_IRQHandler
+                0x00000000080035bc                LCD_TFT_IRQHandler
+                0x00000000080035bc                EXTI0_IRQHandler
+                0x00000000080035bc                I2C2_EV_IRQHandler
+                0x00000000080035bc                DMA1_Stream2_IRQHandler
+                0x00000000080035bc                CAN1_RX0_IRQHandler
+                0x00000000080035bc                FPU_IRQHandler
+                0x00000000080035bc                OTG_HS_WKUP_IRQHandler
+                0x00000000080035bc                UsageFault_Handler
+                0x00000000080035bc                CAN2_SCE_IRQHandler
+                0x00000000080035bc                DMA2_Stream2_IRQHandler
+                0x00000000080035bc                SPI1_IRQHandler
+                0x00000000080035bc                TIM6_DAC_IRQHandler
+                0x00000000080035bc                TIM1_BRK_TIM9_IRQHandler
+                0x00000000080035bc                DCMI_IRQHandler
+                0x00000000080035bc                CAN2_RX0_IRQHandler
+                0x00000000080035bc                DMA2_Stream3_IRQHandler
+                0x00000000080035bc                USART3_IRQHandler
+                0x00000000080035bc                CRYP_IRQHandler
+                0x00000000080035bc                CAN1_RX1_IRQHandler
+                0x00000000080035bc                UART5_IRQHandler
+                0x00000000080035bc                DMA2_Stream0_IRQHandler
+                0x00000000080035bc                TIM4_IRQHandler
+                0x00000000080035bc                I2C1_EV_IRQHandler
+                0x00000000080035bc                DMA1_Stream6_IRQHandler
+                0x00000000080035bc                DMA1_Stream1_IRQHandler
+                0x00000000080035bc                UART4_IRQHandler
+                0x00000000080035bc                LCD_TFT_1_IRQHandler
+                0x00000000080035bc                TIM3_IRQHandler
+                0x00000000080035bc                RCC_IRQHandler
+                0x00000000080035bc                TIM8_BRK_TIM12_IRQHandler
+                0x00000000080035bc                Default_Handler
+                0x00000000080035bc                EXTI15_10_IRQHandler
+                0x00000000080035bc                ADC_IRQHandler
+                0x00000000080035bc                DMA1_Stream7_IRQHandler
+                0x00000000080035bc                TIM7_IRQHandler
+                0x00000000080035bc                CAN2_TX_IRQHandler
+                0x00000000080035bc                TIM5_IRQHandler
+                0x00000000080035bc                DMA2_Stream7_IRQHandler
+                0x00000000080035bc                I2C3_EV_IRQHandler
+                0x00000000080035bc                EXTI9_5_IRQHandler
+                0x00000000080035bc                RTC_WKUP_IRQHandler
+                0x00000000080035bc                ETH_WKUP_IRQHandler
+                0x00000000080035bc                SPI2_IRQHandler
+                0x00000000080035bc                OTG_HS_EP1_IN_IRQHandler
+                0x00000000080035bc                MemManage_Handler
+                0x00000000080035bc                DMA1_Stream0_IRQHandler
+                0x00000000080035bc                CAN1_TX_IRQHandler
+                0x00000000080035bc                EXTI4_IRQHandler
+                0x00000000080035bc                FSMC_IRQHandler
+                0x00000000080035bc                ETH_IRQHandler
+                0x00000000080035bc                OTG_HS_EP1_OUT_IRQHandler
+                0x00000000080035bc                WWDG_IRQHandler
+                0x00000000080035bc                TIM2_IRQHandler
+                0x00000000080035bc                OTG_FS_WKUP_IRQHandler
+                0x00000000080035bc                TIM1_TRG_COM_TIM11_IRQHandler
+                0x00000000080035bc                OTG_HS_IRQHandler
+                0x00000000080035bc                EXTI1_IRQHandler
+                0x00000000080035bc                USART2_IRQHandler
+                0x00000000080035bc                I2C2_ER_IRQHandler
+                0x00000000080035bc                DMA2_Stream1_IRQHandler
+                0x00000000080035bc                CAN1_SCE_IRQHandler
+                0x00000000080035bc                DMA2_Stream4_IRQHandler
+                0x00000000080035bc                BusFault_Handler
+                0x00000000080035bc                USART1_IRQHandler
+                0x00000000080035bc                OTG_FS_IRQHandler
+                0x00000000080035bc                SPI3_IRQHandler
+                0x00000000080035bc                DMA1_Stream4_IRQHandler
+                0x00000000080035bc                I2C1_ER_IRQHandler
+                0x00000000080035bc                DMA2_Stream6_IRQHandler
+                0x00000000080035bc                DMA1_Stream3_IRQHandler
+ *fill*         0x00000000080035be        0x2 
+ .text.__libc_init_array
+                0x00000000080035c0       0x48 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
+                0x00000000080035c0                __libc_init_array
+ .text.startup.register_fini
+                0x0000000008003608       0x14 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+ .text.atexit   0x000000000800361c        0xc /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
+                0x000000000800361c                atexit
+ .text.__libc_fini_array
+                0x0000000008003628       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
+                0x0000000008003628                __libc_fini_array
+ .text.__retarget_lock_acquire_recursive
+                0x000000000800365c        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+                0x000000000800365c                __retarget_lock_acquire_recursive
+ .text.__retarget_lock_release_recursive
+                0x0000000008003660        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+                0x0000000008003660                __retarget_lock_release_recursive
+ .text.__register_exitproc
+                0x0000000008003664       0xc0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
+                0x0000000008003664                __register_exitproc
+ *(.glue_7)
+ .glue_7        0x0000000008003724        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x0000000008003724        0x0 linker stubs
+ *(.eh_frame)
+ .eh_frame      0x0000000008003724        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ *(.init)
+ .init          0x0000000008003724        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x0000000008003724                _init
+ .init          0x0000000008003728        0x8 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+ *(.fini)
+ .fini          0x0000000008003730        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x0000000008003730                _fini
+ .fini          0x0000000008003734        0x8 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+                0x000000000800373c                . = ALIGN (0x4)
+                0x000000000800373c                _etext = .
+
+.vfp11_veneer   0x000000000800373c        0x0
+ .vfp11_veneer  0x000000000800373c        0x0 linker stubs
+
+.v4_bx          0x000000000800373c        0x0
+ .v4_bx         0x000000000800373c        0x0 linker stubs
+
+.iplt           0x000000000800373c        0x0
+ .iplt          0x000000000800373c        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+
+.rodata         0x000000000800373c       0x60
+                0x000000000800373c                . = ALIGN (0x4)
+ *(.rodata)
+ .rodata        0x000000000800373c        0x5 RTOS/src/tasks.o
+ *fill*         0x0000000008003741        0x3 
+ .rodata        0x0000000008003744        0xd RTOS/src/timers.o
+ *fill*         0x0000000008003751        0x3 
+ .rodata        0x0000000008003754        0xc src/algorithm.o
+ .rodata        0x0000000008003760        0x4 src/gpio.o
+ .rodata        0x0000000008003764       0x33 src/main.o
+ *(.rodata*)
+ *fill*         0x0000000008003797        0x1 
+ .rodata._global_impure_ptr
+                0x0000000008003798        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+                0x0000000008003798                _global_impure_ptr
+                0x000000000800379c                . = ALIGN (0x4)
+
+.rel.dyn        0x000000000800379c        0x0
+ .rel.iplt      0x000000000800379c        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+
+.ARM.extab      0x000000000800379c        0x0
+                0x000000000800379c                . = ALIGN (0x4)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x000000000800379c                . = ALIGN (0x4)
+
+.ARM            0x000000000800379c        0x0
+                0x000000000800379c                . = ALIGN (0x4)
+                0x000000000800379c                __exidx_start = .
+ *(.ARM.exidx*)
+                0x000000000800379c                __exidx_end = .
+                0x000000000800379c                . = ALIGN (0x4)
+
+.preinit_array  0x000000000800379c        0x0
+                0x000000000800379c                . = ALIGN (0x4)
+                0x000000000800379c                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array*)
+                0x000000000800379c                PROVIDE (__preinit_array_end, .)
+                0x000000000800379c                . = ALIGN (0x4)
+
+.init_array     0x000000000800379c        0x8
+                0x000000000800379c                . = ALIGN (0x4)
+                0x000000000800379c                PROVIDE (__init_array_start, .)
+ *(SORT_BY_NAME(.init_array.*))
+ .init_array.00000
+                0x000000000800379c        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+ *(.init_array*)
+ .init_array    0x00000000080037a0        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x00000000080037a4                PROVIDE (__init_array_end, .)
+                0x00000000080037a4                . = ALIGN (0x4)
+
+.fini_array     0x00000000080037a4        0x4
+                0x00000000080037a4                . = ALIGN (0x4)
+                0x00000000080037a4                PROVIDE (__fini_array_start, .)
+ *(SORT_BY_NAME(.fini_array.*))
+ *(.fini_array*)
+ .fini_array    0x00000000080037a4        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x00000000080037a8                PROVIDE (__fini_array_end, .)
+                0x00000000080037a8                . = ALIGN (0x4)
+                0x00000000080037a8                _sidata = LOADADDR (.data)
+
+.data           0x0000000020000000      0x444 load address 0x00000000080037a8
+                0x0000000020000000                . = ALIGN (0x4)
+                0x0000000020000000                _sdata = .
+ *(.data)
+ .data          0x0000000020000000        0x4 RTOS/src/port.o
+ .data          0x0000000020000004       0x11 src/main.o
+                0x0000000020000004                arStr
+                0x000000002000000c                recReg
+ *(.data*)
+ *fill*         0x0000000020000015        0x3 
+ .data.impure_data
+                0x0000000020000018      0x428 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .data.__atexit_recursive_mutex
+                0x0000000020000440        0x4 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+                0x0000000020000440                __atexit_recursive_mutex
+                0x0000000020000444                . = ALIGN (0x4)
+                0x0000000020000444                _edata = .
+
+.igot.plt       0x0000000020000444        0x0 load address 0x0000000008003bec
+ .igot.plt      0x0000000020000444        0x0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x0000000020000444                . = ALIGN (0x4)
+
+.bss            0x0000000020000444     0x7b84 load address 0x0000000008003bec
+                0x0000000020000444                _sbss = .
+                0x0000000020000444                __bss_start__ = _sbss
+ *(.bss)
+ .bss           0x0000000020000444       0x1c /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .bss           0x0000000020000460     0x7818 RTOS/src/heap_4.o
+ .bss           0x0000000020007c78        0x8 RTOS/src/port.o
+ .bss           0x0000000020007c80      0x104 RTOS/src/tasks.o
+                0x0000000020007c80                pxCurrentTCB
+ .bss           0x0000000020007d84       0x3c RTOS/src/timers.o
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x0000000020007dc0       0x40 RTOS/src/queue.o
+                0x0000000020007dc0                xQueueRegistry
+ COMMON         0x0000000020007e00        0x8 src/algorithm.o
+                0x0000000020007e00                receivePointer
+                0x0000000020007e04                xStatus1
+ COMMON         0x0000000020007e08      0x19c src/main.o
+                0x0000000020007e08                xStatus
+                0x0000000020007e0c                recString1
+                0x0000000020007e5c                toUSART6
+                0x0000000020007eac                xHigherPriorityTaskWoken
+                0x0000000020007eb0                xpQueue
+                0x0000000020007eb4                bufferedData
+                0x0000000020007f54                recString0
+ COMMON         0x0000000020007fa4       0x21 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+                0x0000000020007fa4                __lock___atexit_recursive_mutex
+                0x0000000020007fa8                __lock___arc4random_mutex
+                0x0000000020007fac                __lock___env_recursive_mutex
+                0x0000000020007fb0                __lock___sinit_recursive_mutex
+                0x0000000020007fb4                __lock___malloc_recursive_mutex
+                0x0000000020007fb8                __lock___at_quick_exit_mutex
+                0x0000000020007fbc                __lock___dd_hash_mutex
+                0x0000000020007fc0                __lock___tz_mutex
+                0x0000000020007fc4                __lock___sfp_recursive_mutex
+                0x0000000020007fc8                . = ALIGN (0x4)
+ *fill*         0x0000000020007fc5        0x3 
+                0x0000000020007fc8                _ebss = .
+                0x0000000020007fc8                __bss_end__ = _ebss
+
+._user_heap_stack
+                0x0000000020007fc8      0x400 load address 0x0000000008003bec
+                0x0000000020007fc8                . = ALIGN (0x8)
+                0x0000000020007fc8                PROVIDE (end, .)
+                [!provide]                        PROVIDE (_end, .)
+                0x0000000020007fc8                . = (. + _Min_Heap_Size)
+                0x00000000200083c8                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020007fc8      0x400 
+                0x00000000200083c8                . = ALIGN (0x8)
+
+/DISCARD/
+ libc.a(*)
+ libm.a(*)
+ libgcc.a(*)
+
+.ARM.attributes
+                0x0000000000000000       0x30
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x0000000000000000       0x22 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+ .ARM.attributes
+                0x0000000000000022       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .ARM.attributes
+                0x0000000000000056       0x39 RTOS/src/heap_4.o
+ .ARM.attributes
+                0x000000000000008f       0x39 RTOS/src/list.o
+ .ARM.attributes
+                0x00000000000000c8       0x39 RTOS/src/port.o
+ .ARM.attributes
+                0x0000000000000101       0x39 RTOS/src/queue.o
+ .ARM.attributes
+                0x000000000000013a       0x39 RTOS/src/tasks.o
+ .ARM.attributes
+                0x0000000000000173       0x39 RTOS/src/timers.o
+ .ARM.attributes
+                0x00000000000001ac       0x39 src/algorithm.o
+ .ARM.attributes
+                0x00000000000001e5       0x39 src/gpio.o
+ .ARM.attributes
+                0x000000000000021e       0x39 src/main.o
+ .ARM.attributes
+                0x0000000000000257       0x39 src/periph.o
+ .ARM.attributes
+                0x0000000000000290       0x39 src/system_stm32f4xx.o
+ .ARM.attributes
+                0x00000000000002c9       0x21 startup/startup_stm32.o
+ .ARM.attributes
+                0x00000000000002ea       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x000000000000031e       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
+ .ARM.attributes
+                0x0000000000000352       0x20 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+ .ARM.attributes
+                0x0000000000000372       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+ .ARM.attributes
+                0x00000000000003a6       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
+ .ARM.attributes
+                0x00000000000003da       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
+ .ARM.attributes
+                0x000000000000040e       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .ARM.attributes
+                0x0000000000000442       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
+ .ARM.attributes
+                0x0000000000000476       0x22 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+OUTPUT(rtos.elf elf32-littlearm)
+
+.debug_info     0x0000000000000000     0x971f
+ .debug_info    0x0000000000000000      0xbef RTOS/src/heap_4.o
+ .debug_info    0x0000000000000bef      0xac5 RTOS/src/list.o
+ .debug_info    0x00000000000016b4      0x4fd RTOS/src/port.o
+ .debug_info    0x0000000000001bb1     0x1b77 RTOS/src/queue.o
+ .debug_info    0x0000000000003728     0x220f RTOS/src/tasks.o
+ .debug_info    0x0000000000005937     0x136c RTOS/src/timers.o
+ .debug_info    0x0000000000006ca3      0xc0e src/algorithm.o
+ .debug_info    0x00000000000078b1      0x6ed src/gpio.o
+ .debug_info    0x0000000000007f9e      0x4c3 src/main.o
+ .debug_info    0x0000000000008461      0xb56 src/periph.o
+ .debug_info    0x0000000000008fb7      0x746 src/system_stm32f4xx.o
+ .debug_info    0x00000000000096fd       0x22 startup/startup_stm32.o
+
+.debug_abbrev   0x0000000000000000     0x1892
+ .debug_abbrev  0x0000000000000000      0x2d4 RTOS/src/heap_4.o
+ .debug_abbrev  0x00000000000002d4      0x1fe RTOS/src/list.o
+ .debug_abbrev  0x00000000000004d2      0x1c7 RTOS/src/port.o
+ .debug_abbrev  0x0000000000000699      0x30d RTOS/src/queue.o
+ .debug_abbrev  0x00000000000009a6      0x38c RTOS/src/tasks.o
+ .debug_abbrev  0x0000000000000d32      0x2c1 RTOS/src/timers.o
+ .debug_abbrev  0x0000000000000ff3      0x285 src/algorithm.o
+ .debug_abbrev  0x0000000000001278      0x195 src/gpio.o
+ .debug_abbrev  0x000000000000140d      0x186 src/main.o
+ .debug_abbrev  0x0000000000001593      0x17a src/periph.o
+ .debug_abbrev  0x000000000000170d      0x173 src/system_stm32f4xx.o
+ .debug_abbrev  0x0000000000001880       0x12 startup/startup_stm32.o
+
+.debug_aranges  0x0000000000000000      0x5f0
+ .debug_aranges
+                0x0000000000000000       0x50 RTOS/src/heap_4.o
+ .debug_aranges
+                0x0000000000000050       0x40 RTOS/src/list.o
+ .debug_aranges
+                0x0000000000000090       0x80 RTOS/src/port.o
+ .debug_aranges
+                0x0000000000000110      0x100 RTOS/src/queue.o
+ .debug_aranges
+                0x0000000000000210      0x1a0 RTOS/src/tasks.o
+ .debug_aranges
+                0x00000000000003b0       0xb8 RTOS/src/timers.o
+ .debug_aranges
+                0x0000000000000468       0x40 src/algorithm.o
+ .debug_aranges
+                0x00000000000004a8       0x58 src/gpio.o
+ .debug_aranges
+                0x0000000000000500       0x38 src/main.o
+ .debug_aranges
+                0x0000000000000538       0x58 src/periph.o
+ .debug_aranges
+                0x0000000000000590       0x38 src/system_stm32f4xx.o
+ .debug_aranges
+                0x00000000000005c8       0x28 startup/startup_stm32.o
+
+.debug_ranges   0x0000000000000000      0x538
+ .debug_ranges  0x0000000000000000       0x40 RTOS/src/heap_4.o
+ .debug_ranges  0x0000000000000040       0x30 RTOS/src/list.o
+ .debug_ranges  0x0000000000000070       0x70 RTOS/src/port.o
+ .debug_ranges  0x00000000000000e0       0xf0 RTOS/src/queue.o
+ .debug_ranges  0x00000000000001d0      0x190 RTOS/src/tasks.o
+ .debug_ranges  0x0000000000000360       0xa8 RTOS/src/timers.o
+ .debug_ranges  0x0000000000000408       0x30 src/algorithm.o
+ .debug_ranges  0x0000000000000438       0x48 src/gpio.o
+ .debug_ranges  0x0000000000000480       0x28 src/main.o
+ .debug_ranges  0x00000000000004a8       0x48 src/periph.o
+ .debug_ranges  0x00000000000004f0       0x28 src/system_stm32f4xx.o
+ .debug_ranges  0x0000000000000518       0x20 startup/startup_stm32.o
+
+.debug_macro    0x0000000000000000     0xb5aa
+ .debug_macro   0x0000000000000000      0x1a6 RTOS/src/heap_4.o
+ .debug_macro   0x00000000000001a6      0x17b RTOS/src/list.o
+ .debug_macro   0x0000000000000321      0x19e RTOS/src/port.o
+ .debug_macro   0x00000000000004bf      0x201 RTOS/src/queue.o
+ .debug_macro   0x00000000000006c0       0x16 RTOS/src/queue.o
+ .debug_macro   0x00000000000006d6       0x35 RTOS/src/queue.o
+ .debug_macro   0x000000000000070b       0x94 RTOS/src/queue.o
+ .debug_macro   0x000000000000079f      0x264 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000a03       0x11 RTOS/src/tasks.o
+ .debug_macro   0x0000000000000a14      0x1b8 RTOS/src/timers.o
+ .debug_macro   0x0000000000000bcc      0x21e src/algorithm.o
+ .debug_macro   0x0000000000000dea       0x6b src/algorithm.o
+ .debug_macro   0x0000000000000e55       0x3b src/algorithm.o
+ .debug_macro   0x0000000000000e90       0x50 src/algorithm.o
+ .debug_macro   0x0000000000000ee0      0xe43 src/algorithm.o
+ .debug_macro   0x0000000000001d23     0x91de src/algorithm.o
+ .debug_macro   0x000000000000af01       0xb2 src/algorithm.o
+ .debug_macro   0x000000000000afb3      0x11f src/algorithm.o
+ .debug_macro   0x000000000000b0d2       0x58 src/algorithm.o
+ .debug_macro   0x000000000000b12a       0x10 src/algorithm.o
+ .debug_macro   0x000000000000b13a       0xc5 src/gpio.o
+ .debug_macro   0x000000000000b1ff       0xac src/gpio.o
+ .debug_macro   0x000000000000b2ab      0x15e src/main.o
+ .debug_macro   0x000000000000b409       0xc0 src/periph.o
+ .debug_macro   0x000000000000b4c9       0xe1 src/system_stm32f4xx.o
+
+.debug_line     0x0000000000000000     0x4d56
+ .debug_line    0x0000000000000000      0x58c RTOS/src/heap_4.o
+ .debug_line    0x000000000000058c      0x4b7 RTOS/src/list.o
+ .debug_line    0x0000000000000a43      0x5b0 RTOS/src/port.o
+ .debug_line    0x0000000000000ff3      0xc28 RTOS/src/queue.o
+ .debug_line    0x0000000000001c1b      0xf5e RTOS/src/tasks.o
+ .debug_line    0x0000000000002b79      0x7a9 RTOS/src/timers.o
+ .debug_line    0x0000000000003322      0x600 src/algorithm.o
+ .debug_line    0x0000000000003922      0x506 src/gpio.o
+ .debug_line    0x0000000000003e28      0x555 src/main.o
+ .debug_line    0x000000000000437d      0x4d6 src/periph.o
+ .debug_line    0x0000000000004853      0x487 src/system_stm32f4xx.o
+ .debug_line    0x0000000000004cda       0x7c startup/startup_stm32.o
+
+.debug_str      0x0000000000000000    0x46d6c
+ .debug_str     0x0000000000000000     0xa2be RTOS/src/heap_4.o
+                                       0xa50f (size before relaxing)
+ .debug_str     0x000000000000a2be      0x12a RTOS/src/list.o
+                                       0x9dff (size before relaxing)
+ .debug_str     0x000000000000a3e8      0x80c RTOS/src/port.o
+                                       0x7d51 (size before relaxing)
+ .debug_str     0x000000000000abf4      0xf6e RTOS/src/queue.o
+                                       0xb38f (size before relaxing)
+ .debug_str     0x000000000000bb62     0x18fc RTOS/src/tasks.o
+                                       0xbe20 (size before relaxing)
+ .debug_str     0x000000000000d45e      0x3fe RTOS/src/timers.o
+                                       0xb802 (size before relaxing)
+ .debug_str     0x000000000000d85c    0x38a4b src/algorithm.o
+                                      0x427e7 (size before relaxing)
+ .debug_str     0x00000000000462a7      0x262 src/gpio.o
+                                      0x3c7ac (size before relaxing)
+ .debug_str     0x0000000000046509       0xf3 src/main.o
+                                      0x407e6 (size before relaxing)
+ .debug_str     0x00000000000465fc      0x622 src/periph.o
+                                      0x3c898 (size before relaxing)
+ .debug_str     0x0000000000046c1e      0x124 src/system_stm32f4xx.o
+                                      0x3c390 (size before relaxing)
+ .debug_str     0x0000000000046d42       0x2a startup/startup_stm32.o
+                                         0x4e (size before relaxing)
+
+.comment        0x0000000000000000       0x7e
+ .comment       0x0000000000000000       0x7e RTOS/src/heap_4.o
+                                         0x7f (size before relaxing)
+ .comment       0x000000000000007e       0x7f RTOS/src/list.o
+ .comment       0x000000000000007e       0x7f RTOS/src/port.o
+ .comment       0x000000000000007e       0x7f RTOS/src/queue.o
+ .comment       0x000000000000007e       0x7f RTOS/src/tasks.o
+ .comment       0x000000000000007e       0x7f RTOS/src/timers.o
+ .comment       0x000000000000007e       0x7f src/algorithm.o
+ .comment       0x000000000000007e       0x7f src/gpio.o
+ .comment       0x000000000000007e       0x7f src/main.o
+ .comment       0x000000000000007e       0x7f src/periph.o
+ .comment       0x000000000000007e       0x7f src/system_stm32f4xx.o
+
+.debug_frame    0x0000000000000000     0x17a4
+ .debug_frame   0x0000000000000000      0x108 RTOS/src/heap_4.o
+ .debug_frame   0x0000000000000108       0xd8 RTOS/src/list.o
+ .debug_frame   0x00000000000001e0      0x19c RTOS/src/port.o
+ .debug_frame   0x000000000000037c      0x448 RTOS/src/queue.o
+ .debug_frame   0x00000000000007c4      0x704 RTOS/src/tasks.o
+ .debug_frame   0x0000000000000ec8      0x2f0 RTOS/src/timers.o
+ .debug_frame   0x00000000000011b8       0xbc src/algorithm.o
+ .debug_frame   0x0000000000001274      0x12c src/gpio.o
+ .debug_frame   0x00000000000013a0       0x90 src/main.o
+ .debug_frame   0x0000000000001430      0x118 src/periph.o
+ .debug_frame   0x0000000000001548       0x9c src/system_stm32f4xx.o
+ .debug_frame   0x00000000000015e4       0x2c /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
+ .debug_frame   0x0000000000001610       0x5c /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x000000000000166c       0x20 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
+ .debug_frame   0x000000000000168c       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
+ .debug_frame   0x00000000000016c0       0xb0 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .debug_frame   0x0000000000001770       0x34 /home/valentyn/Ac6/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.16.0.201807130628/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
