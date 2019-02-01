@@ -12,7 +12,7 @@
 #define strlen 80            //Максимальная длина строки
 char recString0[strlen];     //this will hold the recieved stringw
 char recString1[strlen];
-char toUSART6[strlen];
+char toUSART6[10]="tesystring";
 char *arStr[2] = {&recString0[0], &recString1[0]};
 char bufferedData[2*strlen];
 char recReg[9]="12345678";
@@ -42,7 +42,7 @@ int main(void)
 	__enable_irq();
 	USART2_init();
 	USART6_init();
-	//dma1ini();
+	dma1ini();
 	dma2ini();
 /*----------------------*/
 	
@@ -69,10 +69,13 @@ void DMA1_Stream5_IRQHandler(){
 			//if CT bit == 1 -> Memory 1 write mode
 			//have to send Memory 0
 			xStatus = xQueueSendToBackFromISR(xpQueue, &arStr[0], xHigherPriorityTaskWoken);
+			DMA2_Stream7->CR 	|= DMA_SxCR_EN;		//DMA -> EN  
+
 		}
 		else {
 			xStatus = xQueueSendToBackFromISR(xpQueue, &arStr[1], xHigherPriorityTaskWoken);
-			
+			DMA2_Stream7->CR 	|= DMA_SxCR_EN;		//DMA -> EN  
+
 		}		
 		if(xStatus != pdPASS)
 			LCD_Send_String(3, "DMA_Error!");
@@ -86,18 +89,18 @@ void DMA1_Stream5_IRQHandler(){
 	}
 }
 
-void DMA2_Stream6_IRQHandler(){
-	//if( (DMA2->HISR & DMA_HISR_TCIF6 ) == DMA_HISR_TCIF6){
-		DMA2_Stream6->CR 	&= ~DMA_SxCR_EN;		//DMA -> EN
-		LCD_Send_String(0, recString0);
-		regToDisplay(DMA2_Stream6->CR, 0);
-		DMA1_Stream5->M0AR = (uint32_t)&recString0; //Адрес КУДA
-		regToDisplay(DMA2_Stream6->M0AR, 1);
-
-		DMA2_Stream6->NDTR   = 80;
-		DMA2->HIFCR 		|= DMA_HIFCR_CTCIF6;        //Сбросить бит прервания	    
-		DMA2_Stream6->CR 	|= DMA_SxCR_EN;		//DMA -> EN
-//	}
+void DMA2_Stream7_IRQHandler(){
+	if( (DMA2->HISR & DMA_HISR_TCIF7 ) == DMA_HISR_TCIF7){
+		DMA2_Stream7->CR 	&= ~DMA_SxCR_EN;		//DMA -> EN
+		if(	(DMA1_Stream5->CR & DMA_SxCR_CT) == DMA_SxCR_CT){
+			DMA2_Stream7->M0AR = (uint32_t)&recString0; 	
+		}
+		else{
+			DMA2_Stream7->M0AR = (uint32_t)&recString1; 	
+		}
+		DMA2_Stream7->NDTR   = 80;
+		DMA2->HIFCR 		|= DMA_HIFCR_CTCIF7;        //Сбросить бит прервания	    
+	}
 }
 void USART6_IRQHandler(){
 	char t;

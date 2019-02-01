@@ -2,7 +2,7 @@
 
 extern char recString0[80];
 extern char recString1[80];
-extern char toUSART6[80];
+extern char toUSART6[10];
 //Configure pins for LED, LCD, Keyboard
 void gpio_ini(void){
 	RCC->AHB1ENR =  RCC_AHB1ENR_GPIOBEN
@@ -105,7 +105,7 @@ void USART6_init(void){
 void dma1ini(void) {
     USART2->CR1 &= ~(USART_CR1_RXNEIE   //rx interrupt
                     | USART_CR1_UE);     //USART2 enable
-    USART2->CR3 |= USART_CR3_DMAR;		//Enable DMA for USART2
+    USART2->CR3 |= USART_CR3_DMAR;		//Enable DMA receiver for USART2
     USART2->CR1 |= USART_CR1_UE;		//запуск uart
 
 	RCC->AHB1ENR |=	RCC_AHB1ENR_DMA1EN; // вкл тактир дма
@@ -128,27 +128,29 @@ void dma1ini(void) {
 }
 
 void dma2ini(void) {
+	//DMA Stream 7, Channel 5
     USART6->CR1 &= ~(USART_CR1_RXNEIE   //rx interrupt
-                    |USART_CR1_UE);     //USART2 enable
-    USART6->CR3 |= USART_CR3_DMAR;		//Enable DMA for USART2
+                    | USART_CR1_UE);     //USART2 enable
+    USART6->CR3 |= USART_CR3_DMAT;		//Enable DMA transmitter for USART2
     USART6->CR1 |= USART_CR1_UE;		//запуск uart
 
 	RCC->AHB1ENR |=	RCC_AHB1ENR_DMA2EN; // вкл тактир дма2
-	DMA2_Stream6->CR = 0;               //Обнуляем значение регистра
-	DMA2_Stream6->PAR = (uint32_t)&USART6->DR;          //Адрес КУДА
-	DMA2_Stream6->M0AR = (uint32_t)&recString0; //Адрес OTКУДA
-	DMA2_Stream6->NDTR = 10;              // Количество даних для передачи 
-	DMA2_Stream6->CR |= DMA_SxCR_CHSEL_2 	// channel 5
+	DMA2_Stream7->CR = 0;               //Обнуляем значение регистра
+	DMA2_Stream7->PAR = (uint32_t)&USART6->DR;          //Адрес КУДА
+	DMA2_Stream7->M0AR = (uint32_t)&recString0; //Адрес OTКУДA
+	DMA2_Stream7->NDTR = 80;              // Количество даних для передачи 
+	DMA2_Stream7->CR |= DMA_SxCR_CHSEL_2 	// channel 5
 					 |  DMA_SxCR_CHSEL_0	// channel 5
 					 |  DMA_SxCR_PL_1		//1 - priority level High
 					 |  DMA_SxCR_MINC		//4 - memory address pointer increment
 //					 |  DMA_SxCR_CIRC		//circular mode
-					 | DMA_SxCR_DIR_0		//peripheral to Memory
+					 |  DMA_SxCR_DIR_0		//peripheral to Memory
 					 | 	DMA_SxCR_TCIE;   	//Transfer complete interrupt enable    
+//					 |  DMA_SxCR_PFCTRL;	//Peripheral flow control
 //					 |  DMA_SxCR_DBM;		//Double buffer mode
-	DMA2->HIFCR |= DMA_HIFCR_CTCIF5;        //Сбросить бит прервания
-    NVIC_EnableIRQ(DMA2_Stream6_IRQn);      //вкл обработку прер для
-    DMA2_Stream6->CR |= DMA_SxCR_EN;		//DMA -> EN
-	NVIC_SetPriority(DMA2_Stream6_IRQn, 16);
+	DMA2->HIFCR |= DMA_HIFCR_CTCIF7;        //Сбросить бит прервания
+    NVIC_EnableIRQ(DMA2_Stream7_IRQn);      //вкл обработку прер для
+    DMA2_Stream7->CR |= DMA_SxCR_EN;		//DMA -> EN
+	NVIC_SetPriority(DMA2_Stream7_IRQn, 16);
 
 }
