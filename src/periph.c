@@ -2,7 +2,8 @@
 
 extern char recString0[80];
 extern char recString1[80];
-extern char toUSART6[10];
+extern char toBlue[200];
+
 //Configure pins for LED, LCD, Keyboard
 void gpio_ini(void){
 	RCC->AHB1ENR =  RCC_AHB1ENR_GPIOBEN
@@ -137,7 +138,7 @@ void dma2ini(void) {
 	RCC->AHB1ENR |=	RCC_AHB1ENR_DMA2EN; // вкл тактир дма2
 	DMA2_Stream7->CR = 0;               //Обнуляем значение регистра
 	DMA2_Stream7->PAR = (uint32_t)&USART6->DR;          //Адрес КУДА
-	DMA2_Stream7->M0AR = (uint32_t)&recString0; //Адрес OTКУДA
+	DMA2_Stream7->M0AR = (uint32_t)&toBlue; //Адрес OTКУДA
 	DMA2_Stream7->NDTR = 80;              // Количество даних для передачи 
 	DMA2_Stream7->CR |= DMA_SxCR_CHSEL_2 	// channel 5
 					 |  DMA_SxCR_CHSEL_0	// channel 5
@@ -150,7 +151,7 @@ void dma2ini(void) {
 //					 |  DMA_SxCR_DBM;		//Double buffer mode
 	DMA2->HIFCR |= DMA_HIFCR_CTCIF7;        //Сбросить бит прервания
     NVIC_EnableIRQ(DMA2_Stream7_IRQn);      //вкл обработку прер для
-    DMA2_Stream7->CR |= DMA_SxCR_EN;		//DMA -> EN
+//    DMA2_Stream7->CR |= DMA_SxCR_EN;		//DMA -> EN
 	NVIC_SetPriority(DMA2_Stream7_IRQn, 16);
 
 }

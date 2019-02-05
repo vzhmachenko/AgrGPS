@@ -12,21 +12,14 @@
 #define strlen 80            //Максимальная длина строки
 char recString0[strlen];     //this will hold the recieved stringw
 char recString1[strlen];
-char toUSART6[10]="tesystring";
+char toBlue[200];
 char *arStr[2] = {&recString0[0], &recString1[0]};
 char bufferedData[2*strlen];
 char recReg[9]="12345678";
 QueueHandle_t	xpQueue;
 BaseType_t xStatus;
 BaseType_t xHigherPriorityTaskWoken;
-void Usart6DataSend(void *pvp){
-	char *udata;
-	while(1) {
-	udata = (char *) pvp;
-	for(int i = 0; i < 80; i++)
-		USART6->DR = (udata+i);
-	}
-}
+
 int main(void)
 {
 /*Hardware initialisation*/
@@ -47,10 +40,9 @@ int main(void)
 /*----------------------*/
 	
 
-	//xTaskCreate( receiveFromDMA, "Receive ", 500, NULL, 2, NULL);
+	xTaskCreate( receiveFromDMA, "Receive ", 500, NULL, 2, NULL);
 	xTaskCreate(tempTask, "temp", 30, NULL, 1, NULL);
 	xTaskCreate(tempTask2, "temdp", 30, NULL, 1, NULL);
-	//xTaskCreate(Usart6DataSend, "USART6", 30, (void *) recString0[0], 1, NULL);
 	
 	vTaskStartScheduler();
 
@@ -62,29 +54,27 @@ int main(void)
 void DMA1_Stream5_IRQHandler(){
 	xHigherPriorityTaskWoken = pdFALSE;
 	if( (DMA1->HISR & DMA_HISR_TCIF5 ) == DMA_HISR_TCIF5){
-		//DMA1->HIFCR |= DMA_HIFCR_CTCIF5;        //Сбросить бит прервания
+		DMA1->HIFCR |= DMA_HIFCR_CTCIF5;        //Сбросить бит прервания
 		xStatus = 0;
 		//regToDisplay(arStr[0],0);
 		if(	(DMA1_Stream5->CR & DMA_SxCR_CT) == DMA_SxCR_CT){
 			//if CT bit == 1 -> Memory 1 write mode
 			//have to send Memory 0
 			xStatus = xQueueSendToBackFromISR(xpQueue, &arStr[0], xHigherPriorityTaskWoken);
-			DMA2_Stream7->CR 	|= DMA_SxCR_EN;		//DMA -> EN  
-
+			//DMA2_Stream7->CR 	|= DMA_SxCR_EN;		//DMA -> EN  
 		}
 		else {
 			xStatus = xQueueSendToBackFromISR(xpQueue, &arStr[1], xHigherPriorityTaskWoken);
-			DMA2_Stream7->CR 	|= DMA_SxCR_EN;		//DMA -> EN  
-
-		}		
-		if(xStatus != pdPASS)
-			LCD_Send_String(3, "DMA_Error!");
+			//DMA2_Stream7->CR 	|= DMA_SxCR_EN;		//DMA -> EN  
+		}				
+		//DMA1->HIFCR |= DMA_HIFCR_CTCIF5;        //Сбросить бит прервания
+		if(xStatus != pdPASS) ;
+			//LCD_Send_String(3, "DMA_Error!");
 		else
 		{
-			LCD_Send_String(3, "DMAsend OK");
+			//LCD_Send_String(3, "DMAsend OK");
 		}
 		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
-				DMA1->HIFCR |= DMA_HIFCR_CTCIF5;        //Сбросить бит прервания
 
 	}
 }
@@ -92,13 +82,13 @@ void DMA1_Stream5_IRQHandler(){
 void DMA2_Stream7_IRQHandler(){
 	if( (DMA2->HISR & DMA_HISR_TCIF7 ) == DMA_HISR_TCIF7){
 		DMA2_Stream7->CR 	&= ~DMA_SxCR_EN;		//DMA -> EN
-		if(	(DMA1_Stream5->CR & DMA_SxCR_CT) == DMA_SxCR_CT){
+		/*if(	(DMA1_Stream5->CR & DMA_SxCR_CT) == DMA_SxCR_CT){
 			DMA2_Stream7->M0AR = (uint32_t)&recString0; 	
 		}
 		else{
 			DMA2_Stream7->M0AR = (uint32_t)&recString1; 	
-		}
-		DMA2_Stream7->NDTR   = 80;
+		}*/
+//		DMA2_Stream7->NDTR   = 80;
 		DMA2->HIFCR 		|= DMA_HIFCR_CTCIF7;        //Сбросить бит прервания	    
 	}
 }

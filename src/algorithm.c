@@ -10,27 +10,32 @@
 extern char 			bufferedData[5*strlen];
 extern QueueHandle_t	xpQueue;
 char 					*receivePointer;
+extern char toBlue[200];
 
 BaseType_t 		xStatus1;
 void receiveFromDMA(void *param){
-	char recBuf[strlen];
-	static uint8_t bufferedPosition = 0;
-	static uint8_t bufferedSize = 0;
-	char buf[5]; static int i = 0;
-	for(;;){
-		
+	toBlue[0] = '%';
+	static uint8_t newLinePos = 0;
+	static uint8_t sizeOfStr = 0;
+	for(;;){		
 		xStatus1 = xQueueReceive(xpQueue, &receivePointer, 50);
 		if(xStatus1 == pdPASS){
-			LCD_Send_String(0, receivePointer);
-			/*bufferedSize += strlen;
-			strncpy(bufferedData + bufferedPosition, receivePointer, strlen);
-			while ( isStringFull(bufferedData, bufferedSize) ){
-				bufferedPosition = LCD_Send_String(0, bufferedData);
-				strncpy(bufferedData, bufferedData+bufferedPosition+1, 
-						bufferedSize - bufferedPosition);
-				bufferedSize -= bufferedPosition;
-				bufferedPosition = bufferedSize + 1; 
-			}*/
+			sizeOfStr += strlen;
+			strallcpy(toBlue +1+ newLinePos, receivePointer, strlen);
+			while ( (newLinePos = isStringFull(toBlue+1, sizeOfStr)) != 0 ){
+
+				DMA2_Stream7->NDTR = newLinePos-1;        // Количество даних для передачи 
+				DMA2_Stream7->CR |= DMA_SxCR_EN;		//DMA -> EN
+
+				strallcpy(toBlue+1, toBlue+newLinePos+1, 
+						sizeOfStr - newLinePos);
+				sizeOfStr -= newLinePos-1;
+			}
+			newLinePos = sizeOfStr+1;
+
+
+
+//			LCD_Send_String(0, receivePointer);
 		}
 		else{
 			LCD_Send_String(3, "Not passed.");
@@ -52,11 +57,16 @@ void tempTask(void *tem){
 	}
 }
 
-int8_t isStringFull(char * str, uint8_t size){
-	for(int i = 0; i < size; i++)
-		if(*(str+i) == '\0')
-			return 1;
+int8_t isStringFull(char *str, uint8_t size){
+	for(uint8_t i = 0; i < size; i++)
+		if(*(str+i) == 0)
+			return i+1;
+
 	return 0;
+}
+void strallcpy(char *to, char *from, int size){
+	for(int i = 0; i<size; i++)
+		*(to+i) = *(from+i);
 }
 void regToDisplay(uint32_t reg, int8_t strNum){
 	char bufer[9];
