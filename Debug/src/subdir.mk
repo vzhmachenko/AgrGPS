@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/algorithm.c \
+../src/charQueue.c \
 ../src/gpio.c \
 ../src/main.c \
 ../src/periph.c \
@@ -12,6 +13,7 @@ C_SRCS += \
 
 OBJS += \
 ./src/algorithm.o \
+./src/charQueue.o \
 ./src/gpio.o \
 ./src/main.o \
 ./src/periph.o \
@@ -19,6 +21,7 @@ OBJS += \
 
 C_DEPS += \
 ./src/algorithm.d \
+./src/charQueue.d \
 ./src/gpio.d \
 ./src/main.d \
 ./src/periph.d \

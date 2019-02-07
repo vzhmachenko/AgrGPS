@@ -1,8 +1,9 @@
 #include "periph.h"
+#include "charQueue.h"
 
-extern char recString0[80];
-extern char recString1[80];
-extern char toBlue[200];
+extern char recString0[strlen_r];
+extern char recString1[strlen_r];
+extern char toBlue[strlen_t];
 
 //Configure pins for LED, LCD, Keyboard
 void gpio_ini(void){
@@ -114,7 +115,7 @@ void dma1ini(void) {
 	DMA1_Stream5->PAR = (uint32_t)&USART2->DR;          //Адрес ОТКУДА
 	DMA1_Stream5->M0AR = (uint32_t)&recString0; //Адрес КУДA
 	DMA1_Stream5->M1AR = (uint32_t)&recString1;	//Адрес КУДA
-	DMA1_Stream5->NDTR = 80;              // Количество даних для передачи 
+	DMA1_Stream5->NDTR = strlen_r;              // Количество даних для передачи 
 	DMA1_Stream5->CR |= DMA_SxCR_CHSEL_2	//8 - channel 4
 					 |  DMA_SxCR_PL_1		//1 - priority level High
 					 |  DMA_SxCR_MINC		//4 - memory address pointer increment
@@ -139,7 +140,7 @@ void dma2ini(void) {
 	DMA2_Stream7->CR = 0;               //Обнуляем значение регистра
 	DMA2_Stream7->PAR = (uint32_t)&USART6->DR;          //Адрес КУДА
 	DMA2_Stream7->M0AR = (uint32_t)&toBlue; //Адрес OTКУДA
-	DMA2_Stream7->NDTR = 80;              // Количество даних для передачи 
+	DMA2_Stream7->NDTR = strlen_t;              // Количество даних для передачи 
 	DMA2_Stream7->CR |= DMA_SxCR_CHSEL_2 	// channel 5
 					 |  DMA_SxCR_CHSEL_0	// channel 5
 					 |  DMA_SxCR_PL_1		//1 - priority level High

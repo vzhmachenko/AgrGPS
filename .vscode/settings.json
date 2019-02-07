@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "stdlib.h": "c",
-        "algorithm.h": "c"
+        "algorithm.h": "c",
+        "string.h": "c",
+        "periph.h": "c"
     }
 }

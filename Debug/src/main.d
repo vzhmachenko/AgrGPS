@@ -20,7 +20,8 @@ src/main.o: ../src/main.c \
  /home/valentyn/workspace/AgrGPS/RTOS/inc/queue.h \
  /home/valentyn/workspace/AgrGPS/inc/algorithm.h \
  /home/valentyn/workspace/AgrGPS/inc/gpio.h \
- /home/valentyn/workspace/AgrGPS/inc/periph.h
+ /home/valentyn/workspace/AgrGPS/inc/periph.h \
+ /home/valentyn/workspace/AgrGPS/inc/charQueue.h
 
 /home/valentyn/workspace/AgrGPS/CMSIS/device/stm32f4xx.h:
 
@@ -65,3 +66,5 @@ src/main.o: ../src/main.c \
 /home/valentyn/workspace/AgrGPS/inc/gpio.h:
 
 /home/valentyn/workspace/AgrGPS/inc/periph.h:
+
+/home/valentyn/workspace/AgrGPS/inc/charQueue.h:

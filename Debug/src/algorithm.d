@@ -15,7 +15,8 @@ src/algorithm.o: ../src/algorithm.c \
  /home/valentyn/workspace/AgrGPS/RTOS/inc/deprecated_definitions.h \
  /home/valentyn/workspace/AgrGPS/RTOS/inc/portmacro.h \
  /home/valentyn/workspace/AgrGPS/RTOS/inc/mpu_wrappers.h \
- /home/valentyn/workspace/AgrGPS/RTOS/inc/queue.h
+ /home/valentyn/workspace/AgrGPS/RTOS/inc/queue.h \
+ /home/valentyn/workspace/AgrGPS/inc/charQueue.h
 
 /home/valentyn/workspace/AgrGPS/CMSIS/device/stm32f4xx.h:
 
@@ -50,3 +51,5 @@ src/algorithm.o: ../src/algorithm.c \
 /home/valentyn/workspace/AgrGPS/RTOS/inc/mpu_wrappers.h:
 
 /home/valentyn/workspace/AgrGPS/RTOS/inc/queue.h:
+
+/home/valentyn/workspace/AgrGPS/inc/charQueue.h:

@@ -7,6 +7,7 @@
 "RTOS/src/tasks.o"
 "RTOS/src/timers.o"
 "src/algorithm.o"
+"src/charQueue.o"
 "src/gpio.o"
 "src/main.o"
 "src/periph.o"
