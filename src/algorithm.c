@@ -2,8 +2,12 @@
 #include "algorithm.h"
 #include "gpio.h"
 #include "FreeRTOS.h"
+#include "task.h"
+
 #include "queue.h"
 #include "charQueue.h"
+
+#include "nmea.h"
 
 extern 	QueueHandle_t	xpQueue;
 extern 	char 			toBlue[strlen_t];
@@ -20,8 +24,10 @@ void receiveFromDMA(void *param){
 			btQueue.push(&btQueue, receivePointer, strlen_r);		//Add data to general queue
 			while( findEOS(&btQueue) ){								//If we have a new-line charachter '\n'
 				DMA2_Stream7->NDTR = pop(toBlue, &btQueue);        	//Number of charachters to send by bluetooth 
-				toBlue[0]='\n';		//Or first symbol of toBlue = '$'	//It's fo debugging
+				//toBlue[0]='\n';		//Or first symbol of toBlue = '$'	//It's fo debugging
 				DMA2_Stream7->CR |= DMA_SxCR_EN;					//Enable transmit by DMA
+				xTaskCreate(ParseNMEA, "ParseTask", 100, &toBlue[0], 2, NULL);
+
 			}
 		}
 	}

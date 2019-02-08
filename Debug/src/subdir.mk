@@ -8,24 +8,30 @@ C_SRCS += \
 ../src/charQueue.c \
 ../src/gpio.c \
 ../src/main.c \
+../src/nmea.c \
 ../src/periph.c \
-../src/system_stm32f4xx.c 
+../src/system_stm32f4xx.c \
+../src/vehicle.c 
 
 OBJS += \
 ./src/algorithm.o \
 ./src/charQueue.o \
 ./src/gpio.o \
 ./src/main.o \
+./src/nmea.o \
 ./src/periph.o \
-./src/system_stm32f4xx.o 
+./src/system_stm32f4xx.o \
+./src/vehicle.o 
 
 C_DEPS += \
 ./src/algorithm.d \
 ./src/charQueue.d \
 ./src/gpio.d \
 ./src/main.d \
+./src/nmea.d \
 ./src/periph.d \
-./src/system_stm32f4xx.d 
+./src/system_stm32f4xx.d \
+./src/vehicle.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

@@ -9,14 +9,18 @@
 #include "periph.h"
 #include <charQueue.h>
 
+#include "vehicle.h"
+#include "nmea.h"
+
 char recString0[strlen_r];     //this will hold the recieved stringw
 char recString1[strlen_r];
 char toBlue[strlen_t];
 char *arStr[2] = {&recString0[0], &recString1[0]};
+/*------RTOS variables------*/
 QueueHandle_t	xpQueue;
 BaseType_t xStatus;
 BaseType_t xHigherPriorityTaskWoken;
-
+/*-----------------------------*/
 int main(void)
 {
 /*Hardware initialisation*/
@@ -27,14 +31,18 @@ int main(void)
 	LCD_ini();
 	delay_ms(20);
 	LCD_ini();
-	xpQueue = xQueueCreate(1, sizeof(char *));
-
-	__enable_irq();
 	USART2_init();
 	USART6_init();
 	dma1ini();
 	dma2ini();
+	__enable_irq();
+
 /*----------------------*/
+//Load Vehicle paremeters
+	struct Vehicle tVehicle = {	1.0, 0, 0, 0, 
+								5.0, 0, 0, 4, 2.3};
+/*----------------------*/
+	xpQueue = xQueueCreate(1, sizeof(char *));
 
 /*----------------------*/
 	
@@ -42,7 +50,7 @@ int main(void)
 	xTaskCreate( receiveFromDMA, "Receive ", 800, NULL, 2, NULL);
 	xTaskCreate(tempTask, "temp", 30, NULL, 1, NULL);
 	xTaskCreate(tempTask2, "temdp", 30, NULL, 1, NULL);
-	
+
 	vTaskStartScheduler();
 
 	for(;;){

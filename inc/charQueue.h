@@ -3,6 +3,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include "stm32f4xx.h"
 
 #define strlen_t 200            //Максимальная длина строки
 #define strlen_r 80
