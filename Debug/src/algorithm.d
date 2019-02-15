@@ -20,7 +20,8 @@ src/algorithm.o: ../src/algorithm.c \
  /home/valentyn/workspace/AgrGPS/RTOS/inc/queue.h \
  /home/valentyn/workspace/AgrGPS/inc/charQueue.h \
  /home/valentyn/workspace/AgrGPS/inc/nmea.h \
- /home/valentyn/workspace/AgrGPS/inc/vehicle.h
+ /home/valentyn/workspace/AgrGPS/inc/vehicle.h \
+ /home/valentyn/workspace/AgrGPS/inc/algorithm.h
 
 /home/valentyn/workspace/AgrGPS/CMSIS/device/stm32f4xx.h:
 
@@ -65,3 +66,5 @@ src/algorithm.o: ../src/algorithm.c \
 /home/valentyn/workspace/AgrGPS/inc/nmea.h:
 
 /home/valentyn/workspace/AgrGPS/inc/vehicle.h:
+
+/home/valentyn/workspace/AgrGPS/inc/algorithm.h:

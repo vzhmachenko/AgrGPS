@@ -78,7 +78,7 @@ uint8_t LCD_Send_String(uint8_t String_Num, char* str){
 	    LCD_SendCommand(0xD4);
 	delay_ms(1);//10
 
-	while (str[i] != '\n')	{		
+	while (str[i] != '\n' && str[i] != 0)	{		
 		LCD_SendData(str[i]);	
 		delay_ms(1);//10
 		i++;

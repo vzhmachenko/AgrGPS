@@ -47,10 +47,10 @@ int main(void)
 /*----------------------*/
 	
 
-	xTaskCreate( receiveFromDMA, "Receive ", 800, NULL, 2, NULL);
+	xTaskCreate( receiveFromDMA, "Receive ", 800, NULL, 3, NULL);
 	xTaskCreate(tempTask, "temp", 30, NULL, 1, NULL);
 	xTaskCreate(tempTask2, "temdp", 30, NULL, 1, NULL);
-
+	xTaskCreate(keyboardScan, "Keybr", 50, NULL, 1, NULL);
 	vTaskStartScheduler();
 
 	for(;;){

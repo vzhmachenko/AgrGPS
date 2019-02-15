@@ -16,6 +16,8 @@ extern 	char 			toBlue[strlen_t];
 
 void receiveFromDMA(void *param){
 	static queue btQueue;
+	int isNMEA = 0;
+	TaskHandle_t xParseTaskHandle = NULL;
 	btQueue.create = &create;
 	btQueue.create(&btQueue);
 	for(;;){
@@ -26,12 +28,18 @@ void receiveFromDMA(void *param){
 				DMA2_Stream7->NDTR = pop(toBlue, &btQueue);        	//Number of charachters to send by bluetooth 
 				//toBlue[0]='\n';		//Or first symbol of toBlue = '$'	//It's fo debugging
 				DMA2_Stream7->CR |= DMA_SxCR_EN;					//Enable transmit by DMA
-				xTaskCreate(ParseNMEA, "ParseTask", 100, &toBlue[0], 2, NULL);
-
+				if(isNMEA == 0){
+					xTaskCreate(ParseNMEA, "ParseTask", 200, &toBlue[0], 
+								3, &xParseTaskHandle);
+								isNMEA = 1;
+				}
+				else {
+					vTaskResume(xParseTaskHandle);
+//					vTaskPrioritySet(xParseTaskHandle, 2);
+				}
 			}
 		}
 	}
-
 }
 
 void tempTask2(void *tem){
@@ -59,4 +67,119 @@ void regToDisplay(uint32_t reg, int8_t strNum){
 			bufer[i] = 'A' + (int)temp-10;
 		}
 	LCD_Send_String(strNum, bufer);
+}
+
+
+void keyboardScan(void *param){
+	static uint8_t counter = 0;
+	while(1){
+
+		if(counter%4 == 0){
+			GPIOB->ODR	&=	~GPIO_PIN_10;
+			GPIOE->ODR	|=	GPIO_PIN_14;
+
+			if( (GPIOE->IDR >> 12) & 0x01) 	//key=*
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOE->IDR >> 10) & 0x01)   //key=0
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOE->IDR >> 8) & 0x01)    //key=#
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOB->IDR >> 2) & 0x01)	//key=D
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+        }
+
+    	if(counter%4 == 1){
+			GPIOE->ODR	&=	~GPIO_PIN_14;
+			GPIOB->ODR	|=	GPIO_PIN_14;
+
+			if( (GPIOE->IDR >> 12) & 0x01)  //key=1
+    		{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOE->IDR >> 10) & 0x01)   //key=2
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOE->IDR >> 8) & 0x01)    //key=3
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOB->IDR >> 2) & 0x01)    //key=A
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+	 	}
+
+   		if(counter%4 == 2){
+			GPIOB->ODR	&=	~GPIO_PIN_14;
+			GPIOB->ODR	|=	GPIO_PIN_12;
+
+			if( (GPIOE->IDR >> 12) & 0x01)  //key=4
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOE->IDR >> 10) & 0x01)   //key=5
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOE->IDR >> 8) & 0x01)    //key=6
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOB->IDR >> 2) & 0x01)    //key=B
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+		}
+
+		if(counter%4 == 3){
+			GPIOB->ODR	&=	~GPIO_PIN_12;
+			GPIOB->ODR	|=	GPIO_PIN_10;
+
+			if( (GPIOE->IDR >> 12) & 0x01)  //key=7
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOE->IDR >> 10) & 0x01)   //key=8
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOE->IDR >> 8) & 0x01)    //key=9
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+			if ( (GPIOB->IDR >> 2) & 0x01)	//key=C
+			{
+				GPIOD->ODR ^= 0x380;
+				vTaskDelay(300);
+			}
+		}
+
+		if(++counter == 4)
+			counter = 0;    
+		vTaskDelay(30);
+	}
 }

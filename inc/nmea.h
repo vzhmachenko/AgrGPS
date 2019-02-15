@@ -6,6 +6,9 @@
 #include "task.h"
 #include "vehicle.h"
 #include "math.h"
+#include <stdlib.h>
+#include <string.h>
+#include "algorithm.h"
 typedef struct {
      //WGS84 Lat Long
         double latitude, longitude;
@@ -13,6 +16,7 @@ typedef struct {
         double zone;
         double centralMeridian, convergenceAngle;
 
+        
         uint8_t updatedGGA, updatedOGI, updatedRMC;
 
         char *rawBuffer;
@@ -48,6 +52,9 @@ double ArcLengthOfMeridian(double phi);
 void MapLatLonToXY(double phi, double lambda, double lambda0);
 void DecDeg2UTM(double latitude, double longitude);
 void UpdateNorthingEasting(void);
+void splitString(char *from);
 void ParseNMEA(void *parameter);
+double NMEAtoDecimal(char *str);
+void ParseGGA(void);
 
  #endif
