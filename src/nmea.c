@@ -20,6 +20,13 @@ void createStartNMEA(void){
     pn.status = 'q';
     pn.hemisphere = 'N';
 
+    pn.startCounter = 0;
+    pn.totalFixSteps = 70;
+    pn.isGPSPositionInitialized = 0;
+    pn.isFirstFixPositionSet = 0;
+    
+    
+    
     mf.isFirstFixPositionSet = 0;
     mf.isGPSPositionInitialized = 0;
     mf.pivotAxlePos = mf.toolPos = mf.tankPos = (vec3){0,0,0};
@@ -28,6 +35,8 @@ void createStartNMEA(void){
     mf.cosSectionHeading = 1.0;
     mf.sinSectionHeading = 0.0;
     mf.distance = 0.0;
+
+
 }
 double ArcLengthOfMeridian(double phi){
     const double n = (sm_a - sm_b) / (sm_a + sm_b);
@@ -131,7 +140,6 @@ void ParseNMEA(void *parameter){
         if (strstr(str, "$GPGLL") != NULL) ParseGLL();
 
         UpdateFixPosition(&GPSPositionStatusBit);
-       // vTaskPrioritySet(NULL, 1);
         vTaskSuspend(NULL);         //При завершении обработки сообщения приостанавливаем задачу
     }
 }
@@ -234,16 +242,91 @@ void InitFirstFewGPSPositions( uint8_t *GPSPositionStatusBit ){
     else{
         pn.prevFix.easting = pn.fix.easting;
         pn.prevFix.northing = pn.fix.northing;
-
-        
-
     }
     
 }
 void UpdateFixPosition(uint8_t *GPSPositionStatusBit){
-    if( (*GPSPositionStatusBit >> 0 & 1) == 0) {
-        InitFirstFewGPSPositions(GPSPositionStatusBit);
+    pn.startCounter++;
+    if (!pn.isGPSPositionInitialized) {  
+        initializeFirstFewGPSPositions();   
+        return;  
+    }
+/
+/
+/
+/
+/
+/
+/
+
+}
+void initializeFirstFewGPSPositions()
+{
+    if (!pn.isFirstFixPositionSet)
+    {
+        //reduce the huge utm coordinates
+        pn.utmEast = (int)(pn.fix.easting);
+        pn.utmNorth = (int)(pn.fix.northing);
+        //qDebug() << pn->utmEast <<" from " << pn->easting;
+        pn.fix.easting = pn.fix.easting - pn.utmEast;
+        pn.fix.northing = pn.fix.northing - pn.utmNorth;
+        //qDebug() << "pn easting is now " << pn->easting;
+        //Draw a grid once we know where in the world we are.
+        pn.isFirstFixPositionSet = 1;
+        worldGrid->createWorldGrid(pn.fix.northing, pn.fix.easting);
+
+        //most recent fixes
+        pn.prevFix.easting = pn.fix.easting;
+        pn.prevFix.northing = pn.fix.northing;
+
+        pn.stepFixPts[0].easting = pn.fix.easting;
+        pn.stepFixPts[0].northing = pn.fix.northing;
+        pn.stepFixPts[0].heading = 0;
+
+        //run once and return
+        pn.isFirstFixPositionSet = 1;
         return;
     }
 
+    else
+    {
+
+        //most recent fixes
+        pn.prevFix.easting = pn.fix.easting; 
+        pn.prevFix.northing = pn.fix.northing;
+
+        //load up history with valid data
+        for (int i = pn.totalFixSteps - 1; i > 0; i--)
+        {
+            pn.stepFixPts[i].easting = pn.stepFixPts[i - 1].easting;
+            pn.stepFixPts[i].northing = pn.stepFixPts[i - 1].northing;
+            pn.stepFixPts[i].heading = pn.stepFixPts[i - 1].heading;
+        }
+
+        pn.stepFixPts[0].heading = distance(pn.fix.northing, pn.fix.easting, 
+                pn.stepFixPts[0].northing, pn.stepFixPts[0].easting);
+        pn.stepFixPts[0].easting = pn.fix.easting;
+        pn.stepFixPts[0].northing = pn.fix.northing;
+
+        //keep here till valid data
+        if (pn.startCounter > pn.totalFixSteps) 
+            pn.isGPSPositionInitialized = 1;
+
+        //in radians
+        vehicle->fixHeading = atan2(pn.fix.easting - 
+                pn.stepFixPts[pn.totalFixSteps - 1].easting, 
+                pn.fix.northing - pn.stepFixPts[pn.totalFixSteps - 1].northing);
+        if (vehicle->fixHeading < 0) vehicle->fixHeading += twoPI;
+        vehicle->fixHeadingSection = vehicle->fixHeading;
+
+        //send out initial zero settings
+        if (pn.isGPSPositionInitialized) 
+            autoSteerSettingsOutToPort();
+
+        return;
+    }
+}
+double distance(double northing1, double easting1, double northing2, double easting2) {
+    return sqrt( (easting1 - easting2) * (easting1 - easting2) +
+                 (northing1 - northing2) * (northing1 - northing2));
 }
