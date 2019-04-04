@@ -25,6 +25,8 @@ typedef struct {
         //UTM coordinates
         //double northing, easting;
         vec2 fix;   //0,0
+        vec2 prevFix;
+
         //used to offset the antenna position to compensate for drift
         vec2 fixOffset;     //0,0
 
@@ -56,5 +58,10 @@ void splitString(char *from);
 void ParseNMEA(void *parameter);
 double NMEAtoDecimal(char *str);
 void ParseGGA(void);
+void ParseGLL(void);
+void ParseRMC(void);
+void ParseVTG(void);    
+void InitFirstFewGPSPositions( uint8_t *GPSPositionStatusBit );
+void UpdateFixPosition(uint8_t *GPSPositionStatusBit);
 
  #endif

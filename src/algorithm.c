@@ -15,11 +15,11 @@ extern 	char 			toBlue[strlen_t];
 		BaseType_t 		xStatus1;
 
 void receiveFromDMA(void *param){
-	static queue btQueue;
-	int isNMEA = 0;
+	static queue btQueue;		//Создаем очередь сообщений
+	int isNMEA = 0;				//"булева" переменная для запуска задачи парсинга
 	TaskHandle_t xParseTaskHandle = NULL;
-	btQueue.create = &create;
-	btQueue.create(&btQueue);
+	btQueue.create = &create;	//Делаем метод-функцию, для ООП
+	btQueue.create(&btQueue);	//Инициализируем начальные значения и другие методы-функции
 	for(;;){
 		xStatus1 = xQueueReceive(xpQueue, &receivePointer, 50);		//Receiving the data
 		if(xStatus1 == pdPASS){										//Check if data received
@@ -29,12 +29,12 @@ void receiveFromDMA(void *param){
 				//toBlue[0]='\n';		//Or first symbol of toBlue = '$'	//It's fo debugging
 				DMA2_Stream7->CR |= DMA_SxCR_EN;					//Enable transmit by DMA
 				if(isNMEA == 0){
-					xTaskCreate(ParseNMEA, "ParseTask", 200, &toBlue[0], 
-								3, &xParseTaskHandle);
+					xTaskCreate(ParseNMEA, "ParseTask", 200,  		//
+							&toBlue[0], 3, &xParseTaskHandle);
 								isNMEA = 1;
 				}
 				else {
-					vTaskResume(xParseTaskHandle);
+					vTaskResume(xParseTaskHandle);					//После запуска просто возобновляем выполнение работы
 //					vTaskPrioritySet(xParseTaskHandle, 2);
 				}
 			}
@@ -68,6 +68,11 @@ void regToDisplay(uint32_t reg, int8_t strNum){
 		}
 	LCD_Send_String(strNum, bufer);
 }
+
+
+
+
+
 
 
 void keyboardScan(void *param){

@@ -1,5 +1,6 @@
 #include "nmea.h"
 #include "gpio.h"
+#include "glm.h"
 
 #define NULL ((void *)0)
 
@@ -116,6 +117,11 @@ void splitString(char *from){
 void ParseNMEA(void *parameter){
     char *str;
     str = (char*) parameter;
+    /* GPSPositionStatusBit
+    bit0 - isGPSPositionInit
+    bit1 - isFirstFixPositionSet
+    */
+    uint8_t GPSPositionStatusBit = 0;
     while (1)
     {   
         splitString(str);
@@ -123,8 +129,10 @@ void ParseNMEA(void *parameter){
         if (strstr(str, "$GPVTG") != NULL) ParseVTG();
         if (strstr(str, "$GPRMC") != NULL) ParseRMC();
         if (strstr(str, "$GPGLL") != NULL) ParseGLL();
+
+        UpdateFixPosition(&GPSPositionStatusBit);
        // vTaskPrioritySet(NULL, 1);
-        vTaskSuspend(NULL);
+        vTaskSuspend(NULL);         //При завершении обработки сообщения приостанавливаем задачу
     }
 }
 double NMEAtoDecimal(char *str){
@@ -205,4 +213,37 @@ void ParseVTG(void){
     pn.headingTrue = atof(words[1]);
     pn.speed = atof(words[5]);
     pn.speed = round(pn.speed * 1.852);
+}
+void InitFirstFewGPSPositions( uint8_t *GPSPositionStatusBit ){
+    if( (*GPSPositionStatusBit >> 1 & 1) == 0) {
+        pn.utmEast = (int)pn.fix.easting;
+        pn.utmNorth = (int)pn.fix.northing;
+        pn.fix.easting = pn.fix.easting - pn.utmEast;
+        pn.fix.northing = pn.fix.northing - pn.utmNorth;
+
+        pn.centralMeridian = -177 + ((pn.zone - 1) * 6);
+
+        pn.convergenceAngle = atan( sin( toRadians(pn.latitude)) * 
+            tan(toRadians(pn.longitude - pn.centralMeridian)));
+        pn.prevFix.easting = pn.fix.easting;
+        pn.prevFix.northing = pn.fix.northing;
+
+        *GPSPositionStatusBit |= (1 << 1);
+        return;
+    }
+    else{
+        pn.prevFix.easting = pn.fix.easting;
+        pn.prevFix.northing = pn.fix.northing;
+
+        
+
+    }
+    
+}
+void UpdateFixPosition(uint8_t *GPSPositionStatusBit){
+    if( (*GPSPositionStatusBit >> 0 & 1) == 0) {
+        InitFirstFewGPSPositions(GPSPositionStatusBit);
+        return;
+    }
+
 }

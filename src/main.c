@@ -9,7 +9,7 @@
 #include "periph.h"
 #include <charQueue.h>
 
-#include "vehicle.h"
+//#include "vehicle.h"
 #include "nmea.h"
 
 char recString0[strlen_r];     //this will hold the recieved stringw
@@ -50,7 +50,7 @@ int main(void)
 	xTaskCreate( receiveFromDMA, "Receive ", 800, NULL, 3, NULL);
 	xTaskCreate(tempTask, "temp", 30, NULL, 1, NULL);
 	xTaskCreate(tempTask2, "temdp", 30, NULL, 1, NULL);
-	xTaskCreate(keyboardScan, "Keybr", 50, NULL, 1, NULL);
+	xTaskCreate(keyboardScan, "Keybr", 30, NULL, 1, NULL);
 	vTaskStartScheduler();
 
 	for(;;){
