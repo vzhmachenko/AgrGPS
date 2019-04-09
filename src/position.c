@@ -1,7 +1,7 @@
 #include "position.h"
-
+#include "vehicle.h"
 position pos;
-extern pn;
+extern NMEA pn;
 
 
 void setInitPostitionParameters(){
@@ -96,7 +96,7 @@ void UpdateFixPosition(void){
     //----------------------------------------
     //REGION STEP FIX
     //grab the most current fix and save the distance from the last fix
-    pos.distanceCurrentStepFix = distance(pn.fix, pos.stepFixPts[0]);
+    pos.distanceCurrentStepFix = DistanceVec2Vec3(pn.fix, pos.stepFixPts[0]);
     pos.fixStepDist = pos.distanceCurrentStepFix;
 
     //if  min distance isn't exceeded, keep adding old fixes till it does
@@ -143,7 +143,7 @@ void UpdateFixPosition(void){
 
     else { //distance is exceeded, time to do all calcs and next frame
         //positions and headings 
-        CalculatePositionHeading();
+        /*CalculatePositionHeading();!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
         //get rid of hold position
         pos.isFixHoldLoaded = 0;
@@ -152,9 +152,9 @@ void UpdateFixPosition(void){
         pos.stepFixPts[(pos.totalFixSteps - 1)].heading = 0;
 
         //test if travelled far enough for new boundary point
-        double boundaryDistance = DistanceVec2Vec2(pn.fix, pos.prevBoundaryPos);
+       /* double boundaryDistance = DistanceVec2Vec2(pn.fix, pos.prevBoundaryPos);
         if (boundaryDistance > pos.boundaryTriggerDistance) 
-            AddBoundaryAndPerimiterPoint();
+            AddBoundaryAndPerimiterPoint();*/
 
         //calc distance travelled since last GPS fix
         //Отключаю полевые вычисления

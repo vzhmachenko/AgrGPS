@@ -53,12 +53,6 @@ void MoveABLine(double dist) {
     double headingCalc;
 
     //calculate the heading 90 degrees to ref ABLine heading
-    /*if(AB.isABSameAsVehicleHeading != 0)
-        headingCalc = AB.abHeading + PIBy2;
-    else
-        headingCalc = AB.abHeading - PIBy2;
-*/
-    
     headingCalc = (AB.isABSameAsVehicleHeading != 0) ? (AB.abHeading + PIBy2):(AB.abHeading - PIBy2);
 
     //calculate the new points for the reference line and points
@@ -102,7 +96,7 @@ void GetCurrentABLine(vec3 pivot) {
     else
         AB.howManyPathsAway = cerl(AB.distanceFromRefLine / AB.widthMinusOverlap);
     
-
+/*
     //generate that pass number as signed integer
     AB.passNumber = (int)(AB.refLineSide * AB.howManyPathsAway);
 
@@ -246,4 +240,5 @@ void GetCurrentABLine(vec3 pivot) {
         radiusPointAB.northing = mf.yt.radiusPointYT.northing;
         ppRadiusAB = mf.yt.ppRadiusYT;
     }
+    */
 }

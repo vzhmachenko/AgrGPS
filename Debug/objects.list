@@ -6,6 +6,7 @@
 "RTOS/src/queue.o"
 "RTOS/src/tasks.o"
 "RTOS/src/timers.o"
+"src/ABLine.o"
 "src/algorithm.o"
 "src/charQueue.o"
 "src/glm.o"

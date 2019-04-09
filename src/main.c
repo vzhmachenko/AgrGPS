@@ -38,9 +38,7 @@ int main(void)
 	__enable_irq();
 
 /*----------------------*/
-//Load Vehicle paremeters
-	struct Vehicle tVehicle = {	1.0, 0, 0, 0, 
-								5.0, 0, 0, 4, 2.3};
+
 /*----------------------*/
 	xpQueue = xQueueCreate(1, sizeof(char *));
 

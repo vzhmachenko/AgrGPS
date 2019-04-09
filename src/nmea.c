@@ -124,7 +124,7 @@ void ParseNMEA(void *parameter){
         if (strstr(str, "$GPRMC") != NULL) ParseRMC();
         if (strstr(str, "$GPGLL") != NULL) ParseGLL();
 
-        //UpdateFixPosition(&GPSPositionStatusBit);
+        UpdateFixPosition();
         vTaskSuspend(NULL);         //При завершении обработки сообщения приостанавливаем задачу
     }
 }

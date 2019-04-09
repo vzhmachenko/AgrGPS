@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/ABLine.c \
 ../src/algorithm.c \
 ../src/charQueue.c \
 ../src/glm.c \
@@ -16,6 +17,7 @@ C_SRCS += \
 ../src/vehicle.c 
 
 OBJS += \
+./src/ABLine.o \
 ./src/algorithm.o \
 ./src/charQueue.o \
 ./src/glm.o \
@@ -28,6 +30,7 @@ OBJS += \
 ./src/vehicle.o 
 
 C_DEPS += \
+./src/ABLine.d \
 ./src/algorithm.d \
 ./src/charQueue.d \
 ./src/glm.d \
