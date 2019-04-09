@@ -2,6 +2,7 @@
 #include "gpio.h"
 #include "glm.h"
 
+#include "position.h"
 #define NULL ((void *)0)
 
 const double sm_a = 6378137.0;
@@ -10,7 +11,7 @@ const double UTMScaleFactor = 0.9996;
 char words[15][15];
 
 NMEA pn;
-mainForm mf;
+extern position pos;
 double xy[2] = {0.0, 0.0};
 
 
@@ -20,21 +21,6 @@ void createStartNMEA(void){
     pn.status = 'q';
     pn.hemisphere = 'N';
 
-    pn.startCounter = 0;
-    pn.totalFixSteps = 70;
-    pn.isGPSPositionInitialized = 0;
-    pn.isFirstFixPositionSet = 0;
-    
-    
-    
-    mf.isFirstFixPositionSet = 0;
-    mf.isGPSPositionInitialized = 0;
-    mf.pivotAxlePos = mf.toolPos = mf.tankPos = (vec3){0,0,0};
-    mf.hitchPos = mf.prevFix = (vec2){0,0};
-    mf.fixHeading = mf.camHeading = 0.0;
-    mf.cosSectionHeading = 1.0;
-    mf.sinSectionHeading = 0.0;
-    mf.distance = 0.0;
 
 
 }
@@ -82,9 +68,9 @@ void MapLatLonToXY(double phi, double lambda, double lambda0){
 }
 void DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
     //only calculate the zone once!
-    if (!mf.isFirstFixPositionSet) {
+    if (!pos.isFirstFixPositionSet) {
         pn.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
-        mf.isFirstFixPositionSet = 1;       //Just for debugging
+        pos.isFirstFixPositionSet = 1;       //Just for debugging
     }
     MapLatLonToXY(latitude * 0.01745329251994329576923690766743,
         longitude * 0.01745329251994329576923690766743,
@@ -130,7 +116,6 @@ void ParseNMEA(void *parameter){
     bit0 - isGPSPositionInit
     bit1 - isFirstFixPositionSet
     */
-    uint8_t GPSPositionStatusBit = 0;
     while (1)
     {   
         splitString(str);
@@ -139,7 +124,7 @@ void ParseNMEA(void *parameter){
         if (strstr(str, "$GPRMC") != NULL) ParseRMC();
         if (strstr(str, "$GPGLL") != NULL) ParseGLL();
 
-        UpdateFixPosition(&GPSPositionStatusBit);
+        //UpdateFixPosition(&GPSPositionStatusBit);
         vTaskSuspend(NULL);         //При завершении обработки сообщения приостанавливаем задачу
     }
 }
@@ -221,112 +206,4 @@ void ParseVTG(void){
     pn.headingTrue = atof(words[1]);
     pn.speed = atof(words[5]);
     pn.speed = round(pn.speed * 1.852);
-}
-void InitFirstFewGPSPositions( uint8_t *GPSPositionStatusBit ){
-    if( (*GPSPositionStatusBit >> 1 & 1) == 0) {
-        pn.utmEast = (int)pn.fix.easting;
-        pn.utmNorth = (int)pn.fix.northing;
-        pn.fix.easting = pn.fix.easting - pn.utmEast;
-        pn.fix.northing = pn.fix.northing - pn.utmNorth;
-
-        pn.centralMeridian = -177 + ((pn.zone - 1) * 6);
-
-        pn.convergenceAngle = atan( sin( toRadians(pn.latitude)) * 
-            tan(toRadians(pn.longitude - pn.centralMeridian)));
-        pn.prevFix.easting = pn.fix.easting;
-        pn.prevFix.northing = pn.fix.northing;
-
-        *GPSPositionStatusBit |= (1 << 1);
-        return;
-    }
-    else{
-        pn.prevFix.easting = pn.fix.easting;
-        pn.prevFix.northing = pn.fix.northing;
-    }
-    
-}
-void UpdateFixPosition(uint8_t *GPSPositionStatusBit){
-    pn.startCounter++;
-    if (!pn.isGPSPositionInitialized) {  
-        initializeFirstFewGPSPositions();   
-        return;  
-    }
-/
-/
-/
-/
-/
-/
-/
-
-}
-void initializeFirstFewGPSPositions()
-{
-    if (!pn.isFirstFixPositionSet)
-    {
-        //reduce the huge utm coordinates
-        pn.utmEast = (int)(pn.fix.easting);
-        pn.utmNorth = (int)(pn.fix.northing);
-        //qDebug() << pn->utmEast <<" from " << pn->easting;
-        pn.fix.easting = pn.fix.easting - pn.utmEast;
-        pn.fix.northing = pn.fix.northing - pn.utmNorth;
-        //qDebug() << "pn easting is now " << pn->easting;
-        //Draw a grid once we know where in the world we are.
-        pn.isFirstFixPositionSet = 1;
-        worldGrid->createWorldGrid(pn.fix.northing, pn.fix.easting);
-
-        //most recent fixes
-        pn.prevFix.easting = pn.fix.easting;
-        pn.prevFix.northing = pn.fix.northing;
-
-        pn.stepFixPts[0].easting = pn.fix.easting;
-        pn.stepFixPts[0].northing = pn.fix.northing;
-        pn.stepFixPts[0].heading = 0;
-
-        //run once and return
-        pn.isFirstFixPositionSet = 1;
-        return;
-    }
-
-    else
-    {
-
-        //most recent fixes
-        pn.prevFix.easting = pn.fix.easting; 
-        pn.prevFix.northing = pn.fix.northing;
-
-        //load up history with valid data
-        for (int i = pn.totalFixSteps - 1; i > 0; i--)
-        {
-            pn.stepFixPts[i].easting = pn.stepFixPts[i - 1].easting;
-            pn.stepFixPts[i].northing = pn.stepFixPts[i - 1].northing;
-            pn.stepFixPts[i].heading = pn.stepFixPts[i - 1].heading;
-        }
-
-        pn.stepFixPts[0].heading = distance(pn.fix.northing, pn.fix.easting, 
-                pn.stepFixPts[0].northing, pn.stepFixPts[0].easting);
-        pn.stepFixPts[0].easting = pn.fix.easting;
-        pn.stepFixPts[0].northing = pn.fix.northing;
-
-        //keep here till valid data
-        if (pn.startCounter > pn.totalFixSteps) 
-            pn.isGPSPositionInitialized = 1;
-
-        //in radians
-        vehicle->fixHeading = atan2(pn.fix.easting - 
-                pn.stepFixPts[pn.totalFixSteps - 1].easting, 
-                pn.fix.northing - pn.stepFixPts[pn.totalFixSteps - 1].northing);
-        if (vehicle->fixHeading < 0) vehicle->fixHeading += twoPI;
-        vehicle->fixHeadingSection = vehicle->fixHeading;
-
-        //send out initial zero settings
-        if (pn.isGPSPositionInitialized) 
-            autoSteerSettingsOutToPort();
-
-        return;
-    }
-}
-double distance(double northing1, double easting1, double northing2, double easting2) {
-    return sqrt( (easting1 - easting2) * (easting1 - easting2) +
-                 (northing1 - northing2) * (northing1 - northing2));
 }

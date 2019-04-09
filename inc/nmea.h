@@ -46,11 +46,7 @@ typedef struct {
         //UTM numbers are huge, these cut them way down.
         int16_t utmNorth, utmEast;
 
-        //Другие глобальные переменные
-        int startCounter;
-        int totalFixSteps;
-        int isGPSPositionInitialized;   //bool
-        int isFirstFixPositionSet;      //bool
+
         vec3 stepFixPts[50];
 
 } NMEA;  
@@ -67,8 +63,5 @@ double NMEAtoDecimal(char *str);
 void ParseGGA(void);
 void ParseGLL(void);
 void ParseRMC(void);
-void ParseVTG(void);    
-void InitFirstFewGPSPositions( uint8_t *GPSPositionStatusBit );
-void UpdateFixPosition(uint8_t *GPSPositionStatusBit);
-
+void ParseVTG(void); 
  #endif

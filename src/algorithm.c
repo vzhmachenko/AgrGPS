@@ -8,7 +8,7 @@
 #include "charQueue.h"
 
 #include "nmea.h"
-
+#include "position.h"
 extern 	QueueHandle_t	xpQueue;
 extern 	char 			toBlue[strlen_t];
 		char 		   *receivePointer;
@@ -20,6 +20,8 @@ void receiveFromDMA(void *param){
 	TaskHandle_t xParseTaskHandle = NULL;
 	btQueue.create = &create;	//Делаем метод-функцию, для ООП
 	btQueue.create(&btQueue);	//Инициализируем начальные значения и другие методы-функции
+	createStartNMEA();
+	setInitPostitionParameters();
 	for(;;){
 		xStatus1 = xQueueReceive(xpQueue, &receivePointer, 50);		//Receiving the data
 		if(xStatus1 == pdPASS){										//Check if data received

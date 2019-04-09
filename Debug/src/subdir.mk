@@ -6,30 +6,36 @@
 C_SRCS += \
 ../src/algorithm.c \
 ../src/charQueue.c \
+../src/glm.c \
 ../src/gpio.c \
 ../src/main.c \
 ../src/nmea.c \
 ../src/periph.c \
+../src/position.c \
 ../src/system_stm32f4xx.c \
 ../src/vehicle.c 
 
 OBJS += \
 ./src/algorithm.o \
 ./src/charQueue.o \
+./src/glm.o \
 ./src/gpio.o \
 ./src/main.o \
 ./src/nmea.o \
 ./src/periph.o \
+./src/position.o \
 ./src/system_stm32f4xx.o \
 ./src/vehicle.o 
 
 C_DEPS += \
 ./src/algorithm.d \
 ./src/charQueue.d \
+./src/glm.d \
 ./src/gpio.d \
 ./src/main.d \
 ./src/nmea.d \
 ./src/periph.d \
+./src/position.d \
 ./src/system_stm32f4xx.d \
 ./src/vehicle.d 
 
