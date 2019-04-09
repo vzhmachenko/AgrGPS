@@ -3,7 +3,7 @@
 #include "stm32f4xx.h"
 
 
-struct Vehicle{
+typedef struct {
     double toolWidth;
     double toolOverlap;
     double toolOffset;
@@ -15,7 +15,7 @@ struct Vehicle{
     double wheelbase;
     double hitchLength;
     double minTurningRadius;
-};
+}Vehicle;
 
 typedef struct {
     double easting;
