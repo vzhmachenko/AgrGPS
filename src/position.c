@@ -2,9 +2,9 @@
 #include "vehicle.h"
 position pos;
 extern NMEA pn;
+extern Vehicle vehicle;
 
-
-void setInitPostitionParameters(){
+void initPosition(){
     pos.isFirstFixPositionSet = 0;
     pos.isGPSPositionInitialized = 0;
     pos.isFixHolding = 0;
@@ -23,6 +23,13 @@ void setInitPostitionParameters(){
     pos.prevBoundaryPos.easting = 0;
     pos.prevBoundaryPos.northing = 0;
 
+}
+void CalculatePositionHeading(void){
+    pos.fixHeading = toRadians(pn.headingTrue);
+    //translate world to the pivot axle
+    pos.pivotAxlePos.easting = pn.fix.easting - (sin(pos.fixHeading) * vehicle.antennaPivot);
+    pos.pivotAxlePos.northing = pn.fix.northing - (cos(pos.fixHeading) * vehicle.antennaPivot);
+    pos.pivotAxlePos.heading = pos.fixHeading;
 }
 void InitializeFirstFewGPSPositions(void){
     if (!pos.isFirstFixPositionSet) {
@@ -139,11 +146,11 @@ void UpdateFixPosition(void){
         pos.stepFixPts[(pos.totalFixSteps - 1)].heading = DistanceVec3Vec3(pos.vHold, pos.stepFixPts[(pos.totalFixSteps - 1)]);
         pos.stepFixPts[(pos.totalFixSteps - 1)].easting = pos.vHold.easting;
         pos.stepFixPts[(pos.totalFixSteps - 1)].northing = pos.vHold.northing;
-    }
+    }(vec2){pn.fix.easting, pn.fix.northing};(vec2){pn.fix.easting, pn.fix.northing};(vec2){pn.fix.easting, pn.fix.northing};(vec2){pn.fix.easting, pn.fix.northing};(vec2){pn.fix.easting, pn.fix.northing};
 
     else { //distance is exceeded, time to do all calcs and next frame
         //positions and headings 
-        /*CalculatePositionHeading();!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+        CalculatePositionHeading();
 
         //get rid of hold position
         pos.isFixHoldLoaded = 0;

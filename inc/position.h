@@ -23,10 +23,14 @@ typedef struct {
         vec2 prevFix;
         vec2 prevBoundaryPos;
         vec3 stepFixPts[60];
+        vec3 pivotAxlePos;
         vec3 vHold;
+        int16_t guidanceLineDistanceOff, guidanceLineSteerAngle;
 
 } position;
 
-void setInitPostitionParameters(void);
+void initPosition(void);
 void UpdateFixPosition(void);
+void CalculatePositionHeading(void);
+
  #endif

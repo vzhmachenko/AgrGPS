@@ -11,6 +11,8 @@ typedef struct {
     double antennaHeight;
     double antennaOffset;
     double antennaPivot;
+    double maxSteerAngle;
+    double maxAngularVelocity;
 
     double wheelbase;
     double hitchLength;
@@ -27,6 +29,7 @@ typedef struct {
     double northing;
     double heading;
 } vec3;
-
+double UpdateGoalPointDistance(double distanceFromCurrentLine);
+void initVehicle(void);
 
  #endif
