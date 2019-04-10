@@ -17,6 +17,10 @@ typedef struct {
     double wheelbase;
     double hitchLength;
     double minTurningRadius;
+
+    double goalPointLookAheadSeconds;// = 3.0;
+    double goalPointDistanceMultiplier;// = 0.1;
+    double goalPointLookAheadMinimumDistance;// = 2;    
 }Vehicle;
 
 typedef struct {

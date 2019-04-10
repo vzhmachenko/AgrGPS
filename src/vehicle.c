@@ -5,17 +5,15 @@ extern NMEA pn;
 
 double UpdateGoalPointDistance(double distanceFromCurrentLine) {
     //how far should goal point be away  - speed * seconds * kmph -> m/s then limit min value
-    double goalPointLookAheadSeconds = 3.0;
-    double goalPointDistanceMultiplier = 0.1;
-    double goalPointLookAheadMinimumDistance = 2;
-    double goalPointDistance = pn.speed * goalPointLookAheadSeconds * 0.27777777;/*vehicle.goalPointLookAheadSeconds*/ 
+
+    double goalPointDistance = pn.speed * vehicle.goalPointLookAheadSeconds * 0.27777777;/*vehicle.goalPointLookAheadSeconds*/ 
 
     if (distanceFromCurrentLine < 1.0)
         goalPointDistance += distanceFromCurrentLine * goalPointDistance * vehicle.goalPointDistanceMultiplier;
     else
-        goalPointDistance += goalPointDistance * goalPointDistanceMultiplier;
+        goalPointDistance += goalPointDistance * vehicle.goalPointDistanceMultiplier;
 
-    if (goalPointDistance < goalPointLookAheadMinimumDistance) goalPointDistance = mf.vehicle.goalPointLookAheadMinimumDistance;
+    if (goalPointDistance < vehicle.goalPointLookAheadMinimumDistance) goalPointDistance = vehicle.goalPointLookAheadMinimumDistance;
 
     //mf.lookaheadActual = goalPointDistance;
 
@@ -34,4 +32,8 @@ void initVehicle(void){
     vehicle.wheelbase = 4;
     vehicle.hitchLength = -0.5;
     vehicle.minTurningRadius = 6;
+
+    vehicle.goalPointLookAheadSeconds = 3.0;
+    vehicle.goalPointDistanceMultiplier = 0.1;
+    vehicle.goalPointLookAheadMinimumDistance = 2.0;
 }

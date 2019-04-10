@@ -97,6 +97,8 @@ void UpdateFixPosition(void){
         InitializeFirstFewGPSPositions();
         return;
     }
+    		GPIOD->ODR |= 0x400;
+
     //region Antenne Offset
     //----------------------------------------
     //----------------------------------------
@@ -146,8 +148,7 @@ void UpdateFixPosition(void){
         pos.stepFixPts[(pos.totalFixSteps - 1)].heading = DistanceVec3Vec3(pos.vHold, pos.stepFixPts[(pos.totalFixSteps - 1)]);
         pos.stepFixPts[(pos.totalFixSteps - 1)].easting = pos.vHold.easting;
         pos.stepFixPts[(pos.totalFixSteps - 1)].northing = pos.vHold.northing;
-    }(vec2){pn.fix.easting, pn.fix.northing};(vec2){pn.fix.easting, pn.fix.northing};(vec2){pn.fix.easting, pn.fix.northing};(vec2){pn.fix.easting, pn.fix.northing};(vec2){pn.fix.easting, pn.fix.northing};
-
+    }
     else { //distance is exceeded, time to do all calcs and next frame
         //positions and headings 
         CalculatePositionHeading();

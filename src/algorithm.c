@@ -25,7 +25,6 @@ void receiveFromDMA(void *param){
 	initVehicle();
 	initABl();
 	initPosition();
-	setInitPostitionParameters();
 	for(;;){
 		xStatus1 = xQueueReceive(xpQueue, &receivePointer, 50);		//Receiving the data
 		if(xStatus1 == pdPASS){										//Check if data received
