@@ -14,6 +14,7 @@ extern 	QueueHandle_t	xpQueue;
 extern 	char 			toBlue[strlen_t];
 		char 		   *receivePointer;
 		BaseType_t 		xStatus1;
+extern ABline AB;
 
 void receiveFromDMA(void *param){
 	static queue btQueue;		//Создаем очередь сообщений
@@ -40,7 +41,8 @@ void receiveFromDMA(void *param){
 				}
 				else {
 					vTaskResume(xParseTaskHandle);					//После запуска просто возобновляем выполнение работы
-//					vTaskPrioritySet(xParseTaskHandle, 2);
+					if(AB.isABLineSet != 0)
+						doubleToDisplay(AB.distanceFromCurrentLine, 3);
 				}
 			}
 		}
@@ -73,12 +75,11 @@ void regToDisplay(uint32_t reg, int8_t strNum){
 		}
 	LCD_Send_String(strNum, bufer);
 }
-
-
-
-
-
-
+void doubleToDisplay(double num, int8_t strNum){
+	char lengthToLine[9];
+	itoa( (int)num, lengthToLine, 10); 	//При необходимости умножить для повышения точности
+	LCD_Send_String(strNum, lengthToLine);
+}
 
 void keyboardScan(void *param){
 	static uint8_t counter = 0;
@@ -86,25 +87,20 @@ void keyboardScan(void *param){
 
 		if(counter%4 == 0){
 			GPIOB->ODR	&=	~GPIO_PIN_10;
-			GPIOE->ODR	|=	GPIO_PIN_14;
-
-			if( (GPIOE->IDR >> 12) & 0x01) 	//key=*
-			{
+			GPIOE->ODR	|=	GPIO_PIN_14; 
+			if( (GPIOE->IDR >> 12) & 0x01){ 	//key=*
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOE->IDR >> 10) & 0x01)   //key=0
-			{
+			if ( (GPIOE->IDR >> 10) & 0x01){   //key=0
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOE->IDR >> 8) & 0x01)    //key=#
-			{
+			if ( (GPIOE->IDR >> 8) & 0x01){    //key=#
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOB->IDR >> 2) & 0x01)	//key=D
-			{
+			if ( (GPIOB->IDR >> 2) & 0x01){	//key=D
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
@@ -112,26 +108,21 @@ void keyboardScan(void *param){
 
     	if(counter%4 == 1){
 			GPIOE->ODR	&=	~GPIO_PIN_14;
-			GPIOB->ODR	|=	GPIO_PIN_14;
-
-			if( (GPIOE->IDR >> 12) & 0x01)  //key=1
-    		{
+			GPIOB->ODR	|=	GPIO_PIN_14; 
+			if( (GPIOE->IDR >> 12) & 0x01){  //key=1
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOE->IDR >> 10) & 0x01)   //key=2
-			{
+			if ( (GPIOE->IDR >> 10) & 0x01){   //key=2
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOE->IDR >> 8) & 0x01)    //key=3
-			{
+			if ( (GPIOE->IDR >> 8) & 0x01){    //key=3
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOB->IDR >> 2) & 0x01)    //key=A
-			{
-				GPIOD->ODR ^= 0x380;
+			if ( (GPIOB->IDR >> 2) & 0x01){    //key=A
+				btnAPoint();
 				vTaskDelay(300);
 			}
 	 	}
@@ -139,50 +130,40 @@ void keyboardScan(void *param){
    		if(counter%4 == 2){
 			GPIOB->ODR	&=	~GPIO_PIN_14;
 			GPIOB->ODR	|=	GPIO_PIN_12;
-
-			if( (GPIOE->IDR >> 12) & 0x01)  //key=4
-			{
+			if( (GPIOE->IDR >> 12) & 0x01){  //key=4
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOE->IDR >> 10) & 0x01)   //key=5
-			{
+			if ( (GPIOE->IDR >> 10) & 0x01){   //key=5
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOE->IDR >> 8) & 0x01)    //key=6
-			{
+			if ( (GPIOE->IDR >> 8) & 0x01){    //key=6
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOB->IDR >> 2) & 0x01)    //key=B
-			{
-				GPIOD->ODR ^= 0x380;
+			if ( (GPIOB->IDR >> 2) & 0x01){    //key=B
+				btnBPoint();
 				vTaskDelay(300);
 			}
 		}
 
 		if(counter%4 == 3){
 			GPIOB->ODR	&=	~GPIO_PIN_12;
-			GPIOB->ODR	|=	GPIO_PIN_10;
-
-			if( (GPIOE->IDR >> 12) & 0x01)  //key=7
-			{
+			GPIOB->ODR	|=	GPIO_PIN_10; 
+			if( (GPIOE->IDR >> 12) & 0x01){  //key=7
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOE->IDR >> 10) & 0x01)   //key=8
-			{
+			if ( (GPIOE->IDR >> 10) & 0x01){   //key=8
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOE->IDR >> 8) & 0x01)    //key=9
-			{
+			if ( (GPIOE->IDR >> 8) & 0x01){    //key=9
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-			if ( (GPIOB->IDR >> 2) & 0x01)	//key=C
-			{
+			if ( (GPIOB->IDR >> 2) & 0x01){	//key=C
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}

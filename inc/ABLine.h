@@ -34,10 +34,13 @@ typedef struct {
     double ppRadiusAB;
     double steerAngleAB;
 } ABline;
+
+void initABl(void);
 void btnAPoint(void);
 void btnBPoint(void);
 void SetABLineByHeading(void);
 void MoveABLine(double dist);
-void initABl(void);
+void GetCurrentABLine(vec3 pivot); 
+
 #endif
 
