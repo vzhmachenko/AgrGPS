@@ -1,8 +1,8 @@
 #include "nmea.h"
 #include "gpio.h"
 #include "glm.h"
-
 #include "position.h"
+
 #define NULL ((void *)0)
 
 const double sm_a = 6378137.0;
@@ -120,10 +120,10 @@ void ParseNMEA(void *parameter){
     {   
         splitString(str);
         if (strstr(str, "$GPGGA") != NULL) ParseGGA(); 
-        if (strstr(str, "$GPVTG") != NULL) ParseVTG();
-        if (strstr(str, "$GPRMC") != NULL) ParseRMC();
-        if (strstr(str, "$GPGLL") != NULL) ParseGLL();
-
+        //if (strstr(str, "$GPVTG") != NULL) ParseVTG();
+        //if (strstr(str, "$GPRMC") != NULL) ParseRMC();
+        //if (strstr(str, "$GPGLL") != NULL) ParseGLL();
+        
         UpdateFixPosition();
         vTaskSuspend(NULL);         //При завершении обработки сообщения приостанавливаем задачу
     }
@@ -158,6 +158,8 @@ void ParseGGA(void){
     pn.altitude = atof(words[9]);
     pn.ageDiff = atof(words[11]);
     strncpy(pn.time, words[1], 6);
+
+    
 }
 void ParseGLL(void){
     //000GPGLL,5026.83816,N,03036.72223,E,092645.00,A,A*60
@@ -176,7 +178,6 @@ void ParseGLL(void){
     UpdateNorthingEasting();
     LCD_Send_String(0, "GLL");
     strncpy(pn.time, words[1], 5);
-
 
 }
 void ParseRMC(void){

@@ -15,6 +15,7 @@ extern 	char 			toBlue[strlen_t];
 		char 		   *receivePointer;
 		BaseType_t 		xStatus1;
 extern ABline AB;
+extern NMEA pn;
 
 void receiveFromDMA(void *param){
 	static queue btQueue;		//Создаем очередь сообщений
@@ -43,7 +44,11 @@ void receiveFromDMA(void *param){
 					vTaskResume(xParseTaskHandle);					//После запуска просто возобновляем выполнение работы
 					if(AB.isABLineSet != 0)
 						doubleToDisplay(AB.distanceFromCurrentLine, 3);
+        doubleToDisplay(pn.zone, 1);
+        doubleToDisplay(pn.fix.easting, 2);
+    	doubleToDisplay(pn.fix.northing, 3);
 				}
+				//LCD_SendCommand(0x01);
 			}
 		}
 	}

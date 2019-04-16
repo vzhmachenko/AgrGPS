@@ -93,11 +93,13 @@ void InitializeFirstFewGPSPositions(void){
 void UpdateFixPosition(void){
     pos.startCounter++;
     pos.totalFixSteps = pos.fixUpdateHz * 6;
+        		GPIOD->ODR ^= 0x100;
+
     if(pos.isGPSPositionInitialized == 0){
         InitializeFirstFewGPSPositions();
         return;
     }
-    		GPIOD->ODR |= 0x400;
+        		GPIOD->ODR ^= 0x200;
 
     //region Antenne Offset
     //----------------------------------------

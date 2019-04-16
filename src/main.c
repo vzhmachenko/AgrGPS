@@ -25,6 +25,8 @@ int main(void)
 {
 /*Hardware initialisation*/
 	RCC_Init();
+//	DBGMCU->APB1FZ |= DBGMCU_APB1_FZ_DBG_TIM2_STOP | DBGMCU_APB1_FZ_DBG_TIM3_STOP;
+
 	gpio_ini();
 	//GPIOD->ODR= 0xF;
 	timerini2();
