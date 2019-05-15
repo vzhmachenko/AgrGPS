@@ -30,6 +30,7 @@ uint16_t pop(char *to, queue *q){
 		q->empty = q->empty + temp + 1;
 		return temp;
 	}
+	return 0;
 }
 void create(queue *new){
 	new->full = 0;

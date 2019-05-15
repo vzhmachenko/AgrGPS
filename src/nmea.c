@@ -9,6 +9,7 @@ const double sm_a = 6378137.0;
 const double sm_b = 6356752.314;
 const double UTMScaleFactor = 0.9996;
 char words[15][15];
+int8_t a = 0;
 
 NMEA pn;
 extern position pos;
@@ -68,9 +69,9 @@ void MapLatLonToXY(double phi, double lambda, double lambda0){
 }
 void DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
     //only calculate the zone once!
-    if (!pos.isFirstFixPositionSet) {
+    if (!pos.isFirstFixPositionSet){
         pn.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
-        pos.isFirstFixPositionSet = 1;       //Just for debugging
+        a = 1;
     }
     MapLatLonToXY(latitude * 0.01745329251994329576923690766743,
         longitude * 0.01745329251994329576923690766743,
@@ -106,6 +107,8 @@ void splitString(char *from){
 	pch = strtok(from, ",");
 	for(int i = 0; pch != NULL && i<15; i++){
 		sprintf(words[i], "%s", pch);
+		for(int k = strlen(words[i]); k<15; k++)
+			words[i][k] = '\0';
 		pch = strtok(NULL, ",");
 	}
 }
@@ -123,8 +126,8 @@ void ParseNMEA(void *parameter){
         //if (strstr(str, "$GPVTG") != NULL) ParseVTG();
         //if (strstr(str, "$GPRMC") != NULL) ParseRMC();
         //if (strstr(str, "$GPGLL") != NULL) ParseGLL();
-        
-        UpdateFixPosition();
+        if(a)
+        	UpdateFixPosition();
         vTaskSuspend(NULL);         //При завершении обработки сообщения приостанавливаем задачу
     }
 }

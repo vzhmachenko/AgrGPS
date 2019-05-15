@@ -44,7 +44,7 @@ typedef struct {
         char hemisphere;
 
         //UTM numbers are huge, these cut them way down.
-        int16_t utmNorth, utmEast;
+        int32_t utmNorth, utmEast;
 
 
         vec3 stepFixPts[50];

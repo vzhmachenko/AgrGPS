@@ -19,7 +19,6 @@ extern NMEA pn;
 
 void receiveFromDMA(void *param){
 	static queue btQueue;		//Создаем очередь сообщений
-	int isNMEA = 0;				//"булева" переменная для запуска задачи парсинга
 	TaskHandle_t xParseTaskHandle = NULL;
 	btQueue.create = &create;	//Делаем метод-функцию, для ООП
 	btQueue.create(&btQueue);	//Инициализируем начальные значения и другие методы-функции
@@ -31,23 +30,25 @@ void receiveFromDMA(void *param){
 		xStatus1 = xQueueReceive(xpQueue, &receivePointer, 50);		//Receiving the data
 		if(xStatus1 == pdPASS){										//Check if data received
 			btQueue.push(&btQueue, receivePointer, strlen_r);		//Add data to general queue
+
+			DMA2_Stream7->NDTR = pop(toBlue, &btQueue);        	//Number of charachters to send by bluetooth
+			DMA2_Stream7->CR |= DMA_SxCR_EN;
+			xTaskCreate(ParseNMEA, "ParseTask", 200,  		//
+					&toBlue[0], 3, &xParseTaskHandle);
+
 			while( findEOS(&btQueue) ){								//If we have a new-line charachter '\n'
 				DMA2_Stream7->NDTR = pop(toBlue, &btQueue);        	//Number of charachters to send by bluetooth 
 				//toBlue[0]='\n';		//Or first symbol of toBlue = '$'	//It's fo debugging
 				DMA2_Stream7->CR |= DMA_SxCR_EN;					//Enable transmit by DMA
-				if(isNMEA == 0){
-					xTaskCreate(ParseNMEA, "ParseTask", 200,  		//
-							&toBlue[0], 3, &xParseTaskHandle);
-								isNMEA = 1;
-				}
-				else {
-					vTaskResume(xParseTaskHandle);					//После запуска просто возобновляем выполнение работы
-					if(AB.isABLineSet != 0)
-						doubleToDisplay(AB.distanceFromCurrentLine, 3);
-        doubleToDisplay(pn.zone, 1);
-        doubleToDisplay(pn.fix.easting, 2);
-    	doubleToDisplay(pn.fix.northing, 3);
-				}
+
+				vTaskResume(xParseTaskHandle);					//После запуска просто возобновляем выполнение работы
+				if(AB.isABLineSet != 0)
+					doubleToDisplay(AB.distanceFromCurrentLine, 3);
+
+				doubleToDisplay(pn.zone, 1);
+				doubleToDisplay(pn.fix.easting, 2);
+				doubleToDisplay(pn.fix.northing, 3);
+
 				//LCD_SendCommand(0x01);
 			}
 		}

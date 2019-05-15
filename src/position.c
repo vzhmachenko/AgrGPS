@@ -34,8 +34,8 @@ void CalculatePositionHeading(void){
 void InitializeFirstFewGPSPositions(void){
     if (!pos.isFirstFixPositionSet) {
         //reduce the huge utm coordinates
-        pn.utmEast = (int)(pn.fix.easting);
-        pn.utmNorth = (int)(pn.fix.northing);
+        pn.utmEast = (int32_t)pn.fix.easting;
+        pn.utmNorth = (int32_t)(pn.fix.northing);
         pn.fix.easting = pn.fix.easting - pn.utmEast;
         pn.fix.northing = pn.fix.northing - pn.utmNorth;
     
@@ -172,7 +172,7 @@ void UpdateFixPosition(void){
         //if ((fd.distanceUser += pos.distance) > 3000) fd.distanceUser = 0; ;//userDistance can be reset
 
         //most recent fixes are now the prev ones
-        pos.prevFix.easting = pn.fix.easting; 
+        pos.prevFix.easting = pn.fix.easting;
         pos.prevFix.northing = pn.fix.northing;
 
         //load up history with valid data

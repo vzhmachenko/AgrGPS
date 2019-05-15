@@ -64,7 +64,7 @@ void USART2_init(void){
 	//PA2     ------> USART2_TX
     //PA3     ------> USART2_RX 
 	RCC->AHB1ENR	|= RCC_AHB1ENR_GPIOAEN;
-	GPIOA->MODER	|= 0xA0;			//Alternate function mode
+	GPIOA->MODER	= 0xA80000A0;			//Alternate function mode
 	GPIOA->PUPDR	= 0xA0;			//Pullup
 	GPIOA->OSPEEDR	= 0xF0;			//Very high speed
 	GPIOA->AFR[0]	= 0x7700;		//Alternate function 7
@@ -86,7 +86,7 @@ void USART2_init(void){
 void USART6_init(void){
 	//PC6     ------> USART6_TX
     //PC7     ------> USART6_RX 
-	GPIOC->MODER	= 0xA800A000;			//Alternate function mode
+	GPIOC->MODER	|= 0xA000;			//Alternate function mode
 	GPIOC->PUPDR	|= 0xA000;			//Pullup
 	GPIOC->OSPEEDR	|= 0xF000;			//Very high speed
 	GPIOC->AFR[0]	= 0x88000000;		//Alternate function 8
@@ -124,8 +124,8 @@ void dma1ini(void) {
 					 |  DMA_SxCR_DBM;		//Double buffer mode
 	DMA1->HIFCR |= DMA_HIFCR_CTCIF5;        //Сбросить бит прервания
     NVIC_EnableIRQ(DMA1_Stream5_IRQn);      //вкл обработку прер для
-    NVIC_SetPriority(DMA1_Stream5_IRQn, 15);
       DMA1_Stream5->CR |= DMA_SxCR_EN;		//DMA -> EN
+      NVIC_SetPriority(DMA1_Stream5_IRQn, 15);
 
 }
 
