@@ -9,8 +9,8 @@ const double sm_a = 6378137.0;
 const double sm_b = 6356752.314;
 const double UTMScaleFactor = 0.9996;
 char words[15][15];
-int8_t a = 0;
-
+int8_t coordUpdated = 0;
+int8_t coordCorrect =0;
 NMEA pn;
 extern position pos;
 double xy[2] = {0.0, 0.0};
@@ -21,7 +21,7 @@ void createStartNMEA(void){
     pn.fixOffset = (vec2){0,0};
     pn.status = 'q';
     pn.hemisphere = 'N';
-
+    pn.zone = 0;
 
 
 }
@@ -69,9 +69,8 @@ void MapLatLonToXY(double phi, double lambda, double lambda0){
 }
 void DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
     //only calculate the zone once!
-    if (!pos.isFirstFixPositionSet && pn.fixQuality != 0){
+    if (!pos.isFirstFixPositionSet){// && pn.fixQuality != 0){
         pn.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
-        a = 1;
     }
     MapLatLonToXY(latitude * 0.01745329251994329576923690766743,
         longitude * 0.01745329251994329576923690766743,
@@ -122,11 +121,12 @@ void ParseNMEA(void *parameter){
     while (1)
     {   
         splitString(str);
+        coordUpdated = 0;
         if (strstr(str, "$GPGGA") != NULL) ParseGGA(); 
         //if (strstr(str, "$GPVTG") != NULL) ParseVTG();
         //if (strstr(str, "$GPRMC") != NULL) ParseRMC();
         //if (strstr(str, "$GPGLL") != NULL) ParseGLL();
-        if(a)
+        if(coordUpdated && coordCorrect)
         	UpdateFixPosition();
         vTaskSuspend(NULL);         //При завершении обработки сообщения приостанавливаем задачу
     }
@@ -148,8 +148,13 @@ void ParseGGA(void){
     if (words[3] == "S"){
         pn.latitude *= -1;
         pn.hemisphere = 'S';
+        coordCorrect = 1;
     }
-    else pn.hemisphere = 'N';
+    else
+    	if(words[3] == "N") {
+    		pn.hemisphere = 'N';
+    		coordCorrect = 1;
+    	}
     pn.longitude =NMEAtoDecimal(words[4]);
     if (words[5] == "W")
         pn.longitude *= -1;
@@ -161,7 +166,7 @@ void ParseGGA(void){
     pn.altitude = atof(words[9]);
     pn.ageDiff = atof(words[11]);
     strncpy(pn.time, words[1], 6);
-
+    coordUpdated =1;
     
 }
 void ParseGLL(void){
@@ -181,6 +186,7 @@ void ParseGLL(void){
     UpdateNorthingEasting();
     LCD_Send_String(0, "GLL");
     strncpy(pn.time, words[1], 5);
+    coordUpdated =1;
 
 }
 void ParseRMC(void){
@@ -202,6 +208,7 @@ void ParseRMC(void){
     pn.speed = atof(words[7]);
     pn.speed = round(pn.speed * 1.852);
     pn.headingTrue = atof(words[8]);
+    coordUpdated =1;
 
 }
 void ParseVTG(void){
