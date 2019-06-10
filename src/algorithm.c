@@ -63,7 +63,7 @@ void tempTask2(void *tem){
 }
 void tempTask(void *tem){
 	while(1){
-		GPIOD->ODR ^= 0x2;
+		GPIOD->ODR ^= 0x10;
 		vTaskDelay(40);
 	}
 }

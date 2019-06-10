@@ -69,7 +69,7 @@ void MapLatLonToXY(double phi, double lambda, double lambda0){
 }
 void DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
     //only calculate the zone once!
-    if (!pos.isFirstFixPositionSet){
+    if (!pos.isFirstFixPositionSet && pn.fixQuality != 0){
         pn.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
         a = 1;
     }
