@@ -69,7 +69,7 @@ void MapLatLonToXY(double phi, double lambda, double lambda0){
 }
 void DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
     //only calculate the zone once!
-    if (!pos.isFirstFixPositionSet){// && pn.fixQuality != 0){
+    if (!pos.isFirstFixPositionSet){
         pn.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
     }
     MapLatLonToXY(latitude * 0.01745329251994329576923690766743,
@@ -118,8 +118,7 @@ void ParseNMEA(void *parameter){
     bit0 - isGPSPositionInit
     bit1 - isFirstFixPositionSet
     */
-    while (1)
-    {   
+    while (1) {
         splitString(str);
         coordUpdated = 0;
         if (strstr(str, "$GPGGA") != NULL) ParseGGA(); 
@@ -158,7 +157,8 @@ void ParseGGA(void){
     pn.longitude =NMEAtoDecimal(words[4]);
     if (words[5] == "W")
         pn.longitude *= -1;
-    UpdateNorthingEasting();
+    if(strlen(words[2]) > 6 && strlen(words[4]) > 6)
+    	UpdateNorthingEasting();
     LCD_Send_String(0, "GGA");
     pn.fixQuality = atoi(words[6]);
     pn.satellitesTracked = atoi(words[7]);

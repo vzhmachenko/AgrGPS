@@ -11,12 +11,21 @@ void initABl(void){
     AB.refLineSide = 1.0;
     AB.widthMinusOverlap = vehicle.toolWidth - vehicle.toolOverlap;
     AB.isOnRightSideCurrentLine = 1;
+    AB.refPoint1 = (vec2){0.0, 0.0};
 }
 
 void btnAPoint(void){
-    AB.refPoint1 = AB.isABLineSet > 0 ? AB.refPoint2 : pn.fix;
+	if(AB.isABLineSet != 1)
+		AB.refPoint1 = pn.fix;
+	//else
+		//Error button msg.
 }
 void btnBPoint(void){
+	if(AB.isABLineSet == 1)
+		AB.refPoint1 = AB.refPoint2;
+	if((int)AB.refPoint1.easting == (int)AB.refABLineP1.northing )
+		return;
+
     AB.refPoint2 = pn.fix;
     
     AB.abHeading = atan2(AB.refPoint2.easting - AB.refPoint1.easting, 
