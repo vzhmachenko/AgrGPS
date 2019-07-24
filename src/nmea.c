@@ -16,7 +16,8 @@ extern position pos;
 double xy[2] = {0.0, 0.0};
 
 
-void createStartNMEA(void){
+void 
+createStartNMEA(void){
     pn.fix = (vec2){0, 0};
     pn.fixOffset = (vec2){0,0};
     pn.status = 'q';
@@ -25,7 +26,9 @@ void createStartNMEA(void){
 
 
 }
-double ArcLengthOfMeridian(double phi){
+
+double 
+ArcLengthOfMeridian(double phi){
     const double n = (sm_a - sm_b) / (sm_a + sm_b);
     double alpha = ((sm_a + sm_b) / 2.0) * (1.0 + (powf(n, 2.0) / 4.0)
                     + (pow(n, 4.0) / 64.0));
@@ -39,7 +42,9 @@ double ArcLengthOfMeridian(double phi){
             + (delta * sin(6.0 * phi))
             + (epsilon * sin(8.0 * phi)));
 }
-void MapLatLonToXY(double phi, double lambda, double lambda0){
+
+void 
+MapLatLonToXY(double phi, double lambda, double lambda0){
     double ep2 = (pow(sm_a, 2.0) - pow(sm_b, 2.0)) / pow(sm_b, 2.0);
     double nu2 = ep2 * pow(cos(phi), 2.0);
     double n = pow(sm_a, 2.0) / (sm_b * sqrt(1 + nu2));
@@ -67,7 +72,9 @@ void MapLatLonToXY(double phi, double lambda, double lambda0){
         + (t / 40320.0 * n * pow(cos(phi), 8.0) * l8Coef * pow(l, 8.0));
 
 }
-void DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
+
+void 
+DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
     //only calculate the zone once!
     if (!pos.isFirstFixPositionSet){
         pn.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
@@ -82,7 +89,9 @@ void DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
         xy[1] += 10000000.0;
 
 }
-void UpdateNorthingEasting(void){
+
+void 
+UpdateNorthingEasting(void){
     DecDeg2UTM(pn.latitude, pn.longitude);
 
     //keep a copy of actual easting and northings
@@ -101,7 +110,9 @@ void UpdateNorthingEasting(void){
             pn.fix.easting) + (cos(-pn.convergenceAngle) * 
             pn.fix.northing);
 }
-void splitString(char *from){
+
+void 
+splitString(char *from){
 	char *pch;
 	pch = strtok(from, ",");
 	for(int i = 0; pch != NULL && i<15; i++){
@@ -111,7 +122,9 @@ void splitString(char *from){
 		pch = strtok(NULL, ",");
 	}
 }
-void ParseNMEA(void *parameter){
+
+void 
+ParseNMEA(void *parameter){
     char *str;
     str = (char*) parameter;
     /* GPSPositionStatusBit
@@ -130,7 +143,9 @@ void ParseNMEA(void *parameter){
         vTaskSuspend(NULL);         //При завершении обработки сообщения приостанавливаем задачу
     }
 }
-double NMEAtoDecimal(char *str){
+
+double 
+NMEAtoDecimal(char *str){
     double wgs = 0.01666666666;
     double transform = atof(str);
     transform = (transform - (int)(transform-
@@ -138,7 +153,9 @@ double NMEAtoDecimal(char *str){
         (int)(transform-(int)transform%100)/100;
     return transform;
 }
-void ParseGGA(void){
+
+void 
+ParseGGA(void){
     //$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M ,  ,*47
     //   0     1      2      3    4      5 6  7  8   9    10 11  12 13  14
     //         Time   Lat         Lon
@@ -169,7 +186,9 @@ void ParseGGA(void){
     coordUpdated =1;
     
 }
-void ParseGLL(void){
+
+void 
+ParseGLL(void){
     //000GPGLL,5026.83816,N,03036.72223,E,092645.00,A,A*60
     //   0         1      2       3     4       5   6   7
     //            lat            lon
@@ -189,7 +208,9 @@ void ParseGLL(void){
     coordUpdated =1;
 
 }
-void ParseRMC(void){
+
+void 
+ParseRMC(void){
     //$GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A
     //   0      1   2     3    4      5    6    7     8     9      10
     //        time      lat         lon    spidInKnots
@@ -211,7 +232,9 @@ void ParseRMC(void){
     coordUpdated =1;
 
 }
-void ParseVTG(void){
+
+void 
+ParseVTG(void){
     GPIOD->ODR ^= 0x8;
     LCD_Send_String(0, "VTG");
     pn.headingTrue = atof(words[1]);

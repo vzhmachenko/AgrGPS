@@ -4,7 +4,8 @@ position pos;
 extern NMEA pn;
 extern Vehicle vehicle;
 
-void initPosition(){
+void 
+initPosition(){
     pos.isFirstFixPositionSet = 0;
     pos.isGPSPositionInitialized = 0;
     pos.isFixHolding = 0;
@@ -24,14 +25,18 @@ void initPosition(){
     pos.prevBoundaryPos.northing = 0;
 
 }
-void CalculatePositionHeading(void){
+
+void 
+CalculatePositionHeading(void){
     pos.fixHeading = toRadians(pn.headingTrue);
     //translate world to the pivot axle
     pos.pivotAxlePos.easting = pn.fix.easting - (sin(pos.fixHeading) * vehicle.antennaPivot);
     pos.pivotAxlePos.northing = pn.fix.northing - (cos(pos.fixHeading) * vehicle.antennaPivot);
     pos.pivotAxlePos.heading = pos.fixHeading;
 }
-void InitializeFirstFewGPSPositions(void){
+
+void 
+InitializeFirstFewGPSPositions(void){
     if (!pos.isFirstFixPositionSet) {
         //reduce the huge utm coordinates
         pn.utmEast = (int32_t)pn.fix.easting;
@@ -90,7 +95,9 @@ void InitializeFirstFewGPSPositions(void){
         return;
     }
 }
-void UpdateFixPosition(void){
+
+void 
+UpdateFixPosition(void){
     pos.startCounter++;
     pos.totalFixSteps = pos.fixUpdateHz * 6;
         		GPIOD->ODR ^= 0x100;

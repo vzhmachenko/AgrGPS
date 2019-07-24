@@ -11,13 +11,14 @@
 #include "position.h"
 #include "ABLine.h"
 extern 	QueueHandle_t	xpQueue;
-extern 	char 			toBlue[strlen_t];
-		char 		   *receivePointer;
-		BaseType_t 		xStatus1;
-extern ABline AB;
-extern NMEA pn;
+extern 	char 			    toBlue[strlen_t];
+        char*			    receivePointer;
+        BaseType_t 		xStatus1;
+extern  ABline 			  AB;
+extern  NMEA 			    pn;
 
-void receiveFromDMA(void *param){
+void 
+receiveFromDMA(void *param){
 	static queue btQueue;		//Создаем очередь сообщений
 	TaskHandle_t xParseTaskHandle = NULL;
 	btQueue.create = &create;	//Делаем метод-функцию, для ООП
@@ -55,20 +56,24 @@ void receiveFromDMA(void *param){
 	}
 }
 
-void tempTask2(void *tem){
+void 
+tempTask2(void *tem){
 	while(1){
 		GPIOD->ODR ^= 0x1000;
 		vTaskDelay(400);
 	}
 }
-void tempTask(void *tem){
+
+void 
+tempTask(void *tem){
 	while(1){
 		GPIOD->ODR ^= 0x10;
 		vTaskDelay(40);
 	}
 }
 
-void regToDisplay(uint32_t reg, int8_t strNum){
+void 
+regToDisplay(uint32_t reg, int8_t strNum){
 	char bufer[9];
 	uint8_t k;
 	bufer[8] = 0;
@@ -81,13 +86,16 @@ void regToDisplay(uint32_t reg, int8_t strNum){
 		}
 	LCD_Send_String(strNum, bufer);
 }
-void doubleToDisplay(double num, int8_t strNum){
+
+void 
+doubleToDisplay(double num, int8_t strNum){
 	char lengthToLine[9];
 	itoa( (int)num, lengthToLine, 10); 	//При необходимости умножить для повышения точности
 	LCD_Send_String(strNum, lengthToLine);
 }
 
-void keyboardScan(void *param){
+void 
+keyboardScan(void *param){
 	static uint8_t counter = 0;
 	while(1){
 

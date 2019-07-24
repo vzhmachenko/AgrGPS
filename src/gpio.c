@@ -1,11 +1,14 @@
 #include "gpio.h"
 
-void timerini2(void){
+void 
+timerini2(void){
     RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
     TIM2->PSC = 1000-1;	//	= 168000/4
     TIM2->CR1 = TIM_CR1_OPM;
 }
-void delay_ms(uint16_t ms){
+
+void 
+delay_ms(uint16_t ms){
     TIM2->ARR = ms;		// *= 4
     TIM2->CNT = 0;
     TIM2->CR1 = TIM_CR1_CEN;
@@ -14,7 +17,8 @@ void delay_ms(uint16_t ms){
     TIM2->SR &= ~TIM_SR_UIF;
 }
 
-void GPIO_WritePin(GPIO_TypeDef* GPIOx, 
+void 
+GPIO_WritePin(GPIO_TypeDef* GPIOx, 
 		uint16_t GPIO_Pin, FlagStatus PinState) {
   if(PinState != RESET)  {
     GPIOx->BSRRL = GPIO_Pin;
@@ -24,7 +28,8 @@ void GPIO_WritePin(GPIO_TypeDef* GPIOx,
   }
 }
 
-void LCD_Set_Data(uint8_t data){
+void 
+LCD_Set_Data(uint8_t data){
 
     (((data >> 7 ) &0x01) == 1) ? DB7(1) : DB7(0);
     (((data >> 6 ) &0x01) == 1) ? DB6(1) : DB6(0);
@@ -35,7 +40,9 @@ void LCD_Set_Data(uint8_t data){
     (((data >> 1 ) &0x01) == 1) ? DB1(1) : DB1(0);
     (((data >> 0 ) &0x01) == 1) ? DB0(1) : DB0(0);
 }
-void LCD_SendCommand(uint8_t data){
+
+void 
+LCD_SendCommand(uint8_t data){
     RS(0);
     LCD_Set_Data(data);
     EN(1);
@@ -43,14 +50,17 @@ void LCD_SendCommand(uint8_t data){
     EN(0);
 }
 
-void LCD_SendData(uint8_t data){
+void 
+LCD_SendData(uint8_t data){
     RS(1);
     LCD_Set_Data(data);
     EN(1);
     delay_ms(1);//10
     EN(0);
 }
-void LCD_ini(void){
+
+void 
+LCD_ini(void){
 	RW(0);
 	LCD_SendCommand(0x38);
 	delay_ms(50);
@@ -65,7 +75,9 @@ void LCD_ini(void){
 	LCD_SendCommand(0x02);
 	delay_ms(50);
 }
-uint8_t LCD_Send_String(uint8_t String_Num, char* str){
+
+uint8_t 
+LCD_Send_String(uint8_t String_Num, char* str){
 	uint8_t i=0;
 	uint8_t rowAdr[4] = {0x80, 0xc0, 0x94, 0xd4};
 	if (String_Num == 0)

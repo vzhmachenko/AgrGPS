@@ -5,7 +5,8 @@ extern Vehicle vehicle;
 extern position pos;
 ABline AB;
 
-void initABl(void){
+void 
+initABl(void){
     AB.isABLineSet = 0;
     AB.isABSameAsVehicleHeading = 1;
     AB.refLineSide = 1.0;
@@ -14,13 +15,16 @@ void initABl(void){
     AB.refPoint1 = (vec2){0.0, 0.0};
 }
 
-void btnAPoint(void){
+void 
+btnAPoint(void){
 	if(AB.isABLineSet != 1)
 		AB.refPoint1 = pn.fix;
 	//else
 		//Error button msg.
 }
-void btnBPoint(void){
+
+void 
+btnBPoint(void){
 	if(AB.isABLineSet == 1)
 		AB.refPoint1 = AB.refPoint2;
 	if((int)AB.refPoint1.easting == (int)AB.refABLineP1.northing )
@@ -42,7 +46,9 @@ void btnBPoint(void){
 
     AB.isABLineSet = 1;
 }
-void SetABLineByHeading(void) {
+
+void 
+SetABLineByHeading(void) {
     //heading is set in the AB Form
     AB.refABLineP1.easting = AB.refPoint1.easting - (sin(AB.abHeading) * 4000.0);
     AB.refABLineP1.northing = AB.refPoint1.northing - (cos(AB.abHeading) * 4000.0);
@@ -56,7 +62,8 @@ void SetABLineByHeading(void) {
     AB.isABLineSet = 1;
 }
 
-void MoveABLine(double dist) {
+void 
+MoveABLine(double dist) {
     double headingCalc;
 
     //calculate the heading 90 degrees to ref ABLine heading
@@ -75,7 +82,9 @@ void MoveABLine(double dist) {
     AB.refPoint2.easting = AB.refABLineP2.easting;
     AB.refPoint2.northing = AB.refABLineP2.northing;
 }
-void GetCurrentABLine(vec3 pivot) {
+
+void 
+GetCurrentABLine(vec3 pivot) {
     //move the ABLine over based on the overlap amount set in vehicle
     double widthMinusOverlap = vehicle.toolWidth - vehicle.toolOverlap;
 

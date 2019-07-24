@@ -6,7 +6,8 @@ extern char recString1[strlen_r];
 extern char toBlue[strlen_t];
 
 //Configure pins for LED, LCD, Keyboard
-void gpio_ini(void){
+void 
+gpio_ini(void){
 	RCC->AHB1ENR =  RCC_AHB1ENR_GPIOBEN
 				| RCC_AHB1ENR_GPIOCEN
 				| RCC_AHB1ENR_GPIODEN
@@ -37,7 +38,9 @@ void gpio_ini(void){
 	GPIOB->OSPEEDR	= 0x11100000;	//Medium speed
 	GPIOB->OTYPER	= 0;			//Output push-pull
 }
-void RCC_Init(void){
+
+void 
+RCC_Init(void){
 	FLASH->ACR =  FLASH_ACR_LATENCY_5WS	//Flash latency = 5
 				| FLASH_ACR_PRFTEN
 				| FLASH_ACR_ICEN
@@ -59,8 +62,10 @@ void RCC_Init(void){
 	RCC->CFGR |= RCC_CFGR_SW_PLL;   //Устанавливаем
 	while((RCC->CFGR & RCC_CFGR_SW_PLL) != RCC_CFGR_SW_PLL) ;
 }
+
 //GPS
-void USART2_init(void){
+void 
+USART2_init(void){
 	//PA2     ------> USART2_TX
     //PA3     ------> USART2_RX 
 	RCC->AHB1ENR	|= RCC_AHB1ENR_GPIOAEN;
@@ -83,7 +88,8 @@ void USART2_init(void){
 }
 
 //BlueTooth
-void USART6_init(void){
+void 
+USART6_init(void){
 	//PC6     ------> USART6_TX
     //PC7     ------> USART6_RX 
 	GPIOC->MODER	|= 0xA000;			//Alternate function mode
@@ -104,7 +110,8 @@ void USART6_init(void){
 				|  USART_CR1_RXNEIE;
 }
 
-void dma1ini(void) {
+void 
+dma1ini(void) {
     USART2->CR1 &= ~(USART_CR1_RXNEIE   //rx interrupt
                     | USART_CR1_UE);     //USART2 enable
     USART2->CR3 |= USART_CR3_DMAR;		//Enable DMA receiver for USART2
@@ -129,7 +136,8 @@ void dma1ini(void) {
 
 }
 
-void dma2ini(void) {
+void
+dma2ini(void) {
 	//DMA Stream 7, Channel 5
     USART6->CR1 &= ~(USART_CR1_RXNEIE   //rx interrupt
                     | USART_CR1_UE);     //USART2 enable

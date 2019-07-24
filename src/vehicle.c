@@ -3,7 +3,8 @@
 Vehicle vehicle;
 extern NMEA pn;
 
-double UpdateGoalPointDistance(double distanceFromCurrentLine) {
+double 
+UpdateGoalPointDistance(double distanceFromCurrentLine) {
     //how far should goal point be away  - speed * seconds * kmph -> m/s then limit min value
 
     double goalPointDistance = pn.speed * vehicle.goalPointLookAheadSeconds * 0.27777777;/*vehicle.goalPointLookAheadSeconds*/ 
@@ -19,7 +20,9 @@ double UpdateGoalPointDistance(double distanceFromCurrentLine) {
 
     return goalPointDistance;
 }
-void initVehicle(void){
+
+void 
+initVehicle(void){
     vehicle.toolWidth = 4;
     vehicle.toolOverlap = 0;
     vehicle.toolOffset = 0;
