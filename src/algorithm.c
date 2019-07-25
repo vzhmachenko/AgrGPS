@@ -10,12 +10,13 @@
 #include "nmea.h"
 #include "position.h"
 #include "ABLine.h"
+
 extern 	QueueHandle_t	xpQueue;
 extern 	char 			    toBlue[strlen_t];
-        char*			    receivePointer;
-        BaseType_t 		xStatus1;
 extern  ABline 			  AB;
 extern  NMEA 			    pn;
+        BaseType_t 		xStatus1;
+        char*			    receivePointer;
 
 void 
 receiveFromDMA(void *param){
