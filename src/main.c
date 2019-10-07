@@ -1,27 +1,18 @@
-#include "stm32f4xx.h"
 #include "main.h"
-#include "FreeRTOSConfig.h"
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include "algorithm.h"
-#include "gpio.h"
-#include "periph.h"
-#include <charQueue.h>
 
-//#include "vehicle.h"
-#include "nmea.h"
-
+//		Char buffer variables and pointers
 char  rxDMAbuf0[strlen_r];     
 char  rxDMAbuf1[strlen_r];
 char  toBlue[strlen_t];
-char* rxDMA[2] = {&rxDMAbuf0[0], 
-                  &rxDMAbuf1[0]};
+char* rxDMA[2] = {	&rxDMAbuf0[0], 
+                  	&rxDMAbuf1[0]	};
+
 /*------RTOS variables------*/
 QueueHandle_t	  xpQueue;      //Указатель на очередь взаимодействия между задачей и прерыванием
 BaseType_t      xStatus;
-BaseType_t*      xHigherPriorityTaskWoken;
+BaseType_t*     xHigherPriorityTaskWoken;
 /*-----------------------------*/
+
 int main(void) {
 /*Hardware initialisation*/
 	RCC_Init();
@@ -45,9 +36,10 @@ int main(void) {
 /*******************************************
  //   Задача получения NMEA сообщений через DMA
  ********************************************/
-	if(xTaskCreate( receiveFromDMA, "ReceiveNMEAbyDMA", 
+	if( xTaskCreate( receiveFromDMA, "ReceiveNMEAbyDMA", 
                   800, NULL, 3, NULL) != pdPASS)
       GPIOD->ODR |= 0xFFFFFFFF;
+
 
 /*******************************************
 //     Задача сканирования клавиатуры
@@ -57,20 +49,23 @@ int main(void) {
       GPIOD->ODR |= 0xFFFFFFFF;
 
 
-//Временные тестовые задачи
+// Временные тестовые задачи
 	xTaskCreate(tempTask, "temp", 30, NULL, 1, NULL);
 	xTaskCreate(tempTask2, "temdp", 30, NULL, 1, NULL);
 
-//Запускаем планировщик заданий
+// Запускаем планировщик заданий
 	vTaskStartScheduler();
 
+// Бесконечный цикл
 	for(;;){
 
 	}
 }
-/***************************************************
+
+/*****************************************************/
 /*  Обработка прерывания DMA
-**************************************************** */
+/*  Получение NMEA-сообщений от GPS-приемника
+******************************************************/
 void 
 DMA1_Stream5_IRQHandler(){
 	*xHigherPriorityTaskWoken = pdFALSE;
@@ -101,6 +96,9 @@ DMA1_Stream5_IRQHandler(){
 	}
 }
 
+/*****************************************************/
+/*  
+******************************************************/
 void 
 DMA2_Stream7_IRQHandler(){
 	if( (DMA2->HISR & DMA_HISR_TCIF7 ) == DMA_HISR_TCIF7){
@@ -108,6 +106,10 @@ DMA2_Stream7_IRQHandler(){
 		DMA2->HIFCR 		|= DMA_HIFCR_CTCIF7;        //Сбросить бит прервания	    
 	}
 }
+
+/*****************************************************/
+/*  
+******************************************************/
 void
 USART6_IRQHandler(){
 	char t;

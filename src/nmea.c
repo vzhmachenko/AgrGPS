@@ -3,7 +3,8 @@
 #include "glm.h"
 #include "position.h"
 
-#define NULL ((void *)0)
+#define NULL    ( (void *) 0)
+#define nullptr ( (void *) 0)
 
 const double sm_a = 6378137.0;
 const double sm_b = 6356752.314;
@@ -144,16 +145,46 @@ ParseNMEA(void *parameter){
     }
 }
 
+/*! 
+ * Переводим координаты, полученные в сообщении, из минут в 
+ * десятичную систему
+ */
 double 
 NMEAtoDecimal(char *str){
-    double wgs = 0.01666666666;
-    double transform = atof(str);
-    transform = (transform - (int)(transform-
-        (int)transform%100)) * wgs + 
-        (int)(transform-(int)transform%100)/100;
-    return transform;
+  double wgs = 0.01666666666;         ///< Коефициент перевода
+  double transform = atof(str);       ///< Переменная из сообщения
+  transform = (transform - (int)(transform- (int)transform%100)) * 
+              wgs + (int)(transform-(int)transform%100)/100;
+  return transform;
 }
 
+/*!
+ * Парсим GGA-сообщение
+ *GGA Global Positioning System Fix Data. Time, Position and fix related data for a GPS receiver
+          1         2    3    4     5 6  7  8   9  10 11 12 13   14 15
+          |         |    |    |     | |  |  |   |  |  |  |  |    |  |
+$--GGA,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh
+1) Time (UTC)
+2) Latitude
+3) N or S (North or South)
+4) Longitude
+5) E or W (East or West)
+6) GPS Quality Indicator,
+    0 - fix not available,
+    1 - GPS fix,
+    2 - Differential GPS fix
+7) Number of satellites in view, 00 - 12
+8) Horizontal Dilution of precision
+9) Antenna Altitude above/below mean-sea-level (geoid)
+10) Units of antenna altitude, meters
+11) Geoidal separation, the difference between the WGS-84 earth
+    ellipsoid and mean-sea-level (geoid), "-" means mean-sea-level below ellipsoid
+12) Units of geoidal separation, meters
+13) Age of differential GPS data, time in seconds since last SC104
+    type 1 or 9 update, null field when DGPS is not used
+14) Differential reference station ID, 0000-1023
+15) Checksum
+ */ 
 void 
 ParseGGA(void){
     //$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M ,  ,*47
@@ -186,6 +217,19 @@ ParseGGA(void){
     coordUpdated =1;
     
 }
+/* 
+* GLL Geographic Position – Latitude/Longitude
+*         1      2     3    4    5      6 7
+*         |      |     |    |    |      | |
+* $--GLL,llll.ll,a,yyyyy.yy,a,hhmmss.ss,A*hh
+* 1) Latitude
+* 2) N or S (North or South)
+* 3) Longitude
+* 4) E or W (East or West)
+* 5) Time (UTC)
+* 6) Status A - Data Valid, V - Data Invalid
+* 7) Checksum
+*/
 
 void 
 ParseGLL(void){
@@ -209,6 +253,26 @@ ParseGLL(void){
 
 }
 
+
+
+/*
+* RMC Recommended Minimum Navigation Information
+*           1      2    3    4     5    6  7   8    9  10 11  12
+*           |      |    |    |     |    |  |   |    |   |  |  | 
+* $--RMC,hhmmss.ss,A,llll.ll,a,yyyyy.yy,a,x.x,x.x,xxxx,x.x,a*hh
+* 1) Time (UTC)
+* 2) Status, V = Navigation receiver warning
+* 3) Latitude
+* 4) N or S
+* 5) Longitude
+* 6) E or W
+* 7) Speed over ground, knots
+* 8) Track made good, degrees true
+* 9) Date, ddmmyy
+* 10) Magnetic Variation, degrees
+* 11) E or W
+* 12) Checksum
+*/
 void 
 ParseRMC(void){
     //$GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A
@@ -233,6 +297,22 @@ ParseRMC(void){
 
 }
 
+/*
+* Парсим VTG-сообщение
+* VTG                    Track Made Good and Ground Speed
+*         1   2 3   4 5   6 7   8 9
+*         |   | |   | |   | |   | |
+*  $--VTG,x.x,T,x.x,M,x.x,N,x.x,K*hh
+*  1) Track Degrees
+*  2) T = True
+*  3) Track Degrees
+*  4) M = Magnetic
+*  5) Speed Knots
+*  6) N = Knots
+*  7) Speed Kilometers Per Hour
+*  8) K = Kilometres Per Hour
+*  9) Checksum
+*/ 
 void 
 ParseVTG(void){
     GPIOD->ODR ^= 0x8;
