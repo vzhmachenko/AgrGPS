@@ -10,44 +10,54 @@
 #include <string.h>
 #include "algorithm.h"
 typedef struct {
-     //WGS84 Lat Long
-        double latitude, longitude;
-        double actualEasting, actualNorthing;
-        double zone;
-        double centralMeridian, convergenceAngle;
+  //WGS84 Lat Long
+  double latitude;                              ///< Широта
+  double longitude;                             ///< Долгота
+  double actualEasting, actualNorthing;
+  double zone;                                  ///< UTM зона
+  double centralMeridian;                       ///< Центральный меридиан текущей зоны 
+  double convergenceAngle;                      ///< Ошибка азимута, utm-склонение
 
-        
-        uint8_t updatedGGA, updatedOGI, updatedRMC;
+  
+  uint8_t updatedGGA, updatedOGI, updatedRMC;
 
-        char *rawBuffer;
-        char time[6];
-        char date[6];
-        //UTM coordinates
-        //double northing, easting;
-        vec2 fix;   //0,0
-        vec2 prevFix;
+  char *rawBuffer;
+  //-----------------------------------------------------
+  char time[6]; ///< time buffer
+  char date[6]; ///< date buffer
+  int8_t coordCorrect = 0;    ///< Актуализация координат:
+                              ///< bit0 - latitude
+                              ///< bit1 - longtitude
+  //-----------------------------------------------------
+  //UTM coordinates
+  //double northing, easting;
+  vec2 fix;   //0,0
+  vec2 prevFix;
 
-        //used to offset the antenna position to compensate for drift
-        vec2 fixOffset;     //0,0
+  //used to offset the antenna position to compensate for drift
+  vec2 fixOffset;     //0,0
 
-        //other GIS Info
-        double altitude, speed;
-        double headingTrue, headingHDT, hdop, ageDiff;
+  //other GIS Info
+  double altitude;                        ///< Высота приемника (антенны) над уровнем моря
+  double speed;                           ///< Скорость, в кнотах
+  double headingTrue, headingHDT;
+  double ageDiff;                         ///< Различия в "элипсоидах"
+  double hdop;                            ///< Точность позиционирования по горизонтали 
 
-        //imu
-        double nRoll, nPitch, nYaw, nAngularVelocity;
-        uint8_t isValidIMU;
-        int16_t fixQuality;
-        int16_t satellitesTracked;
-        char status;
-        char utcDateTime[15];
-        char hemisphere;
+  //imu
+  double nRoll, nPitch, nYaw, nAngularVelocity;
+  uint8_t isValidIMU;
+  int16_t fixQuality;                     ///< Качество позиционирования
+  int16_t satellitesTracked;              ///< Количество захваченных спутников
+  char status;
+  char utcDateTime[15];
+  char hemisphere;
 
-        //UTM numbers are huge, these cut them way down.
-        int32_t utmNorth, utmEast;
+  //UTM numbers are huge, these cut them way down.
+  int32_t utmNorth, utmEast;
 
 
-        vec3 stepFixPts[50];
+  vec3 stepFixPts[50];
 
 } NMEA;  
 

@@ -10,8 +10,6 @@ const double sm_a = 6378137.0;
 const double sm_b = 6356752.314;
 const double UTMScaleFactor = 0.9996;
 char words[15][15];
-int8_t coordUpdated = 0;
-int8_t coordCorrect =0;
 NMEA pn;
 extern position pos;
 double xy[2] = {0.0, 0.0};
@@ -24,54 +22,54 @@ createStartNMEA(void){
     pn.status = 'q';
     pn.hemisphere = 'N';
     pn.zone = 0;
+    pn.coordCorrect = 0;
 
 
 }
 
 double 
 ArcLengthOfMeridian(double phi){
-    const double n = (sm_a - sm_b) / (sm_a + sm_b);
-    double alpha = ((sm_a + sm_b) / 2.0) * (1.0 + (powf(n, 2.0) / 4.0)
-                    + (pow(n, 4.0) / 64.0));
-    double beta = (-3.0 * n / 2.0) + (9.0 * pow(n, 3.0) * 0.0625)
-                    + (-3.0 * pow(n, 5.0) / 32.0);
-    double gamma = (15.0 * pow(n, 2.0) * 0.0625) + (-15.0 * pow(n, 4.0) / 32.0);
-    double delta = (-35.0 * pow(n, 3.0) / 48.0) + (105.0 * pow(n, 5.0) / 256.0);
-    double epsilon = (315.0 * pow(n, 4.0) / 512.0);
-    return alpha * (phi + (beta * sin(2.0 * phi))
-            + (gamma * sin(4.0 * phi))
-            + (delta * sin(6.0 * phi))
-            + (epsilon * sin(8.0 * phi)));
+  const double n  = (sm_a - sm_b) / (sm_a + sm_b);
+  double alpha    = ((sm_a + sm_b) / 2.0) * (1.0 + (powf(n, 2.0) / 4.0)
+                      + (pow(n, 4.0) / 64.0));
+  double beta     = (-3.0 * n / 2.0) + (9.0 * pow(n, 3.0) * 0.0625)
+                      + (-3.0 * pow(n, 5.0) / 32.0);
+  double gamma    = (15.0 * pow(n, 2.0) * 0.0625) + (-15.0 * pow(n, 4.0) / 32.0);
+  double delta    = (-35.0 * pow(n, 3.0) / 48.0) + (105.0 * pow(n, 5.0) / 256.0);
+  double epsilon  = (315.0 * pow(n, 4.0) / 512.0);
+  return alpha * (phi + (beta * sin(2.0 * phi))
+          + (gamma * sin(4.0 * phi))
+          + (delta * sin(6.0 * phi))
+          + (epsilon * sin(8.0 * phi)));
 }
 
 void 
 MapLatLonToXY(double phi, double lambda, double lambda0){
-    double ep2 = (pow(sm_a, 2.0) - pow(sm_b, 2.0)) / pow(sm_b, 2.0);
-    double nu2 = ep2 * pow(cos(phi), 2.0);
-    double n = pow(sm_a, 2.0) / (sm_b * sqrt(1 + nu2));
-    double t = tan(phi);
-    double t2 = t * t;
-    double l = lambda - lambda0;
-    double l3Coef = 1.0 - t2 + nu2;
-    double l4Coef = 5.0 - t2 + (9 * nu2) + (4.0 * (nu2 * nu2));
-    double l5Coef = 5.0 - (18.0 * t2) + (t2 * t2) + (14.0 * nu2) - (58.0 * t2 * nu2);
-    double l6Coef = 61.0 - (58.0 * t2) + (t2 * t2) + (270.0 * nu2) - (330.0 * t2 * nu2);
-    double l7Coef = 61.0 - (479.0 * t2) + (179.0 * (t2 * t2)) - (t2 * t2 * t2);
-    double l8Coef = 1385.0 - (3111.0 * t2) + (543.0 * (t2 * t2)) - (t2 * t2 * t2);
-            // Calculate easting (x) 
-            
-    xy[0] = (n * cos(phi) * l)
-        + (n / 6.0 * pow(cos(phi), 3.0) * l3Coef * pow(l, 3.0))
-        + (n / 120.0 * pow(cos(phi), 5.0) * l5Coef * pow(l, 5.0))
-        + (n / 5040.0 * pow(cos(phi), 7.0) * l7Coef * pow(l, 7.0));
+  double ep2    = (pow(sm_a, 2.0) - pow(sm_b, 2.0)) / pow(sm_b, 2.0);
+  double nu2    = ep2 * pow(cos(phi), 2.0);
+  double n      = pow(sm_a, 2.0) / (sm_b * sqrt(1 + nu2));
+  double t      = tan(phi);
+  double t2     = t * t;
+  double l      = lambda - lambda0;
+  double l3Coef = 1.0 - t2 + nu2;
+  double l4Coef = 5.0 - t2 + (9 * nu2) + (4.0 * (nu2 * nu2));
+  double l5Coef = 5.0 - (18.0 * t2) + (t2 * t2) + (14.0 * nu2) - (58.0 * t2 * nu2);
+  double l6Coef = 61.0 - (58.0 * t2) + (t2 * t2) + (270.0 * nu2) - (330.0 * t2 * nu2);
+  double l7Coef = 61.0 - (479.0 * t2) + (179.0 * (t2 * t2)) - (t2 * t2 * t2);
+  double l8Coef = 1385.0 - (3111.0 * t2) + (543.0 * (t2 * t2)) - (t2 * t2 * t2);
+          // Calculate easting (x) 
+          
+  xy[0] = (n * cos(phi) * l)
+      + (n / 6.0 * pow(cos(phi), 3.0) * l3Coef * pow(l, 3.0))
+      + (n / 120.0 * pow(cos(phi), 5.0) * l5Coef * pow(l, 5.0))
+      + (n / 5040.0 * pow(cos(phi), 7.0) * l7Coef * pow(l, 7.0));
 
-        // Calculate northing (y) 
-    xy[1] = ArcLengthOfMeridian(phi)
-        + (t / 2.0 * n * pow(cos(phi), 2.0) * pow(l, 2.0))
-        + (t / 24.0 * n * pow(cos(phi), 4.0) * l4Coef * pow(l, 4.0))
-        + (t / 720.0 * n * pow(cos(phi), 6.0) * l6Coef * pow(l, 6.0))
-        + (t / 40320.0 * n * pow(cos(phi), 8.0) * l8Coef * pow(l, 8.0));
-
+      // Calculate northing (y) 
+  xy[1] = ArcLengthOfMeridian(phi)
+      + (t / 2.0 * n * pow(cos(phi), 2.0) * pow(l, 2.0))
+      + (t / 24.0 * n * pow(cos(phi), 4.0) * l4Coef * pow(l, 4.0))
+      + (t / 720.0 * n * pow(cos(phi), 6.0) * l6Coef * pow(l, 6.0))
+      + (t / 40320.0 * n * pow(cos(phi), 8.0) * l8Coef * pow(l, 8.0));
 }
 
 void 
@@ -93,30 +91,30 @@ DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
 
 void 
 UpdateNorthingEasting(void){
-    DecDeg2UTM(pn.latitude, pn.longitude);
+  DecDeg2UTM(pn.latitude, pn.longitude);
 
-    //keep a copy of actual easting and northings
-    pn.actualEasting = xy[0];
-    pn.actualNorthing = xy[1];
+  //keep a copy of actual easting and northings
+  pn.actualEasting  = xy[0];
+  pn.actualNorthing = xy[1];
 
-    //if a field is open, the real one is subtracted from the integer
-    pn.fix.easting = xy[0] - pn.utmEast + pn.fixOffset.easting;
-    pn.fix.northing = xy[1] - pn.utmNorth + pn.fixOffset.northing;
+  //if a field is open, the real one is subtracted from the integer
+  pn.fix.easting    = xy[0] - pn.utmEast + pn.fixOffset.easting;
+  pn.fix.northing   = xy[1] - pn.utmNorth + pn.fixOffset.northing;
 
-    //compensate for the fact the zones lines are a grid and the world is round
-    pn.fix.easting = (cos(-pn.convergenceAngle) * 
-            pn.fix.easting) - (sin(-pn.convergenceAngle) * 
-            pn.fix.northing);
-    pn.fix.northing = (sin(-pn.convergenceAngle) * 
-            pn.fix.easting) + (cos(-pn.convergenceAngle) * 
-            pn.fix.northing);
+  //compensate for the fact the zones lines are a grid and the world is round
+  pn.fix.easting    = (cos(-pn.convergenceAngle) * 
+          pn.fix.easting) - (sin(-pn.convergenceAngle) * 
+          pn.fix.northing);
+  pn.fix.northing   = (sin(-pn.convergenceAngle) * 
+          pn.fix.easting) + (cos(-pn.convergenceAngle) * 
+          pn.fix.northing);
 }
 
 void 
 splitString(char *from){
 	char *pch;
 	pch = strtok(from, ",");
-	for(int i = 0; pch != NULL && i<15; i++){
+	for(int i = 0; pch != NULL && i<15; i++) {
 		sprintf(words[i], "%s", pch);
 		for(int k = strlen(words[i]); k<15; k++)
 			words[i][k] = '\0';
@@ -126,23 +124,22 @@ splitString(char *from){
 
 void 
 ParseNMEA(void *parameter){
-    char *str;
-    str = (char*) parameter;
-    /* GPSPositionStatusBit
-    bit0 - isGPSPositionInit
-    bit1 - isFirstFixPositionSet
-    */
-    while (1) {
-        splitString(str);
-        coordUpdated = 0;
-        if (strstr(str, "$GPGGA") != NULL) ParseGGA(); 
-        //if (strstr(str, "$GPVTG") != NULL) ParseVTG();
-        //if (strstr(str, "$GPRMC") != NULL) ParseRMC();
-        //if (strstr(str, "$GPGLL") != NULL) ParseGLL();
-        if(coordUpdated && coordCorrect)
-        	UpdateFixPosition();
-        vTaskSuspend(NULL);         //При завершении обработки сообщения приостанавливаем задачу
-    }
+  char *str;
+  str = (char*) parameter;
+  /* GPSPositionStatusBit
+  bit0 - isGPSPositionInit
+  bit1 - isFirstFixPositionSet
+  */
+  while (1) {
+    splitString(str);
+    if (strstr(str, "$GPGGA") != NULL) ParseGGA(); 
+    //if (strstr(str, "$GPVTG") != NULL) ParseVTG();
+    //if (strstr(str, "$GPRMC") != NULL) ParseRMC();
+    //if (strstr(str, "$GPGLL") != NULL) ParseGLL();
+    if( (pn.coordCorrect & 0b11) == 0b11) 
+      UpdateFixPosition();
+    vTaskSuspend(NULL);         //При завершении обработки сообщения приостанавливаем задачу
+  }
 }
 
 /*! 
@@ -151,11 +148,11 @@ ParseNMEA(void *parameter){
  */
 double 
 NMEAtoDecimal(char *str){
-  double wgs = 0.01666666666;         ///< Коефициент перевода
-  double transform = atof(str);       ///< Переменная из сообщения
-  transform = (transform - (int)(transform- (int)transform%100)) * 
-              wgs + (int)(transform-(int)transform%100)/100;
-  return transform;
+  double koef = 0.01666666666;         ///< Коефициент перевода
+  double var = atof(str);       ///< Переменная из сообщения
+  var = (var - (int)(var - (int)var % 100)) * 
+              koef + (int)(var -(int)var %100)/100;
+  return var ;
 }
 
 /*!
@@ -187,35 +184,50 @@ $--GGA,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh
  */ 
 void 
 ParseGGA(void){
-    //$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M ,  ,*47
-    //   0     1      2      3    4      5 6  7  8   9    10 11  12 13  14
-    //         Time   Lat         Lon
-    GPIOD->ODR ^= 0x4;
-    pn.latitude = NMEAtoDecimal(words[2]);
-    if (words[3] == "S"){
-        pn.latitude *= -1;
-        pn.hemisphere = 'S';
-        coordCorrect = 1;
-    }
-    else
-    	if(words[3] == "N") {
-    		pn.hemisphere = 'N';
-    		coordCorrect = 1;
-    	}
-    pn.longitude =NMEAtoDecimal(words[4]);
-    if (words[5] == "W")
-        pn.longitude *= -1;
-    if(strlen(words[2]) > 6 && strlen(words[4]) > 6)
-    	UpdateNorthingEasting();
-    LCD_Send_String(0, "GGA");
-    pn.fixQuality = atoi(words[6]);
-    pn.satellitesTracked = atoi(words[7]);
-    pn.hdop = atof(words[8]);
-    pn.altitude = atof(words[9]);
-    pn.ageDiff = atof(words[11]);
-    strncpy(pn.time, words[1], 6);
-    coordUpdated =1;
-    
+  //$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M ,  ,*47
+  //   0     1      2      3    4      5 6  7  8   9    10 11  12 13  14
+  //         Time   Lat         Lon
+  // Мигаем светлодиодом, для индикации
+  GPIOD->ODR ^= 0x4;
+
+  pn.latitude = NMEAtoDecimal(words[2]);  // Получаем десятичное значение широты
+  if( strchr(words[2], '.'))              // Выставляем бит коректности данных
+    pn.coordCorrect |= 0b1;
+  else
+    pn.coordCorrect &= ~0b1;   
+
+  pn.longitude = NMEAtoDecimal(words[4]);  // Получаем десятичное значение долготы
+  if( strchr(words[4], '.'))              // Выставляем бит коректности данных
+    pn.coordCorrect |= 0b10;
+  else
+    pn.coordCorrect &= ~0b10;   
+
+
+  if( (pn.coordCorrect & 0b11) == 0b11)             // Если обе координаты коректны, то обрабатываем полученные данные
+    UpdateNorthingEasting();
+  else                                    // Если нет, то не мусорим и выходим
+    return;
+
+  // Положение по полушариям
+  if (words[3] == "S"){
+    pn.latitude *= -1;
+    pn.hemisphere = 'S';
+  }
+  else
+    pn.hemisphere = 'N';
+
+  if (words[5] == "W")
+    pn.longitude *= -1;
+
+  // Остальная информация
+  pn.fixQuality        = atoi(words[6]);
+  pn.satellitesTracked = atoi(words[7]);
+  pn.hdop              = atof(words[8]);
+  pn.altitude          = atof(words[9]);
+  pn.ageDiff           = atof(words[11]);
+
+  strncpy(pn.time, words[1], 6);
+  LCD_Send_String(0, "GGA");
 }
 /* 
 * GLL Geographic Position – Latitude/Longitude
@@ -233,23 +245,38 @@ ParseGGA(void){
 
 void 
 ParseGLL(void){
-    //000GPGLL,5026.83816,N,03036.72223,E,092645.00,A,A*60
-    //   0         1      2       3     4       5   6   7
-    //            lat            lon
-    GPIOD->ODR ^= 0x20;
-    pn.latitude = NMEAtoDecimal(words[1]);
-    if (words[2] == "S"){
-        pn.latitude *= -1;
-        pn.hemisphere = 'S';
-    }
-    else pn.hemisphere = 'N';
-    pn.longitude =NMEAtoDecimal(words[3]);
-    if (words[4] == "W")
-        pn.longitude *= -1;
+  //000GPGLL,5026.83816,N,03036.72223,E,092645.00,A,A*60
+  //   0         1      2       3     4       5   6   7
+  //            lat            lon
+  GPIOD->ODR ^= 0x20;
+
+  pn.latitude = NMEAtoDecimal(words[1]);  // Получаем десятичное значение широты
+  if( strchr(words[1], '.'))              // Выставляем бит коректности данных
+    pn.coordCorrect |= 0b1;
+  else
+    pn.coordCorrect &= ~0b1;   
+
+  pn.longitude =NMEAtoDecimal(words[3]);  // Получаем десятичное значение долготы
+  if( strchr(words[3], '.'))              // Выставляем бит коректности данных
+    pn.coordCorrect |= 0b10;
+  else
+    pn.coordCorrect &= ~0b10;   
+
+  if( (pn.coordCorrect & 0b11) == 0b11)             // Если обе координаты коректны, то обрабатываем полученные данные
     UpdateNorthingEasting();
-    LCD_Send_String(0, "GLL");
-    strncpy(pn.time, words[1], 5);
-    coordUpdated =1;
+  else                                    // Если нет, то не мусорим и выходим
+    return;
+
+  if (words[2] == "S"){
+    pn.latitude *= -1;
+    pn.hemisphere = 'S';
+  }
+  else pn.hemisphere = 'N';
+  if (words[4] == "W")
+    pn.longitude *= -1;
+
+  LCD_Send_String(0, "GLL");
+  strncpy(pn.time, words[5], 6);
 
 }
 
@@ -275,25 +302,44 @@ ParseGLL(void){
 */
 void 
 ParseRMC(void){
-    //$GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A
-    //   0      1   2     3    4      5    6    7     8     9      10
-    //        time      lat         lon    spidInKnots
-    GPIOD->ODR ^= 0x10;
-    pn.latitude = NMEAtoDecimal(words[3]);
-    if (words[4] == "S"){
-        pn.latitude *= -1;
-        pn.hemisphere = 'S';
-    }
-    else pn.hemisphere = 'N';
-    pn.longitude =NMEAtoDecimal(words[5]);
-    if (words[6] == "W")
-        pn.longitude *= -1;
+  //$GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A
+  //   0      1   2     3    4      5    6    7     8     9      10
+  //        time      lat         lon    spidInKnots
+  GPIOD->ODR ^= 0x10;
+
+  pn.latitude = NMEAtoDecimal(words[3]);  // Получаем десятичное значение широты
+  if( strchr(words[3], '.'))              // Выставляем бит коректности данных
+    pn.coordCorrect |= 0b1;
+  else
+    pn.coordCorrect &= ~0b1;   
+
+  pn.longitude = NMEAtoDecimal(words[5]);  // Получаем десятичное значение долготы
+  if( strchr(words[5], '.'))              // Выставляем бит коректности данных
+    pn.coordCorrect |= 0b10;
+  else
+    pn.coordCorrect &= ~0b10;   
+
+  if( (pn.coordCorrect & 0b11) == 0b11)             // Если обе координаты коректны, то обрабатываем полученные данные
     UpdateNorthingEasting();
-    LCD_Send_String(0, "RMC");
-    pn.speed = atof(words[7]);
-    pn.speed = round(pn.speed * 1.852);
-    pn.headingTrue = atof(words[8]);
-    coordUpdated =1;
+  else                                    // Если нет, то не мусорим и выходим
+    return;
+
+  // Положение по полушариям
+  if (words[4] == "S"){
+    pn.latitude *= -1;
+    pn.hemisphere = 'S';
+  }
+  if (words[6] == "W")
+    pn.longitude *= -1;
+  else pn.hemisphere = 'N';
+
+  pn.speed = atof(words[7]);
+  pn.speed = round(pn.speed * 1.852);
+  pn.headingTrue = atof(words[8]);
+
+  LCD_Send_String(0, "RMC");
+  strncpy(pn.time, words[1], 6);
+  strncpy(pn.date, words[9], 6);
 
 }
 
