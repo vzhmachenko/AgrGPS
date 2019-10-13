@@ -18,34 +18,33 @@ int main(void) {
 	RCC_Init();
 
 	gpio_ini();
-	//GPIOD->ODR= 0xF;
 	timerini2();
 	LCD_ini();
 	delay_ms(20);
 	LCD_ini();
 	USART2_init();
-	USART6_init();
+//USART6_init();
+
+  LCD_Send_String(0, "|tester");
+
 	dma1ini();
-	dma2ini();
+//dma2ini();
 	__enable_irq();
 
 
 	xpQueue = xQueueCreate(1, sizeof(char*) ); //Создаем очередь
 
-	
-/*******************************************
- //   Задача получения NMEA сообщений через DMA
- ********************************************/
-	if( xTaskCreate( receiveFromDMA, "ReceiveNMEAbyDMA", 
-                  800, NULL, 3, NULL) != pdPASS)
+
+//******************************************************************************//
+//******************* Задача получения NMEA сообщений через DMA ****************//
+//******************************************************************************//
+	if( xTaskCreate( receiveFromDMA, "NMEAbyDMA", 400, NULL, 3, NULL) != pdPASS)
       GPIOD->ODR |= 0xFFFFFFFF;
 
-
-/*******************************************
-//     Задача сканирования клавиатуры
-*******************************************/
-	if(xTaskCreate(keyboardScan, "ScanKeyboard", 
-                  30, NULL, 1, NULL) != pdPASS)
+//******************************************************************************//
+//******************* Задача сканирования клавиатуры*********** ****************//
+//******************************************************************************//
+	if(xTaskCreate(keyboardScan, "ScanKeyb", 30, NULL, 1, NULL) != pdPASS)
       GPIOD->ODR |= 0xFFFFFFFF;
 
 
@@ -53,9 +52,11 @@ int main(void) {
 	xTaskCreate(tempTask, "temp", 30, NULL, 1, NULL);
 	xTaskCreate(tempTask2, "temdp", 30, NULL, 1, NULL);
 
+
+
+
 // Запускаем планировщик заданий
 	vTaskStartScheduler();
-
 // Бесконечный цикл
 	for(;;){
 

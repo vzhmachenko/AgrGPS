@@ -6,15 +6,18 @@
 #define NULL    ( (void *) 0)
 #define nullptr ( (void *) 0)
 
-const double sm_a = 6378137.0;
-const double sm_b = 6356752.314;
-const double UTMScaleFactor = 0.9996;
-char words[15][15];
-NMEA pn;
-extern position pos;
-double xy[2] = {0.0, 0.0};
+const   double    sm_a = 6378137.0;
+const   double    sm_b = 6356752.314;
+
+        char      words[15][15];             // Двумерный массив для парсинга сообщений
+        NMEA      pn;                        // Структура, где хранятся пременные, расчитываемые из NMEA
+extern  position  pos;
+        double    xy[2] = {0.0, 0.0};        // Для расчета UTM-coord
 
 
+/*! 
+  Задаем начальные значения при создании структуры
+ */
 void 
 createStartNMEA(void){
     pn.fix = (vec2){0, 0};
@@ -23,24 +26,25 @@ createStartNMEA(void){
     pn.hemisphere = 'N';
     pn.zone = 0;
     pn.coordCorrect = 0;
-
-
 }
 
+/*!
+  Расчет длины дуги меридиана
+ */
 double 
 ArcLengthOfMeridian(double phi){
   const double n  = (sm_a - sm_b) / (sm_a + sm_b);
   double alpha    = ((sm_a + sm_b) / 2.0) * (1.0 + (powf(n, 2.0) / 4.0)
-                      + (pow(n, 4.0) / 64.0));
+                  + (pow(n, 4.0) / 64.0));
   double beta     = (-3.0 * n / 2.0) + (9.0 * pow(n, 3.0) * 0.0625)
-                      + (-3.0 * pow(n, 5.0) / 32.0);
+                  + (-3.0 * pow(n, 5.0) / 32.0);
   double gamma    = (15.0 * pow(n, 2.0) * 0.0625) + (-15.0 * pow(n, 4.0) / 32.0);
   double delta    = (-35.0 * pow(n, 3.0) / 48.0) + (105.0 * pow(n, 5.0) / 256.0);
   double epsilon  = (315.0 * pow(n, 4.0) / 512.0);
-  return alpha * (phi + (beta * sin(2.0 * phi))
-          + (gamma * sin(4.0 * phi))
-          + (delta * sin(6.0 * phi))
-          + (epsilon * sin(8.0 * phi)));
+  return alpha  * (phi + (beta * sin(2.0 * phi))
+                + (gamma   * sin(4.0 * phi))
+                + (delta   * sin(6.0 * phi))
+                + (epsilon * sin(8.0 * phi)));
 }
 
 void 
@@ -52,43 +56,50 @@ MapLatLonToXY(double phi, double lambda, double lambda0){
   double t2     = t * t;
   double l      = lambda - lambda0;
   double l3Coef = 1.0 - t2 + nu2;
-  double l4Coef = 5.0 - t2 + (9 * nu2) + (4.0 * (nu2 * nu2));
-  double l5Coef = 5.0 - (18.0 * t2) + (t2 * t2) + (14.0 * nu2) - (58.0 * t2 * nu2);
-  double l6Coef = 61.0 - (58.0 * t2) + (t2 * t2) + (270.0 * nu2) - (330.0 * t2 * nu2);
-  double l7Coef = 61.0 - (479.0 * t2) + (179.0 * (t2 * t2)) - (t2 * t2 * t2);
-  double l8Coef = 1385.0 - (3111.0 * t2) + (543.0 * (t2 * t2)) - (t2 * t2 * t2);
-          // Calculate easting (x) 
-          
+  double l4Coef = 5.0 - t2 + (9 * nu2)    + (4.0 * (nu2 * nu2));
+  double l5Coef = 5.0     - (18.0 * t2)   + (t2 * t2) + (14.0 * nu2)  - (58.0 * t2 * nu2);
+  double l6Coef = 61.0    - (58.0 * t2)   + (t2 * t2) + (270.0 * nu2) - (330.0 * t2 * nu2);
+  double l7Coef = 61.0    - (479.0 * t2)  + (179.0 * (t2 * t2))       - (t2 * t2 * t2);
+  double l8Coef = 1385.0  - (3111.0 * t2) + (543.0 * (t2 * t2))       - (t2 * t2 * t2);
+  
+  // Calculate easting (x) 
   xy[0] = (n * cos(phi) * l)
-      + (n / 6.0 * pow(cos(phi), 3.0) * l3Coef * pow(l, 3.0))
-      + (n / 120.0 * pow(cos(phi), 5.0) * l5Coef * pow(l, 5.0))
-      + (n / 5040.0 * pow(cos(phi), 7.0) * l7Coef * pow(l, 7.0));
+        + (n / 6.0    * pow(cos(phi), 3.0) * l3Coef * pow(l, 3.0))
+        + (n / 120.0  * pow(cos(phi), 5.0) * l5Coef * pow(l, 5.0))
+        + (n / 5040.0 * pow(cos(phi), 7.0) * l7Coef * pow(l, 7.0));
 
-      // Calculate northing (y) 
+  // Calculate northing (y) 
   xy[1] = ArcLengthOfMeridian(phi)
-      + (t / 2.0 * n * pow(cos(phi), 2.0) * pow(l, 2.0))
-      + (t / 24.0 * n * pow(cos(phi), 4.0) * l4Coef * pow(l, 4.0))
-      + (t / 720.0 * n * pow(cos(phi), 6.0) * l6Coef * pow(l, 6.0))
-      + (t / 40320.0 * n * pow(cos(phi), 8.0) * l8Coef * pow(l, 8.0));
+        + (t / 2.0      * n * pow(cos(phi), 2.0) * pow(l, 2.0))
+        + (t / 24.0     * n * pow(cos(phi), 4.0) * l4Coef * pow(l, 4.0))
+        + (t / 720.0    * n * pow(cos(phi), 6.0) * l6Coef * pow(l, 6.0))
+        + (t / 40320.0  * n * pow(cos(phi), 8.0) * l8Coef * pow(l, 8.0));
 }
 
+/*!
+  Переводим координаты в формат UTM
+ */
 void 
 DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
-    //only calculate the zone once!
-    if (!pos.isFirstFixPositionSet){
-        pn.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
-    }
-    MapLatLonToXY(latitude * 0.01745329251994329576923690766743,
-        longitude * 0.01745329251994329576923690766743,
-        (-183.0 + (pn.zone * 6.0)) * 0.01745329251994329576923690766743);
+  const double UTMScaleFactor = 0.9996;
+  //only calculate the zone once!
+  if (!pos.isFirstFixPositionSet){
+      pn.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
+  }
 
-    xy[0] = (xy[0] * UTMScaleFactor) + 500000.0;
-    xy[1] *= UTMScaleFactor;
-    if (xy[1] < 0.0)
-        xy[1] += 10000000.0;
+  MapLatLonToXY(latitude * 0.01745329251994329576923690766743,
+      longitude * 0.01745329251994329576923690766743,
+      (-183.0 + (pn.zone * 6.0)) * 0.01745329251994329576923690766743);
 
+  xy[0] = (xy[0] * UTMScaleFactor) + 500000.0;
+  xy[1] *= UTMScaleFactor;
+  if (xy[1] < 0.0)
+      xy[1] += 10000000.0;
 }
 
+/*!
+  Обновляем расчитаные координаты в структуре
+ */
 void 
 UpdateNorthingEasting(void){
   DecDeg2UTM(pn.latitude, pn.longitude);
@@ -98,47 +109,60 @@ UpdateNorthingEasting(void){
   pn.actualNorthing = xy[1];
 
   //if a field is open, the real one is subtracted from the integer
-  pn.fix.easting    = xy[0] - pn.utmEast + pn.fixOffset.easting;
+  pn.fix.easting    = xy[0] - pn.utmEast  + pn.fixOffset.easting;
   pn.fix.northing   = xy[1] - pn.utmNorth + pn.fixOffset.northing;
 
   //compensate for the fact the zones lines are a grid and the world is round
-  pn.fix.easting    = (cos(-pn.convergenceAngle) * 
-          pn.fix.easting) - (sin(-pn.convergenceAngle) * 
-          pn.fix.northing);
-  pn.fix.northing   = (sin(-pn.convergenceAngle) * 
-          pn.fix.easting) + (cos(-pn.convergenceAngle) * 
-          pn.fix.northing);
+  pn.fix.easting  = ( cos (-pn.convergenceAngle) * pn.fix.easting) 
+                  - ( sin (-pn.convergenceAngle) * pn.fix.northing);
+  pn.fix.northing = ( sin (-pn.convergenceAngle) * pn.fix.easting) 
+                  + ( cos (-pn.convergenceAngle) * pn.fix.northing);
 }
 
+//--------------------------------------------------------------------------------//
+//----------------PARSING NMEA MESSAGES-------------------------------------------//
+//--------------------------------------------------------------------------------//
+/*!
+  Разделяем строку по символу ","
+  strtok - split string into tokens
+ */
 void 
 splitString(char *from){
-	char *pch;
-	pch = strtok(from, ",");
-	for(int i = 0; pch != NULL && i<15; i++) {
-		sprintf(words[i], "%s", pch);
-		for(int k = strlen(words[i]); k<15; k++)
-			words[i][k] = '\0';
+	char *pch;                                  // Указатель
+	pch = strtok(from, ",");                    // Разделителем выступает запятая
+
+	for(int i = 0; pch != NULL && i<15; i++) {  // Разбрасываем по отдельным массивам
+		sprintf(words[i], "%s", pch);             // Копируем данные
+    int k = strlen(words[i]);                 // Остаток... 
+    memset(words[i] + k, '\0', 15-k);         // ...заполняем "нулями"
 		pch = strtok(NULL, ",");
 	}
 }
 
 void 
 ParseNMEA(void *parameter){
-  char *str;
-  str = (char*) parameter;
   /* GPSPositionStatusBit
   bit0 - isGPSPositionInit
   bit1 - isFirstFixPositionSet
   */
   while (1) {
-    splitString(str);
-    if (strstr(str, "$GPGGA") != NULL) ParseGGA(); 
-    //if (strstr(str, "$GPVTG") != NULL) ParseVTG();
-    //if (strstr(str, "$GPRMC") != NULL) ParseRMC();
-    //if (strstr(str, "$GPGLL") != NULL) ParseGLL();
+    splitString( (char*) parameter);          // Разбиваем сообщение по массивам
+
+    if (strstr( (char*) parameter, "$GPGGA") != NULL) ParseGGA(); 
+    if (strstr( (char*) parameter, "$GPVTG") != NULL) ParseVTG();
+    if (strstr( (char*) parameter, "$GPRMC") != NULL) ParseRMC();
+    if (strstr( (char*) parameter, "$GPGLL") != NULL) ParseGLL();
+
+    // Если координаты были обновлены, то работаем дальше
     if( (pn.coordCorrect & 0b11) == 0b11) 
       UpdateFixPosition();
-    vTaskSuspend(NULL);         //При завершении обработки сообщения приостанавливаем задачу
+
+    doubleToDisplay(pn.zone, 1);
+    doubleToDisplay(pn.latitude, 2);
+    doubleToDisplay(pn.longitude, 3);
+
+    vTaskSuspend(NULL);         // При завершении обработки сообщения приостанавливаем задачу
+                                // Для ожидания нового сообщения для обработки
   }
 }
 
@@ -148,8 +172,8 @@ ParseNMEA(void *parameter){
  */
 double 
 NMEAtoDecimal(char *str){
-  double koef = 0.01666666666;         ///< Коефициент перевода
-  double var = atof(str);       ///< Переменная из сообщения
+  double koef = 0.01666666666;          ///< Коефициент перевода
+  double var = atof(str);               ///< Переменная из сообщения
   var = (var - (int)(var - (int)var % 100)) * 
               koef + (int)(var -(int)var %100)/100;
   return var ;
@@ -158,35 +182,35 @@ NMEAtoDecimal(char *str){
 /*!
  * Парсим GGA-сообщение
  *GGA Global Positioning System Fix Data. Time, Position and fix related data for a GPS receiver
-          1         2    3    4     5 6  7  8   9  10 11 12 13   14 15
-          |         |    |    |     | |  |  |   |  |  |  |  |    |  |
-$--GGA,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh
-1) Time (UTC)
-2) Latitude
-3) N or S (North or South)
-4) Longitude
-5) E or W (East or West)
-6) GPS Quality Indicator,
-    0 - fix not available,
-    1 - GPS fix,
-    2 - Differential GPS fix
-7) Number of satellites in view, 00 - 12
-8) Horizontal Dilution of precision
-9) Antenna Altitude above/below mean-sea-level (geoid)
-10) Units of antenna altitude, meters
-11) Geoidal separation, the difference between the WGS-84 earth
-    ellipsoid and mean-sea-level (geoid), "-" means mean-sea-level below ellipsoid
-12) Units of geoidal separation, meters
-13) Age of differential GPS data, time in seconds since last SC104
-    type 1 or 9 update, null field when DGPS is not used
-14) Differential reference station ID, 0000-1023
-15) Checksum
+ * $GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M ,  ,*47
+ *    0     1      2      3    4      5 6  7  8   9    10 11  12 13  14
+ *          Time   Lat         Lon
+ *         1         2    3    4     5 6  7  8   9  10 11 12 13   14 15
+ *         |         |    |    |     | |  |  |   |  |  |  |  |    |  |
+ *$--GGA,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x,xx,x.x,x.x,M,x.x,M,x.x,xxxx*hh
+ *1) Time (UTC)
+ *2) Latitude
+ *3) N or S (North or South)
+ *4) Longitude
+ *5) E or W (East or West)
+ *6) GPS Quality Indicator,
+ *    0 - fix not available,
+ *    1 - GPS fix,
+ *    2 - Differential GPS fix
+ *7) Number of satellites in view, 00 - 12
+ *8) Horizontal Dilution of precision
+ *9) Antenna Altitude above/below mean-sea-level (geoid)
+ *10) Units of antenna altitude, meters
+ *11) Geoidal separation, the difference between the WGS-84 earth
+ *    ellipsoid and mean-sea-level (geoid), "-" means mean-sea-level below ellipsoid
+ *12) Units of geoidal separation, meters
+ *13) Age of differential GPS data, time in seconds since last SC104
+ *    type 1 or 9 update, null field when DGPS is not used
+ *14) Differential reference station ID, 0000-1023
+ *15) Checksum
  */ 
 void 
 ParseGGA(void){
-  //$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M ,  ,*47
-  //   0     1      2      3    4      5 6  7  8   9    10 11  12 13  14
-  //         Time   Lat         Lon
   // Мигаем светлодиодом, для индикации
   GPIOD->ODR ^= 0x4;
 
@@ -231,6 +255,9 @@ ParseGGA(void){
 }
 /* 
 * GLL Geographic Position – Latitude/Longitude
+* 000GPGLL,5026.83816,N,03036.72223,E,092645.00,A,A*60
+*    0         1      2       3     4       5   6   7
+*             lat            lon
 *         1      2     3    4    5      6 7
 *         |      |     |    |    |      | |
 * $--GLL,llll.ll,a,yyyyy.yy,a,hhmmss.ss,A*hh
@@ -245,9 +272,6 @@ ParseGGA(void){
 
 void 
 ParseGLL(void){
-  //000GPGLL,5026.83816,N,03036.72223,E,092645.00,A,A*60
-  //   0         1      2       3     4       5   6   7
-  //            lat            lon
   GPIOD->ODR ^= 0x20;
 
   pn.latitude = NMEAtoDecimal(words[1]);  // Получаем десятичное значение широты
@@ -262,7 +286,7 @@ ParseGLL(void){
   else
     pn.coordCorrect &= ~0b10;   
 
-  if( (pn.coordCorrect & 0b11) == 0b11)             // Если обе координаты коректны, то обрабатываем полученные данные
+  if( (pn.coordCorrect & 0b11) == 0b11)   // Если обе координаты коректны, то обрабатываем полученные данные
     UpdateNorthingEasting();
   else                                    // Если нет, то не мусорим и выходим
     return;
@@ -284,6 +308,9 @@ ParseGLL(void){
 
 /*
 * RMC Recommended Minimum Navigation Information
+* $GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A
+*    0      1   2     3    4      5    6    7     8     9      10
+*         time      lat         lon    spidInKnots
 *           1      2    3    4     5    6  7   8    9  10 11  12
 *           |      |    |    |     |    |  |   |    |   |  |  | 
 * $--RMC,hhmmss.ss,A,llll.ll,a,yyyyy.yy,a,x.x,x.x,xxxx,x.x,a*hh
@@ -302,9 +329,6 @@ ParseGLL(void){
 */
 void 
 ParseRMC(void){
-  //$GPRMC,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A
-  //   0      1   2     3    4      5    6    7     8     9      10
-  //        time      lat         lon    spidInKnots
   GPIOD->ODR ^= 0x10;
 
   pn.latitude = NMEAtoDecimal(words[3]);  // Получаем десятичное значение широты

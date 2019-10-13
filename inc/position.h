@@ -5,27 +5,34 @@
 #include <math.h>
 #include "glm.h"
 typedef struct {
-    
-        int isGPSPositionInitialized;   //bool
-        int isFirstFixPositionSet;      //bool
-        int isFixHolding;               //bool
-        int isFixHoldLoaded;           //bool
-        int startCounter;
-        int totalFixSteps;
-        int fixUpdateHz;
-        double distanceCurrentStepFix;
-        double fixStepDist;
-        double minFixStepDist;
-        double distance;
-        double boundaryTriggerDistance;
-        double fixHeading;
-        int currentStepFix;
-        vec2 prevFix;
-        vec2 prevBoundaryPos;
-        vec3 stepFixPts[60];
-        vec3 pivotAxlePos;
-        vec3 vHold;
-        int16_t guidanceLineDistanceOff, guidanceLineSteerAngle;
+
+  int     isFirstFixPositionSet;      // <bool> ///< Самая первая фиксация точки и т.д.
+  int     isGPSPositionInitialized;   // <bool> ///< Связь устоявшаяся
+
+  int     isFixHolding;               // <bool>
+  int     isFixHoldLoaded;            // <bool>
+  int     startCounter;               // Начальный счетчик
+  int     totalFixSteps;
+  int     fixUpdateHz;
+  int     currentStepFix;
+
+  int16_t guidanceLineDistanceOff;
+  int16_t guidanceLineSteerAngle;
+
+  double  distanceCurrentStepFix;
+  double  fixStepDist;
+  double  minFixStepDist;
+  double  distance;
+  double  boundaryTriggerDistance;
+  double  fixHeading;
+
+  vec2    prevFix;
+  vec2    prevBoundaryPos;
+
+  vec3    stepFixPts[60];
+  vec3    pivotAxlePos;
+  vec3    vHold;
+
 
 } position;
 

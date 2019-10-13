@@ -47,9 +47,6 @@ receiveFromDMA(void *param){
 				if(AB.isABLineSet != 0)
 					doubleToDisplay(AB.distanceFromCurrentLine, 3);
 
-				doubleToDisplay(pn.zone, 1);
-				doubleToDisplay(pn.fix.easting, 2);
-				doubleToDisplay(pn.fix.northing, 3);
 
 				//LCD_SendCommand(0x01);
 			}

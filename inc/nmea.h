@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "algorithm.h"
+
 typedef struct {
   //WGS84 Lat Long
   double latitude;                              ///< Широта
@@ -25,7 +26,7 @@ typedef struct {
   //-----------------------------------------------------
   char time[6]; ///< time buffer
   char date[6]; ///< date buffer
-  int8_t coordCorrect = 0;    ///< Актуализация координат:
+  int8_t coordCorrect ;    ///< Актуализация координат:
                               ///< bit0 - latitude
                               ///< bit1 - longtitude
   //-----------------------------------------------------
@@ -40,7 +41,7 @@ typedef struct {
   //other GIS Info
   double altitude;                        ///< Высота приемника (антенны) над уровнем моря
   double speed;                           ///< Скорость, в кнотах
-  double headingTrue, headingHDT;
+  double headingTrue; 
   double ageDiff;                         ///< Различия в "элипсоидах"
   double hdop;                            ///< Точность позиционирования по горизонтали 
 
@@ -62,16 +63,16 @@ typedef struct {
 } NMEA;  
 
 
-void createStartNMEA (void);
-double ArcLengthOfMeridian(double phi);
-void MapLatLonToXY(double phi, double lambda, double lambda0);
-void DecDeg2UTM(double latitude, double longitude);
-void UpdateNorthingEasting(void);
-void splitString(char *from);
-void ParseNMEA(void *parameter);
-double NMEAtoDecimal(char *str);
-void ParseGGA(void);
-void ParseGLL(void);
-void ParseRMC(void);
-void ParseVTG(void); 
+void    createStartNMEA (void);
+double  ArcLengthOfMeridian(double phi);
+void    MapLatLonToXY(double phi, double lambda, double lambda0);
+void    DecDeg2UTM(double latitude, double longitude);
+void    UpdateNorthingEasting(void);
+void    splitString(char *from);
+void    ParseNMEA(void *parameter);
+double  NMEAtoDecimal(char *str);
+void    ParseGGA(void);
+void    ParseGLL(void);
+void    ParseRMC(void);
+void    ParseVTG(void); 
  #endif
