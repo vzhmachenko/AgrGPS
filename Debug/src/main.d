@@ -1,4 +1,4 @@
-src/main.o: ../src/main.c /home/valentyn/git/AgrGPS/inc/main.h \
+src/main.o: ../src/main.c \
  /home/valentyn/git/AgrGPS/CMSIS/device/stm32f4xx.h \
  /home/valentyn/git/AgrGPS/CMSIS/core/core_cm4.h \
  /home/valentyn/git/AgrGPS/CMSIS/core/core_cmInstr.h \
@@ -23,9 +23,8 @@ src/main.o: ../src/main.c /home/valentyn/git/AgrGPS/inc/main.h \
  /home/valentyn/git/AgrGPS/inc/periph.h \
  /home/valentyn/git/AgrGPS/inc/charQueue.h \
  /home/valentyn/git/AgrGPS/inc/nmea.h \
- /home/valentyn/git/AgrGPS/inc/vehicle.h
-
-/home/valentyn/git/AgrGPS/inc/main.h:
+ /home/valentyn/git/AgrGPS/inc/vehicle.h \
+ /home/valentyn/git/AgrGPS/inc/algorithm.h
 
 /home/valentyn/git/AgrGPS/CMSIS/device/stm32f4xx.h:
 
@@ -76,3 +75,5 @@ src/main.o: ../src/main.c /home/valentyn/git/AgrGPS/inc/main.h \
 /home/valentyn/git/AgrGPS/inc/nmea.h:
 
 /home/valentyn/git/AgrGPS/inc/vehicle.h:
+
+/home/valentyn/git/AgrGPS/inc/algorithm.h:

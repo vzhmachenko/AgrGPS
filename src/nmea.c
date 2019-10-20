@@ -8,7 +8,6 @@
 
 const   double    sm_a = 6378137.0;
 const   double    sm_b = 6356752.314;
-
         char      words[15][15];             // Двумерный массив для парсинга сообщений
         NMEA      pn;                        // Структура, где хранятся пременные, расчитываемые из NMEA
 extern  position  pos;
@@ -103,7 +102,6 @@ DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
 void 
 UpdateNorthingEasting(void){
   DecDeg2UTM(pn.latitude, pn.longitude);
-
   //keep a copy of actual easting and northings
   pn.actualEasting  = xy[0];
   pn.actualNorthing = xy[1];
@@ -128,6 +126,16 @@ UpdateNorthingEasting(void){
  */
 void 
 splitString(char *from){
+	char *pch;
+	pch = strtok(from, ",");
+	for(int i = 0; pch != NULL && i<15; i++){
+		sprintf(words[i], "%s", pch);
+		for(int k = strlen(words[i]); k<15; k++)
+			words[i][k] = '\0';
+		pch = strtok(NULL, ",");
+	}
+
+/*
 	char *pch;                                  // Указатель
 	pch = strtok(from, ",");                    // Разделителем выступает запятая
 
@@ -137,6 +145,10 @@ splitString(char *from){
     memset(words[i] + k, '\0', 15-k);         // ...заполняем "нулями"
 		pch = strtok(NULL, ",");
 	}
+	*/
+	
+
+
 }
 
 void 
@@ -149,9 +161,9 @@ ParseNMEA(void *parameter){
     splitString( (char*) parameter);          // Разбиваем сообщение по массивам
 
     if (strstr( (char*) parameter, "$GPGGA") != NULL) ParseGGA(); 
-    if (strstr( (char*) parameter, "$GPVTG") != NULL) ParseVTG();
-    if (strstr( (char*) parameter, "$GPRMC") != NULL) ParseRMC();
-    if (strstr( (char*) parameter, "$GPGLL") != NULL) ParseGLL();
+    //if (strstr( (char*) parameter, "$GPVTG") != NULL) ParseVTG();
+    //if (strstr( (char*) parameter, "$GPRMC") != NULL) ParseRMC();
+    //if (strstr( (char*) parameter, "$GPGLL") != NULL) ParseGLL();
 
     // Если координаты были обновлены, то работаем дальше
     if( (pn.coordCorrect & 0b11) == 0b11) 

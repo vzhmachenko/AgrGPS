@@ -1,4 +1,16 @@
+#include "stm32f4xx.h"
 #include "main.h"
+#include "FreeRTOSConfig.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "algorithm.h"
+#include "gpio.h"
+#include "periph.h"
+#include <charQueue.h>
+
+//#include "vehicle.h"
+#include "nmea.h"
 
 //		Char buffer variables and pointers
 char  rxDMAbuf0[strlen_r];     
@@ -23,12 +35,12 @@ int main(void) {
 	delay_ms(20);
 	LCD_ini();
 	USART2_init();
-//USART6_init();
+	USART6_init();
 
   LCD_Send_String(0, "|tester");
 
 	dma1ini();
-//dma2ini();
+	dma2ini();
 	__enable_irq();
 
 
@@ -38,13 +50,15 @@ int main(void) {
 //******************************************************************************//
 //******************* Задача получения NMEA сообщений через DMA ****************//
 //******************************************************************************//
-	if( xTaskCreate( receiveFromDMA, "NMEAbyDMA", 400, NULL, 3, NULL) != pdPASS)
+	if( xTaskCreate( receiveFromDMA, "NMEAbyDMA", 
+				800, NULL, 3, NULL) != pdPASS)
       GPIOD->ODR |= 0xFFFFFFFF;
 
 //******************************************************************************//
 //******************* Задача сканирования клавиатуры*********** ****************//
 //******************************************************************************//
-	if(xTaskCreate(keyboardScan, "ScanKeyb", 30, NULL, 1, NULL) != pdPASS)
+	if(xTaskCreate(keyboardScan, "ScanKeyb", 
+				30, NULL, 1, NULL) != pdPASS)
       GPIOD->ODR |= 0xFFFFFFFF;
 
 
