@@ -19,12 +19,12 @@ extern  position  pos;
  */
 void 
 createStartNMEA(void){
-    pn.fix = (vec2){0, 0};
-    pn.fixOffset = (vec2){0,0};
-    pn.status = 'q';
-    pn.hemisphere = 'N';
-    pn.zone = 0;
-    pn.coordCorrect = 0;
+  pn.fix = (vec2){0, 0};
+  pn.fixOffset = (vec2){0,0};
+  pn.status = 'q';
+  pn.hemisphere = 'N';
+  pn.zone = 0;
+  pn.coordCorrect = 0;
 }
 
 /*!
@@ -40,10 +40,10 @@ ArcLengthOfMeridian(double phi){
   double gamma    = (15.0 * pow(n, 2.0) * 0.0625) + (-15.0 * pow(n, 4.0) / 32.0);
   double delta    = (-35.0 * pow(n, 3.0) / 48.0) + (105.0 * pow(n, 5.0) / 256.0);
   double epsilon  = (315.0 * pow(n, 4.0) / 512.0);
-  return alpha  * (phi + (beta * sin(2.0 * phi))
-                + (gamma   * sin(4.0 * phi))
-                + (delta   * sin(6.0 * phi))
-                + (epsilon * sin(8.0 * phi)));
+  return alpha    * (phi + (beta * sin(2.0 * phi))
+                  + (gamma   * sin(4.0 * phi))
+                  + (delta   * sin(6.0 * phi))
+                  + (epsilon * sin(8.0 * phi)));
 }
 
 void 
@@ -86,12 +86,14 @@ DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
       pn.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
   }
 
-  MapLatLonToXY(latitude * 0.01745329251994329576923690766743,
-      longitude * 0.01745329251994329576923690766743,
-      (-183.0 + (pn.zone * 6.0)) * 0.01745329251994329576923690766743);
+  MapLatLonToXY(latitude  * 0.01745329251994329576923690766743,
+                longitude * 0.01745329251994329576923690766743,
+                (-183.0 + (pn.zone * 6.0)) 
+                * 0.01745329251994329576923690766743);
 
-  xy[0] = (xy[0] * UTMScaleFactor) + 500000.0;
+  xy[0]  = (xy[0] * UTMScaleFactor) + 500000.0;
   xy[1] *= UTMScaleFactor;
+
   if (xy[1] < 0.0)
       xy[1] += 10000000.0;
 }
@@ -186,8 +188,8 @@ double
 NMEAtoDecimal(char *str){
   double koef = 0.01666666666;          ///< Коефициент перевода
   double var = atof(str);               ///< Переменная из сообщения
-  var = (var - (int)(var - (int)var % 100)) * 
-              koef + (int)(var -(int)var %100)/100;
+  var = (var - (int)(var - (int)var % 100)) 
+      * koef + (int)(var - (int)var % 100) / 100;
   return var ;
 }
 
@@ -246,7 +248,7 @@ ParseGGA(void){
 
   // Положение по полушариям
   if (words[3] == "S"){
-    pn.latitude *= -1;
+    pn.latitude  *= -1;
     pn.hemisphere = 'S';
   }
   else
@@ -304,7 +306,7 @@ ParseGLL(void){
     return;
 
   if (words[2] == "S"){
-    pn.latitude *= -1;
+    pn.latitude  *= -1;
     pn.hemisphere = 'S';
   }
   else pn.hemisphere = 'N';
@@ -313,7 +315,6 @@ ParseGLL(void){
 
   LCD_Send_String(0, "GLL");
   strncpy(pn.time, words[5], 6);
-
 }
 
 
@@ -397,9 +398,9 @@ ParseRMC(void){
 */ 
 void 
 ParseVTG(void){
-    GPIOD->ODR ^= 0x8;
-    LCD_Send_String(0, "VTG");
-    pn.headingTrue = atof(words[1]);
-    pn.speed = atof(words[5]);
-    pn.speed = round(pn.speed * 1.852);
+  GPIOD->ODR ^= 0x8;
+  LCD_Send_String(0, "VTG");
+  pn.headingTrue = atof(words[1]);
+  pn.speed = atof(words[5]);
+  pn.speed = round(pn.speed * 1.852);
 }

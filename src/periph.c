@@ -62,12 +62,12 @@ RCC_Init(void){
                 | 0b10101000 << 6 	  //PLLN = 168
                 | 0b00000000 << 16		//PLLP = 2
                 | 7 << 24;			      //PLLQ = 7
-	RCC->CR |= 1 << 24;				//PLL ON
+	RCC->CR |= 1 << 24;									//PLL ON
 	while( (((RCC->CR) >> 25) & 0x01) == 0)	
     ; //Ждем, пока не заблокируется PLL
 
-	RCC->CFGR &= ~RCC_CFGR_SW; 		    //Очищаем бит
-	RCC->CFGR |=  RCC_CFGR_SW_PLL;   //Устанавливаем
+	RCC->CFGR &= ~RCC_CFGR_SW; 		    	//Очищаем бит
+	RCC->CFGR |=  RCC_CFGR_SW_PLL;   		//Устанавливаем
 
 	while((RCC->CFGR & RCC_CFGR_SW_PLL) != RCC_CFGR_SW_PLL) 
     ;
@@ -84,7 +84,7 @@ USART2_init(void){
 	GPIOA->MODER	 = 0xA80000A0;			//Alternate function mode
 	GPIOA->PUPDR	 = 0x000000A0;			//Pullup
 	GPIOA->OSPEEDR = 0x000000F0;			//Very high speed
-	GPIOA->AFR[0]	 = 0x00007700;		  //Alternate function 7
+	GPIOA->AFR [0] = 0x00007700;		  //Alternate function 7
 
 	RCC->APB1ENR |= RCC_APB1ENR_USART2EN;//USART2EN
 	USART2->CR1		=	USART_CR1_RE
@@ -138,9 +138,9 @@ dma1ini(void) {
 	RCC->AHB1ENR |=	RCC_AHB1ENR_DMA1EN;           ///< Включаем тактирование DMA1
 	DMA1_Stream5->CR   = 0;                       ///< Очищаем значение регистра
 
-	DMA1_Stream5->PAR  = (uint32_t)&USART2->DR;   ///< Адрес Периферии - ОТКУДА
-	DMA1_Stream5->M0AR = (uint32_t)&rxDMAbuf0;    ///< Адрес Памяти1 - КУДA1
-	DMA1_Stream5->M1AR = (uint32_t)&rxDMAbuf1;	  ///< Адрес Памяти2 - КУДA2
+	DMA1_Stream5->PAR  = (uint32_t) &USART2->DR;  ///< Адрес Периферии - ОТКУДА
+	DMA1_Stream5->M0AR = (uint32_t) &rxDMAbuf0;   ///< Адрес Памяти1 - КУДA1
+	DMA1_Stream5->M1AR = (uint32_t) &rxDMAbuf1;	  ///< Адрес Памяти2 - КУДA2
 	DMA1_Stream5->NDTR = strlen_r;                ///< Количество даних для передачи 
 
 	DMA1_Stream5->CR  |= DMA_SxCR_CHSEL_2	        ///< Channel 4 seleclted
@@ -150,9 +150,9 @@ dma1ini(void) {
                     |  DMA_SxCR_TCIE   	        ///< Transfer complete interrupt ON
                     |  DMA_SxCR_DBM;		        ///< Double buffer mode is switching at the end of DMA transfer
 
-	DMA1->HIFCR |= DMA_HIFCR_CTCIF5;              ///< Сбросить бит прервания
-  NVIC_EnableIRQ(DMA1_Stream5_IRQn);      //вкл обработку прер для
-  DMA1_Stream5->CR |= DMA_SxCR_EN;		          ///< Stream enabled
+	DMA1->HIFCR 			|= DMA_HIFCR_CTCIF5;        ///< Сбросить бит прервания
+  NVIC_EnableIRQ(DMA1_Stream5_IRQn);      			//вкл обработку прер для
+  DMA1_Stream5->CR 	|= DMA_SxCR_EN;		          ///< Stream enabled
   NVIC_SetPriority(DMA1_Stream5_IRQn, 15);
 }
 

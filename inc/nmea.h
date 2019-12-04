@@ -65,8 +65,11 @@ typedef struct {
 
 void    createStartNMEA (void);
 double  ArcLengthOfMeridian(double phi);
-void    MapLatLonToXY(double phi, double lambda, double lambda0);
-void    DecDeg2UTM(double latitude, double longitude);
+void    MapLatLonToXY(double phi, 
+                      double lambda, 
+                      double lambda0);
+void    DecDeg2UTM( double latitude, 
+                    double longitude);
 void    UpdateNorthingEasting(void);
 void    splitString(char *from);
 void    ParseNMEA(void *parameter);

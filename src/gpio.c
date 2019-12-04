@@ -5,9 +5,9 @@
 */
 void 
 timerini2(void){
-    RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
-    TIM2->PSC = 1000-1;	//	= 168000/4
-    TIM2->CR1 = TIM_CR1_OPM;
+  RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
+  TIM2->PSC = 1000-1;	//	= 168000/4
+  TIM2->CR1 = TIM_CR1_OPM;
 }
 
 /*
@@ -15,21 +15,21 @@ timerini2(void){
 */
 void 
 delay_ms(uint16_t ms){
-    TIM2->ARR = ms;		// *= 4
-    TIM2->CNT = 0;
-    TIM2->CR1 = TIM_CR1_CEN;
+  TIM2->ARR = ms;		// *= 4
+  TIM2->CNT = 0;
+  TIM2->CR1 = TIM_CR1_CEN;
 
-    while((TIM2->SR & TIM_SR_UIF)==0) {;}
-    TIM2->SR &= ~TIM_SR_UIF;
+  while((TIM2->SR & TIM_SR_UIF)==0) {;}
+  TIM2->SR &= ~TIM_SR_UIF;
 }
 
 /*!
   Устанавливаем значение пина
 */
 void 
-GPIO_WritePin(GPIO_TypeDef* GPIOx, 
-              uint16_t GPIO_Pin, 
-              FlagStatus PinState) {
+GPIO_WritePin(GPIO_TypeDef  *GPIOx, 
+              uint16_t      GPIO_Pin, 
+              FlagStatus    PinState) {
 
   if(PinState != RESET)  
     GPIOx->BSRRL = GPIO_Pin;
@@ -42,15 +42,14 @@ GPIO_WritePin(GPIO_TypeDef* GPIOx,
 */
 void 
 LCD_Set_Data(uint8_t data){
-
-    (((data >> 7 ) &0x01) == 1) ? DB7(1) : DB7(0);
-    (((data >> 6 ) &0x01) == 1) ? DB6(1) : DB6(0);
-    (((data >> 5 ) &0x01) == 1) ? DB5(1) : DB5(0);
-    (((data >> 4 ) &0x01) == 1) ? DB4(1) : DB4(0);
-    (((data >> 3 ) &0x01) == 1) ? DB3(1) : DB3(0);
-    (((data >> 2 ) &0x01) == 1) ? DB2(1) : DB2(0);
-    (((data >> 1 ) &0x01) == 1) ? DB1(1) : DB1(0);
-    (((data >> 0 ) &0x01) == 1) ? DB0(1) : DB0(0);
+  (((data >> 7 ) &0x01) == 1) ? DB7(1) : DB7(0);
+  (((data >> 6 ) &0x01) == 1) ? DB6(1) : DB6(0);
+  (((data >> 5 ) &0x01) == 1) ? DB5(1) : DB5(0);
+  (((data >> 4 ) &0x01) == 1) ? DB4(1) : DB4(0);
+  (((data >> 3 ) &0x01) == 1) ? DB3(1) : DB3(0);
+  (((data >> 2 ) &0x01) == 1) ? DB2(1) : DB2(0);
+  (((data >> 1 ) &0x01) == 1) ? DB1(1) : DB1(0);
+  (((data >> 0 ) &0x01) == 1) ? DB0(1) : DB0(0);
 }
 
 /*

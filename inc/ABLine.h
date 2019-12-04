@@ -25,7 +25,7 @@ typedef struct {
     double distanceFromRefLine;     //Расстояние от устанавливающей линии
     double distanceFromCurrentLine; //Расстояние от текущей линии
     double refLineSide;
-    int howManyPathsAway;
+    int    howManyPathsAway;
     double widthMinusOverlap;   //Ширина линий, учитывая перекрытия/пропуски
     double passNumber;
     double abFixHeadingDelta;

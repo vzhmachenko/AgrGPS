@@ -12,11 +12,11 @@
 #include "ABLine.h"
 
 extern 	QueueHandle_t	xpQueue;
-extern 	char 			    toBlue[strlen_t];
-extern  ABline 			  AB;
-extern  NMEA 			    pn;
+extern 	char 					toBlue[strlen_t];
+extern  ABline 				AB;
+extern  NMEA 					pn;
         BaseType_t 		xStatus1;
-        char*			    receivePointer;
+        char*					receivePointer;
 
 void 
 receiveFromDMA(void *param){
@@ -58,6 +58,7 @@ void
 tempTask2(void *tem){
 	while(1){
 		GPIOD->ODR ^= 0x1000;
+
 		vTaskDelay(400);
 	}
 }

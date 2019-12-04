@@ -13,17 +13,25 @@ typedef struct {
 	char queue[strlen_t];
 	uint16_t empty;
 	uint16_t full;
-	void (*push)(void*, char*, uint16_t);
-	uint16_t (*pop)(char*, void*);
-   	void (*create)(void*);
+	void (*push)		(void*, 
+									char*, 
+									uint16_t);
+	uint16_t (*pop)	(char*, 
+									void*);
+	void (*create)	(void*);
 
 } queue;
 
-void strAllcpy(char *to, char *from, uint16_t size);
+void strAllcpy(	char *to, 
+								char *from, 
+								uint16_t size);
+void push			(queue *q, 
+							 char *str, 
+							 uint16_t size);
+void create		(queue *new);
 uint16_t findEOS(queue *q);
-void push(queue *q, char *str, uint16_t size);
-uint16_t pop(char *to, queue *q);
-void create(queue *new);
+uint16_t pop	(char *to, 
+							 queue *q);
 
 
 #endif /* GPIO_H_ */

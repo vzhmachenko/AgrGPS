@@ -1,16 +1,17 @@
 #include "ABLine.h"
 
-extern NMEA pn;
-extern Vehicle vehicle;
-extern position pos;
-ABline AB;
+extern NMEA         pn;
+extern Vehicle      vehicle;
+extern position     pos;
+ABline              AB;
 
 void 
 initABl(void){
     AB.isABLineSet = 0;
     AB.isABSameAsVehicleHeading = 1;
     AB.refLineSide = 1.0;
-    AB.widthMinusOverlap = vehicle.toolWidth - vehicle.toolOverlap;
+    AB.widthMinusOverlap  = vehicle.toolWidth 
+                          - vehicle.toolOverlap;
     AB.isOnRightSideCurrentLine = 1;
     AB.refPoint1 = (vec2){0.0, 0.0};
 }

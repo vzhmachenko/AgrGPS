@@ -1,21 +1,21 @@
 #include "stm32f4xx.h"
-#include "main.h"
+
 #include "FreeRTOSConfig.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
+
+#include "main.h"
+#include "charQueue.h"
 #include "algorithm.h"
 #include "gpio.h"
 #include "periph.h"
-#include <charQueue.h>
-
-//#include "vehicle.h"
 #include "nmea.h"
 
 //		Char buffer variables and pointers
-char  rxDMAbuf0[strlen_r];     
-char  rxDMAbuf1[strlen_r];
-char  toBlue[strlen_t];
+char  rxDMAbuf0	[strlen_r];     
+char  rxDMAbuf1	[strlen_r];
+char  toBlue		[strlen_t];
 char* rxDMA[2] = {	&rxDMAbuf0[0], 
                   	&rxDMAbuf1[0]	};
 
