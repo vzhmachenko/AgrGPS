@@ -34,13 +34,14 @@ int main(void) {
 	LCD_ini();
 	delay_ms(20);
 	LCD_ini();
+	LCD_Send_String(0, "LCD initization...");
+
 	USART2_init();
 	USART6_init();
 
-  LCD_Send_String(0, "|tester");
-
 	dma1ini();
 	dma2ini();
+
 	__enable_irq();
 
 
@@ -63,8 +64,8 @@ int main(void) {
 
 
 // Временные тестовые задачи
-	xTaskCreate(tempTask, "temp", 30, NULL, 1, NULL);
-	xTaskCreate(tempTask2, "temdp", 30, NULL, 1, NULL);
+	xTaskCreate(tempTask, 	"temp", 30, NULL, 1, NULL);
+	xTaskCreate(tempTask2, 	"temk", 30, NULL, 1, NULL);
 
 
 

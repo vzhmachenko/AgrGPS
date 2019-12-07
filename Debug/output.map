@@ -1975,7 +1975,7 @@ LOAD /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.ar
                 0x0000000008000000                g_pfnVectors
                 0x00000000080001a8                . = ALIGN (0x4)
 
-.text           0x00000000080001c0     0xdb90
+.text           0x00000000080001c0     0xdbb0
                 0x00000000080001c0                . = ALIGN (0x4)
  *(.text)
  .text          0x00000000080001c0       0x40 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
@@ -2352,520 +2352,520 @@ LOAD /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.ar
                 0x0000000008005de4       0x94 src/periph.o
                 0x0000000008005de4                RCC_Init
  .text.USART2_init
-                0x0000000008005e78       0x80 src/periph.o
+                0x0000000008005e78       0x84 src/periph.o
                 0x0000000008005e78                USART2_init
  .text.USART6_init
-                0x0000000008005ef8       0x80 src/periph.o
-                0x0000000008005ef8                USART6_init
- .text.dma1ini  0x0000000008005f78       0xb8 src/periph.o
-                0x0000000008005f78                dma1ini
- .text.dma2ini  0x0000000008006030       0xa4 src/periph.o
-                0x0000000008006030                dma2ini
+                0x0000000008005efc       0x88 src/periph.o
+                0x0000000008005efc                USART6_init
+ .text.dma1ini  0x0000000008005f84       0xc4 src/periph.o
+                0x0000000008005f84                dma1ini
+ .text.dma2ini  0x0000000008006048       0xb0 src/periph.o
+                0x0000000008006048                dma2ini
  .text.initPosition
-                0x00000000080060d4       0xbc src/position.o
-                0x00000000080060d4                initPosition
+                0x00000000080060f8       0xbc src/position.o
+                0x00000000080060f8                initPosition
  .text.CalculatePositionHeading
-                0x0000000008006190       0xc4 src/position.o
-                0x0000000008006190                CalculatePositionHeading
- *fill*         0x0000000008006254        0x4 
+                0x00000000080061b4       0xc4 src/position.o
+                0x00000000080061b4                CalculatePositionHeading
  .text.InitializeFirstFewGPSPositions
-                0x0000000008006258      0x3c8 src/position.o
-                0x0000000008006258                InitializeFirstFewGPSPositions
+                0x0000000008006278      0x3c8 src/position.o
+                0x0000000008006278                InitializeFirstFewGPSPositions
  .text.UpdateFixPosition
-                0x0000000008006620      0x408 src/position.o
-                0x0000000008006620                UpdateFixPosition
+                0x0000000008006640      0x408 src/position.o
+                0x0000000008006640                UpdateFixPosition
  .text.SystemInit
-                0x0000000008006a28       0x70 src/system_stm32f4xx.o
-                0x0000000008006a28                SystemInit
+                0x0000000008006a48       0x70 src/system_stm32f4xx.o
+                0x0000000008006a48                SystemInit
  .text.SetSysClock
-                0x0000000008006a98       0xf8 src/system_stm32f4xx.o
+                0x0000000008006ab8       0xf8 src/system_stm32f4xx.o
  .text.SystemInit_ExtMemCtl
-                0x0000000008006b90      0x118 src/system_stm32f4xx.o
+                0x0000000008006bb0      0x118 src/system_stm32f4xx.o
  .text.initVehicle
-                0x0000000008006ca8       0xe8 src/vehicle.o
-                0x0000000008006ca8                initVehicle
+                0x0000000008006cc8       0xe8 src/vehicle.o
+                0x0000000008006cc8                initVehicle
  .text.Reset_Handler
-                0x0000000008006d90       0x50 startup/startup_stm32.o
-                0x0000000008006d90                Reset_Handler
+                0x0000000008006db0       0x50 startup/startup_stm32.o
+                0x0000000008006db0                Reset_Handler
  .text.Default_Handler
-                0x0000000008006de0        0x2 startup/startup_stm32.o
-                0x0000000008006de0                RTC_Alarm_IRQHandler
-                0x0000000008006de0                HASH_RNG_IRQHandler
-                0x0000000008006de0                EXTI2_IRQHandler
-                0x0000000008006de0                TIM8_CC_IRQHandler
-                0x0000000008006de0                DebugMon_Handler
-                0x0000000008006de0                TIM1_CC_IRQHandler
-                0x0000000008006de0                DMA2_Stream5_IRQHandler
-                0x0000000008006de0                HardFault_Handler
-                0x0000000008006de0                PVD_IRQHandler
-                0x0000000008006de0                SDIO_IRQHandler
-                0x0000000008006de0                TAMP_STAMP_IRQHandler
-                0x0000000008006de0                NMI_Handler
-                0x0000000008006de0                CAN2_RX1_IRQHandler
-                0x0000000008006de0                EXTI3_IRQHandler
-                0x0000000008006de0                TIM8_TRG_COM_TIM14_IRQHandler
-                0x0000000008006de0                TIM1_UP_TIM10_IRQHandler
-                0x0000000008006de0                TIM8_UP_TIM13_IRQHandler
-                0x0000000008006de0                I2C3_ER_IRQHandler
-                0x0000000008006de0                LCD_TFT_IRQHandler
-                0x0000000008006de0                EXTI0_IRQHandler
-                0x0000000008006de0                I2C2_EV_IRQHandler
-                0x0000000008006de0                DMA1_Stream2_IRQHandler
-                0x0000000008006de0                CAN1_RX0_IRQHandler
-                0x0000000008006de0                FPU_IRQHandler
-                0x0000000008006de0                OTG_HS_WKUP_IRQHandler
-                0x0000000008006de0                UsageFault_Handler
-                0x0000000008006de0                CAN2_SCE_IRQHandler
-                0x0000000008006de0                DMA2_Stream2_IRQHandler
-                0x0000000008006de0                SPI1_IRQHandler
-                0x0000000008006de0                TIM6_DAC_IRQHandler
-                0x0000000008006de0                TIM1_BRK_TIM9_IRQHandler
-                0x0000000008006de0                DCMI_IRQHandler
-                0x0000000008006de0                CAN2_RX0_IRQHandler
-                0x0000000008006de0                DMA2_Stream3_IRQHandler
-                0x0000000008006de0                USART3_IRQHandler
-                0x0000000008006de0                CRYP_IRQHandler
-                0x0000000008006de0                CAN1_RX1_IRQHandler
-                0x0000000008006de0                UART5_IRQHandler
-                0x0000000008006de0                DMA2_Stream0_IRQHandler
-                0x0000000008006de0                TIM4_IRQHandler
-                0x0000000008006de0                I2C1_EV_IRQHandler
-                0x0000000008006de0                DMA1_Stream6_IRQHandler
-                0x0000000008006de0                DMA1_Stream1_IRQHandler
-                0x0000000008006de0                UART4_IRQHandler
-                0x0000000008006de0                LCD_TFT_1_IRQHandler
-                0x0000000008006de0                TIM3_IRQHandler
-                0x0000000008006de0                RCC_IRQHandler
-                0x0000000008006de0                TIM8_BRK_TIM12_IRQHandler
-                0x0000000008006de0                Default_Handler
-                0x0000000008006de0                EXTI15_10_IRQHandler
-                0x0000000008006de0                ADC_IRQHandler
-                0x0000000008006de0                DMA1_Stream7_IRQHandler
-                0x0000000008006de0                TIM7_IRQHandler
-                0x0000000008006de0                CAN2_TX_IRQHandler
-                0x0000000008006de0                TIM5_IRQHandler
-                0x0000000008006de0                I2C3_EV_IRQHandler
-                0x0000000008006de0                EXTI9_5_IRQHandler
-                0x0000000008006de0                RTC_WKUP_IRQHandler
-                0x0000000008006de0                ETH_WKUP_IRQHandler
-                0x0000000008006de0                SPI2_IRQHandler
-                0x0000000008006de0                OTG_HS_EP1_IN_IRQHandler
-                0x0000000008006de0                MemManage_Handler
-                0x0000000008006de0                DMA1_Stream0_IRQHandler
-                0x0000000008006de0                CAN1_TX_IRQHandler
-                0x0000000008006de0                EXTI4_IRQHandler
-                0x0000000008006de0                FSMC_IRQHandler
-                0x0000000008006de0                ETH_IRQHandler
-                0x0000000008006de0                OTG_HS_EP1_OUT_IRQHandler
-                0x0000000008006de0                WWDG_IRQHandler
-                0x0000000008006de0                TIM2_IRQHandler
-                0x0000000008006de0                OTG_FS_WKUP_IRQHandler
-                0x0000000008006de0                TIM1_TRG_COM_TIM11_IRQHandler
-                0x0000000008006de0                OTG_HS_IRQHandler
-                0x0000000008006de0                EXTI1_IRQHandler
-                0x0000000008006de0                USART2_IRQHandler
-                0x0000000008006de0                I2C2_ER_IRQHandler
-                0x0000000008006de0                DMA2_Stream1_IRQHandler
-                0x0000000008006de0                CAN1_SCE_IRQHandler
-                0x0000000008006de0                DMA2_Stream4_IRQHandler
-                0x0000000008006de0                BusFault_Handler
-                0x0000000008006de0                USART1_IRQHandler
-                0x0000000008006de0                OTG_FS_IRQHandler
-                0x0000000008006de0                SPI3_IRQHandler
-                0x0000000008006de0                DMA1_Stream4_IRQHandler
-                0x0000000008006de0                I2C1_ER_IRQHandler
-                0x0000000008006de0                DMA2_Stream6_IRQHandler
-                0x0000000008006de0                DMA1_Stream3_IRQHandler
- *fill*         0x0000000008006de2        0x2 
- .text._sbrk    0x0000000008006de4       0x58 startup/sysmem.o
-                0x0000000008006de4                _sbrk
- *fill*         0x0000000008006e3c        0x4 
- .text.atan     0x0000000008006e40      0x358 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_atan.o)
-                0x0000000008006e40                atan
- .text.cos      0x0000000008007198       0xc0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_cos.o)
-                0x0000000008007198                cos
- .text.fabs     0x0000000008007258       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_fabs.o)
-                0x0000000008007258                fabs
- *fill*         0x000000000800726c        0x4 
- .text.floor    0x0000000008007270      0x110 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_floor.o)
-                0x0000000008007270                floor
- .text.sin      0x0000000008007380       0xc0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_sin.o)
-                0x0000000008007380                sin
- .text.tan      0x0000000008007440       0x70 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_tan.o)
-                0x0000000008007440                tan
- .text.atan2    0x00000000080074b0        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_atan2.o)
-                0x00000000080074b0                atan2
- *fill*         0x00000000080074b4        0x4 
- .text.pow      0x00000000080074b8      0x338 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_pow.o)
-                0x00000000080074b8                pow
- .text.sqrt     0x00000000080077f0       0xb8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_sqrt.o)
-                0x00000000080077f0                sqrt
- .text.powf     0x00000000080078a8      0x324 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_pow.o)
-                0x00000000080078a8                powf
- *fill*         0x0000000008007bcc        0x4 
+                0x0000000008006e00        0x2 startup/startup_stm32.o
+                0x0000000008006e00                RTC_Alarm_IRQHandler
+                0x0000000008006e00                HASH_RNG_IRQHandler
+                0x0000000008006e00                EXTI2_IRQHandler
+                0x0000000008006e00                TIM8_CC_IRQHandler
+                0x0000000008006e00                DebugMon_Handler
+                0x0000000008006e00                TIM1_CC_IRQHandler
+                0x0000000008006e00                DMA2_Stream5_IRQHandler
+                0x0000000008006e00                HardFault_Handler
+                0x0000000008006e00                PVD_IRQHandler
+                0x0000000008006e00                SDIO_IRQHandler
+                0x0000000008006e00                TAMP_STAMP_IRQHandler
+                0x0000000008006e00                NMI_Handler
+                0x0000000008006e00                CAN2_RX1_IRQHandler
+                0x0000000008006e00                EXTI3_IRQHandler
+                0x0000000008006e00                TIM8_TRG_COM_TIM14_IRQHandler
+                0x0000000008006e00                TIM1_UP_TIM10_IRQHandler
+                0x0000000008006e00                TIM8_UP_TIM13_IRQHandler
+                0x0000000008006e00                I2C3_ER_IRQHandler
+                0x0000000008006e00                LCD_TFT_IRQHandler
+                0x0000000008006e00                EXTI0_IRQHandler
+                0x0000000008006e00                I2C2_EV_IRQHandler
+                0x0000000008006e00                DMA1_Stream2_IRQHandler
+                0x0000000008006e00                CAN1_RX0_IRQHandler
+                0x0000000008006e00                FPU_IRQHandler
+                0x0000000008006e00                OTG_HS_WKUP_IRQHandler
+                0x0000000008006e00                UsageFault_Handler
+                0x0000000008006e00                CAN2_SCE_IRQHandler
+                0x0000000008006e00                DMA2_Stream2_IRQHandler
+                0x0000000008006e00                SPI1_IRQHandler
+                0x0000000008006e00                TIM6_DAC_IRQHandler
+                0x0000000008006e00                TIM1_BRK_TIM9_IRQHandler
+                0x0000000008006e00                DCMI_IRQHandler
+                0x0000000008006e00                CAN2_RX0_IRQHandler
+                0x0000000008006e00                DMA2_Stream3_IRQHandler
+                0x0000000008006e00                USART3_IRQHandler
+                0x0000000008006e00                CRYP_IRQHandler
+                0x0000000008006e00                CAN1_RX1_IRQHandler
+                0x0000000008006e00                UART5_IRQHandler
+                0x0000000008006e00                DMA2_Stream0_IRQHandler
+                0x0000000008006e00                TIM4_IRQHandler
+                0x0000000008006e00                I2C1_EV_IRQHandler
+                0x0000000008006e00                DMA1_Stream6_IRQHandler
+                0x0000000008006e00                DMA1_Stream1_IRQHandler
+                0x0000000008006e00                UART4_IRQHandler
+                0x0000000008006e00                LCD_TFT_1_IRQHandler
+                0x0000000008006e00                TIM3_IRQHandler
+                0x0000000008006e00                RCC_IRQHandler
+                0x0000000008006e00                TIM8_BRK_TIM12_IRQHandler
+                0x0000000008006e00                Default_Handler
+                0x0000000008006e00                EXTI15_10_IRQHandler
+                0x0000000008006e00                ADC_IRQHandler
+                0x0000000008006e00                DMA1_Stream7_IRQHandler
+                0x0000000008006e00                TIM7_IRQHandler
+                0x0000000008006e00                CAN2_TX_IRQHandler
+                0x0000000008006e00                TIM5_IRQHandler
+                0x0000000008006e00                I2C3_EV_IRQHandler
+                0x0000000008006e00                EXTI9_5_IRQHandler
+                0x0000000008006e00                RTC_WKUP_IRQHandler
+                0x0000000008006e00                ETH_WKUP_IRQHandler
+                0x0000000008006e00                SPI2_IRQHandler
+                0x0000000008006e00                OTG_HS_EP1_IN_IRQHandler
+                0x0000000008006e00                MemManage_Handler
+                0x0000000008006e00                DMA1_Stream0_IRQHandler
+                0x0000000008006e00                CAN1_TX_IRQHandler
+                0x0000000008006e00                EXTI4_IRQHandler
+                0x0000000008006e00                FSMC_IRQHandler
+                0x0000000008006e00                ETH_IRQHandler
+                0x0000000008006e00                OTG_HS_EP1_OUT_IRQHandler
+                0x0000000008006e00                WWDG_IRQHandler
+                0x0000000008006e00                TIM2_IRQHandler
+                0x0000000008006e00                OTG_FS_WKUP_IRQHandler
+                0x0000000008006e00                TIM1_TRG_COM_TIM11_IRQHandler
+                0x0000000008006e00                OTG_HS_IRQHandler
+                0x0000000008006e00                EXTI1_IRQHandler
+                0x0000000008006e00                USART2_IRQHandler
+                0x0000000008006e00                I2C2_ER_IRQHandler
+                0x0000000008006e00                DMA2_Stream1_IRQHandler
+                0x0000000008006e00                CAN1_SCE_IRQHandler
+                0x0000000008006e00                DMA2_Stream4_IRQHandler
+                0x0000000008006e00                BusFault_Handler
+                0x0000000008006e00                USART1_IRQHandler
+                0x0000000008006e00                OTG_FS_IRQHandler
+                0x0000000008006e00                SPI3_IRQHandler
+                0x0000000008006e00                DMA1_Stream4_IRQHandler
+                0x0000000008006e00                I2C1_ER_IRQHandler
+                0x0000000008006e00                DMA2_Stream6_IRQHandler
+                0x0000000008006e00                DMA1_Stream3_IRQHandler
+ *fill*         0x0000000008006e02        0x2 
+ .text._sbrk    0x0000000008006e04       0x58 startup/sysmem.o
+                0x0000000008006e04                _sbrk
+ *fill*         0x0000000008006e5c        0x4 
+ .text.atan     0x0000000008006e60      0x358 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_atan.o)
+                0x0000000008006e60                atan
+ .text.cos      0x00000000080071b8       0xc0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_cos.o)
+                0x00000000080071b8                cos
+ .text.fabs     0x0000000008007278       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_fabs.o)
+                0x0000000008007278                fabs
+ *fill*         0x000000000800728c        0x4 
+ .text.floor    0x0000000008007290      0x110 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_floor.o)
+                0x0000000008007290                floor
+ .text.sin      0x00000000080073a0       0xc0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_sin.o)
+                0x00000000080073a0                sin
+ .text.tan      0x0000000008007460       0x70 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_tan.o)
+                0x0000000008007460                tan
+ .text.atan2    0x00000000080074d0        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_atan2.o)
+                0x00000000080074d0                atan2
+ *fill*         0x00000000080074d4        0x4 
+ .text.pow      0x00000000080074d8      0x338 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_pow.o)
+                0x00000000080074d8                pow
+ .text.sqrt     0x0000000008007810       0xb8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_sqrt.o)
+                0x0000000008007810                sqrt
+ .text.powf     0x00000000080078c8      0x324 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_pow.o)
+                0x00000000080078c8                powf
+ *fill*         0x0000000008007bec        0x4 
  .text.__ieee754_atan2
-                0x0000000008007bd0      0x1c4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_atan2.o)
-                0x0000000008007bd0                __ieee754_atan2
- *fill*         0x0000000008007d94        0x4 
+                0x0000000008007bf0      0x1c4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_atan2.o)
+                0x0000000008007bf0                __ieee754_atan2
+ *fill*         0x0000000008007db4        0x4 
  .text.__ieee754_pow
-                0x0000000008007d98      0xab8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_pow.o)
-                0x0000000008007d98                __ieee754_pow
+                0x0000000008007db8      0xab8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_pow.o)
+                0x0000000008007db8                __ieee754_pow
  .text.__ieee754_rem_pio2
-                0x0000000008008850      0x454 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_rem_pio2.o)
-                0x0000000008008850                __ieee754_rem_pio2
+                0x0000000008008870      0x454 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_rem_pio2.o)
+                0x0000000008008870                __ieee754_rem_pio2
  .text.__ieee754_sqrt
-                0x0000000008008ca4      0x194 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_sqrt.o)
-                0x0000000008008ca4                __ieee754_sqrt
+                0x0000000008008cc4      0x194 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_sqrt.o)
+                0x0000000008008cc4                __ieee754_sqrt
  .text.__ieee754_powf
-                0x0000000008008e38      0x5e4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_pow.o)
-                0x0000000008008e38                __ieee754_powf
+                0x0000000008008e58      0x5e4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_pow.o)
+                0x0000000008008e58                __ieee754_powf
  .text.__ieee754_sqrtf
-                0x000000000800941c        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_sqrt.o)
-                0x000000000800941c                __ieee754_sqrtf
- *fill*         0x0000000008009424        0x4 
+                0x000000000800943c        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_sqrt.o)
+                0x000000000800943c                __ieee754_sqrtf
+ *fill*         0x0000000008009444        0x4 
  .text.__kernel_cos
-                0x0000000008009428      0x284 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_cos.o)
-                0x0000000008009428                __kernel_cos
- *fill*         0x00000000080096ac        0x4 
+                0x0000000008009448      0x284 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_cos.o)
+                0x0000000008009448                __kernel_cos
+ *fill*         0x00000000080096cc        0x4 
  .text.__kernel_rem_pio2
-                0x00000000080096b0      0x818 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_rem_pio2.o)
-                0x00000000080096b0                __kernel_rem_pio2
+                0x00000000080096d0      0x818 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_rem_pio2.o)
+                0x00000000080096d0                __kernel_rem_pio2
  .text.__kernel_sin
-                0x0000000008009ec8      0x194 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_sin.o)
-                0x0000000008009ec8                __kernel_sin
- *fill*         0x000000000800a05c        0x4 
+                0x0000000008009ee8      0x194 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_sin.o)
+                0x0000000008009ee8                __kernel_sin
+ *fill*         0x000000000800a07c        0x4 
  .text.__kernel_tan
-                0x000000000800a060      0x3c4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_tan.o)
-                0x000000000800a060                __kernel_tan
- .text.finite   0x000000000800a424       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_finite.o)
-                0x000000000800a424                finite
- .text.matherr  0x000000000800a434        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_matherr.o)
-                0x000000000800a434                matherr
- .text.nan      0x000000000800a438       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_nan.o)
-                0x000000000800a438                nan
- .text.rint     0x000000000800a448      0x110 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_rint.o)
-                0x000000000800a448                rint
- .text.scalbn   0x000000000800a558      0x114 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_scalbn.o)
-                0x000000000800a558                scalbn
- .text.fabsf    0x000000000800a66c       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_fabs.o)
-                0x000000000800a66c                fabsf
- .text.finitef  0x000000000800a67c       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_finite.o)
-                0x000000000800a67c                finitef
- .text.nanf     0x000000000800a690        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_nan.o)
-                0x000000000800a690                nanf
- .text.rintf    0x000000000800a69c       0xc0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_rint.o)
-                0x000000000800a69c                rintf
- .text.scalbnf  0x000000000800a75c       0xd0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_scalbn.o)
-                0x000000000800a75c                scalbnf
+                0x000000000800a080      0x3c4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_tan.o)
+                0x000000000800a080                __kernel_tan
+ .text.finite   0x000000000800a444       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_finite.o)
+                0x000000000800a444                finite
+ .text.matherr  0x000000000800a454        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_matherr.o)
+                0x000000000800a454                matherr
+ .text.nan      0x000000000800a458       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_nan.o)
+                0x000000000800a458                nan
+ .text.rint     0x000000000800a468      0x110 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_rint.o)
+                0x000000000800a468                rint
+ .text.scalbn   0x000000000800a578      0x114 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_scalbn.o)
+                0x000000000800a578                scalbn
+ .text.fabsf    0x000000000800a68c       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_fabs.o)
+                0x000000000800a68c                fabsf
+ .text.finitef  0x000000000800a69c       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_finite.o)
+                0x000000000800a69c                finitef
+ .text.nanf     0x000000000800a6b0        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_nan.o)
+                0x000000000800a6b0                nanf
+ .text.rintf    0x000000000800a6bc       0xc0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_rint.o)
+                0x000000000800a6bc                rintf
+ .text.scalbnf  0x000000000800a77c       0xd0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_scalbn.o)
+                0x000000000800a77c                scalbnf
  .text.copysign
-                0x000000000800a82c       0x1c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_copysign.o)
-                0x000000000800a82c                copysign
+                0x000000000800a84c       0x1c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_copysign.o)
+                0x000000000800a84c                copysign
  .text.copysignf
-                0x000000000800a848       0x18 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_copysign.o)
-                0x000000000800a848                copysignf
- .text.atof     0x000000000800a860        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atof.o)
-                0x000000000800a860                atof
- .text.atoi     0x000000000800a868        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atoi.o)
-                0x000000000800a868                atoi
- .text.__errno  0x000000000800a870        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
-                0x000000000800a870                __errno
+                0x000000000800a868       0x18 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_copysign.o)
+                0x000000000800a868                copysignf
+ .text.atof     0x000000000800a880        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atof.o)
+                0x000000000800a880                atof
+ .text.atoi     0x000000000800a888        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atoi.o)
+                0x000000000800a888                atoi
+ .text.__errno  0x000000000800a890        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
+                0x000000000800a890                __errno
  .text.__libc_init_array
-                0x000000000800a87c       0x48 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
-                0x000000000800a87c                __libc_init_array
- .text.__itoa   0x000000000800a8c4       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-itoa.o)
-                0x000000000800a8c4                __itoa
- .text.itoa     0x000000000800a8fc        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-itoa.o)
-                0x000000000800a8fc                itoa
- .text.memset   0x000000000800a900       0x94 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
-                0x000000000800a900                memset
- .text.strchr   0x000000000800a994       0xe8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strchr.o)
-                0x000000000800a994                strchr
- .text.strcpy   0x000000000800aa7c       0xbc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strcpy.o)
-                0x000000000800aa7c                strcpy
- .text.strncpy  0x000000000800ab38       0x64 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strncpy.o)
-                0x000000000800ab38                strncpy
+                0x000000000800a89c       0x48 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
+                0x000000000800a89c                __libc_init_array
+ .text.__itoa   0x000000000800a8e4       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-itoa.o)
+                0x000000000800a8e4                __itoa
+ .text.itoa     0x000000000800a91c        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-itoa.o)
+                0x000000000800a91c                itoa
+ .text.memset   0x000000000800a920       0x94 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
+                0x000000000800a920                memset
+ .text.strchr   0x000000000800a9b4       0xe8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strchr.o)
+                0x000000000800a9b4                strchr
+ .text.strcpy   0x000000000800aa9c       0xbc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strcpy.o)
+                0x000000000800aa9c                strcpy
+ .text.strncpy  0x000000000800ab58       0x64 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strncpy.o)
+                0x000000000800ab58                strncpy
  .text.critical_factorization
-                0x000000000800ab9c       0xb4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strstr.o)
+                0x000000000800abbc       0xb4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strstr.o)
  .text.two_way_long_needle
-                0x000000000800ac50      0x1f8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strstr.o)
- .text.strstr   0x000000000800ae48      0x1f8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strstr.o)
-                0x000000000800ae48                strstr
+                0x000000000800ac70      0x1f8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strstr.o)
+ .text.strstr   0x000000000800ae68      0x1f8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strstr.o)
+                0x000000000800ae68                strstr
  .text.unlikely.sulp
-                0x000000000800b040       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
+                0x000000000800b060       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
  .text._strtod_l
-                0x000000000800b078      0xf1c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
-                0x000000000800b078                _strtod_l
- .text.strtod   0x000000000800bf94       0x24 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
-                0x000000000800bf94                strtod
- .text.strtok   0x000000000800bfb8       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtok.o)
-                0x000000000800bfb8                strtok
+                0x000000000800b098      0xf1c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
+                0x000000000800b098                _strtod_l
+ .text.strtod   0x000000000800bfb4       0x24 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
+                0x000000000800bfb4                strtod
+ .text.strtok   0x000000000800bfd8       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtok.o)
+                0x000000000800bfd8                strtok
  .text.__strtok_r
-                0x000000000800bfc8       0x64 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtok_r.o)
-                0x000000000800bfc8                __strtok_r
+                0x000000000800bfe8       0x64 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtok_r.o)
+                0x000000000800bfe8                __strtok_r
  .text._strtol_l.isra.0
-                0x000000000800c02c      0x124 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtol.o)
- .text.strtol   0x000000000800c150       0x2c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtol.o)
-                0x000000000800c150                strtol
- .text.__utoa   0x000000000800c17c       0x80 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-utoa.o)
-                0x000000000800c17c                __utoa
+                0x000000000800c04c      0x124 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtol.o)
+ .text.strtol   0x000000000800c170       0x2c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtol.o)
+                0x000000000800c170                strtol
+ .text.__utoa   0x000000000800c19c       0x80 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-utoa.o)
+                0x000000000800c19c                __utoa
  .text.startup.register_fini
-                0x000000000800c1fc       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
- .text.atexit   0x000000000800c210        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
-                0x000000000800c210                atexit
+                0x000000000800c21c       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+ .text.atexit   0x000000000800c230        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
+                0x000000000800c230                atexit
  .text.__libc_fini_array
-                0x000000000800c21c       0x34 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
-                0x000000000800c21c                __libc_fini_array
- .text.rshift   0x000000000800c250       0xb0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-gethex.o)
+                0x000000000800c23c       0x34 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
+                0x000000000800c23c                __libc_fini_array
+ .text.rshift   0x000000000800c270       0xb0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-gethex.o)
  .text.__gethex
-                0x000000000800c300      0x520 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-gethex.o)
-                0x000000000800c300                __gethex
- .text.__match  0x000000000800c820       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-hexnan.o)
-                0x000000000800c820                __match
+                0x000000000800c320      0x520 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-gethex.o)
+                0x000000000800c320                __gethex
+ .text.__match  0x000000000800c840       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-hexnan.o)
+                0x000000000800c840                __match
  .text.__hexnan
-                0x000000000800c850      0x1a0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-hexnan.o)
-                0x000000000800c850                __hexnan
+                0x000000000800c870      0x1a0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-hexnan.o)
+                0x000000000800c870                __hexnan
  .text.__locale_ctype_ptr_l
-                0x000000000800c9f0        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-locale.o)
-                0x000000000800c9f0                __locale_ctype_ptr_l
+                0x000000000800ca10        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-locale.o)
+                0x000000000800ca10                __locale_ctype_ptr_l
  .text.__localeconv_l
-                0x000000000800c9f8        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-localeconv.o)
-                0x000000000800c9f8                __localeconv_l
+                0x000000000800ca18        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-localeconv.o)
+                0x000000000800ca18                __localeconv_l
  .text.__retarget_lock_acquire_recursive
-                0x000000000800c9fc        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
-                0x000000000800c9fc                __retarget_lock_acquire_recursive
+                0x000000000800ca1c        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+                0x000000000800ca1c                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x000000000800ca00        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
-                0x000000000800ca00                __retarget_lock_release_recursive
+                0x000000000800ca20        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+                0x000000000800ca20                __retarget_lock_release_recursive
  .text.__ascii_mbtowc
-                0x000000000800ca04       0x2c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mbtowc_r.o)
-                0x000000000800ca04                __ascii_mbtowc
- .text.memcmp   0x000000000800ca30       0x64 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcmp.o)
-                0x000000000800ca30                memcmp
- .text._Balloc  0x000000000800ca94       0x4c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800ca94                _Balloc
- .text._Bfree   0x000000000800cae0       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800cae0                _Bfree
+                0x000000000800ca24       0x2c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mbtowc_r.o)
+                0x000000000800ca24                __ascii_mbtowc
+ .text.memcmp   0x000000000800ca50       0x64 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcmp.o)
+                0x000000000800ca50                memcmp
+ .text._Balloc  0x000000000800cab4       0x4c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800cab4                _Balloc
+ .text._Bfree   0x000000000800cb00       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800cb00                _Bfree
  .text.__multadd
-                0x000000000800caf4       0x80 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800caf4                __multadd
- .text.__s2b    0x000000000800cb74       0x98 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800cb74                __s2b
+                0x000000000800cb14       0x80 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800cb14                __multadd
+ .text.__s2b    0x000000000800cb94       0x98 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800cb94                __s2b
  .text.__hi0bits
-                0x000000000800cc0c       0x40 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800cc0c                __hi0bits
+                0x000000000800cc2c       0x40 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800cc2c                __hi0bits
  .text.__lo0bits
-                0x000000000800cc4c       0x60 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800cc4c                __lo0bits
- .text.__i2b    0x000000000800ccac       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800ccac                __i2b
+                0x000000000800cc6c       0x60 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800cc6c                __lo0bits
+ .text.__i2b    0x000000000800cccc       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800cccc                __i2b
  .text.__multiply
-                0x000000000800ccc0      0x14c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800ccc0                __multiply
+                0x000000000800cce0      0x14c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800cce0                __multiply
  .text.__pow5mult
-                0x000000000800ce0c       0xa0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800ce0c                __pow5mult
+                0x000000000800ce2c       0xa0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800ce2c                __pow5mult
  .text.__lshift
-                0x000000000800ceac       0xac /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800ceac                __lshift
- .text.__mcmp   0x000000000800cf58       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800cf58                __mcmp
- .text.__mdiff  0x000000000800cf90       0xec /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800cf90                __mdiff
- .text.__ulp    0x000000000800d07c       0x54 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800d07c                __ulp
- .text.__b2d    0x000000000800d0d0       0xbc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800d0d0                __b2d
- .text.__d2b    0x000000000800d18c       0xc4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800d18c                __d2b
- .text.__ratio  0x000000000800d250       0x60 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800d250                __ratio
+                0x000000000800cecc       0xac /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800cecc                __lshift
+ .text.__mcmp   0x000000000800cf78       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800cf78                __mcmp
+ .text.__mdiff  0x000000000800cfb0       0xec /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800cfb0                __mdiff
+ .text.__ulp    0x000000000800d09c       0x54 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800d09c                __ulp
+ .text.__b2d    0x000000000800d0f0       0xbc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800d0f0                __b2d
+ .text.__d2b    0x000000000800d1ac       0xc4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800d1ac                __d2b
+ .text.__ratio  0x000000000800d270       0x60 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800d270                __ratio
  .text.__copybits
-                0x000000000800d2b0       0x48 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800d2b0                __copybits
+                0x000000000800d2d0       0x48 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800d2d0                __copybits
  .text.__any_on
-                0x000000000800d2f8       0x58 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800d2f8                __any_on
- .text.strncmp  0x000000000800d350       0x98 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strncmp.o)
-                0x000000000800d350                strncmp
+                0x000000000800d318       0x58 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800d318                __any_on
+ .text.strncmp  0x000000000800d370       0x98 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strncmp.o)
+                0x000000000800d370                strncmp
  .text.__ascii_wctomb
-                0x000000000800d3e8       0x1c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-wctomb_r.o)
-                0x000000000800d3e8                __ascii_wctomb
+                0x000000000800d408       0x1c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-wctomb_r.o)
+                0x000000000800d408                __ascii_wctomb
  .text.__register_exitproc
-                0x000000000800d404       0xc0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
-                0x000000000800d404                __register_exitproc
+                0x000000000800d424       0xc0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
+                0x000000000800d424                __register_exitproc
  .text._calloc_r
-                0x000000000800d4c4       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-callocr.o)
-                0x000000000800d4c4                _calloc_r
+                0x000000000800d4e4       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-callocr.o)
+                0x000000000800d4e4                _calloc_r
  .text._malloc_r
-                0x000000000800d52c      0x548 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
-                0x000000000800d52c                _malloc_r
+                0x000000000800d54c      0x548 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+                0x000000000800d54c                _malloc_r
  .text.__malloc_lock
-                0x000000000800da74        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
-                0x000000000800da74                __malloc_lock
+                0x000000000800da94        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+                0x000000000800da94                __malloc_lock
  .text.__malloc_unlock
-                0x000000000800da80        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
-                0x000000000800da80                __malloc_unlock
- .text._sbrk_r  0x000000000800da8c       0x24 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
-                0x000000000800da8c                _sbrk_r
+                0x000000000800daa0        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+                0x000000000800daa0                __malloc_unlock
+ .text._sbrk_r  0x000000000800daac       0x24 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
+                0x000000000800daac                _sbrk_r
  .text._malloc_trim_r
-                0x000000000800dab0       0xa0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
-                0x000000000800dab0                _malloc_trim_r
- .text._free_r  0x000000000800db50      0x1e8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
-                0x000000000800db50                _free_r
+                0x000000000800dad0       0xa0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+                0x000000000800dad0                _malloc_trim_r
+ .text._free_r  0x000000000800db70      0x1e8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+                0x000000000800db70                _free_r
  *(.glue_7)
- .glue_7        0x000000000800dd38        0x0 linker stubs
+ .glue_7        0x000000000800dd58        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x000000000800dd38        0x0 linker stubs
+ .glue_7t       0x000000000800dd58        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x000000000800dd38        0x0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .eh_frame      0x000000000800dd58        0x0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
  *(.init)
- .init          0x000000000800dd38        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crti.o
-                0x000000000800dd38                _init
- .init          0x000000000800dd3c        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+ .init          0x000000000800dd58        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x000000000800dd58                _init
+ .init          0x000000000800dd5c        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
  *(.fini)
- .fini          0x000000000800dd44        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crti.o
-                0x000000000800dd44                _fini
- .fini          0x000000000800dd48        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
-                0x000000000800dd50                . = ALIGN (0x4)
-                0x000000000800dd50                _etext = .
+ .fini          0x000000000800dd64        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crti.o
+                0x000000000800dd64                _fini
+ .fini          0x000000000800dd68        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
+                0x000000000800dd70                . = ALIGN (0x4)
+                0x000000000800dd70                _etext = .
 
-.vfp11_veneer   0x000000000800dd50        0x0
- .vfp11_veneer  0x000000000800dd50        0x0 linker stubs
+.vfp11_veneer   0x000000000800dd70        0x0
+ .vfp11_veneer  0x000000000800dd70        0x0 linker stubs
 
-.v4_bx          0x000000000800dd50        0x0
- .v4_bx         0x000000000800dd50        0x0 linker stubs
+.v4_bx          0x000000000800dd70        0x0
+ .v4_bx         0x000000000800dd70        0x0 linker stubs
 
-.iplt           0x000000000800dd50        0x0
- .iplt          0x000000000800dd50        0x0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+.iplt           0x000000000800dd70        0x0
+ .iplt          0x000000000800dd70        0x0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
 
-.rodata         0x000000000800dd50      0x680
-                0x000000000800dd50                . = ALIGN (0x4)
+.rodata         0x000000000800dd70      0x6e8
+                0x000000000800dd70                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x000000000800dd50        0x5 RTOS/src/tasks.o
- *fill*         0x000000000800dd55        0x3 
- .rodata        0x000000000800dd58        0xd RTOS/src/timers.o
- *fill*         0x000000000800dd65        0x3 
- .rodata        0x000000000800dd68        0xa src/algorithm.o
- *fill*         0x000000000800dd72        0x2 
- .rodata        0x000000000800dd74        0xc src/gpio.o
- .rodata        0x000000000800dd80       0x2e src/main.o
- *fill*         0x000000000800ddae        0x2 
- .rodata        0x000000000800ddb0       0x34 src/nmea.o
-                0x000000000800ddb0                sm_a
-                0x000000000800ddb8                sm_b
+ .rodata        0x000000000800dd70        0x5 RTOS/src/tasks.o
+ *fill*         0x000000000800dd75        0x3 
+ .rodata        0x000000000800dd78        0xd RTOS/src/timers.o
+ *fill*         0x000000000800dd85        0x3 
+ .rodata        0x000000000800dd88        0xa src/algorithm.o
+ *fill*         0x000000000800dd92        0x2 
+ .rodata        0x000000000800dd94        0xc src/gpio.o
+ .rodata        0x000000000800dda0       0x3a src/main.o
+ *fill*         0x000000000800ddda        0x6 
+ .rodata        0x000000000800dde0       0x34 src/nmea.o
+                0x000000000800dde0                sm_a
+                0x000000000800dde8                sm_b
+ .rodata        0x000000000800de14       0x56 src/periph.o
  *(.rodata*)
- *fill*         0x000000000800dde4        0x4 
+ *fill*         0x000000000800de6a        0x6 
  .rodata.atanhi
-                0x000000000800dde8       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_atan.o)
+                0x000000000800de70       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_atan.o)
  .rodata.atanlo
-                0x000000000800de08       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_atan.o)
+                0x000000000800de90       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_atan.o)
  .rodata.pow.str1.4
-                0x000000000800de28        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_pow.o)
+                0x000000000800deb0        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_pow.o)
  .rodata.sqrt.str1.4
-                0x000000000800de2c        0x5 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_sqrt.o)
- *fill*         0x000000000800de31        0x3 
+                0x000000000800deb4        0x5 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_sqrt.o)
+ *fill*         0x000000000800deb9        0x3 
  .rodata.powf.str1.4
-                0x000000000800de34        0x5 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_pow.o)
+                0x000000000800debc        0x5 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_pow.o)
  .rodata.__ieee754_pow.str1.4
-                0x000000000800de39        0x5 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_pow.o)
+                0x000000000800dec1        0x5 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_pow.o)
                                           0x1 (size before relaxing)
- *fill*         0x000000000800de39        0x3 
+ *fill*         0x000000000800dec1        0x3 
  .rodata.npio2_hw
-                0x000000000800de3c       0x80 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_rem_pio2.o)
+                0x000000000800dec4       0x80 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_rem_pio2.o)
  .rodata.two_over_pi
-                0x000000000800debc      0x108 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_rem_pio2.o)
+                0x000000000800df44      0x108 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_rem_pio2.o)
  .rodata.__ieee754_powf.str1.4
-                0x000000000800dfc4        0x1 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_pow.o)
- *fill*         0x000000000800dfc4        0x4 
- .rodata.PIo2   0x000000000800dfc8       0x40 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_rem_pio2.o)
+                0x000000000800e04c        0x1 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_pow.o)
+ *fill*         0x000000000800e04c        0x4 
+ .rodata.PIo2   0x000000000800e050       0x40 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_rem_pio2.o)
  .rodata.init_jk
-                0x000000000800e008       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_rem_pio2.o)
- .rodata.TWO52  0x000000000800e018       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_rint.o)
- .rodata.TWO23  0x000000000800e028        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_rint.o)
+                0x000000000800e090       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_rem_pio2.o)
+ .rodata.TWO52  0x000000000800e0a0       0x10 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_rint.o)
+ .rodata.TWO23  0x000000000800e0b0        0x8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_rint.o)
  .rodata._global_impure_ptr
-                0x000000000800e030        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
-                0x000000000800e030                _global_impure_ptr
+                0x000000000800e0b8        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+                0x000000000800e0b8                _global_impure_ptr
  .rodata._strtod_l.str1.4
-                0x000000000800e034        0xf /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
- *fill*         0x000000000800e043        0x1 
+                0x000000000800e0bc        0xf /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
+ *fill*         0x000000000800e0cb        0x1 
  .rodata.fpi.7447
-                0x000000000800e044       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
+                0x000000000800e0cc       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
  .rodata.fpinan.7483
-                0x000000000800e058       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
- *fill*         0x000000000800e06c        0x4 
+                0x000000000800e0e0       0x14 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
+ *fill*         0x000000000800e0f4        0x4 
  .rodata.tinytens
-                0x000000000800e070       0x28 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
+                0x000000000800e0f8       0x28 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
  .rodata.__utoa.str1.4
-                0x000000000800e098       0x25 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-utoa.o)
- *fill*         0x000000000800e0bd        0x3 
+                0x000000000800e120       0x25 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-utoa.o)
+ *fill*         0x000000000800e145        0x3 
  .rodata.__hexdig
-                0x000000000800e0c0      0x100 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-gethex.o)
-                0x000000000800e0c0                __hexdig
+                0x000000000800e148      0x100 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-gethex.o)
+                0x000000000800e148                __hexdig
  .rodata._setlocale_r.str1.4
-                0x000000000800e1c0        0xa /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-locale.o)
+                0x000000000800e248        0xa /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-locale.o)
                                           0xd (size before relaxing)
- *fill*         0x000000000800e1ca        0x2 
+ *fill*         0x000000000800e252        0x2 
  .rodata.str1.4
-                0x000000000800e1cc        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-locale.o)
+                0x000000000800e254        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-locale.o)
                                           0x2 (size before relaxing)
  .rodata.__mprec_bigtens
-                0x000000000800e1d0       0x28 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800e1d0                __mprec_bigtens
+                0x000000000800e258       0x28 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800e258                __mprec_bigtens
  .rodata.__mprec_tens
-                0x000000000800e1f8       0xc8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
-                0x000000000800e1f8                __mprec_tens
+                0x000000000800e280       0xc8 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800e280                __mprec_tens
  .rodata.p05.7367
-                0x000000000800e2c0        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+                0x000000000800e348        0xc /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
  .rodata._ctype_
-                0x000000000800e2cc      0x101 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-ctype_.o)
-                0x000000000800e2cc                _ctype_
-                0x000000000800e3d0                . = ALIGN (0x4)
- *fill*         0x000000000800e3cd        0x3 
+                0x000000000800e354      0x101 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-ctype_.o)
+                0x000000000800e354                _ctype_
+                0x000000000800e458                . = ALIGN (0x4)
+ *fill*         0x000000000800e455        0x3 
 
-.rel.dyn        0x000000000800e3d0        0x0
- .rel.iplt      0x000000000800e3d0        0x0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+.rel.dyn        0x000000000800e458        0x0
+ .rel.iplt      0x000000000800e458        0x0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
 
-.ARM.extab      0x000000000800e3d0        0x0
-                0x000000000800e3d0                . = ALIGN (0x4)
+.ARM.extab      0x000000000800e458        0x0
+                0x000000000800e458                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x000000000800e3d0                . = ALIGN (0x4)
+                0x000000000800e458                . = ALIGN (0x4)
 
-.ARM            0x000000000800e3d0        0x0
-                0x000000000800e3d0                . = ALIGN (0x4)
-                0x000000000800e3d0                __exidx_start = .
+.ARM            0x000000000800e458        0x0
+                0x000000000800e458                . = ALIGN (0x4)
+                0x000000000800e458                __exidx_start = .
  *(.ARM.exidx*)
-                0x000000000800e3d0                __exidx_end = .
-                0x000000000800e3d0                . = ALIGN (0x4)
+                0x000000000800e458                __exidx_end = .
+                0x000000000800e458                . = ALIGN (0x4)
 
-.preinit_array  0x000000000800e3d0        0x0
-                0x000000000800e3d0                . = ALIGN (0x4)
-                0x000000000800e3d0                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x000000000800e458        0x0
+                0x000000000800e458                . = ALIGN (0x4)
+                0x000000000800e458                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x000000000800e3d0                PROVIDE (__preinit_array_end = .)
-                0x000000000800e3d0                . = ALIGN (0x4)
+                0x000000000800e458                PROVIDE (__preinit_array_end = .)
+                0x000000000800e458                . = ALIGN (0x4)
 
-.init_array     0x000000000800e3d0        0x8
-                0x000000000800e3d0                . = ALIGN (0x4)
-                0x000000000800e3d0                PROVIDE (__init_array_start = .)
+.init_array     0x000000000800e458        0x8
+                0x000000000800e458                . = ALIGN (0x4)
+                0x000000000800e458                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  .init_array.00000
-                0x000000000800e3d0        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+                0x000000000800e458        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
  *(.init_array*)
- .init_array    0x000000000800e3d4        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
-                0x000000000800e3d8                PROVIDE (__init_array_end = .)
-                0x000000000800e3d8                . = ALIGN (0x4)
+ .init_array    0x000000000800e45c        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x000000000800e460                PROVIDE (__init_array_end = .)
+                0x000000000800e460                . = ALIGN (0x4)
 
-.fini_array     0x000000000800e3d8        0x4
-                0x000000000800e3d8                . = ALIGN (0x4)
-                0x000000000800e3d8                PROVIDE (__fini_array_start = .)
+.fini_array     0x000000000800e460        0x4
+                0x000000000800e460                . = ALIGN (0x4)
+                0x000000000800e460                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x000000000800e3d8        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
-                0x000000000800e3dc                PROVIDE (__fini_array_end = .)
-                0x000000000800e3dc                . = ALIGN (0x4)
-                0x000000000800e3dc                _sidata = LOADADDR (.data)
+ .fini_array    0x000000000800e460        0x4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x000000000800e464                PROVIDE (__fini_array_end = .)
+                0x000000000800e464                . = ALIGN (0x4)
+                0x000000000800e464                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000      0x9c0 load address 0x000000000800e3dc
+.data           0x0000000020000000      0x9c0 load address 0x000000000800e464
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -2901,11 +2901,11 @@ LOAD /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.ar
                 0x00000000200009c0                . = ALIGN (0x4)
                 0x00000000200009c0                _edata = .
 
-.igot.plt       0x00000000200009c0        0x0 load address 0x000000000800ed9c
+.igot.plt       0x00000000200009c0        0x0 load address 0x000000000800ee24
  .igot.plt      0x00000000200009c0        0x0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
                 0x00000000200009c0                . = ALIGN (0x4)
 
-.bss            0x00000000200009c0     0x8ab8 load address 0x000000000800ed9c
+.bss            0x00000000200009c0     0x8ab8 load address 0x000000000800ee24
                 0x00000000200009c0                _sbss = .
                 0x00000000200009c0                __bss_start__ = _sbss
  *(.bss)
@@ -2974,7 +2974,7 @@ LOAD /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.ar
                 0x0000000020009478                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020009478      0x400 load address 0x000000000800ed9c
+                0x0000000020009478      0x400 load address 0x000000000800ee24
                 0x0000000020009478                . = ALIGN (0x8)
                 0x0000000020009478                PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
@@ -3197,7 +3197,7 @@ LOAD /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.ar
                 0x00000000000013ff       0x22 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
 OUTPUT(AgrGPS.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000    0x107dd
+.debug_info     0x0000000000000000    0x10825
  .debug_info    0x0000000000000000      0xbef RTOS/src/heap_4.o
  .debug_info    0x0000000000000bef      0xac5 RTOS/src/list.o
  .debug_info    0x00000000000016b4      0x4fd RTOS/src/port.o
@@ -3211,14 +3211,14 @@ OUTPUT(AgrGPS.elf elf32-littlearm)
  .debug_info    0x000000000000a364      0x726 src/gpio.o
  .debug_info    0x000000000000aa8a      0xcc3 src/main.o
  .debug_info    0x000000000000b74d     0x1136 src/nmea.o
- .debug_info    0x000000000000c883     0x1393 src/periph.o
- .debug_info    0x000000000000dc16      0xe59 src/position.o
- .debug_info    0x000000000000ea6f      0x746 src/system_stm32f4xx.o
- .debug_info    0x000000000000f1b5      0xcda src/vehicle.o
- .debug_info    0x000000000000fe8f       0x22 startup/startup_stm32.o
- .debug_info    0x000000000000feb1      0x92c startup/sysmem.o
+ .debug_info    0x000000000000c883     0x13db src/periph.o
+ .debug_info    0x000000000000dc5e      0xe59 src/position.o
+ .debug_info    0x000000000000eab7      0x746 src/system_stm32f4xx.o
+ .debug_info    0x000000000000f1fd      0xcda src/vehicle.o
+ .debug_info    0x000000000000fed7       0x22 startup/startup_stm32.o
+ .debug_info    0x000000000000fef9      0x92c startup/sysmem.o
 
-.debug_abbrev   0x0000000000000000     0x2a83
+.debug_abbrev   0x0000000000000000     0x2a9b
  .debug_abbrev  0x0000000000000000      0x2d4 RTOS/src/heap_4.o
  .debug_abbrev  0x00000000000002d4      0x1fe RTOS/src/list.o
  .debug_abbrev  0x00000000000004d2      0x1c7 RTOS/src/port.o
@@ -3232,12 +3232,12 @@ OUTPUT(AgrGPS.elf elf32-littlearm)
  .debug_abbrev  0x000000000000193c      0x186 src/gpio.o
  .debug_abbrev  0x0000000000001ac2      0x26b src/main.o
  .debug_abbrev  0x0000000000001d2d      0x2ea src/nmea.o
- .debug_abbrev  0x0000000000002017      0x25f src/periph.o
- .debug_abbrev  0x0000000000002276      0x25a src/position.o
- .debug_abbrev  0x00000000000024d0      0x173 src/system_stm32f4xx.o
- .debug_abbrev  0x0000000000002643      0x23d src/vehicle.o
- .debug_abbrev  0x0000000000002880       0x12 startup/startup_stm32.o
- .debug_abbrev  0x0000000000002892      0x1f1 startup/sysmem.o
+ .debug_abbrev  0x0000000000002017      0x277 src/periph.o
+ .debug_abbrev  0x000000000000228e      0x25a src/position.o
+ .debug_abbrev  0x00000000000024e8      0x173 src/system_stm32f4xx.o
+ .debug_abbrev  0x000000000000265b      0x23d src/vehicle.o
+ .debug_abbrev  0x0000000000002898       0x12 startup/startup_stm32.o
+ .debug_abbrev  0x00000000000028aa      0x1f1 startup/sysmem.o
 
 .debug_aranges  0x0000000000000000      0x7c0
  .debug_aranges
@@ -3353,7 +3353,7 @@ OUTPUT(AgrGPS.elf elf32-littlearm)
  .debug_macro   0x000000000000cddb       0x16 startup/sysmem.o
  .debug_macro   0x000000000000cdf1      0x16f startup/sysmem.o
 
-.debug_line     0x0000000000000000     0x7a37
+.debug_line     0x0000000000000000     0x7a3c
  .debug_line    0x0000000000000000      0x59c RTOS/src/heap_4.o
  .debug_line    0x000000000000059c      0x4c7 RTOS/src/list.o
  .debug_line    0x0000000000000a63      0x5c0 RTOS/src/port.o
@@ -3367,12 +3367,12 @@ OUTPUT(AgrGPS.elf elf32-littlearm)
  .debug_line    0x0000000000004bc3      0x527 src/gpio.o
  .debug_line    0x00000000000050ea      0x63c src/main.o
  .debug_line    0x0000000000005726      0x79f src/nmea.o
- .debug_line    0x0000000000005ec5      0x5bb src/periph.o
- .debug_line    0x0000000000006480      0x6af src/position.o
- .debug_line    0x0000000000006b2f      0x493 src/system_stm32f4xx.o
- .debug_line    0x0000000000006fc2      0x5c7 src/vehicle.o
- .debug_line    0x0000000000007589       0x7c startup/startup_stm32.o
- .debug_line    0x0000000000007605      0x432 startup/sysmem.o
+ .debug_line    0x0000000000005ec5      0x5c0 src/periph.o
+ .debug_line    0x0000000000006485      0x6af src/position.o
+ .debug_line    0x0000000000006b34      0x493 src/system_stm32f4xx.o
+ .debug_line    0x0000000000006fc7      0x5c7 src/vehicle.o
+ .debug_line    0x000000000000758e       0x7c startup/startup_stm32.o
+ .debug_line    0x000000000000760a      0x432 startup/sysmem.o
 
 .debug_str      0x0000000000000000    0x4943d
  .debug_str     0x0000000000000000     0xa183 RTOS/src/heap_4.o
@@ -3402,7 +3402,7 @@ OUTPUT(AgrGPS.elf elf32-littlearm)
  .debug_str     0x000000000004752a      0x160 src/nmea.o
                                       0x43901 (size before relaxing)
  .debug_str     0x000000000004768a      0x622 src/periph.o
-                                      0x3f86e (size before relaxing)
+                                      0x3f87e (size before relaxing)
  .debug_str     0x0000000000047cac       0x69 src/position.o
                                       0x4343b (size before relaxing)
  .debug_str     0x0000000000047d15      0x124 src/system_stm32f4xx.o
@@ -3435,7 +3435,7 @@ OUTPUT(AgrGPS.elf elf32-littlearm)
  .comment       0x000000000000007f       0x80 src/vehicle.o
  .comment       0x000000000000007f       0x80 startup/sysmem.o
 
-.debug_frame    0x0000000000000000     0x3300
+.debug_frame    0x0000000000000000     0x32f8
  .debug_frame   0x0000000000000000      0x108 RTOS/src/heap_4.o
  .debug_frame   0x0000000000000108       0xd8 RTOS/src/list.o
  .debug_frame   0x00000000000001e0      0x19c RTOS/src/port.o
@@ -3449,82 +3449,82 @@ OUTPUT(AgrGPS.elf elf32-littlearm)
  .debug_frame   0x000000000000157c      0x134 src/gpio.o
  .debug_frame   0x00000000000016b0       0x94 src/main.o
  .debug_frame   0x0000000000001744      0x200 src/nmea.o
- .debug_frame   0x0000000000001944      0x118 src/periph.o
- .debug_frame   0x0000000000001a5c       0xbc src/position.o
- .debug_frame   0x0000000000001b18       0x9c src/system_stm32f4xx.o
- .debug_frame   0x0000000000001bb4       0x5c src/vehicle.o
- .debug_frame   0x0000000000001c10       0x34 startup/sysmem.o
- .debug_frame   0x0000000000001c44       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_atan.o)
- .debug_frame   0x0000000000001c7c       0x3c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_cos.o)
- .debug_frame   0x0000000000001cb8       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_fabs.o)
- .debug_frame   0x0000000000001cd8       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_floor.o)
- .debug_frame   0x0000000000001d08       0x3c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_sin.o)
- .debug_frame   0x0000000000001d44       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_tan.o)
- .debug_frame   0x0000000000001d7c       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_atan2.o)
- .debug_frame   0x0000000000001d9c       0x50 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_pow.o)
- .debug_frame   0x0000000000001dec       0x4c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_sqrt.o)
- .debug_frame   0x0000000000001e38       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_pow.o)
- .debug_frame   0x0000000000001ea0       0x44 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_atan2.o)
- .debug_frame   0x0000000000001ee4       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_pow.o)
- .debug_frame   0x0000000000001f4c       0x44 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_rem_pio2.o)
- .debug_frame   0x0000000000001f90       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_sqrt.o)
- .debug_frame   0x0000000000001fc0       0x80 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_pow.o)
- .debug_frame   0x0000000000002040       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_sqrt.o)
- .debug_frame   0x0000000000002060       0x6c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_cos.o)
- .debug_frame   0x00000000000020cc       0x58 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_rem_pio2.o)
- .debug_frame   0x0000000000002124       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_sin.o)
- .debug_frame   0x000000000000218c       0x50 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_tan.o)
- .debug_frame   0x00000000000021dc       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_finite.o)
- .debug_frame   0x00000000000021fc       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_matherr.o)
- .debug_frame   0x000000000000221c       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_nan.o)
- .debug_frame   0x000000000000223c       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_rint.o)
- .debug_frame   0x0000000000002274       0x2c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_scalbn.o)
- .debug_frame   0x00000000000022a0       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_fabs.o)
- .debug_frame   0x00000000000022c0       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_finite.o)
- .debug_frame   0x00000000000022e0       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_nan.o)
- .debug_frame   0x0000000000002300       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_rint.o)
- .debug_frame   0x0000000000002338       0x44 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_scalbn.o)
- .debug_frame   0x000000000000237c       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_copysign.o)
- .debug_frame   0x000000000000239c       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_copysign.o)
- .debug_frame   0x00000000000023bc       0xac /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_addsubdf3.o)
- .debug_frame   0x0000000000002468       0x50 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_muldivdf3.o)
- .debug_frame   0x00000000000024b8       0xc4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_cmpdf2.o)
- .debug_frame   0x000000000000257c       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_unorddf2.o)
- .debug_frame   0x000000000000259c       0x24 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixdfsi.o)
- .debug_frame   0x00000000000025c0       0x24 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_truncdfsf2.o)
- .debug_frame   0x00000000000025e4       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atof.o)
- .debug_frame   0x0000000000002604       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atoi.o)
- .debug_frame   0x0000000000002634       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
- .debug_frame   0x0000000000002654       0x2c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
- .debug_frame   0x0000000000002680       0x3c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-itoa.o)
- .debug_frame   0x00000000000026bc       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
- .debug_frame   0x00000000000026f4       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strchr.o)
- .debug_frame   0x0000000000002724       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strcpy.o)
- .debug_frame   0x0000000000002744       0x34 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strncpy.o)
- .debug_frame   0x0000000000002778       0x9c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strstr.o)
- .debug_frame   0x0000000000002814      0x140 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
- .debug_frame   0x0000000000002954       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtok.o)
- .debug_frame   0x0000000000002974       0x48 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtok_r.o)
- .debug_frame   0x00000000000029bc       0x98 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtol.o)
- .debug_frame   0x0000000000002a54       0x4c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-utoa.o)
- .debug_frame   0x0000000000002aa0       0x5c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
- .debug_frame   0x0000000000002afc       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
- .debug_frame   0x0000000000002b1c       0x34 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
- .debug_frame   0x0000000000002b50       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-gethex.o)
- .debug_frame   0x0000000000002bb8       0x70 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-hexnan.o)
- .debug_frame   0x0000000000002c28       0x6c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-locale.o)
- .debug_frame   0x0000000000002c94       0x40 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-localeconv.o)
- .debug_frame   0x0000000000002cd4       0xb0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
- .debug_frame   0x0000000000002d84       0x4c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mbtowc_r.o)
- .debug_frame   0x0000000000002dd0       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcmp.o)
- .debug_frame   0x0000000000002e08      0x25c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
- .debug_frame   0x0000000000003064       0x48 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strncmp.o)
- .debug_frame   0x00000000000030ac       0x3c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-wctomb_r.o)
- .debug_frame   0x00000000000030e8       0x34 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
- .debug_frame   0x000000000000311c       0x28 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-callocr.o)
- .debug_frame   0x0000000000003144       0x54 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
- .debug_frame   0x0000000000003198       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
- .debug_frame   0x00000000000031c8       0x2c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
- .debug_frame   0x00000000000031f4       0x80 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
- .debug_frame   0x0000000000003274       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
- .debug_frame   0x00000000000032dc       0x24 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixunsdfsi.o)
+ .debug_frame   0x0000000000001944      0x110 src/periph.o
+ .debug_frame   0x0000000000001a54       0xbc src/position.o
+ .debug_frame   0x0000000000001b10       0x9c src/system_stm32f4xx.o
+ .debug_frame   0x0000000000001bac       0x5c src/vehicle.o
+ .debug_frame   0x0000000000001c08       0x34 startup/sysmem.o
+ .debug_frame   0x0000000000001c3c       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_atan.o)
+ .debug_frame   0x0000000000001c74       0x3c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_cos.o)
+ .debug_frame   0x0000000000001cb0       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_fabs.o)
+ .debug_frame   0x0000000000001cd0       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_floor.o)
+ .debug_frame   0x0000000000001d00       0x3c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_sin.o)
+ .debug_frame   0x0000000000001d3c       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_tan.o)
+ .debug_frame   0x0000000000001d74       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_atan2.o)
+ .debug_frame   0x0000000000001d94       0x50 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_pow.o)
+ .debug_frame   0x0000000000001de4       0x4c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-w_sqrt.o)
+ .debug_frame   0x0000000000001e30       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-wf_pow.o)
+ .debug_frame   0x0000000000001e98       0x44 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_atan2.o)
+ .debug_frame   0x0000000000001edc       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_pow.o)
+ .debug_frame   0x0000000000001f44       0x44 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_rem_pio2.o)
+ .debug_frame   0x0000000000001f88       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-e_sqrt.o)
+ .debug_frame   0x0000000000001fb8       0x80 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_pow.o)
+ .debug_frame   0x0000000000002038       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-ef_sqrt.o)
+ .debug_frame   0x0000000000002058       0x6c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_cos.o)
+ .debug_frame   0x00000000000020c4       0x58 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_rem_pio2.o)
+ .debug_frame   0x000000000000211c       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_sin.o)
+ .debug_frame   0x0000000000002184       0x50 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-k_tan.o)
+ .debug_frame   0x00000000000021d4       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_finite.o)
+ .debug_frame   0x00000000000021f4       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_matherr.o)
+ .debug_frame   0x0000000000002214       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_nan.o)
+ .debug_frame   0x0000000000002234       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_rint.o)
+ .debug_frame   0x000000000000226c       0x2c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_scalbn.o)
+ .debug_frame   0x0000000000002298       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_fabs.o)
+ .debug_frame   0x00000000000022b8       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_finite.o)
+ .debug_frame   0x00000000000022d8       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_nan.o)
+ .debug_frame   0x00000000000022f8       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_rint.o)
+ .debug_frame   0x0000000000002330       0x44 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_scalbn.o)
+ .debug_frame   0x0000000000002374       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-s_copysign.o)
+ .debug_frame   0x0000000000002394       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libm.a(lib_a-sf_copysign.o)
+ .debug_frame   0x00000000000023b4       0xac /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x0000000000002460       0x50 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_muldivdf3.o)
+ .debug_frame   0x00000000000024b0       0xc4 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x0000000000002574       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_unorddf2.o)
+ .debug_frame   0x0000000000002594       0x24 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixdfsi.o)
+ .debug_frame   0x00000000000025b8       0x24 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_truncdfsf2.o)
+ .debug_frame   0x00000000000025dc       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atof.o)
+ .debug_frame   0x00000000000025fc       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atoi.o)
+ .debug_frame   0x000000000000262c       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
+ .debug_frame   0x000000000000264c       0x2c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-init.o)
+ .debug_frame   0x0000000000002678       0x3c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-itoa.o)
+ .debug_frame   0x00000000000026b4       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
+ .debug_frame   0x00000000000026ec       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strchr.o)
+ .debug_frame   0x000000000000271c       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strcpy.o)
+ .debug_frame   0x000000000000273c       0x34 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strncpy.o)
+ .debug_frame   0x0000000000002770       0x9c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strstr.o)
+ .debug_frame   0x000000000000280c      0x140 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtod.o)
+ .debug_frame   0x000000000000294c       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtok.o)
+ .debug_frame   0x000000000000296c       0x48 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtok_r.o)
+ .debug_frame   0x00000000000029b4       0x98 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strtol.o)
+ .debug_frame   0x0000000000002a4c       0x4c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-utoa.o)
+ .debug_frame   0x0000000000002a98       0x5c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x0000000000002af4       0x20 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-atexit.o)
+ .debug_frame   0x0000000000002b14       0x34 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-fini.o)
+ .debug_frame   0x0000000000002b48       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-gethex.o)
+ .debug_frame   0x0000000000002bb0       0x70 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-gdtoa-hexnan.o)
+ .debug_frame   0x0000000000002c20       0x6c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-locale.o)
+ .debug_frame   0x0000000000002c8c       0x40 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-localeconv.o)
+ .debug_frame   0x0000000000002ccc       0xb0 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-lock.o)
+ .debug_frame   0x0000000000002d7c       0x4c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mbtowc_r.o)
+ .debug_frame   0x0000000000002dc8       0x38 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcmp.o)
+ .debug_frame   0x0000000000002e00      0x25c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mprec.o)
+ .debug_frame   0x000000000000305c       0x48 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-strncmp.o)
+ .debug_frame   0x00000000000030a4       0x3c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00000000000030e0       0x34 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-__atexit.o)
+ .debug_frame   0x0000000000003114       0x28 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-callocr.o)
+ .debug_frame   0x000000000000313c       0x54 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+ .debug_frame   0x0000000000003190       0x30 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+ .debug_frame   0x00000000000031c0       0x2c /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000000000031ec       0x80 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+ .debug_frame   0x000000000000326c       0x68 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+ .debug_frame   0x00000000000032d4       0x24 /home/valentyn/Programs/SystemWorkbench/plugins/fr.ac6.mcu.externaltools.arm-none.linux64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_arm_fixunsdfsi.o)

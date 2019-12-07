@@ -78,6 +78,7 @@ RCC_Init(void){
 */
 void 
 USART2_init(void){
+  LCD_Send_String(0, "NMEA UART init...");
 	//PA2     ------> USART2_TX
   //PA3     ------> USART2_RX 
 	RCC->AHB1ENR	|= RCC_AHB1ENR_GPIOAEN;
@@ -105,6 +106,7 @@ USART2_init(void){
 */
 void 
 USART6_init(void){
+  LCD_Send_String(0, "Bluetooth UART ini...");
 	//PC6     ------> USART6_TX
   //PC7     ------> USART6_RX 
 	GPIOC->MODER	  |= 0x0000A000;			//Alternate function mode
@@ -130,6 +132,8 @@ USART6_init(void){
 */
 void 
 dma1ini(void) {
+  LCD_Send_String(0, "NMEA DMA init...");
+
   USART2->CR1 &= ~(USART_CR1_RXNEIE   //rx interrupt
               |    USART_CR1_UE);     //USART2 enable
   USART2->CR3 |= USART_CR3_DMAR;		//Enable DMA receiver for USART2
@@ -161,6 +165,7 @@ dma1ini(void) {
 */
 void
 dma2ini(void) {
+  LCD_Send_String(0, "Bluetooth DMA init...");
 	//DMA Stream 7, Channel 5
   USART6->CR1 &= ~(USART_CR1_RXNEIE   //rx interrupt
                   | USART_CR1_UE);     //USART6 enable

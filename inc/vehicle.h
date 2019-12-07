@@ -33,6 +33,7 @@ typedef struct {
     double northing;
     double heading;
 } vec3;
+
 double UpdateGoalPointDistance(double distanceFromCurrentLine);
 void initVehicle(void);
 
