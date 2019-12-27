@@ -128,29 +128,19 @@ UpdateNorthingEasting(void){
  */
 void 
 splitString(char *from){
-	char *pch;
-	pch = strtok(from, ",");
-	for(int i = 0; pch != NULL && i<15; i++){
-		sprintf(words[i], "%s", pch);
-		for(int k = strlen(words[i]); k<15; k++)
-			words[i][k] = '\0';
-		pch = strtok(NULL, ",");
-	}
 
-/*
 	char *pch;                                  // Указатель
 	pch = strtok(from, ",");                    // Разделителем выступает запятая
-
 	for(int i = 0; pch != NULL && i<15; i++) {  // Разбрасываем по отдельным массивам
-		sprintf(words[i], "%s", pch);             // Копируем данные
-    int k = strlen(words[i]);                 // Остаток... 
-    memset(words[i] + k, '\0', 15-k);         // ...заполняем "нулями"
+	//sprintf(words[i], "%s", pch);             // Копируем данные
+    strcpy(words[i], pch);
+    //int k = strlen(pch);                 // Остаток...
+    //memset(words[i] + k, '\0', 15-k);         // ...заполняем "нулями"
+		for(int k = strlen(words[i]); k<15; k++)
+			words[i][k] = '\0';
+
 		pch = strtok(NULL, ",");
 	}
-	*/
-	
-
-
 }
 
 void 

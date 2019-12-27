@@ -18,16 +18,22 @@ extern  NMEA 					pn;
         BaseType_t 		xStatus1;
         char*					receivePointer;
 
+/*
+ *	Задача чтения NMEA-сообщений по DMA
+ * 
+*/
 void 
 receiveFromDMA(void *param){
-	static queue btQueue;		//Создаем очередь сообщений
+	static queue btQueue;									// Создаем очередь сообщений
 	TaskHandle_t xParseTaskHandle = NULL;
-	btQueue.create = &create;	//Делаем метод-функцию, для ООП
-	btQueue.create(&btQueue);	//Инициализируем начальные значения и другие методы-функции
+	btQueue.create = &create;							// Делаем метод-функцию, для ООП
+	btQueue.create(&btQueue);							// Инициализируем начальные значения и другие методы-функции
+
 	createStartNMEA();
 	initVehicle();
 	initABl();
 	initPosition();
+
 	for(;;){
 		xStatus1 = xQueueReceive(xpQueue, &receivePointer, 50);		//Receiving the data
 		if(xStatus1 == pdPASS){										//Check if data received
@@ -71,36 +77,49 @@ tempTask(void *tem){
 	}
 }
 
+/*
+ * Вывод на дисплей значение регистра (32bit-value)
+*/
 void 
 regToDisplay(uint32_t reg, int8_t strNum){
 	char bufer[9];
 	uint8_t k;
 	bufer[8] = 0;
+
 	for(uint8_t i = 0; i<8; i++){
 		uint32_t temp = reg >> (4*(7-i)) & 0xF;
-		if( temp < 10)
-			bufer[i] = '0' + (int)temp;
-		else
-			bufer[i] = 'A' + (int)temp-10;
-		}
+		bufer[i] = temp < 10 ? '0' + (int)temp :
+		 											 'A' + (int)temp - 10;
+	}
+
 	LCD_Send_String(strNum, bufer);
 }
 
+/*
+ * Вывод на дисплей числа с запятой
+*/
 void 
 doubleToDisplay(double num, int8_t strNum){
 	char lengthToLine[9];
 	itoa( (int)num, lengthToLine, 10); 	//При необходимости умножить для повышения точности
+
 	LCD_Send_String(strNum, lengthToLine);
 }
+
+/*
+ * Сканирование клавиатуры
+*/
 
 void 
 keyboardScan(void *param){
 	static uint8_t counter = 0;
+
 	while(1){
 
-		if(counter%4 == 0){
+		if( counter % 4 == 0){
 			GPIOB->ODR	&=	~GPIO_PIN_10;
 			GPIOE->ODR	|=	GPIO_PIN_14; 
+
 			if( (GPIOE->IDR >> 12) & 0x01){ 	//key=*
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
@@ -117,11 +136,12 @@ keyboardScan(void *param){
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
-        }
+		}
 
-    	if(counter%4 == 1){
+    	if( counter % 4 == 1){
 			GPIOE->ODR	&=	~GPIO_PIN_14;
 			GPIOB->ODR	|=	GPIO_PIN_14; 
+
 			if( (GPIOE->IDR >> 12) & 0x01){  //key=1
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
@@ -140,9 +160,10 @@ keyboardScan(void *param){
 			}
 	 	}
 
-   		if(counter%4 == 2){
+		if( counter % 4 == 2){
 			GPIOB->ODR	&=	~GPIO_PIN_14;
 			GPIOB->ODR	|=	GPIO_PIN_12;
+
 			if( (GPIOE->IDR >> 12) & 0x01){  //key=4
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
@@ -157,13 +178,15 @@ keyboardScan(void *param){
 			}
 			if ( (GPIOB->IDR >> 2) & 0x01){    //key=B
 				btnBPoint();
+				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
 			}
 		}
 
-		if(counter%4 == 3){
+		if( counter % 4 == 3){
 			GPIOB->ODR	&=	~GPIO_PIN_12;
 			GPIOB->ODR	|=	GPIO_PIN_10; 
+
 			if( (GPIOE->IDR >> 12) & 0x01){  //key=7
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
@@ -184,6 +207,7 @@ keyboardScan(void *param){
 
 		if(++counter == 4)
 			counter = 0;    
+
 		vTaskDelay(30);
 	}
 }

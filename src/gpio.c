@@ -97,7 +97,6 @@ LCD_Send_String(uint8_t String_Num, char* str){
   // Провеляем правильность указания номера строки
   if (String_Num > 3)
     return 0;
-
   // Адреса начальных символов строк
 	uint8_t rowAdr[4] = {0x80, 0xc0, 0x94, 0xd4};
 
@@ -110,6 +109,12 @@ LCD_Send_String(uint8_t String_Num, char* str){
 		delay_ms(10);//10
 		i++;
 	}
+  while(i < 20){
+    LCD_SendData(' ');
+	delay_ms(10);//10
+    i++;
+  }
+
 
 	return i;
 }

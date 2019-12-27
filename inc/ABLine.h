@@ -33,6 +33,10 @@ typedef struct {
     double rNorthAB;
     double ppRadiusAB;
     double steerAngleAB;
+
+    uint8_t flags; // Флаги
+    // 0 - Установлена точка А
+    // 1 - Установлена точка В
 } ABline;
 
 void initABl(void);
