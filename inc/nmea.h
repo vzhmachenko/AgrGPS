@@ -19,7 +19,7 @@ typedef struct {
   double centralMeridian;                       ///< Центральный меридиан текущей зоны 
   double convergenceAngle;                      ///< Ошибка азимута, utm-склонение
 
-  
+
   uint8_t updatedGGA, updatedOGI, updatedRMC;
 
   char *rawBuffer;

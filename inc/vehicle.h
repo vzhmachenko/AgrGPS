@@ -4,37 +4,37 @@
 
 
 typedef struct {
-    double toolWidth;
-    double toolOverlap;
-    double toolOffset;
+  double toolWidth;
+  double toolOverlap;
+  double toolOffset;
 
-    double antennaHeight;
-    double antennaOffset;
-    double antennaPivot;
-    double maxSteerAngle;
-    double maxAngularVelocity;
+  double antennaHeight;
+  double antennaOffset;
+  double antennaPivot;
+  double maxSteerAngle;
+  double maxAngularVelocity;
 
-    double wheelbase;
-    double hitchLength;
-    double minTurningRadius;
+  double wheelbase;
+  double hitchLength;
+  double minTurningRadius;
 
-    double goalPointLookAheadSeconds;// = 3.0;
-    double goalPointDistanceMultiplier;// = 0.1;
-    double goalPointLookAheadMinimumDistance;// = 2;    
+  double goalPointLookAheadSeconds;// = 3.0;
+  double goalPointDistanceMultiplier;// = 0.1;
+  double goalPointLookAheadMinimumDistance;// = 2;    
 }Vehicle;
 
 typedef struct {
-    double easting;
-    double northing;
+  double easting;
+  double northing;
 } vec2;
 
 typedef struct {
-    double easting;
-    double northing;
-    double heading;
+  double easting;
+  double northing;
+  double heading;
 } vec3;
 
 double UpdateGoalPointDistance(double distanceFromCurrentLine);
-void initVehicle(void);
+void   initVehicle(void);
 
  #endif

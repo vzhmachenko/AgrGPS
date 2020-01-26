@@ -113,9 +113,7 @@ doubleToDisplay(double num, int8_t strNum){
 void 
 keyboardScan(void *param){
 	static uint8_t counter = 0;
-
-	while(1){
-
+	while(1) {
 		if( counter % 4 == 0){
 			GPIOB->ODR	&=	~GPIO_PIN_10;
 			GPIOE->ODR	|=	GPIO_PIN_14; 
@@ -123,18 +121,22 @@ keyboardScan(void *param){
 			if( (GPIOE->IDR >> 12) & 0x01){ 	//key=*
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
-			if ( (GPIOE->IDR >> 10) & 0x01){   //key=0
+			if ( (GPIOE->IDR >> 10) & 0x01){  //key=0
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
-			if ( (GPIOE->IDR >> 8) & 0x01){    //key=#
+			if ( (GPIOE->IDR >> 8) & 0x01){   //key=#
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
-			if ( (GPIOB->IDR >> 2) & 0x01){	//key=D
+			if ( (GPIOB->IDR >> 2) & 0x01){	  //key=D
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
 		}
 
@@ -145,18 +147,22 @@ keyboardScan(void *param){
 			if( (GPIOE->IDR >> 12) & 0x01){  //key=1
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
 			if ( (GPIOE->IDR >> 10) & 0x01){   //key=2
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
 			if ( (GPIOE->IDR >> 8) & 0x01){    //key=3
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
 			if ( (GPIOB->IDR >> 2) & 0x01){    //key=A
 				btnAPoint();
 				vTaskDelay(300);
+        continue;
 			}
 	 	}
 
@@ -167,19 +173,24 @@ keyboardScan(void *param){
 			if( (GPIOE->IDR >> 12) & 0x01){  //key=4
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
 			if ( (GPIOE->IDR >> 10) & 0x01){   //key=5
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
 			if ( (GPIOE->IDR >> 8) & 0x01){    //key=6
 				GPIOD->ODR ^= 0x380;
+				btnBPoint();
 				vTaskDelay(300);
+        continue;
 			}
 			if ( (GPIOB->IDR >> 2) & 0x01){    //key=B
 				btnBPoint();
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
 		}
 
@@ -190,18 +201,22 @@ keyboardScan(void *param){
 			if( (GPIOE->IDR >> 12) & 0x01){  //key=7
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
 			if ( (GPIOE->IDR >> 10) & 0x01){   //key=8
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
 			if ( (GPIOE->IDR >> 8) & 0x01){    //key=9
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
 			if ( (GPIOB->IDR >> 2) & 0x01){	//key=C
 				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
+        continue;
 			}
 		}
 

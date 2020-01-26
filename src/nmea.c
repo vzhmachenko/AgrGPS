@@ -2,6 +2,7 @@
 #include "gpio.h"
 #include "glm.h"
 #include "position.h"
+#include "ABLine.h"
 
 #define NULL    ( (void *) 0)
 #define nullptr ( (void *) 0)
@@ -11,6 +12,7 @@ const   double    sm_b = 6356752.314;
         char      words[15][15];             // Двумерный массив для парсинга сообщений
         NMEA      pn;                        // Структура, где хранятся пременные, расчитываемые из NMEA
 extern  position  pos;
+extern  ABline 		AB;
         double    xy[2] = {0.0, 0.0};        // Для расчета UTM-coord
 
 
@@ -149,6 +151,8 @@ ParseNMEA(void *parameter){
   bit0 - isGPSPositionInit
   bit1 - isFirstFixPositionSet
   */
+  vec3 pos;   //position for AB_Calculations
+
   while (1) {
     splitString( (char*) parameter);          // Разбиваем сообщение по массивам
 
@@ -164,6 +168,14 @@ ParseNMEA(void *parameter){
     doubleToDisplay(pn.zone, 1);
     doubleToDisplay(pn.latitude, 2);
     doubleToDisplay(pn.longitude, 3);
+
+    if (AB.flags & 1<<2) {
+      pos.easting = pn.latitude;
+      pos.northing = pn.longitude;
+      pos.heading = pn.headingTrue;
+      GetCurrentABLine(pos);
+
+    }
 
     vTaskSuspend(NULL);         // При завершении обработки сообщения приостанавливаем задачу
                                 // Для ожидания нового сообщения для обработки
