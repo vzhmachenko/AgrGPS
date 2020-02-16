@@ -32,24 +32,13 @@
 #define RS(a)    GPIO_WritePin(GPIOC, GPIO_PIN_13, (FlagStatus)a )
 #define EN(a)    GPIO_WritePin(GPIOC, GPIO_PIN_15, (FlagStatus)a )
 
-#define DB0(a)	 GPIO_WritePin(GPIOE, GPIO_PIN_0, (FlagStatus)a )
-#define DB1(a)   GPIO_WritePin(GPIOE, GPIO_PIN_1, (FlagStatus)a )
-#define DB2(a)   GPIO_WritePin(GPIOE, GPIO_PIN_2, (FlagStatus)a )
-#define DB3(a)   GPIO_WritePin(GPIOE, GPIO_PIN_3, (FlagStatus)a )
-#define DB4(a)   GPIO_WritePin(GPIOE, GPIO_PIN_4, (FlagStatus)a )
-#define DB5(a)   GPIO_WritePin(GPIOE, GPIO_PIN_5, (FlagStatus)a )
-#define DB6(a)   GPIO_WritePin(GPIOE, GPIO_PIN_6, (FlagStatus)a )
-#define DB7(a)   GPIO_WritePin(GPIOE, GPIO_PIN_7, (FlagStatus)a )
-
 void GPIO_WritePin(GPIO_TypeDef  *GPIOx, 
 									 uint16_t 		 GPIO_Pin, 
 									 FlagStatus    PinState);
 void timerini2(void);
 void delay_ms(uint16_t ms);
 void LCD_Set_Data(uint8_t data);
-void LCD_SendCommand(uint8_t data);
-void LCD_SendData(uint8_t data);
+void LCD_SendCommandOrData(uint8_t data, uint8_t command);
 void LCD_ini(void);
-uint8_t LCD_Send_String(uint8_t String_Num, 
-												char 		*str);
+uint8_t LCD_Send_String(uint8_t String_Num, char 		*str);
 #endif /* GPIO_H_ */

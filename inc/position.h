@@ -11,8 +11,8 @@ typedef struct {
 
   int     isFixHolding;               // <bool>
   int     isFixHoldLoaded;            // <bool>
-  int     startCounter;               // Начальный счетчик
-  int     totalFixSteps;
+//  int     startCounter;               // Начальный счетчик
+// int     totalFixSteps;
   int     fixUpdateHz;
   int     currentStepFix;
 
@@ -26,10 +26,13 @@ typedef struct {
   double  boundaryTriggerDistance;
   double  fixHeading;
 
+  int offset;   // Смещение в сантиметрах
+
   vec2    prevFix;
   vec2    prevBoundaryPos;
 
-  vec3    stepFixPts[60];
+  vec3    stepFixPts_0;
+  vec3    stepFixPts_last;
   vec3    pivotAxlePos;
   vec3    vHold;
 

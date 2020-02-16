@@ -9,7 +9,7 @@ typedef struct {
   double toolOffset;
 
   double antennaHeight;
-  double antennaOffset;
+  int antennaOffset; // Смещение в сантиметрах
   double antennaPivot;
   double maxSteerAngle;
   double maxAngularVelocity;

@@ -1,8 +1,9 @@
 #include "position.h"
 #include "vehicle.h"
-position pos;
-extern NMEA pn;
-extern Vehicle vehicle;
+       position pos;
+extern NMEA     pn;
+extern Vehicle  vehicle;
+
 
 /*!
  Начальные значения параметров
@@ -17,15 +18,16 @@ initPosition(){
     pos.fixHeading                = 0.0;
     pos.distance                  = 0;
     pos.boundaryTriggerDistance   = 4;
-    pos.startCounter              = 0;
+//    pos.startCounter              = 0;
     pos.fixUpdateHz               = 3;
-    pos.totalFixSteps             = 5 * 6;
+//    pos.totalFixSteps             = 5 * 6;
     pos.distanceCurrentStepFix    = 0;        
     pos.minFixStepDist            = 0;
     pos.prevFix.easting           = 0;
     pos.prevFix.northing          = 0;
     pos.prevBoundaryPos.easting   = 0;
     pos.prevBoundaryPos.northing  = 0;
+    pos.offset = 0;
 
 }
 
@@ -56,7 +58,7 @@ InitializeFirstFewGPSPositions(void){
     pn.fix.easting  = pn.fix.easting - pn.utmEast;
     pn.fix.northing = pn.fix.northing - pn.utmNorth;
 
-    //calculate the central meridian of current zone
+    // Расчет центральног меридиана текущей зоны
     pn.centralMeridian = -177 + ((pn.zone - 1) * 6);
 
     //Azimuth Error - utm declination
@@ -70,9 +72,10 @@ InitializeFirstFewGPSPositions(void){
     pos.prevFix.easting = pn.fix.easting;
     pos.prevFix.northing = pn.fix.northing;
 
-    pos.stepFixPts[0].easting = pn.fix.easting;
-    pos.stepFixPts[0].northing = pn.fix.northing;
-    pos.stepFixPts[0].heading = 0;
+
+    pos.stepFixPts_0.easting = pn.fix.easting;
+    pos.stepFixPts_0.northing = pn.fix.northing;
+    pos.stepFixPts_0.heading = 0;
 
     return;
   }
@@ -82,24 +85,27 @@ InitializeFirstFewGPSPositions(void){
     pos.prevFix.northing = pn.fix.northing;
 
     //load up history with valid data
+    /*
     for (int i = pos.totalFixSteps - 1; i > 0; --i) {
       pos.stepFixPts[i].easting  = pos.stepFixPts[i - 1].easting;
       pos.stepFixPts[i].northing = pos.stepFixPts[i - 1].northing;
       pos.stepFixPts[i].heading  = pos.stepFixPts[i - 1].heading;
     }
+    */
 
-    pos.stepFixPts[0].heading  = DistanceVec2Vec3(pn.fix, pos.stepFixPts[0]);
-    pos.stepFixPts[0].easting  = pn.fix.easting;
-    pos.stepFixPts[0].northing = pn.fix.northing;
+
+    pos.stepFixPts_0.heading  = DistanceVec2Vec3(pn.fix, pos.stepFixPts_0);
+    pos.stepFixPts_0.easting  = pn.fix.easting;
+    pos.stepFixPts_0.northing = pn.fix.northing;
 
     //keep here till valid data
-    if (pos.startCounter > (pos.totalFixSteps/2)) 
+//    if (pos.startCounter > (pos.totalFixSteps/2)) 
       pos.isGPSPositionInitialized = 1;
 
     //in radians
-    pos.fixHeading = atan2(pn.fix.easting - pos.stepFixPts[pos.totalFixSteps - 1].easting, pn.fix.northing - pos.stepFixPts[pos.totalFixSteps - 1].northing);
-    if (pos.fixHeading < 0) 
-      pos.fixHeading += twoPI;
+    pos.fixHeading = atan2(pn.fix.easting - pos.stepFixPts_0.easting,
+                           pn.fix.northing - pos.stepFixPts_0.northing);
+    if (pos.fixHeading < 0) pos.fixHeading += twoPI;
 
     return;
   }
@@ -110,8 +116,8 @@ InitializeFirstFewGPSPositions(void){
 */
 void 
 UpdateFixPosition(void){
-  pos.startCounter++;
-  pos.totalFixSteps = pos.fixUpdateHz * 6;
+//  pos.startCounter++;
+//  pos.totalFixSteps = pos.fixUpdateHz * 6;
 
   if(pos.isGPSPositionInitialized == 0){
     InitializeFirstFewGPSPositions();
@@ -119,22 +125,26 @@ UpdateFixPosition(void){
   }
 
 //--------------------------------------------------------------------------//
-//                   ПРОПУСТИЛ region Antenne Offset
+//                   region Antenne Offset
 //--------------------------------------------------------------------------//
-//                                |
-//                                |
-//                                |
+  if(vehicle.antennaOffset != 0){
+    pos.offset = vehicle.antennaOffset;
+    pn.fix.easting  = cos(-pos.fixHeading) * pos.offset + pn.fix.easting;
+    pn.fix.northing = sin(-pos.fixHeading) * pos.offset + pn.fix.northing;
+  }
 //--------------------------------------------------------------------------//
+
+
 
 //--------------------------------------------------------------------------//
 //                          REGION STEP FIX
 //--------------------------------------------------------------------------//
   //grab the most current fix and save the distance from the last fix
-  pos.distanceCurrentStepFix  = DistanceVec2Vec3(pn.fix, pos.stepFixPts[0]);
-  pos.fixStepDist             = pos.distanceCurrentStepFix;
+  pos.distanceCurrentStepFix  = DistanceVec2Vec3(pn.fix, pos.stepFixPts_0);
   pos.fixStepDist             = pos.distanceCurrentStepFix;
 
   //if  min distance isn't exceeded, keep adding old fixes till it does
+  /*
   if (pos.distanceCurrentStepFix <= pos.minFixStepDist) {
     for ( pos.currentStepFix = 0; 
           pos.currentStepFix < pos.totalFixSteps; 
@@ -151,15 +161,17 @@ UpdateFixPosition(void){
         pos.isFixHolding = 1;
     }
   }
+  
 
   // only takes a single fix to exceeed min distance
   else 
       pos.currentStepFix = 0;
+      */
 
   //if total distance is less then the addition of all the fixes, keep last one as reference
   if (pos.isFixHolding) {
     if (pos.isFixHoldLoaded == 0) {
-      pos.vHold           = pos.stepFixPts[(pos.totalFixSteps - 1)];
+      pos.vHold           = pos.stepFixPts_last;
       pos.isFixHoldLoaded = 1;
     }
 

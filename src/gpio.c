@@ -1,4 +1,6 @@
 #include "gpio.h"
+// Адреса начальных символов строк
+static uint8_t rowAdr[4] = {0x80, 0xc0, 0x94, 0xd4};
 
 /*!
   Установка таймера 2
@@ -20,6 +22,7 @@ delay_ms(uint16_t ms){
   TIM2->CR1 = TIM_CR1_CEN;
 
   while((TIM2->SR & TIM_SR_UIF)==0) {;}
+
   TIM2->SR &= ~TIM_SR_UIF;
 }
 
@@ -30,7 +33,6 @@ void
 GPIO_WritePin(GPIO_TypeDef  *GPIOx, 
               uint16_t      GPIO_Pin, 
               FlagStatus    PinState) {
-
   if(PinState != RESET)  
     GPIOx->BSRRL = GPIO_Pin;
   else  
@@ -42,39 +44,24 @@ GPIO_WritePin(GPIO_TypeDef  *GPIOx,
 */
 void 
 LCD_Set_Data(uint8_t data){
-  (((data >> 7 ) &0x01) == 1) ? DB7(1) : DB7(0);
-  (((data >> 6 ) &0x01) == 1) ? DB6(1) : DB6(0);
-  (((data >> 5 ) &0x01) == 1) ? DB5(1) : DB5(0);
-  (((data >> 4 ) &0x01) == 1) ? DB4(1) : DB4(0);
-  (((data >> 3 ) &0x01) == 1) ? DB3(1) : DB3(0);
-  (((data >> 2 ) &0x01) == 1) ? DB2(1) : DB2(0);
-  (((data >> 1 ) &0x01) == 1) ? DB1(1) : DB1(0);
-  (((data >> 0 ) &0x01) == 1) ? DB0(1) : DB0(0);
+  GPIOE->BSRRL =  (0x0000 | data);      ///Set Bits
+  GPIOE->BSRRH = ~(0xFFFF & data);      /// ReSet Bits
 }
 
 /*
   Отправляем команду на дисплей
 */
 void 
-LCD_SendCommand(uint8_t data){
-  RS(0);
+LCD_SendCommandOrData(uint8_t data, uint8_t command){
+  //if data     command == 1
+  //if command  command == 0
+  RS(command && 0x01);
   LCD_Set_Data(data);
   EN(1);
   delay_ms(1);//10
   EN(0);
 }
 
-/*!
-  Отправляем данные на дисплей
-*/
-void 
-LCD_SendData(uint8_t data){
-  RS(1);
-  LCD_Set_Data(data);
-  EN(1);
-  delay_ms(1);//10
-  EN(0);
-}
 
 /*!
   Процедура инициализации дисплея
@@ -84,7 +71,7 @@ LCD_ini(void){
 	RW(0);
   uint8_t commands[6] = {0x38, 0x38, 0x0F, 0x01, 0x06, 0x02};
   for(uint8_t i = 0; i < 6; ++i){
-    LCD_SendCommand(commands[i]);
+    LCD_SendCommandOrData(commands[i], 0);
     delay_ms(50);
   }
 }
@@ -94,27 +81,35 @@ LCD_ini(void){
 */
 uint8_t 
 LCD_Send_String(uint8_t String_Num, char* str){
+//  static uint8_t counter = 0;
+  //static uint8_t busy = 0;
+//  if(busy)
+//    return 0 ;
+//
+//  busy = 1;
+
   // Провеляем правильность указания номера строки
   if (String_Num > 3)
     return 0;
-  // Адреса начальных символов строк
-	uint8_t rowAdr[4] = {0x80, 0xc0, 0x94, 0xd4};
 
-  LCD_SendCommand(rowAdr[String_Num]);
+  LCD_SendCommandOrData(rowAdr[String_Num], 0);
 	delay_ms(10);//10
 
 	uint8_t i = 0;
-	while (str[i] != '\n' && str[i] != 0 && i < 20)	{		
-		LCD_SendData(str[i]);	
-		delay_ms(10);//10
+	while (str[i] != '\n' 
+      && str[i] != 0 
+      && i < 20)	{		
+		LCD_SendCommandOrData(str[i], 1);	
+		delay_ms(10);
 		i++;
 	}
-  while(i < 20){
-    LCD_SendData(' ');
-	delay_ms(10);//10
+
+  // Добиваем строку пробелами
+  while(i < 20) {
+    LCD_SendCommandOrData(' ', 1);
+    delay_ms(10);
     i++;
   }
-
-
+ // busy = 0;
 	return i;
 }

@@ -1,5 +1,6 @@
 #include "vehicle.h"
 #include "nmea.h"
+
 Vehicle vehicle;
 extern NMEA pn;
 
@@ -11,13 +12,12 @@ UpdateGoalPointDistance(double distanceFromCurrentLine) {
                             * vehicle.goalPointLookAheadSeconds 
                             * 0.27777777;/*vehicle.goalPointLookAheadSeconds*/ 
 
-  if (distanceFromCurrentLine < 1.0)
-      goalPointDistance  += distanceFromCurrentLine 
-                          * goalPointDistance 
-                          * vehicle.goalPointDistanceMultiplier;
-  else
-      goalPointDistance  += goalPointDistance 
-                          * vehicle.goalPointDistanceMultiplier;
+  goalPointDistance = (distanceFromCurrentLine < 1.0)
+    ?  goalPointDistance  + distanceFromCurrentLine
+                          *  goalPointDistance 
+                          *  vehicle.goalPointDistanceMultiplier
+    :  goalPointDistance  + goalPointDistance
+                          *  vehicle.goalPointDistanceMultiplier;
 
   if (goalPointDistance < vehicle.goalPointLookAheadMinimumDistance) 
       goalPointDistance = vehicle.goalPointLookAheadMinimumDistance;

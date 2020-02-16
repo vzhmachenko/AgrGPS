@@ -10,13 +10,16 @@
 #include "nmea.h"
 #include "position.h"
 #include "ABLine.h"
+#include "string.h"
 
 extern 	QueueHandle_t	xpQueue;
-extern 	char 					toBlue[strlen_t];
 extern  ABline 				AB;
 extern  NMEA 					pn;
+extern  position      pos;
+extern  Vehicle       vehicle;
         BaseType_t 		xStatus1;
         char*					receivePointer;
+extern 	char 					toBlue[strlen_t];
 
 /*
  *	Задача чтения NMEA-сообщений по DMA
@@ -50,7 +53,8 @@ receiveFromDMA(void *param){
 				DMA2_Stream7->CR |= DMA_SxCR_EN;					//Enable transmit by DMA
 
 				vTaskResume(xParseTaskHandle);					//После запуска просто возобновляем выполнение работы
-				if(AB.isABLineSet != 0)
+
+				if(AB.flags >> ABLineSet & 0x01)
 					doubleToDisplay(AB.distanceFromCurrentLine, 3);
 
 
@@ -85,13 +89,12 @@ regToDisplay(uint32_t reg, int8_t strNum){
 	char bufer[9];
 	uint8_t k;
 	bufer[8] = 0;
-
-	for(uint8_t i = 0; i<8; i++){
+	for(uint8_t i = 0; i < 8; i++){
 		uint32_t temp = reg >> (4*(7-i)) & 0xF;
-		bufer[i] = temp < 10 ? '0' + (int)temp :
-		 											 'A' + (int)temp - 10;
+		bufer[i] = temp < 10 
+             ? '0' + (int)temp 
+             : 'A' + (int)temp - 10;
 	}
-
 	LCD_Send_String(strNum, bufer);
 }
 
@@ -100,8 +103,12 @@ regToDisplay(uint32_t reg, int8_t strNum){
 */
 void 
 doubleToDisplay(double num, int8_t strNum){
-	char lengthToLine[9];
+	char lengthToLine[9] = {0};
 	itoa( (int)num, lengthToLine, 10); 	//При необходимости умножить для повышения точности
+	uint8_t strL = strlen(lengthToLine);
+	lengthToLine[strL] = '.';
+	int lBytes = (num - (int) num) * 100000;
+	itoa(lBytes, lengthToLine + strL + 1, 10); 	//При необходимости умножить для повышения точности
 
 	LCD_Send_String(strNum, lengthToLine);
 }
@@ -109,7 +116,6 @@ doubleToDisplay(double num, int8_t strNum){
 /*
  * Сканирование клавиатуры
 */
-
 void 
 keyboardScan(void *param){
 	static uint8_t counter = 0;

@@ -8,16 +8,16 @@ extern position     pos;
 
 void 
 initABl(void){
-  AB.isABLineSet = 0;
-  AB.isABSameAsVehicleHeading = 1;
+  //AB.isABLineSet = 0;
+  //AB.isABSameAsVehicleHeading = 1;
+  //AB.isOnRightSideCurrentLine = 1;
   AB.refLineSide = 1;
   AB.widthMinusOverlap  = vehicle.toolWidth 
                         - vehicle.toolOverlap;
-  AB.isOnRightSideCurrentLine = 1;
   AB.refPoint1 = (vec2){0.0, 0.0};
   AB.flags = 0;
-  AB.flags |= 1 << 3;
-  AB.flags |= 1 << 4;
+  AB.flags |= 1 << isABSameAsVehicleHeading;
+  AB.flags |= 1 << isOnRightSideCurrentLine;
 }
 
 /*
@@ -27,13 +27,18 @@ void
 btnAPoint(void){
   // Если линия еще не задавалась, то устанавливаем точку A
 
-//  if( ( (AP.flags >> 2 & 1)) !=1)  
-  if(AB.isABLineSet != 1){
-    AB.refPoint1 = pn.fix;
-    AB.flags |= 1 << 0;    // Выставлям флаг Точки А
+  if( (AB.flags >> ABLineSet & 0x01) != 1)  {
+//  if(AB.isABLineSet != 1){
+
+    AB.refPoint1.easting = pos.pivotAxlePos.easting;
+    AB.refPoint1.northing = pos.pivotAxlePos.northing;
+    AB.abHeading = pos.pivotAxlePos.heading;
+
+    AB.flags |= 1 << APointSet;    // Выставлям флаг Точки А
     LCD_Send_String(0, "A-point is Set.");
   }
   else{
+
     LCD_Send_String(0, "AB-Line is set already.");
     LCD_Send_String(1, "Try B to change A-point.");
   }
@@ -46,11 +51,12 @@ void
 btnBPoint(void){
 
   //Если не установлена точка А
-  if(! (AB.flags & 0x1)){
+  if(! (AB.flags >> APointSet & 0x01 )){
     LCD_Send_String(0, "First set A-Point.");
     return;
   }
 
+/*
   // Если расстояние между точками не достаточно для корректного 
   // определения направления линии
   //x2-x1
@@ -62,19 +68,23 @@ btnBPoint(void){
     LCD_Send_String(0, "AB-Line error.");
 		return;
   }
+*/
 
   // Если линия АБ установлена( установлена точка А и В)
   // то делаем "замещение точек"
-//  if( (AB.flags >> 2 & 1) == 1)
-	if(AB.isABLineSet == 1){
+  if(AB.flags >> ABLineSet & 0x01){
 		AB.refPoint1 = AB.refPoint2;
     LCD_Send_String(0, "Changed Points.");
   }
+  else{
+    AB.flags |= 1 << BPointSet;    // Выставлям флаг Точки B
+    AB.flags |= 1 << ABLineSet;    // Выставляем флаг линии
+    LCD_Send_String(0, "B-point is Set.");
+  }
 
-  AB.refPoint2 = pn.fix;
-  AB.flags |= 1 << 1;    // Выставлям флаг Точки B
-  LCD_Send_String(0, "B-point is Set.");
-  
+  AB.refPoint2.easting = pos.pivotAxlePos.easting;
+  AB.refPoint2.northing = pos.pivotAxlePos.northing;
+
   AB.abHeading = atan2(AB.refPoint2.easting - AB.refPoint1.easting, 
                        AB.refPoint2.northing - AB.refPoint1.northing);
 
@@ -87,49 +97,47 @@ btnBPoint(void){
 
   AB.refABLineP2.easting  = AB.refPoint1.easting  + (sin(AB.abHeading) * 4000.0);
   AB.refABLineP2.northing = AB.refPoint1.northing + (cos(AB.abHeading) * 4000.0);
-
-//  AB.flags |= 1 << 2;
-  AB.isABLineSet = 1;
 }
 
 void 
 SetABLineByHeading(void) {
-    //heading is set in the AB Form
-    AB.refABLineP1.easting  = AB.refPoint1.easting  - (sin(AB.abHeading) * 4000.0);
-    AB.refABLineP1.northing = AB.refPoint1.northing - (cos(AB.abHeading) * 4000.0);
+  //heading is set in the AB Form
+  AB.refABLineP1.easting  = AB.refPoint1.easting  - (sin(AB.abHeading) * 4000.0);
+  AB.refABLineP1.northing = AB.refPoint1.northing - (cos(AB.abHeading) * 4000.0);
 
-    AB.refABLineP2.easting  = AB.refPoint1.easting  + (sin(AB.abHeading) * 4000.0);
-    AB.refABLineP2.northing = AB.refPoint1.northing + (cos(AB.abHeading) * 4000.0);
+  AB.refABLineP2.easting  = AB.refPoint1.easting  + (sin(AB.abHeading) * 4000.0);
+  AB.refABLineP2.northing = AB.refPoint1.northing + (cos(AB.abHeading) * 4000.0);
 
-    AB.refPoint2.easting  = AB.refABLineP2.easting;
-    AB.refPoint2.northing = AB.refABLineP2.northing;
+  AB.refPoint2.easting  = AB.refABLineP2.easting;
+  AB.refPoint2.northing = AB.refABLineP2.northing;
 
-//  AB.flags |= 1 << 2;
-    AB.isABLineSet = 1;
+  AB.flags |= 1 << ABLineSet;
+//   AB.isABLineSet = 1;
 }
 
 void 
 MoveABLine(double dist) {
-    double headingCalc;
+  double headingCalc;
 
-    //calculate the heading 90 degrees to ref ABLine heading
-//    headingCalc = ( (AB.flags >> 3 & 1) != 0)  ? (AB.abHeading + PIBy2)
+  //calculate the heading 90 degrees to ref ABLine heading
+  headingCalc = ( (AB.flags >> isABSameAsVehicleHeading & 0x01) != 0)  
+              ? (AB.abHeading + PIBy2)
+              : (AB.abHeading - PIBy2);
+//    headingCalc = (AB.isABSameAsVehicleHeading != 0)  ? (AB.abHeading + PIBy2)
 //                                                      : (AB.abHeading - PIBy2);
-    headingCalc = (AB.isABSameAsVehicleHeading != 0)  ? (AB.abHeading + PIBy2)
-                                                      : (AB.abHeading - PIBy2);
 
-    //calculate the new points for the reference line and points
-    AB.refPoint1.easting  = (sin(headingCalc) * dist) + AB.refPoint1.easting;
-    AB.refPoint1.northing = (cos(headingCalc) * dist) + AB.refPoint1.northing;
+  //calculate the new points for the reference line and points
+  AB.refPoint1.easting  = (sin(headingCalc) * dist) + AB.refPoint1.easting;
+  AB.refPoint1.northing = (cos(headingCalc) * dist) + AB.refPoint1.northing;
 
-    AB.refABLineP1.easting  = AB.refPoint1.easting  - (sin(AB.abHeading) * 4000.0);
-    AB.refABLineP1.northing = AB.refPoint1.northing - (cos(AB.abHeading) * 4000.0);
+  AB.refABLineP1.easting  = AB.refPoint1.easting  - (sin(AB.abHeading) * 4000.0);
+  AB.refABLineP1.northing = AB.refPoint1.northing - (cos(AB.abHeading) * 4000.0);
 
-    AB.refABLineP2.easting  = AB.refPoint1.easting  + (sin(AB.abHeading) * 4000.0);
-    AB.refABLineP2.northing = AB.refPoint1.northing + (cos(AB.abHeading) * 4000.0);
+  AB.refABLineP2.easting  = AB.refPoint1.easting  + (sin(AB.abHeading) * 4000.0);
+  AB.refABLineP2.northing = AB.refPoint1.northing + (cos(AB.abHeading) * 4000.0);
 
-    AB.refPoint2.easting  = AB.refABLineP2.easting;
-    AB.refPoint2.northing = AB.refABLineP2.northing;
+  AB.refPoint2.easting  = AB.refABLineP2.easting;
+  AB.refPoint2.northing = AB.refABLineP2.northing;
 }
 
 void 
@@ -149,7 +157,7 @@ GetCurrentABLine(vec3 pivot) {
                           / sqrt((dy * dy) + (dx * dx));
 
   //sign of distance determines which side of line we are on
-  AB.refLineSide = AB.distanceFromCurrentLine > 1
+  AB.refLineSide = AB.distanceFromCurrentLine > 0
                  ?  1
                  : -1;
 //  if (AB.distanceFromRefLine > 0) 
@@ -159,10 +167,9 @@ GetCurrentABLine(vec3 pivot) {
   //absolute the distance
   AB.distanceFromRefLine  = abs(AB.distanceFromRefLine);
   //Which ABLine is the vehicle on, negative is left and positive is right side
-  if( (AB.distanceFromCurrentLine / AB.widthMinusOverlap) < 0.0)
-      AB.howManyPathsAway = floor(AB.distanceFromRefLine / AB.widthMinusOverlap);
-  else
-      AB.howManyPathsAway = ceil(AB.distanceFromRefLine / AB.widthMinusOverlap);
+  AB.howManyPathsAway = (( AB.distanceFromCurrentLine / AB.widthMinusOverlap) < 0.0)
+                      ?  floor(AB.distanceFromRefLine / AB.widthMinusOverlap)
+                      :  ceil( AB.distanceFromRefLine / AB.widthMinusOverlap);
 
   //generate that pass number as signed integer
   AB.passNumber = (int8_t)(AB.refLineSide * AB.howManyPathsAway);
@@ -172,23 +179,21 @@ GetCurrentABLine(vec3 pivot) {
   vec2 point1;
 
   //depending which way you are going, the offset can be either side
-//  if (AB.flags >> 3 & 1) {
-  if (AB.isABSameAsVehicleHeading) {
-    point1 = (vec2){(cos(-AB.abHeading)     * ((AB.widthMinusOverlap 
+//  if (AB.alags >> 3 & 1) {
+  point1 = (AB.flags >> isABSameAsVehicleHeading & 0x1) //AB.isABSameAsVehicleHeading
+        ? (vec2){(cos(-AB.abHeading)     * ((AB.widthMinusOverlap
                       * AB.howManyPathsAway * AB.refLineSide) 
                       - vehicle.toolOffset))+ AB.refPoint1.easting,
                     (sin(-AB.abHeading)     * ((AB.widthMinusOverlap 
                       * AB.howManyPathsAway * AB.refLineSide) 
-                      - vehicle.toolOffset))+ AB.refPoint1.northing};
-  }
-  else {
-    point1 = (vec2){(cos(-AB.abHeading)   * ((AB.widthMinusOverlap 
-                    * AB.howManyPathsAway * AB.refLineSide) 
-                    + vehicle.toolOffset))+ AB.refPoint1.easting,
-                    (sin(-AB.abHeading)   * ((AB.widthMinusOverlap 
-                    * AB.howManyPathsAway * AB.refLineSide) 
-                    + vehicle.toolOffset))+ AB.refPoint1.northing};
-  }
+                      - vehicle.toolOffset))+ AB.refPoint1.northing}
+        : (vec2){(cos(-AB.abHeading)   * ((AB.widthMinusOverlap
+                      * AB.howManyPathsAway * AB.refLineSide) 
+                      + vehicle.toolOffset))+ AB.refPoint1.easting,
+                      (sin(-AB.abHeading)   * ((AB.widthMinusOverlap 
+                      * AB.howManyPathsAway * AB.refLineSide) 
+                      + vehicle.toolOffset))+ AB.refPoint1.northing};
+  
 
   //create the new line extent points for current ABLine based on original heading of AB line
   AB.currentABLineP1.easting  = point1.easting  - (sin(AB.abHeading) * 40000.0);
@@ -216,7 +221,10 @@ GetCurrentABLine(vec3 pivot) {
 //  AB.flags = AB.distanceFromCurrentLine > 0
 //           ? AB.flags | 1 << 4
 //           : AB.flags & !(0 << 4);
-  AB.isOnRightSideCurrentLine = (AB.distanceFromCurrentLine > 0);
+  AB.flags = (AB.distanceFromCurrentLine > 0)
+            ? AB.flags |   1 << isOnRightSideCurrentLine
+            : AB.flags & ~(1 << isOnRightSideCurrentLine);
+//  AB.isOnRightSideCurrentLine = (AB.distanceFromCurrentLine > 0);
   
   //absolute the distance
   AB.distanceFromCurrentLine = abs(AB.distanceFromCurrentLine);
@@ -244,14 +252,14 @@ GetCurrentABLine(vec3 pivot) {
   AB.rNorthAB = AB.currentABLineP1.northing + (U * dy);
 
   if (AB.abFixHeadingDelta >= PIBy2) {
-//      AB.flags &= !(1<<3);
-      AB.isABSameAsVehicleHeading = 0;
+      AB.flags &= ~(1 << isABSameAsVehicleHeading);
+//      AB.isABSameAsVehicleHeading = 0;
       AB.goalPointAB.easting  = AB.rEastAB  - (sin(AB.abHeading) * goalPointDistance);
       AB.goalPointAB.northing = AB.rNorthAB - (cos(AB.abHeading) * goalPointDistance);
   }
   else {
-//      AB.flags |= 1 << 3;
-      AB.isABSameAsVehicleHeading = 1;
+      AB.flags |= 1 << isABSameAsVehicleHeading;
+//      AB.isABSameAsVehicleHeading = 1;
       AB.goalPointAB.easting  = AB.rEastAB  + (sin(AB.abHeading) * goalPointDistance);
       AB.goalPointAB.northing = AB.rNorthAB + (cos(AB.abHeading) * goalPointDistance);
   }
@@ -296,17 +304,20 @@ GetCurrentABLine(vec3 pivot) {
   //clamp the steering angle to not exceed safe angular velocity
   if (abs(AB.angVel) > vehicle.maxAngularVelocity) {
     AB.steerAngleAB = toDegrees(AB.steerAngleAB > 0 
-      ? (atan((vehicle.wheelbase * vehicle.maxAngularVelocity) / (twoPI * pn.speed * 0.277777)))
-      : (atan((vehicle.wheelbase * -vehicle.maxAngularVelocity) / (twoPI * pn.speed * 0.277777))));
+      ? (atan((vehicle.wheelbase * vehicle.maxAngularVelocity) 
+              / (twoPI * pn.speed * 0.277777)))
+      : (atan((vehicle.wheelbase * -vehicle.maxAngularVelocity) 
+              / (twoPI * pn.speed * 0.277777))));
   }
 
   //distance is negative if on left, positive if on right
-//  AB.distanceFromCurrentLine = (AB.flags >> 3 & 1 )& (AB.flags >> 4 & 1) 
-//                             ? AB.distanceFromCurrentLine *  1.0
-//                             : AB.distanceFromCurrentLine * -1.0;
-  AB.distanceFromCurrentLine = AB.isABSameAsVehicleHeading & AB.isOnRightSideCurrentLine
+  AB.distanceFromCurrentLine = (AB.flags >> isABSameAsVehicleHeading & 0x01 )
+                             & (AB.flags >> isOnRightSideCurrentLine & 0x01) 
                              ? AB.distanceFromCurrentLine *  1.0
                              : AB.distanceFromCurrentLine * -1.0;
+//  AB.distanceFromCurrentLine = AB.isABSameAsVehicleHeading & AB.isOnRightSideCurrentLine
+//                             ? AB.distanceFromCurrentLine *  1.0
+//                             : AB.distanceFromCurrentLine * -1.0;
 /*
   if (AB.isABSameAsVehicleHeading) {
     if (!AB.isOnRightSideCurrentLine)

@@ -7,7 +7,6 @@
 
 #define strlen_t 	200            //Максимальная длина строки
 #define strlen_r 	80
-#define strlen 		80
 
 typedef struct {
 	char queue[strlen_t];

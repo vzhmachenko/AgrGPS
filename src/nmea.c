@@ -3,6 +3,7 @@
 #include "glm.h"
 #include "position.h"
 #include "ABLine.h"
+#include "vehicle.h"
 
 #define NULL    ( (void *) 0)
 #define nullptr ( (void *) 0)
@@ -13,7 +14,10 @@ const   double    sm_b = 6356752.314;
         NMEA      pn;                        // Структура, где хранятся пременные, расчитываемые из NMEA
 extern  position  pos;
 extern  ABline 		AB;
+extern  Vehicle   vehicle;  
         double    xy[2] = {0.0, 0.0};        // Для расчета UTM-coord
+  const double UTMScaleFactor = 0.9996;
+  const double koef = 0.01666666666;          ///< Коефициент перевода
 
 
 /*! 
@@ -82,10 +86,10 @@ MapLatLonToXY(double phi, double lambda, double lambda0){
  */
 void 
 DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
-  const double UTMScaleFactor = 0.9996;
   //only calculate the zone once!
   if (!pos.isFirstFixPositionSet){
       pn.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
+      doubleToDisplay(pn.zone, 0);
   }
 
   MapLatLonToXY(latitude  * 0.01745329251994329576923690766743,
@@ -151,30 +155,35 @@ ParseNMEA(void *parameter){
   bit0 - isGPSPositionInit
   bit1 - isFirstFixPositionSet
   */
-  vec3 pos;   //position for AB_Calculations
+  vec3 pivotAxlePos;   //position for AB_Calculations
+
 
   while (1) {
     splitString( (char*) parameter);          // Разбиваем сообщение по массивам
 
     if (strstr( (char*) parameter, "$GPGGA") != NULL) ParseGGA(); 
-    //if (strstr( (char*) parameter, "$GPVTG") != NULL) ParseVTG();
-    //if (strstr( (char*) parameter, "$GPRMC") != NULL) ParseRMC();
-    //if (strstr( (char*) parameter, "$GPGLL") != NULL) ParseGLL();
+    if (strstr( (char*) parameter, "$GPVTG") != NULL) ParseVTG();
+    if (strstr( (char*) parameter, "$GPRMC") != NULL) ParseRMC();
+    if (strstr( (char*) parameter, "$GPGLL") != NULL) ParseGLL();
 
     // Если координаты были обновлены, то работаем дальше
     if( (pn.coordCorrect & 0b11) == 0b11) 
       UpdateFixPosition();
 
-    doubleToDisplay(pn.zone, 1);
-    doubleToDisplay(pn.latitude, 2);
-    doubleToDisplay(pn.longitude, 3);
+    doubleToDisplay(pn.latitude, 1);
+    doubleToDisplay(pn.longitude, 2);
 
-    if (AB.flags & 1<<2) {
-      pos.easting = pn.latitude;
+    if (AB.flags & 1 << 2) {
+      /*
+      pos.easting  = pn.latitude;
       pos.northing = pn.longitude;
-      pos.heading = pn.headingTrue;
-      GetCurrentABLine(pos);
+      pos.heading  = pn.headingTrue;
+      */
+      pivotAxlePos.easting  =  pn.fix.easting - (sin(pos.pivotAxlePos.heading) * vehicle.antennaPivot);
+      pivotAxlePos.northing =  pn.fix.easting - (cos(pos.pivotAxlePos.heading) * vehicle.antennaPivot);
+      pivotAxlePos.heading  =  pos.fixHeading;
 
+      GetCurrentABLine(pivotAxlePos);
     }
 
     vTaskSuspend(NULL);         // При завершении обработки сообщения приостанавливаем задачу
@@ -188,7 +197,6 @@ ParseNMEA(void *parameter){
  */
 double 
 NMEAtoDecimal(char *str){
-  double koef = 0.01666666666;          ///< Коефициент перевода
   double var = atof(str);               ///< Переменная из сообщения
   var = (var - (int)(var - (int)var % 100)) 
       * koef + (int)(var - (int)var % 100) / 100;
@@ -267,7 +275,7 @@ ParseGGA(void){
   pn.ageDiff           = atof(words[11]);
 
   strncpy(pn.time, words[1], 6);
-  LCD_Send_String(0, "GGA");
+//  LCD_Send_String(0, "GGA");
 }
 /* 
 * GLL Geographic Position – Latitude/Longitude
@@ -315,7 +323,7 @@ ParseGLL(void){
   if (words[4] == "W")
     pn.longitude *= -1;
 
-  LCD_Send_String(0, "GLL");
+//  LCD_Send_String(0, "GLL");
   strncpy(pn.time, words[5], 6);
 }
 
@@ -376,7 +384,7 @@ ParseRMC(void){
   pn.speed = round(pn.speed * 1.852);
   pn.headingTrue = atof(words[8]);
 
-  LCD_Send_String(0, "RMC");
+//  LCD_Send_String(0, "RMC");
   strncpy(pn.time, words[1], 6);
   strncpy(pn.date, words[9], 6);
 
@@ -401,7 +409,7 @@ ParseRMC(void){
 void 
 ParseVTG(void){
   GPIOD->ODR ^= 0x8;
-  LCD_Send_String(0, "VTG");
+//  LCD_Send_String(0, "VTG");
   pn.headingTrue = atof(words[1]);
   pn.speed = atof(words[5]);
   pn.speed = round(pn.speed * 1.852);
