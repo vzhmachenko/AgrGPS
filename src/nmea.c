@@ -3,7 +3,6 @@
 #include "glm.h"
 #include "position.h"
 #include "ABLine.h"
-#include "vehicle.h"
 
 #define NULL    ( (void *) 0)
 #define nullptr ( (void *) 0)
@@ -166,10 +165,6 @@ splitString(char *from){
 
 void 
 ParseNMEA(void *parameter){
-  /* GPSPositionStatusBit
-  bit0 - isGPSPositionInit
-  bit1 - isFirstFixPositionSet
-  */
   vec3 pivotAxlePos;   //position for AB_Calculations
 
 
@@ -182,31 +177,33 @@ ParseNMEA(void *parameter){
     if (strstr( (char*) parameter, "$GPGLL") != NULL) ParseGLL();
 
     // Ошибка в координатах, товыходим
-    if( !(nmea.flags >> latitudeOk   & 0x01)
-    ||  !(nmea.flags >> longtitudeOk & 0x01) ) {
-      return;
+    if( (nmea.flags >> latitudeOk   & 0x01)
+    &&  (nmea.flags >> longtitudeOk & 0x01) ) {
+
+      UpdateFixPosition();
+
+      doubleToDisplay(nmea.latitude,  1);
+      doubleToDisplay(nmea.longitude, 2);
+
+      if (abline.flags >> ABLineSet & 0x01) {
+        /*
+        position.easting  = nmea.latitude;
+        position.northing = nmea.longitude;
+        position.heading  = nmea.headingTrue;
+        */
+        pivotAxlePos.easting  =  nmea.fix.easting - (sin(position.pivotAxlePos.heading) 
+                              * vehicle.antennaPivot);
+        pivotAxlePos.northing =  nmea.fix.easting - (cos(position.pivotAxlePos.heading) 
+                              * vehicle.antennaPivot);
+        pivotAxlePos.heading  =  position.fixHeading;
+
+        GetCurrentABLine(pivotAxlePos);
+      }
     }
+
     // Очищаем флаги для предотвращения обработки повторных данных
     nmea.flags &= ~(0x01 << latitudeOk);
     nmea.flags &= ~(0x01 << longtitudeOk);
-
-    UpdateFixPosition();
-    doubleToDisplay(nmea.latitude,  1);
-    doubleToDisplay(nmea.longitude, 2);
-
-    if (abline.flags >> ABLineSet & 0x01) {
-      /*
-      position.easting  = nmea.latitude;
-      position.northing = nmea.longitude;
-      position.heading  = nmea.headingTrue;
-      */
-      pivotAxlePos.easting  =  nmea.fix.easting - (sin(position.pivotAxlePos.heading) * vehicle.antennaPivot);
-      pivotAxlePos.northing =  nmea.fix.easting - (cos(position.pivotAxlePos.heading) * vehicle.antennaPivot);
-      pivotAxlePos.heading  =  position.fixHeading;
-
-      GetCurrentABLine(pivotAxlePos);
-    }
-
     vTaskSuspend(NULL);         // При завершении обработки сообщения приостанавливаем задачу
                                 // Для ожидания нового сообщения для обработки
   }

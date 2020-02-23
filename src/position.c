@@ -26,7 +26,7 @@ initPosition(){
   position.prevBoundaryPos.northing  = 0;
   position.offset = 0;
 
-  memset(&position.stepFixPts, 0, sizeof(position.stepFixPts) * histSize );
+//  memset(position.stepFixPts, 0, sizeof(position.stepFixPts) * histSize );
 
 }
 

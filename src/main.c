@@ -41,7 +41,6 @@ int main(void) {
 
 	dma1ini();
 	dma2ini();
-
 	__enable_irq();
 
 
@@ -52,20 +51,22 @@ int main(void) {
 //******************* Задача получения NMEA сообщений через DMA ****************//
 //******************************************************************************//
 	if( xTaskCreate( receiveFromDMA, "NMEAbyDMA", 
-				900, NULL, 3, NULL) != pdPASS)
+				800, NULL, 3, NULL) != pdPASS)
       GPIOD->ODR |= 0xFFFFFFFF;
 
 //******************************************************************************//
 //******************* Задача сканирования клавиатуры*********** ****************//
 //******************************************************************************//
 	if(xTaskCreate(keyboardScan, "ScanKeyb", 
-				600, NULL, 1, NULL) != pdPASS)
+				300, NULL, 1, NULL) != pdPASS)
       GPIOD->ODR |= 0xFFFFFFFF;
 
 
 // Временные тестовые задачи
 	xTaskCreate(tempTask, 	"temp", 30, NULL, 1, NULL);
 	xTaskCreate(tempTask2, 	"temk", 30, NULL, 1, NULL);
+
+
 
 
 // Запускаем планировщик заданий

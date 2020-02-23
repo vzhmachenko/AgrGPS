@@ -10,15 +10,13 @@
 #include "nmea.h"
 #include "position.h"
 #include "ABLine.h"
-#include "string.h"
 
 extern 	QueueHandle_t	xpQueue;
+extern 	char 					toBlue[strlen_t];
 extern  ABline 				abline;
-extern  Position      pos;
-extern  Vehicle       vehicle;
+extern  NMEA		      nmea;
         BaseType_t 		xStatus1;
         char*					receivePointer;
-extern 	char 					toBlue[strlen_t];
 
 /*
  *	Задача чтения NMEA-сообщений по DMA

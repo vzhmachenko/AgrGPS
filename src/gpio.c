@@ -55,7 +55,7 @@ void
 LCD_SendCommandOrData(uint8_t data, uint8_t command){
   //if data     command == 1
   //if command  command == 0
-  RS(command && 0x01);
+  RS(command);
   LCD_Set_Data(data);
   EN(1);
   delay_ms(1);//10
