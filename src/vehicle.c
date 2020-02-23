@@ -2,13 +2,13 @@
 #include "nmea.h"
 
 Vehicle vehicle;
-extern NMEA pn;
+extern NMEA nmea;
 
 double 
 UpdateGoalPointDistance(double distanceFromCurrentLine) {
   //how far should goal point be away  - speed * seconds * kmph -> m/s then limit min value
 
-  double goalPointDistance  = pn.speed 
+  double goalPointDistance  = nmea.speed 
                             * vehicle.goalPointLookAheadSeconds 
                             * 0.27777777;/*vehicle.goalPointLookAheadSeconds*/ 
 

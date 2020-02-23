@@ -11,26 +11,44 @@
 const   double    sm_a = 6378137.0;
 const   double    sm_b = 6356752.314;
         char      words[15][15];             // Двумерный массив для парсинга сообщений
-        NMEA      pn;                        // Структура, где хранятся пременные, расчитываемые из NMEA
-extern  position  pos;
-extern  ABline 		AB;
-extern  Vehicle   vehicle;  
-        double    xy[2] = {0.0, 0.0};        // Для расчета UTM-coord
-  const double UTMScaleFactor = 0.9996;
-  const double koef = 0.01666666666;          ///< Коефициент перевода
 
+        NMEA      nmea;                        // Структура, где хранятся пременные, расчитываемые из NMEA
+extern  Position  position;
+extern  ABline 		abline;
+extern  Vehicle   vehicle;  
+
+        double    xy[2] = {0.0, 0.0};        // Для расчета UTM-coord
+const   double    UTMScaleFactor = 0.9996;
+const   double    koef = 0.01666666666;          ///< Коефициент перевода
+
+/*!
+ * Проверяем наличие значений долготы и широты
+*/
+void  checkLatLon(char *lat, char *lon){
+  nmea.latitude = NMEAtoDecimal(lat);  // Получаем десятичное значение широты
+  if( strchr(lat, '.'))              // Выставляем бит коректности данных
+    nmea.flags |= 0x01 << latitudeOk;
+  else
+    nmea.flags &= ~(0x01 << latitudeOk);
+
+  nmea.longitude = NMEAtoDecimal(lon);  // Получаем десятичное значение долготы
+  if( strchr(lon, '.'))              // Выставляем бит коректности данных
+    nmea.flags |= 0x01 << longtitudeOk;
+  else
+    nmea.flags &= ~(0x01 << longtitudeOk);
+}
 
 /*! 
   Задаем начальные значения при создании структуры
  */
 void 
 createStartNMEA(void){
-  pn.fix = (vec2){0, 0};
-  pn.fixOffset = (vec2){0,0};
-  pn.status = 'q';
-  pn.hemisphere = 'N';
-  pn.zone = 0;
-  pn.coordCorrect = 0;
+  nmea.fix        = (vec2){0, 0};
+  nmea.fixOffset  = (vec2){0,0};
+  nmea.status     = 'q';
+  nmea.hemisphere = 'N';
+  nmea.zone       = 0.0;
+  nmea.flags      = 0x00;      
 }
 
 /*!
@@ -46,7 +64,7 @@ ArcLengthOfMeridian(double phi){
   double gamma    = (15.0 * pow(n, 2.0) * 0.0625) + (-15.0 * pow(n, 4.0) / 32.0);
   double delta    = (-35.0 * pow(n, 3.0) / 48.0) + (105.0 * pow(n, 5.0) / 256.0);
   double epsilon  = (315.0 * pow(n, 4.0) / 512.0);
-  return alpha    * (phi + (beta * sin(2.0 * phi))
+  return    alpha * (phi + (beta * sin(2.0 * phi))
                   + (gamma   * sin(4.0 * phi))
                   + (delta   * sin(6.0 * phi))
                   + (epsilon * sin(8.0 * phi)));
@@ -87,14 +105,15 @@ MapLatLonToXY(double phi, double lambda, double lambda0){
 void 
 DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
   //only calculate the zone once!
-  if (!pos.isFirstFixPositionSet){
-      pn.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
-      doubleToDisplay(pn.zone, 0);
+  if ( !(nmea.flags >>  zone & 0x01)){
+      nmea.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
+      doubleToDisplay(nmea.zone, 0);
+      nmea.flags |= 0x01 << zone;       ///Выставляем флаг получения зоны
   }
 
   MapLatLonToXY(latitude  * 0.01745329251994329576923690766743,
                 longitude * 0.01745329251994329576923690766743,
-                (-183.0 + (pn.zone * 6.0)) 
+                (-183.0 + (nmea.zone * 6.0)) 
                 * 0.01745329251994329576923690766743);
 
   xy[0]  = (xy[0] * UTMScaleFactor) + 500000.0;
@@ -109,20 +128,20 @@ DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
  */
 void 
 UpdateNorthingEasting(void){
-  DecDeg2UTM(pn.latitude, pn.longitude);
+  DecDeg2UTM(nmea.latitude, nmea.longitude);
   //keep a copy of actual easting and northings
-  pn.actualEasting  = xy[0];
-  pn.actualNorthing = xy[1];
+  nmea.actualEasting  = xy[0];
+  nmea.actualNorthing = xy[1];
 
   //if a field is open, the real one is subtracted from the integer
-  pn.fix.easting    = xy[0] - pn.utmEast  + pn.fixOffset.easting;
-  pn.fix.northing   = xy[1] - pn.utmNorth + pn.fixOffset.northing;
+  nmea.fix.easting    = xy[0] - nmea.utmEast  + nmea.fixOffset.easting;
+  nmea.fix.northing   = xy[1] - nmea.utmNorth + nmea.fixOffset.northing;
 
   //compensate for the fact the zones lines are a grid and the world is round
-  pn.fix.easting  = ( cos (-pn.convergenceAngle) * pn.fix.easting) 
-                  - ( sin (-pn.convergenceAngle) * pn.fix.northing);
-  pn.fix.northing = ( sin (-pn.convergenceAngle) * pn.fix.easting) 
-                  + ( cos (-pn.convergenceAngle) * pn.fix.northing);
+  nmea.fix.easting  = ( cos (-nmea.convergenceAngle) * nmea.fix.easting) 
+                    - ( sin (-nmea.convergenceAngle) * nmea.fix.northing);
+  nmea.fix.northing = ( sin (-nmea.convergenceAngle) * nmea.fix.easting) 
+                    + ( cos (-nmea.convergenceAngle) * nmea.fix.northing);
 }
 
 //--------------------------------------------------------------------------------//
@@ -134,17 +153,13 @@ UpdateNorthingEasting(void){
  */
 void 
 splitString(char *from){
-
 	char *pch;                                  // Указатель
 	pch = strtok(from, ",");                    // Разделителем выступает запятая
-	for(int i = 0; pch != NULL && i<15; i++) {  // Разбрасываем по отдельным массивам
-	//sprintf(words[i], "%s", pch);             // Копируем данные
+	for(int i = 0; pch != NULL && i < 15; i++) {  // Разбрасываем по отдельным массивам
     strcpy(words[i], pch);
-    //int k = strlen(pch);                 // Остаток...
-    //memset(words[i] + k, '\0', 15-k);         // ...заполняем "нулями"
-		for(int k = strlen(words[i]); k<15; k++)
+		for(int k = strlen(words[i]); k < 15; k++){
 			words[i][k] = '\0';
-
+    }
 		pch = strtok(NULL, ",");
 	}
 }
@@ -166,22 +181,28 @@ ParseNMEA(void *parameter){
     if (strstr( (char*) parameter, "$GPRMC") != NULL) ParseRMC();
     if (strstr( (char*) parameter, "$GPGLL") != NULL) ParseGLL();
 
-    // Если координаты были обновлены, то работаем дальше
-    if( (pn.coordCorrect & 0b11) == 0b11) 
-      UpdateFixPosition();
+    // Ошибка в координатах, товыходим
+    if( !(nmea.flags >> latitudeOk   & 0x01)
+    ||  !(nmea.flags >> longtitudeOk & 0x01) ) {
+      return;
+    }
+    // Очищаем флаги для предотвращения обработки повторных данных
+    nmea.flags &= ~(0x01 << latitudeOk);
+    nmea.flags &= ~(0x01 << longtitudeOk);
 
-    doubleToDisplay(pn.latitude, 1);
-    doubleToDisplay(pn.longitude, 2);
+    UpdateFixPosition();
+    doubleToDisplay(nmea.latitude,  1);
+    doubleToDisplay(nmea.longitude, 2);
 
-    if (AB.flags & 1 << 2) {
+    if (abline.flags >> ABLineSet & 0x01) {
       /*
-      pos.easting  = pn.latitude;
-      pos.northing = pn.longitude;
-      pos.heading  = pn.headingTrue;
+      position.easting  = nmea.latitude;
+      position.northing = nmea.longitude;
+      position.heading  = nmea.headingTrue;
       */
-      pivotAxlePos.easting  =  pn.fix.easting - (sin(pos.pivotAxlePos.heading) * vehicle.antennaPivot);
-      pivotAxlePos.northing =  pn.fix.easting - (cos(pos.pivotAxlePos.heading) * vehicle.antennaPivot);
-      pivotAxlePos.heading  =  pos.fixHeading;
+      pivotAxlePos.easting  =  nmea.fix.easting - (sin(position.pivotAxlePos.heading) * vehicle.antennaPivot);
+      pivotAxlePos.northing =  nmea.fix.easting - (cos(position.pivotAxlePos.heading) * vehicle.antennaPivot);
+      pivotAxlePos.heading  =  position.fixHeading;
 
       GetCurrentABLine(pivotAxlePos);
     }
@@ -238,44 +259,34 @@ ParseGGA(void){
   // Мигаем светлодиодом, для индикации
   GPIOD->ODR ^= 0x4;
 
-  pn.latitude = NMEAtoDecimal(words[2]);  // Получаем десятичное значение широты
-  if( strchr(words[2], '.'))              // Выставляем бит коректности данных
-    pn.coordCorrect |= 0b1;
-  else
-    pn.coordCorrect &= ~0b1;   
+  checkLatLon(words[2], words[4]);
 
-  pn.longitude = NMEAtoDecimal(words[4]);  // Получаем десятичное значение долготы
-  if( strchr(words[4], '.'))              // Выставляем бит коректности данных
-    pn.coordCorrect |= 0b10;
-  else
-    pn.coordCorrect &= ~0b10;   
-
-
-  if( (pn.coordCorrect & 0b11) == 0b11)             // Если обе координаты коректны, то обрабатываем полученные данные
+  if( (nmea.flags >> latitudeOk & 0x01)
+  &&  (nmea.flags >> longtitudeOk & 0x01)) { // Если обе координаты коректны, то обрабатываем полученные данные
     UpdateNorthingEasting();
+  }
   else                                    // Если нет, то не мусорим и выходим
     return;
 
   // Положение по полушариям
   if (words[3] == "S"){
-    pn.latitude  *= -1;
-    pn.hemisphere = 'S';
+    nmea.latitude  *= -1;
+    nmea.hemisphere = 'S';
   }
   else
-    pn.hemisphere = 'N';
+    nmea.hemisphere = 'N';
 
   if (words[5] == "W")
-    pn.longitude *= -1;
+    nmea.longitude *= -1;
 
   // Остальная информация
-  pn.fixQuality        = atoi(words[6]);
-  pn.satellitesTracked = atoi(words[7]);
-  pn.hdop              = atof(words[8]);
-  pn.altitude          = atof(words[9]);
-  pn.ageDiff           = atof(words[11]);
+  nmea.fixQuality        = atoi(words[6]);
+  nmea.satellitesTracked = atoi(words[7]);
+  nmea.hdop              = atof(words[8]);
+  nmea.altitude          = atof(words[9]);
+  nmea.ageDiff           = atof(words[11]);
 
-  strncpy(pn.time, words[1], 6);
-//  LCD_Send_String(0, "GGA");
+  strncpy(nmea.time, words[1], 6);
 }
 /* 
 * GLL Geographic Position – Latitude/Longitude
@@ -298,33 +309,25 @@ void
 ParseGLL(void){
   GPIOD->ODR ^= 0x20;
 
-  pn.latitude = NMEAtoDecimal(words[1]);  // Получаем десятичное значение широты
-  if( strchr(words[1], '.'))              // Выставляем бит коректности данных
-    pn.coordCorrect |= 0b1;
-  else
-    pn.coordCorrect &= ~0b1;   
+  checkLatLon(words[1], words[3]);
 
-  pn.longitude =NMEAtoDecimal(words[3]);  // Получаем десятичное значение долготы
-  if( strchr(words[3], '.'))              // Выставляем бит коректности данных
-    pn.coordCorrect |= 0b10;
-  else
-    pn.coordCorrect &= ~0b10;   
-
-  if( (pn.coordCorrect & 0b11) == 0b11)   // Если обе координаты коректны, то обрабатываем полученные данные
+  if( (nmea.flags >> latitudeOk & 0x01)
+  &&  (nmea.flags >> longtitudeOk & 0x01)) { // Если обе координаты коректны, то обрабатываем полученные данные
     UpdateNorthingEasting();
+  }
   else                                    // Если нет, то не мусорим и выходим
     return;
 
   if (words[2] == "S"){
-    pn.latitude  *= -1;
-    pn.hemisphere = 'S';
+    nmea.latitude  *= -1;
+    nmea.hemisphere = 'S';
   }
-  else pn.hemisphere = 'N';
+  else 
+    nmea.hemisphere = 'N';
   if (words[4] == "W")
-    pn.longitude *= -1;
+    nmea.longitude *= -1;
 
-//  LCD_Send_String(0, "GLL");
-  strncpy(pn.time, words[5], 6);
+  strncpy(nmea.time, words[5], 6);
 }
 
 
@@ -354,40 +357,32 @@ void
 ParseRMC(void){
   GPIOD->ODR ^= 0x10;
 
-  pn.latitude = NMEAtoDecimal(words[3]);  // Получаем десятичное значение широты
-  if( strchr(words[3], '.'))              // Выставляем бит коректности данных
-    pn.coordCorrect |= 0b1;
-  else
-    pn.coordCorrect &= ~0b1;   
+  checkLatLon(words[3], words[5]);
 
-  pn.longitude = NMEAtoDecimal(words[5]);  // Получаем десятичное значение долготы
-  if( strchr(words[5], '.'))              // Выставляем бит коректности данных
-    pn.coordCorrect |= 0b10;
-  else
-    pn.coordCorrect &= ~0b10;   
-
-  if( (pn.coordCorrect & 0b11) == 0b11)             // Если обе координаты коректны, то обрабатываем полученные данные
+  if( (nmea.flags >> latitudeOk & 0x01)
+  &&  (nmea.flags >> longtitudeOk & 0x01)) { // Если обе координаты коректны, то обрабатываем полученные данные
     UpdateNorthingEasting();
-  else                                    // Если нет, то не мусорим и выходим
+  }
+  else{                                    // Если нет, то не мусорим и выходим
     return;
+  }
 
   // Положение по полушариям
   if (words[4] == "S"){
-    pn.latitude *= -1;
-    pn.hemisphere = 'S';
+    nmea.latitude *= -1;
+    nmea.hemisphere = 'S';
   }
   if (words[6] == "W")
-    pn.longitude *= -1;
-  else pn.hemisphere = 'N';
+    nmea.longitude *= -1;
+  else 
+    nmea.hemisphere = 'N';
 
-  pn.speed = atof(words[7]);
-  pn.speed = round(pn.speed * 1.852);
-  pn.headingTrue = atof(words[8]);
+  nmea.speed = atof(words[7]);
+  nmea.speed = round(nmea.speed * 1.852);
+  nmea.headingTrue = atof(words[8]);
 
-//  LCD_Send_String(0, "RMC");
-  strncpy(pn.time, words[1], 6);
-  strncpy(pn.date, words[9], 6);
-
+  strncpy(nmea.time, words[1], 6);
+  strncpy(nmea.date, words[9], 6);
 }
 
 /*
@@ -409,8 +404,7 @@ ParseRMC(void){
 void 
 ParseVTG(void){
   GPIOD->ODR ^= 0x8;
-//  LCD_Send_String(0, "VTG");
-  pn.headingTrue = atof(words[1]);
-  pn.speed = atof(words[5]);
-  pn.speed = round(pn.speed * 1.852);
+  nmea.headingTrue = atof(words[1]);
+  nmea.speed = atof(words[5]);
+  nmea.speed = round(nmea.speed * 1.852);
 }

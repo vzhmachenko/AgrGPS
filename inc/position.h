@@ -4,17 +4,21 @@
 #include "nmea.h"
 #include <math.h>
 #include "glm.h"
+
+#define histSize 6
+
+enum {
+  isFirstFixPositionSet     = 0,
+  isGPSPositionInitialized  = 1,
+  isFixHolding              = 2,
+  isFixHoldLoaded           = 3
+};
+
 typedef struct {
 
   int     isFirstFixPositionSet;      // <bool> ///< Самая первая фиксация точки и т.д.
   int     isGPSPositionInitialized;   // <bool> ///< Связь устоявшаяся
 
-  int     isFixHolding;               // <bool>
-  int     isFixHoldLoaded;            // <bool>
-//  int     startCounter;               // Начальный счетчик
-// int     totalFixSteps;
-  int     fixUpdateHz;
-  int     currentStepFix;
 
   int16_t guidanceLineDistanceOff;
   int16_t guidanceLineSteerAngle;
@@ -24,20 +28,22 @@ typedef struct {
   double  minFixStepDist;
   double  distance;
   double  boundaryTriggerDistance;
-  double  fixHeading;
+  double  fixHeading;             // "Историческое" направление
 
   int offset;   // Смещение в сантиметрах
 
   vec2    prevFix;
   vec2    prevBoundaryPos;
 
-  vec3    stepFixPts_0;
+  vec3    stepFixPts[histSize];
   vec3    stepFixPts_last;
   vec3    pivotAxlePos;
   vec3    vHold;
 
+  uint8_t flags;
 
-} position;
+
+} Position;
 
 void initPosition(void);
 void UpdateFixPosition(void);

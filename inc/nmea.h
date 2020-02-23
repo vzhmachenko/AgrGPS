@@ -10,6 +10,13 @@
 #include <string.h>
 #include "algorithm.h"
 
+enum { //flags
+  zone          = 0,
+  latitudeOk      = 1,
+  longtitudeOk    = 2
+
+};
+
 typedef struct {
   //WGS84 Lat Long
   double latitude;                              ///< Широта
@@ -26,9 +33,6 @@ typedef struct {
   //-----------------------------------------------------
   char time[6]; ///< time buffer
   char date[6]; ///< date buffer
-  int8_t coordCorrect ;    ///< Актуализация координат:
-                              ///< bit0 - latitude
-                              ///< bit1 - longtitude
   //-----------------------------------------------------
   //UTM coordinates
   //double northing, easting;
@@ -60,6 +64,8 @@ typedef struct {
 
   vec3 stepFixPts[50];
 
+  uint8_t flags;
+
 } NMEA;  
 
 
@@ -78,4 +84,9 @@ void    ParseGGA(void);
 void    ParseGLL(void);
 void    ParseRMC(void);
 void    ParseVTG(void); 
+void    checkLatLon(char *lat, char *lon);
+
+
+
+
  #endif

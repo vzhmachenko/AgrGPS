@@ -13,9 +13,8 @@
 #include "string.h"
 
 extern 	QueueHandle_t	xpQueue;
-extern  ABline 				AB;
-extern  NMEA 					pn;
-extern  position      pos;
+extern  ABline 				abline;
+extern  Position      pos;
 extern  Vehicle       vehicle;
         BaseType_t 		xStatus1;
         char*					receivePointer;
@@ -54,8 +53,8 @@ receiveFromDMA(void *param){
 
 				vTaskResume(xParseTaskHandle);					//После запуска просто возобновляем выполнение работы
 
-				if(AB.flags >> ABLineSet & 0x01)
-					doubleToDisplay(AB.distanceFromCurrentLine, 3);
+				if(abline.flags >> ABLineSet & 0x01)
+					doubleToDisplay(abline.distanceFromCurrentLine, 3);
 
 
 				//LCD_SendCommand(0x01);
@@ -87,7 +86,6 @@ tempTask(void *tem){
 void 
 regToDisplay(uint32_t reg, int8_t strNum){
 	char bufer[9];
-	uint8_t k;
 	bufer[8] = 0;
 	for(uint8_t i = 0; i < 8; i++){
 		uint32_t temp = reg >> (4*(7-i)) & 0xF;
