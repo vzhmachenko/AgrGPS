@@ -186,16 +186,11 @@ ParseNMEA(void *parameter){
       doubleToDisplay(nmea.longitude, 2);
 
       if (abline.flags >> ABLineSet & 0x01) {
-        /*
-        position.easting  = nmea.latitude;
-        position.northing = nmea.longitude;
-        position.heading  = nmea.headingTrue;
-        */
-        pivotAxlePos.easting  =  nmea.fix.easting - (sin(position.pivotAxlePos.heading) 
+        pivotAxlePos.easting  = nmea.fix.easting - (sin(position.pivotAxlePos.heading) 
                               * vehicle.antennaPivot);
-        pivotAxlePos.northing =  nmea.fix.easting - (cos(position.pivotAxlePos.heading) 
+        pivotAxlePos.northing = nmea.fix.easting - (cos(position.pivotAxlePos.heading) 
                               * vehicle.antennaPivot);
-        pivotAxlePos.heading  =  position.fixHeading;
+        pivotAxlePos.heading  = position.fixHeading;
 
         GetCurrentABLine(pivotAxlePos);
       }
@@ -209,6 +204,23 @@ ParseNMEA(void *parameter){
   }
 }
 
+/*!
+*  Расчет полушарий
+*/
+void 
+calcSphere(char* w1, char* w2){
+  if (w1 == "S"){
+    nmea.latitude  *= -1;
+    nmea.hemisphere = 'S';
+  }
+  else{
+    nmea.hemisphere = 'N';
+  }
+  if (w2 == "W"){
+    nmea.longitude *= -1;
+  }
+}
+
 /*! 
  * Переводим координаты, полученные в сообщении, из минут в 
  * десятичную систему
@@ -218,7 +230,7 @@ NMEAtoDecimal(char *str){
   double var = atof(str);               ///< Переменная из сообщения
   var = (var - (int)(var - (int)var % 100)) 
       * koef + (int)(var - (int)var % 100) / 100;
-  return var ;
+  return var;
 }
 
 /*!
@@ -266,15 +278,7 @@ ParseGGA(void){
     return;
 
   // Положение по полушариям
-  if (words[3] == "S"){
-    nmea.latitude  *= -1;
-    nmea.hemisphere = 'S';
-  }
-  else
-    nmea.hemisphere = 'N';
-
-  if (words[5] == "W")
-    nmea.longitude *= -1;
+  calcSphere(words[3], words[5]);
 
   // Остальная информация
   nmea.fixQuality        = atoi(words[6]);
@@ -285,6 +289,8 @@ ParseGGA(void){
 
   strncpy(nmea.time, words[1], 6);
 }
+
+
 /* 
 * GLL Geographic Position – Latitude/Longitude
 * 000GPGLL,5026.83816,N,03036.72223,E,092645.00,A,A*60
@@ -301,7 +307,6 @@ ParseGGA(void){
 * 6) Status A - Data Valid, V - Data Invalid
 * 7) Checksum
 */
-
 void 
 ParseGLL(void){
   GPIOD->ODR ^= 0x20;
@@ -312,18 +317,12 @@ ParseGLL(void){
   &&  (nmea.flags >> longtitudeOk & 0x01)) { // Если обе координаты коректны, то обрабатываем полученные данные
     UpdateNorthingEasting();
   }
-  else                                    // Если нет, то не мусорим и выходим
+  else{                                    // Если нет, то не мусорим и выходим
     return;
-
-  if (words[2] == "S"){
-    nmea.latitude  *= -1;
-    nmea.hemisphere = 'S';
   }
-  else 
-    nmea.hemisphere = 'N';
-  if (words[4] == "W")
-    nmea.longitude *= -1;
 
+  // Положение по полушариям
+  calcSphere(words[2], words[4]);
   strncpy(nmea.time, words[5], 6);
 }
 
@@ -365,14 +364,7 @@ ParseRMC(void){
   }
 
   // Положение по полушариям
-  if (words[4] == "S"){
-    nmea.latitude *= -1;
-    nmea.hemisphere = 'S';
-  }
-  if (words[6] == "W")
-    nmea.longitude *= -1;
-  else 
-    nmea.hemisphere = 'N';
+  calcSphere(words[4], words[6]);
 
   nmea.speed = atof(words[7]);
   nmea.speed = round(nmea.speed * 1.852);
@@ -401,7 +393,7 @@ ParseRMC(void){
 void 
 ParseVTG(void){
   GPIOD->ODR ^= 0x8;
-  nmea.headingTrue = atof(words[1]);
-  nmea.speed = atof(words[5]);
-  nmea.speed = round(nmea.speed * 1.852);
+  nmea.headingTrue  = atof(words[1]);
+  nmea.speed        = atof(words[5]);
+  nmea.speed        = round(nmea.speed * 1.852);
 }
