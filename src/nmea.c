@@ -1,20 +1,11 @@
 #include "nmea.h"
-#include "gpio.h"
-#include "glm.h"
-#include "position.h"
-#include "ABLine.h"
 
-#define NULL    ( (void *) 0)
-#define nullptr ( (void *) 0)
 
 const   double    sm_a = 6378137.0;
 const   double    sm_b = 6356752.314;
         char      words[15][15];             // Двумерный массив для парсинга сообщений
 
         NMEA      nmea;                        // Структура, где хранятся пременные, расчитываемые из NMEA
-extern  Position  position;
-extern  ABline 		abline;
-extern  Vehicle   vehicle;  
 
         double    xy[2] = {0.0, 0.0};        // Для расчета UTM-coord
 const   double    UTMScaleFactor = 0.9996;
@@ -163,46 +154,6 @@ splitString(char *from){
 	}
 }
 
-void 
-ParseNMEA(void *parameter){
-  vec3 pivotAxlePos;   //position for AB_Calculations
-
-
-  while (1) {
-    splitString( (char*) parameter);          // Разбиваем сообщение по массивам
-
-    if (strstr( (char*) parameter, "$GPGGA") != NULL) ParseGGA(); 
-    if (strstr( (char*) parameter, "$GPVTG") != NULL) ParseVTG();
-    if (strstr( (char*) parameter, "$GPRMC") != NULL) ParseRMC();
-    if (strstr( (char*) parameter, "$GPGLL") != NULL) ParseGLL();
-
-    // Ошибка в координатах, товыходим
-    if( (nmea.flags >> latitudeOk   & 0x01)
-    &&  (nmea.flags >> longtitudeOk & 0x01) ) {
-
-      UpdateFixPosition();
-
-      doubleToDisplay(nmea.latitude,  1);
-      doubleToDisplay(nmea.longitude, 2);
-
-      if (abline.flags >> ABLineSet & 0x01) {
-        pivotAxlePos.easting  = nmea.fix.easting - (sin(position.pivotAxlePos.heading) 
-                              * vehicle.antennaPivot);
-        pivotAxlePos.northing = nmea.fix.easting - (cos(position.pivotAxlePos.heading) 
-                              * vehicle.antennaPivot);
-        pivotAxlePos.heading  = position.fixHeading;
-
-        GetCurrentABLine(pivotAxlePos);
-      }
-    }
-
-    // Очищаем флаги для предотвращения обработки повторных данных
-    nmea.flags &= ~(0x01 << latitudeOk);
-    nmea.flags &= ~(0x01 << longtitudeOk);
-    vTaskSuspend(NULL);         // При завершении обработки сообщения приостанавливаем задачу
-                                // Для ожидания нового сообщения для обработки
-  }
-}
 
 /*!
 *  Расчет полушарий
@@ -397,3 +348,5 @@ ParseVTG(void){
   nmea.speed        = atof(words[5]);
   nmea.speed        = round(nmea.speed * 1.852);
 }
+
+/* -------------------------------------------------------- */

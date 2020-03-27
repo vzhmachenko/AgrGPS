@@ -1,8 +1,9 @@
 #ifndef _POSITION_H_
 #define _POSITION_H_
 
-#include "nmea.h"
+//#include "nmea.h"
 #include <math.h>
+#include "stm32f4xx.h"
 #include "glm.h"
 
 #define histSize 6
@@ -48,5 +49,6 @@ typedef struct {
 void initPosition(void);
 void UpdateFixPosition(void);
 void CalculatePositionHeading(void);
-
+void InitializeFirstFewGPSPositions(void);
+/* ---------------------------------------------------------- */
  #endif

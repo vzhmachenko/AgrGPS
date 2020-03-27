@@ -1,13 +1,10 @@
-/*
- * gpio.h
- *
- *  Created on: Jan 28, 2019
- *      Author: valentyn
- */
-
 #ifndef GPIO_H_
 #define GPIO_H_
+
 #include "stm32f4xx.h"
+#include "string.h"
+
+//#define NULL    ( (void *) 0)
 
 #define GPIO_PIN_0                 ((uint16_t)0x0001)  /* Pin 0 selected    */
 #define GPIO_PIN_1                 ((uint16_t)0x0002)  /* Pin 1 selected    */
@@ -27,18 +24,49 @@
 #define GPIO_PIN_15                ((uint16_t)0x8000)  /* Pin 15 selected   */
 #define GPIO_PIN_All               ((uint16_t)0xFFFF)  /* All pins selected */
 
-
 #define RW(a)    GPIO_WritePin(GPIOC, GPIO_PIN_14, (FlagStatus)a )
 #define RS(a)    GPIO_WritePin(GPIOC, GPIO_PIN_13, (FlagStatus)a )
 #define EN(a)    GPIO_WritePin(GPIOC, GPIO_PIN_15, (FlagStatus)a )
 
+// Адреса начальных символов строк
+static const uint8_t lineAddr[4] = {0x80, 0xc0, 0x94, 0xd4};
+
+/*! Структура для передачи строки дисплею
+ *  посредством очереди. */
+typedef struct lineStruct{
+	uint8_t lineNumber;
+	char string[30];
+} lineParam;
+
+/*! Устанавливаем значение пина. */
 void GPIO_WritePin(GPIO_TypeDef  *GPIOx, 
 									 uint16_t 		 GPIO_Pin, 
 									 FlagStatus    PinState);
+
+/*! Установка таймера 2.*/
 void timerini2(void);
+
+/* Задержка, работающая на 2 таймере. */
 void delay_ms(uint16_t ms);
+
+/*! Запись данных на ножки дисплея. */
 void LCD_Set_Data(uint8_t data);
+
+/* Отправляем команду на дисплей. */
 void LCD_SendCommandOrData(uint8_t data, uint8_t command);
+
+/*! Процедура инициализации дисплея. */
 void LCD_ini(void);
-uint8_t LCD_Send_String(uint8_t String_Num, char 		*str);
+
+/* Отправляем строку на дисплей. */
+void LCD_Send_String(uint8_t String_Num, char *str);
+
+void regToDisplay(uint32_t reg, 
+                  int8_t strNum);
+
+void doubleToDisplay( double num,  
+                      int8_t strNum);
+
+void initLCDstruct(lineParam* line, uint8_t string_num, char *str);
+
 #endif /* GPIO_H_ */

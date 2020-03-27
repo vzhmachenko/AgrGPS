@@ -1,9 +1,8 @@
 #include "periph.h"
-#include "charQueue.h"
 
-extern char rxDMAbuf0[strlen_r];
-extern char rxDMAbuf1[strlen_r];
-extern char toBlue[strlen_t];
+char rxDMAbuf0[strlen_r];	
+char rxDMAbuf1[strlen_r];
+char toBlue[strlen_t];
 
 /*!
   Настройка режима ножек LED, LCD, Keyboard

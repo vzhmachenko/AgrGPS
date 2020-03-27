@@ -1,13 +1,12 @@
-/*
- * main.h
- *
- *  Created on: Jan 24, 2019
- *      Author: valentyn
- */
+#ifndef _MAIN_H_
+#define _MAIN_H_
 
-#ifndef MAIN_H_
-#define MAIN_H_
+#include "periph.h"
+#include "stm_tasks.h"
 
+/*! Инициализация всей доступной периферии,
+ * что используется. */
+void initAllPeriph();
 
 
 

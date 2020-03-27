@@ -1,7 +1,5 @@
 #ifndef _VEHICLE_H_
 #define _VEHICLE_H_
-#include "stm32f4xx.h"
-
 
 typedef struct {
   double toolWidth;
@@ -9,7 +7,7 @@ typedef struct {
   double toolOffset;
 
   double antennaHeight;
-  int antennaOffset; // Смещение в сантиметрах
+  int    antennaOffset; // Смещение в сантиметрах
   double antennaPivot;
   double maxSteerAngle;
   double maxAngularVelocity;
@@ -21,7 +19,7 @@ typedef struct {
   double goalPointLookAheadSeconds;// = 3.0;
   double goalPointDistanceMultiplier;// = 0.1;
   double goalPointLookAheadMinimumDistance;// = 2;    
-}Vehicle;
+} Vehicle;
 
 typedef struct {
   double easting;

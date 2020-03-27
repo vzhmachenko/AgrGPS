@@ -1,11 +1,9 @@
 #ifndef _ABLine_H_
 #define _ABLine_H_ 
 
-#include "vehicle.h"
-#include "position.h"
-#include "glm.h"
-#include "nmea.h"
 #include <math.h>
+#include "gpio.h"
+#include "stm_tasks.h"
 
 enum {
   APointSet                = 0,
@@ -56,5 +54,6 @@ void SetABLineByHeading(void);
 void MoveABLine(double dist);
 void GetCurrentABLine(vec3 pivot); 
 
+/* ------------------------------------------------------- */
 #endif
 

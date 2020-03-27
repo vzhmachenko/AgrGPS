@@ -1,5 +1,7 @@
 #include "position.h"
-#include "vehicle.h"
+
+#include "nmea.h"
+
        Position position;
 extern NMEA     nmea;
 extern Vehicle  vehicle;
@@ -56,8 +58,6 @@ void
 InitializeFirstFewGPSPositions(void){
   static uint8_t histChange = 0;
           histChange %= 10;
-
-
 
   if ( !(position.flags << isFirstFixPositionSet & 0x01)) {
 
@@ -135,6 +135,7 @@ UpdateFixPosition(void){
 //                          REGION STEP FIX
 //--------------------------------------------------------------------------//
   //grab the most current fix and save the distance from the last fix
+  // <comentingTag>
   /*
   position.distanceCurrentStepFix  = DistanceVec2Vec3(nmea.fix, position.stepFixPts[0]);
   position.fixStepDist             = position.distanceCurrentStepFix;
@@ -162,6 +163,7 @@ UpdateFixPosition(void){
   else 
       position.currentStepFix = 0;
       */
+  // </comentingTag>
 
   //if total distance is less then the addition of all the fixes, keep last one as reference
   if (position.flags >> isFixHolding & 0x01) {
@@ -198,9 +200,11 @@ UpdateFixPosition(void){
     position.stepFixPts[( histSize - 1)].heading = 0;
 
     //test if travelled far enough for new boundary point
+    //<commentingTag>
     /* double boundaryDistance = DistanceVec2Vec2(nmea.fix, position.prevBoundaryPos);
     if (boundaryDistance > position.boundaryTriggerDistance) 
         AddBoundaryAndPerimiterPoint();*/
+    //</commentingTag>
 
     //calc distance travelled since last GPS fix
     //Отключаю полевые вычисления
@@ -220,3 +224,5 @@ UpdateFixPosition(void){
     position.stepFixPts[0].northing  = nmea.fix.northing;
   }
 }
+
+/* ----------------------------------------------------------- */

@@ -5,7 +5,6 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/ABLine.c \
-../src/algorithm.c \
 ../src/charQueue.c \
 ../src/glm.c \
 ../src/gpio.c \
@@ -13,12 +12,12 @@ C_SRCS += \
 ../src/nmea.c \
 ../src/periph.c \
 ../src/position.c \
+../src/stm_tasks.c \
 ../src/system_stm32f4xx.c \
 ../src/vehicle.c 
 
 OBJS += \
 ./src/ABLine.o \
-./src/algorithm.o \
 ./src/charQueue.o \
 ./src/glm.o \
 ./src/gpio.o \
@@ -26,12 +25,12 @@ OBJS += \
 ./src/nmea.o \
 ./src/periph.o \
 ./src/position.o \
+./src/stm_tasks.o \
 ./src/system_stm32f4xx.o \
 ./src/vehicle.o 
 
 C_DEPS += \
 ./src/ABLine.d \
-./src/algorithm.d \
 ./src/charQueue.d \
 ./src/glm.d \
 ./src/gpio.d \
@@ -39,6 +38,7 @@ C_DEPS += \
 ./src/nmea.d \
 ./src/periph.d \
 ./src/position.d \
+./src/stm_tasks.d \
 ./src/system_stm32f4xx.d \
 ./src/vehicle.d 
 

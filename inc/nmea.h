@@ -2,19 +2,17 @@
 #define _NMEA_H_
 
 #include "stm32f4xx.h"
-#include "FreeRTOS.h"
-#include "task.h"
-#include "vehicle.h"
-#include "math.h"
+
+#include <math.h>
 #include <stdlib.h>
 #include <string.h>
-#include "algorithm.h"
+
+#include "vehicle.h"
 
 enum { //flags
   zone          = 0,
-  latitudeOk      = 1,
-  longtitudeOk    = 2
-
+  latitudeOk    = 1,
+  longtitudeOk  = 2
 };
 
 typedef struct {
@@ -61,8 +59,7 @@ typedef struct {
   //UTM numbers are huge, these cut them way down.
   int32_t utmNorth, utmEast;
 
-
-  vec3 stepFixPts[50];
+  //vec3 stepFixPts[50];
 
   uint8_t flags;
 
@@ -71,22 +68,16 @@ typedef struct {
 
 void    createStartNMEA (void);
 double  ArcLengthOfMeridian(double phi);
-void    MapLatLonToXY(double phi, 
-                      double lambda, 
-                      double lambda0);
-void    DecDeg2UTM( double latitude, 
-                    double longitude);
+void    MapLatLonToXY(double phi, double lambda, double lambda0);
+void    DecDeg2UTM(double latitude, double longitude);
 void    UpdateNorthingEasting(void);
-void    splitString(char *from);
-void    ParseNMEA(void *parameter);
-double  NMEAtoDecimal(char *str);
+void    splitString(char* from);
+double  NMEAtoDecimal(char* str);
 void    ParseGGA(void);
 void    ParseGLL(void);
 void    ParseRMC(void);
 void    ParseVTG(void); 
-void    checkLatLon(char *lat, char *lon);
+void    checkLatLon(char* lat, char* lon);
 
-
-
-
+/* ---------------------------------------------------- */
  #endif

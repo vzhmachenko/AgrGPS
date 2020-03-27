@@ -1,10 +1,14 @@
 #include "ABLine.h"
-#include "gpio.h"
 
-extern NMEA         nmea;
-extern Vehicle      vehicle;
-extern Position     position;
-       ABline       abline;
+#include "nmea.h"
+#include "position.h"
+
+       ABline         abline;
+extern NMEA           nmea;
+extern Vehicle        vehicle;
+extern Position       position;
+extern QueueHandle_t	lcdQueue;      //Указатель на очередь взаимодействия мужду задачами (char --> lcd)
+       
 
 void 
 initABl(void){
@@ -36,11 +40,19 @@ btnAPoint(void){
     abline.abHeading          = fix.heading;
 
     abline.flags |= 1 << APointSet;    // Выставлям флаг Точки А
-    LCD_Send_String(0, "A-point is Set.");
+//    LCD_Send_String(0, "A-point is Set.");
+    lineParam t;
+    initLCDstruct (&t, 0, "A-point is Set.");
+    xQueueSendToBack(lcdQueue, &t, 50);
   }
   else{
-    LCD_Send_String(0, "ABline-Line is set already.");
-    LCD_Send_String(1, "Try B to change A-point.");
+    lineParam t1, t2;
+//    LCD_Send_String(0, "ABline-Line is set already.");
+//    LCD_Send_String(1, "Try B to change A-point.");
+    initLCDstruct (&t1, 0, "ABline-Line is set already.");
+    initLCDstruct (&t2, 1, "Try B to change A-point.");
+    xQueueSendToBack(lcdQueue, &t1, 50);
+    xQueueSendToBack(lcdQueue, &t2, 50);
   }
 }
 
@@ -49,13 +61,15 @@ btnAPoint(void){
  */
 void 
 btnBPoint(void){
-
   //Если не установлена точка А
   if(! (abline.flags >> APointSet & 0x01 )){
-    LCD_Send_String(0, "First set A-Point.");
+    lineParam t;
+    //LCD_Send_String(0, "First set A-Point.");
+    initLCDstruct (&t, 0, "First set A-Point.");
+    xQueueSendToBack(lcdQueue, &t, 50);
     return;
   }
-
+//<commentingTAG>
 /*
   // Если расстояние между точками не достаточно для корректного 
   // определения направления линии
@@ -68,13 +82,16 @@ btnBPoint(void){
     LCD_Send_String(0, "abline-Line error.");
 		return;
   }
-*/
+*/ 
+//</commentingTAG>
 
   // Если линия АБ установлена( установлена точка А и В)
   // то делаем "замещение точек"
   if(abline.flags >> ABLineSet & 0x01){
 		abline.refPoint1 = abline.refPoint2;
-    LCD_Send_String(0, "Changed Points.");
+    lineParam t;
+    initLCDstruct (&t, 0, "Changed Points.");
+    xQueueSendToBack(lcdQueue, &t, 50);
   }
 
   abline.refPoint2.easting  = nmea.fix.easting;
@@ -95,7 +112,9 @@ btnBPoint(void){
   abline.flags |= 1 << BPointSet;    // Выставлям флаг Точки B
   abline.flags |= 1 << ABLineSet;    // Выставляем флаг линии
 
-  LCD_Send_String(0, "B-point is Set.");
+  lineParam t;
+  initLCDstruct (&t, 0, "B-point is Set.");
+  xQueueSendToBack(lcdQueue, &t, 50);
 }
 
 void 
@@ -222,8 +241,10 @@ GetCurrentABLine(vec3 pivot) {
 
   //update base on autosteer settings and distance from line
   double goalPointDistance = UpdateGoalPointDistance(abline.distanceFromCurrentLine);
+// <ComentingTag>  
 /*    mf.lookaheadActual = goalPointDistance;
 */
+// </ComentingTag>  
   //Subtract the two headings, if > 1.57 its going the opposite heading as refAB
   abline.abFixHeadingDelta = (abs (position.fixHeading - abline.abHeading));
 
@@ -312,3 +333,5 @@ GetCurrentABLine(vec3 pivot) {
   position.guidanceLineDistanceOff = (int16_t)abline.distanceFromCurrentLine;
   position.guidanceLineSteerAngle  = (int16_t)(abline.steerAngleAB * 100);
 }
+
+/* -------------------------------------------------------------- */

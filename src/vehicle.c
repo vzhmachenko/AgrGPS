@@ -1,8 +1,8 @@
 #include "vehicle.h"
-#include "nmea.h"
 
-Vehicle vehicle;
-extern NMEA nmea;
+#include "nmea.h"
+        Vehicle vehicle;
+extern  NMEA nmea;
 
 double 
 UpdateGoalPointDistance(double distanceFromCurrentLine) {
@@ -10,7 +10,7 @@ UpdateGoalPointDistance(double distanceFromCurrentLine) {
 
   double goalPointDistance  = nmea.speed 
                             * vehicle.goalPointLookAheadSeconds 
-                            * 0.27777777;/*vehicle.goalPointLookAheadSeconds*/ 
+                            * 0.27777777;//vehicle.goalPointLookAheadSeconds
 
   goalPointDistance = (distanceFromCurrentLine < 1.0)
     ?  goalPointDistance  + distanceFromCurrentLine
@@ -29,20 +29,21 @@ UpdateGoalPointDistance(double distanceFromCurrentLine) {
 
 void 
 initVehicle(void){
-  vehicle.toolWidth = 4;
-  vehicle.toolOverlap = 0;
-  vehicle.toolOffset = 0;
+  vehicle.toolWidth     = 4;
+  vehicle.toolOverlap   = 0;
+  vehicle.toolOffset    = 0;
 
   vehicle.antennaHeight = 1;
   vehicle.antennaOffset = 0;
-  vehicle.antennaPivot = 0.1;
+  vehicle.antennaPivot  = 0.1;
   vehicle.maxSteerAngle = 40;
-  vehicle.maxAngularVelocity = 7;
-  vehicle.wheelbase = 4;
-  vehicle.hitchLength = -0.5;
-  vehicle.minTurningRadius = 6;
+  vehicle.wheelbase     = 4;
+  vehicle.hitchLength   = -0.5;
 
-  vehicle.goalPointLookAheadSeconds = 3.0;
-  vehicle.goalPointDistanceMultiplier = 0.1;
+  vehicle.minTurningRadius    = 6;
+  vehicle.maxAngularVelocity  = 7;
+
+  vehicle.goalPointLookAheadSeconds         = 3.0;
+  vehicle.goalPointDistanceMultiplier       = 0.1;
   vehicle.goalPointLookAheadMinimumDistance = 2.0;
 }

@@ -1,5 +1,7 @@
 #ifndef _GLM_H_
 #define _GLM_H_
+
+#include <math.h>
 #include "vehicle.h"
 
 #define  twoPI          6.28318530717958647692
@@ -18,21 +20,11 @@
 #define  PIBy2          1.57079632679489661923
 
 double toRadians(double degrees);
-double toDegrees (double radians);
-double DistanceVec2Vec2(vec2 first, 
-                        vec2 second);
-double DistanceVec2Vec3(vec2 first, 
-                        vec3 second);
-double DistanceVec3Vec3(vec3 first, 
-                        vec3 second);
-double DistanceSquared(double northing1, 
-                       double easting1, 
-                       double northing2, 
-                       double easting2);
+double toDegrees(double radians);
+double DistanceVec2Vec2(vec2 first, vec2 second);
+double DistanceVec2Vec3(vec2 first, vec3 second);
+double DistanceVec3Vec3(vec3 first, vec3 second);
+double DistanceSquared(double northing1, double easting1, 
+                       double northing2, double easting2);
 
-void InitializeFirstFewGPSPositions(void);
-
-
-
-
- #endif
+#endif
