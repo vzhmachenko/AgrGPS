@@ -109,9 +109,6 @@ regToDisplay(uint32_t reg, int8_t strNum){
              : 'A' + (int)temp - 10;
 	}
 	LCD_Send_String(strNum, bufer);
-//    lineParam t;
-//		initLCDstruct (&t, strNum, bufer);
-//    xQueueSendToBack(lcdQueue, &t, 50);
 }
 
 /*
@@ -127,9 +124,6 @@ doubleToDisplay(double num, int8_t strNum){
 	itoa(lBytes, lengthToLine + strL + 1, 10); 	//При необходимости умножить для повышения точности
 
 	LCD_Send_String(strNum, lengthToLine);
-//    lineParam t;
-//		initLCDstruct (&t, strNum, lengthToLine);
-//    xQueueSendToBack(lcdQueue, &t, 50);
 }
 
 

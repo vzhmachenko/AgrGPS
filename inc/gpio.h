@@ -33,7 +33,7 @@ static const uint8_t lineAddr[4] = {0x80, 0xc0, 0x94, 0xd4};
 
 /*! Структура для передачи строки дисплею
  *  посредством очереди. */
-typedef struct lineStruct{
+typedef struct {
 	uint8_t lineNumber;
 	char string[30];
 } lineParam;

@@ -23,6 +23,9 @@ void  keyboardScan(void *param);
 
 void  taskLCD_Send_String(void *prm);
 
+void  addToQueue_doubleToDisplay(double num, int8_t strNum);
+
 void  taskLCD_QueueObserver(void *prm);
 
+void  taskGenStrings(void *prm);
 #endif

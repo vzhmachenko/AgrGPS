@@ -4,12 +4,12 @@
 #include "position.h"
 
 
-extern 	QueueHandle_t		lcdQueue;      	///< Указатель на очередь взаимодействия мужду задачами (char --> lcd)
+extern	QueueHandle_t		lcdQueue;      	///< Указатель на очередь взаимодействия мужду задачами (char --> lcd)
 extern	QueueHandle_t	  xpQueue;      	///< Указатель на очередь взаимодействия между задачей и прерыванием (dma --> nmea)
-extern 	NMEA 						nmea;
+extern	NMEA						nmea;
 extern	ABline         	abline;
-extern 	Vehicle 				vehicle;
-extern 	Position 				position;
+extern	Vehicle 				vehicle;
+extern	Position 				position;
 
 extern char  toBlue		[strlen_t];
 char *receivePointer;
@@ -53,11 +53,6 @@ receiveFromDMA(void *param){
 	xTaskCreate(taskParseNMEA, "ParseTask", 200,  		// Создаем задачу обработки NMEA-сообщени.
 							&toBlue[0], 3, &xParseTaskHandle);
 							
-	//void* arr[2] = {(void*)(&lcdQueue), (void*)(&lcdTaskHandler)};
-	//xTaskCreate( taskLCD_QueueObserver, "lcdObserv", 40,
-	//						arr, 2, &lcdTaskObserver);
-
-
 	for(;;){
 		BaseType_t xStatus1 = xQueueReceive(xpQueue, &receivePointer, 50);		//Receiving the data
 		if(xStatus1 == pdPASS){										//Check if data received
@@ -87,7 +82,6 @@ void
 taskParseNMEA(void *parameter){
   vec3 pivotAxlePos;   //position for AB_Calculations
   while (1) {
-    doubleToDisplay(21.143,  3);
     splitString( (char*) parameter);          // Разбиваем сообщение по массивам
 
     if (strstr( (char*) parameter, "$GPGGA") != NULL) ParseGGA(); 
@@ -101,8 +95,10 @@ taskParseNMEA(void *parameter){
 
       UpdateFixPosition();
 
-      doubleToDisplay(nmea.latitude,  1);
-      doubleToDisplay(nmea.longitude, 2);
+//      doubleToDisplay(nmea.latitude,  1);
+//      doubleToDisplay(nmea.longitude, 2);
+      addToQueue_doubleToDisplay(nmea.latitude,  1);
+      addToQueue_doubleToDisplay(nmea.longitude, 2);
 
       if (abline.flags >> ABLineSet & 0x01) {
         pivotAxlePos.easting  = nmea.fix.easting - (sin(position.pivotAxlePos.heading) 
@@ -246,45 +242,98 @@ keyboardScan(void *param){
 */
 void
 taskLCD_Send_String(void *prm){
-  lineParam buff;
-  for(;;){
-    if(xQueueReceive(lcdQueue, &buff, 50) != pdPASS){
-      vTaskDelete(NULL);
-    }
+	lineParam buff;
+	if(xQueueReceive(lcdQueue, &buff, 50) != pdPASS){
+		vTaskDelete(NULL);
+	}
 
-    // Провеляем правильность указания номера строки
-    if (buff.lineNumber > 3){
-      vTaskDelete(NULL);
-    }
-    LCD_SendCommandOrData(lineAddr[buff.lineNumber], 0);
-    vTaskDelay(100);
-    uint8_t i = 0;
-    while (buff.string[i] != '\n' 
-        && buff.string[i] != 0 
-        && i < 20)	{		
-      LCD_SendCommandOrData(buff.string[i], 1);	
-      vTaskDelay(100);
-      i++;
-    }
-    // Добиваем строку пробелами
-    while(i < 20) {
-      LCD_SendCommandOrData(' ', 1);
-      vTaskDelay(100);
-      i++;
-    }
-      vTaskDelete(NULL);
-  }
+	// Провеляем правильность указания номера строки
+	if (buff.lineNumber > 3){
+		vTaskDelete(NULL);
+	}
+
+	LCD_SendCommandOrData(lineAddr[buff.lineNumber], 0);
+	delay_ms(10);//10
+	uint8_t i = 0;
+	while (buff.string[i] != '\n' 
+			&& buff.string[i] != 0 
+			&& i < 20)	{		
+		LCD_SendCommandOrData(buff.string[i], 1);	
+		delay_ms(10);//10
+		i++;
+	}
+	// Добиваем строку пробелами
+	while(i < 20) {
+		LCD_SendCommandOrData(' ', 1);
+		delay_ms(10);//10
+		i++;
+	}
+
+	vTaskDelete(NULL);
 }
+
+
+/* Додаем ДаблЧисло в очередь на вывод. */
+void 
+addToQueue_doubleToDisplay(double num, int8_t strNum){
+	char lengthToLine[9] = {0};
+	itoa( (int)num, lengthToLine, 10); 	//При необходимости умножить для повышения точности
+	uint8_t strL = strlen(lengthToLine);
+	lengthToLine[strL] = '.';
+	int lBytes = (num - (int) num) * 100000;
+	itoa(lBytes, lengthToLine + strL + 1, 10); 	//При необходимости умножить для повышения точности
+
+	// Объект, что хранится в очереди дисплея.
+	lineParam temp;
+	initLCDstruct(&temp, strNum, lengthToLine);
+	xQueueSend(lcdQueue, &temp, 50);
+}
+
 
 /* Наблюдение за очереддю монитора. */
 void 
 taskLCD_QueueObserver(void *prm){
+	uint16_t sizeOfQueue = 0;
   for(;;){
-		if(uxQueueMessagesWaiting(lcdQueue) != 0){
-			xTaskCreate(taskLCD_Send_String, "LCD_Task", 40,
-									NULL, 3,  NULL);
+		if( (sizeOfQueue = uxQueueMessagesWaiting(lcdQueue) ) != 0){
+			xTaskCreate(taskLCD_Send_String, "LCD_Task", 32, NULL, 3,  NULL);
 		}
-		vTaskDelay(100);
+		vTaskDelay(300);
   }
 }
+
+/* Генерация строк в очередь. */
+void  taskGenStrings(void *prm){
+	BaseType_t result;
+	lineParam temp;
+	uint16_t queueSize = 0x00;
+
+	for(;;){
+
+		initLCDstruct(&temp, 0, "Some string 1 line.");
+		queueSize = uxQueueMessagesWaiting(lcdQueue);
+		result = xQueueSend(lcdQueue, &temp, 50);
+		queueSize = uxQueueMessagesWaiting(lcdQueue);
+		vTaskDelay(2000);
+
+		initLCDstruct(&temp, 1, "Another line 2.");
+		queueSize = uxQueueMessagesWaiting(lcdQueue);
+		result = xQueueSend(lcdQueue, &temp, 50);
+		queueSize = uxQueueMessagesWaiting(lcdQueue);
+		vTaskDelay(2000);
+
+		initLCDstruct(&temp, 2, "Add one line 3.");
+		queueSize = uxQueueMessagesWaiting(lcdQueue);
+		result = xQueueSend(lcdQueue, &temp, 50);
+		queueSize = uxQueueMessagesWaiting(lcdQueue);
+		vTaskDelay(2000);
+
+		initLCDstruct(&temp, 3, "4 str.");
+		queueSize = uxQueueMessagesWaiting(lcdQueue);
+		result = xQueueSend(lcdQueue, &temp, 50);
+		queueSize = uxQueueMessagesWaiting(lcdQueue);
+		vTaskDelay(2000);
+	}
+}
+
 /* ------------------------------------------------- */
