@@ -1,5 +1,6 @@
 #include "nmea.h"
 
+extern	QueueHandle_t		lcdQueue;      	///< Указатель на очередь взаимодействия мужду задачами (char --> lcd)
 
 const   double    sm_a = 6378137.0;
 const   double    sm_b = 6356752.314;
@@ -97,7 +98,9 @@ DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
   //only calculate the zone once!
   if ( !(nmea.flags >>  zone & 0x01)){
       nmea.zone = floor((longitude + 180.0) * 0.1666666666666) + 1;
-      doubleToDisplay(nmea.zone, 0);
+      //print
+      //doubleToDisplay(nmea.zone, 0);
+      addToQueue_doubleToDisplay(lcdQueue, nmea.zone,  0);
       nmea.flags |= 0x01 << zone;       ///Выставляем флаг получения зоны
   }
 

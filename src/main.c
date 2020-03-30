@@ -25,14 +25,14 @@ int main(void) {
 	xpQueue 	= xQueueCreate(1, sizeof(char*) ); 			//Создаем очередь
 	lcdQueue	= xQueueCreate(5, sizeof(lineParam));		// Максимально хранится 5 структур
 
-//	xTaskCreate(taskGenStrings, "gen", 64, NULL, 1, NULL);
+	//xTaskCreate(taskGenStrings, "gen", 64, NULL, 1, NULL);
 
 	/* Задача наблюдения за наличием объектов в очереди вывода на дисплей. */
-	xTaskCreate(taskLCD_QueueObserver, "obs", 32, NULL, 1, NULL);
+	xTaskCreate(taskLCD_QueueObserver, "obs", 64, (void*)(lcdQueue), 1, NULL);
 	
 /* Временные тестовые задачи. */
-/*
-	xTaskCreate(tempTask,  "temp", 32, NULL, 1, NULL);
+	/*xTaskCreate(tempTask,  "temp", 32, NULL, 1, NULL);
+	/*
 	xTaskCreate(tempTask2, "temk", 32, NULL, 1, NULL);
 
 /******************************************************************************/

@@ -4,6 +4,10 @@
 #include "stm32f4xx.h"
 #include "string.h"
 
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+
 //#define NULL    ( (void *) 0)
 
 #define GPIO_PIN_0                 ((uint16_t)0x0001)  /* Pin 0 selected    */
@@ -39,9 +43,9 @@ typedef struct {
 } lineParam;
 
 /*! Устанавливаем значение пина. */
-void GPIO_WritePin(GPIO_TypeDef  *GPIOx, 
-									 uint16_t 		 GPIO_Pin, 
-									 FlagStatus    PinState);
+void GPIO_WritePin(GPIO_TypeDef*	GPIOx, 
+									 uint16_t				GPIO_Pin, 
+									 FlagStatus			PinState);
 
 /*! Установка таймера 2.*/
 void timerini2(void);
@@ -61,12 +65,21 @@ void LCD_ini(void);
 /* Отправляем строку на дисплей. */
 void LCD_Send_String(uint8_t String_Num, char *str);
 
-void regToDisplay(uint32_t reg, 
-                  int8_t strNum);
+/* Вывод на дисплей значение регистра (32bit-value). */
+void regToDisplay(uint32_t reg, int8_t strNum);
 
-void doubleToDisplay( double num,  
-                      int8_t strNum);
+/* Вывод на дисплей числа с запятой. */
+void doubleToDisplay(double num, uint8_t strNum);
 
+/* Инициализация структуры, для представления выводан на дисплей,
+ * посредством очереди freeRTOS. */
 void initLCDstruct(lineParam* line, uint8_t string_num, char *str);
+
+/* Выводим строку на дисплей через очередь и задачу. */
+void strToDisplay(QueueHandle_t destQueue, uint8_t strNum, char* str);
+
+/* Додаем ДаблЧисло в очередь на вывод. */
+void addToQueue_doubleToDisplay(QueueHandle_t destQueue, double num, 
+																uint8_t strNum);
 
 #endif /* GPIO_H_ */

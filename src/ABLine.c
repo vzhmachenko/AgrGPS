@@ -41,18 +41,13 @@ btnAPoint(void){
 
     abline.flags |= 1 << APointSet;    // Выставлям флаг Точки А
 //    LCD_Send_String(0, "A-point is Set.");
-    lineParam t;
-    initLCDstruct (&t, 0, "A-point is Set.");
-    xQueueSendToBack(lcdQueue, &t, 50);
+    strToDisplay (lcdQueue, 0, "A-point is Set.");
   }
   else{
-    lineParam t1, t2;
 //    LCD_Send_String(0, "ABline-Line is set already.");
+    strToDisplay (lcdQueue, 0, "ABline-Line is set already.");
 //    LCD_Send_String(1, "Try B to change A-point.");
-    initLCDstruct (&t1, 0, "ABline-Line is set already.");
-    initLCDstruct (&t2, 1, "Try B to change A-point.");
-    xQueueSendToBack(lcdQueue, &t1, 50);
-    xQueueSendToBack(lcdQueue, &t2, 50);
+    strToDisplay (lcdQueue, 1, "Try B to change A-point.");
   }
 }
 
@@ -63,10 +58,8 @@ void
 btnBPoint(void){
   //Если не установлена точка А
   if(! (abline.flags >> APointSet & 0x01 )){
-    lineParam t;
     //LCD_Send_String(0, "First set A-Point.");
-    initLCDstruct (&t, 0, "First set A-Point.");
-    xQueueSendToBack(lcdQueue, &t, 50);
+    strToDisplay (lcdQueue, 0, "First set A-Point.");
     return;
   }
 //<commentingTAG>

@@ -1,13 +1,12 @@
 #ifndef _NMEA_H_
 #define _NMEA_H_
 
-#include "stm32f4xx.h"
+#include "stm_tasks.h"
 
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "vehicle.h"
 
 enum { //flags
   zone          = 0,

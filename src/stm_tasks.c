@@ -68,8 +68,10 @@ receiveFromDMA(void *param){
 
 				vTaskResume(xParseTaskHandle);					//После запуска просто возобновляем выполнение работы
 
-				if(abline.flags >> ABLineSet & 0x01)
-					doubleToDisplay(abline.distanceFromCurrentLine, 3);
+				if(abline.flags >> ABLineSet & 0x01){
+					//doubleToDisplay(abline.distanceFromCurrentLine, 3);
+					addToQueue_doubleToDisplay(lcdQueue, abline.distanceFromCurrentLine, 3);
+				}
 
 
 				//LCD_SendCommand(0x01);
@@ -97,8 +99,10 @@ taskParseNMEA(void *parameter){
 
 //      doubleToDisplay(nmea.latitude,  1);
 //      doubleToDisplay(nmea.longitude, 2);
-      addToQueue_doubleToDisplay(nmea.latitude,  1);
-      addToQueue_doubleToDisplay(nmea.longitude, 2);
+      //print
+      addToQueue_doubleToDisplay(lcdQueue, nmea.latitude,  1);
+      //print
+      addToQueue_doubleToDisplay(lcdQueue, nmea.longitude, 2);
 
       if (abline.flags >> ABLineSet & 0x01) {
         pivotAxlePos.easting  = nmea.fix.easting - (sin(position.pivotAxlePos.heading) 
@@ -124,27 +128,23 @@ void
 keyboardScan(void *param){
 	static uint8_t counter = 0;
 	while(1) {
-		if( counter % 4 == 0){
+		if( ++counter % 4 == 0){
 			GPIOB->ODR	&=	~GPIO_PIN_10;
 			GPIOE->ODR	|=	GPIO_PIN_14; 
 
 			if( (GPIOE->IDR >> 12) & 0x01){ 	//key=*
-				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
 			if ( (GPIOE->IDR >> 10) & 0x01){  //key=0
-				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
 			if ( (GPIOE->IDR >> 8) & 0x01){   //key=#
-				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
 			if ( (GPIOB->IDR >> 2) & 0x01){	  //key=D
-				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
@@ -155,17 +155,15 @@ keyboardScan(void *param){
 			GPIOB->ODR	|=	GPIO_PIN_14; 
 
 			if( (GPIOE->IDR >> 12) & 0x01){  //key=1
-				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
 			if ( (GPIOE->IDR >> 10) & 0x01){   //key=2
-				GPIOD->ODR ^= 0x380;
+				//GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
 			if ( (GPIOE->IDR >> 8) & 0x01){    //key=3
-				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
@@ -198,7 +196,6 @@ keyboardScan(void *param){
 			}
 			if ( (GPIOB->IDR >> 2) & 0x01){    //key=B
 				btnBPoint();
-				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
@@ -209,29 +206,22 @@ keyboardScan(void *param){
 			GPIOB->ODR	|=	GPIO_PIN_10; 
 
 			if( (GPIOE->IDR >> 12) & 0x01){  //key=7
-				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
 			if ( (GPIOE->IDR >> 10) & 0x01){   //key=8
-				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
 			if ( (GPIOE->IDR >> 8) & 0x01){    //key=9
-				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
 			if ( (GPIOB->IDR >> 2) & 0x01){	//key=C
-				GPIOD->ODR ^= 0x380;
 				vTaskDelay(300);
         continue;
 			}
 		}
-
-		if(++counter == 4)
-			counter = 0;    
 
 		vTaskDelay(30);
 	}
@@ -242,8 +232,10 @@ keyboardScan(void *param){
 */
 void
 taskLCD_Send_String(void *prm){
+	QueueHandle_t taskQueue = (QueueHandle_t)prm;
+
 	lineParam buff;
-	if(xQueueReceive(lcdQueue, &buff, 50) != pdPASS){
+	if(xQueueReceive(taskQueue, &buff, 50) != pdPASS){
 		vTaskDelete(NULL);
 	}
 
@@ -273,30 +265,14 @@ taskLCD_Send_String(void *prm){
 }
 
 
-/* Додаем ДаблЧисло в очередь на вывод. */
-void 
-addToQueue_doubleToDisplay(double num, int8_t strNum){
-	char lengthToLine[9] = {0};
-	itoa( (int)num, lengthToLine, 10); 	//При необходимости умножить для повышения точности
-	uint8_t strL = strlen(lengthToLine);
-	lengthToLine[strL] = '.';
-	int lBytes = (num - (int) num) * 100000;
-	itoa(lBytes, lengthToLine + strL + 1, 10); 	//При необходимости умножить для повышения точности
-
-	// Объект, что хранится в очереди дисплея.
-	lineParam temp;
-	initLCDstruct(&temp, strNum, lengthToLine);
-	xQueueSend(lcdQueue, &temp, 50);
-}
-
-
 /* Наблюдение за очереддю монитора. */
 void 
 taskLCD_QueueObserver(void *prm){
 	uint16_t sizeOfQueue = 0;
+	QueueHandle_t taskQueue = (QueueHandle_t)prm;
   for(;;){
-		if( (sizeOfQueue = uxQueueMessagesWaiting(lcdQueue) ) != 0){
-			xTaskCreate(taskLCD_Send_String, "LCD_Task", 32, NULL, 3,  NULL);
+		if( (sizeOfQueue = uxQueueMessagesWaiting(taskQueue) ) != 0){
+			xTaskCreate(taskLCD_Send_String, "LCD_Task", 64, (void*)taskQueue, 3,  NULL);
 		}
 		vTaskDelay(300);
   }
@@ -310,29 +286,20 @@ void  taskGenStrings(void *prm){
 
 	for(;;){
 
-		initLCDstruct(&temp, 0, "Some string 1 line.");
-		queueSize = uxQueueMessagesWaiting(lcdQueue);
-		result = xQueueSend(lcdQueue, &temp, 50);
-		queueSize = uxQueueMessagesWaiting(lcdQueue);
+		strToDisplay(lcdQueue, 0, "Some string 1 line.");
 		vTaskDelay(2000);
 
-		initLCDstruct(&temp, 1, "Another line 2.");
-		queueSize = uxQueueMessagesWaiting(lcdQueue);
-		result = xQueueSend(lcdQueue, &temp, 50);
-		queueSize = uxQueueMessagesWaiting(lcdQueue);
+		strToDisplay(lcdQueue, 1, "Another line 2.");
 		vTaskDelay(2000);
 
-		initLCDstruct(&temp, 2, "Add one line 3.");
-		queueSize = uxQueueMessagesWaiting(lcdQueue);
-		result = xQueueSend(lcdQueue, &temp, 50);
-		queueSize = uxQueueMessagesWaiting(lcdQueue);
+		strToDisplay(lcdQueue, 2, "Add one line 3.");
 		vTaskDelay(2000);
 
-		initLCDstruct(&temp, 3, "4 str.");
-		queueSize = uxQueueMessagesWaiting(lcdQueue);
-		result = xQueueSend(lcdQueue, &temp, 50);
-		queueSize = uxQueueMessagesWaiting(lcdQueue);
-		vTaskDelay(2000);
+		strToDisplay(lcdQueue, 3, "4 str.");
+		vTaskDelay(1800);
+
+		LCD_SendCommandOrData(0x01, 0);
+		vTaskDelay(200);
 	}
 }
 

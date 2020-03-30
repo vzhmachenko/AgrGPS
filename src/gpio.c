@@ -16,7 +16,9 @@ delay_ms(uint16_t ms){
   TIM2->CNT = 0;
   TIM2->CR1 = TIM_CR1_CEN;
 
-  while((TIM2->SR & TIM_SR_UIF)==0) {;}
+  while((TIM2->SR & TIM_SR_UIF)==0) {
+    ;
+  }
 
   TIM2->SR &= ~TIM_SR_UIF;
 }
@@ -24,13 +26,15 @@ delay_ms(uint16_t ms){
 
 /*! Устанавливаем значение пина. */
 void 
-GPIO_WritePin(GPIO_TypeDef  *GPIOx, 
+GPIO_WritePin(GPIO_TypeDef* GPIOx, 
               uint16_t      GPIO_Pin, 
               FlagStatus    PinState) {
-  if(PinState != RESET)  
+  if(PinState != RESET){
     GPIOx->BSRRL = GPIO_Pin;
-  else  
+  }
+  else {
     GPIOx->BSRRH = GPIO_Pin;
+  }
 }
 
 
@@ -73,11 +77,9 @@ LCD_Send_String(uint8_t String_Num, char* str){
   // Провеляем правильность указания номера строки.
   if (String_Num > 3)
     return;
-
   // Посылаем адрес строки, в которую будем писать.
   LCD_SendCommandOrData(lineAddr[String_Num], 0);
 	delay_ms(10);//10
-
 	uint8_t i = 0;
 	while (str[i] != '\n' 
       && str[i] != 0 
@@ -86,7 +88,6 @@ LCD_Send_String(uint8_t String_Num, char* str){
 		delay_ms(10);
 		i++;
 	}
-
   // Добиваем строку пробелами
   while(i < 20) {
     LCD_SendCommandOrData(' ', 1);
@@ -95,9 +96,7 @@ LCD_Send_String(uint8_t String_Num, char* str){
   }
 }
 
-/*
- * Вывод на дисплей значение регистра (32bit-value)
-*/
+/* Вывод на дисплей значение регистра (32bit-value). */
 void 
 regToDisplay(uint32_t reg, int8_t strNum){
 	char bufer[9];
@@ -111,11 +110,9 @@ regToDisplay(uint32_t reg, int8_t strNum){
 	LCD_Send_String(strNum, bufer);
 }
 
-/*
- * Вывод на дисплей числа с запятой
-*/
+/* Вывод на дисплей числа с запятой. */
 void 
-doubleToDisplay(double num, int8_t strNum){
+doubleToDisplay(double num, uint8_t strNum){
 	char lengthToLine[9] = {0};
 	itoa( (int)num, lengthToLine, 10); 	//При необходимости умножить для повышения точности
 	uint8_t strL = strlen(lengthToLine);
@@ -127,8 +124,32 @@ doubleToDisplay(double num, int8_t strNum){
 }
 
 
+/* Инициализация структуры, для представления выводан на дисплей,
+ * посредством очереди freeRTOS. */
 void initLCDstruct(lineParam* line, uint8_t string_num, char *str){
   line->lineNumber = string_num;
   memset(line->string, 0, 30);
   strncpy(line->string, str, 29);
+}
+
+/* Выводим строку на дисплей через очередь и задачу. */
+void strToDisplay (QueueHandle_t	destQueue, uint8_t strNum, char* str){
+  lineParam lp;
+  initLCDstruct(&lp, strNum, str);
+  xQueueSend(destQueue, &lp, 50);
+}
+
+/* Додаем ДаблЧисло в очередь на вывод. */
+void 
+addToQueue_doubleToDisplay(QueueHandle_t destQueue, double num, 
+                          uint8_t strNum){
+	char doubleStr[9] = {0};
+	itoa( (int)num, doubleStr, 10); 	//При необходимости умножить для повышения точности
+	uint8_t strL = strlen(doubleStr);
+	doubleStr[strL] = '.';
+	int lBytes = (num - (int) num) * 100000;
+	itoa(lBytes, doubleStr + strL + 1, 10); 	//При необходимости умножить для повышения точности
+
+	// Объект, что хранится в очереди дисплея.
+  strToDisplay(destQueue, strNum, doubleStr);
 }
