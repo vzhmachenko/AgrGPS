@@ -24,91 +24,7 @@ initABl(void){
   abline.flags |= 1 << isOnRightSideCurrentLine;
 }
 
-/*
- * Дейстивя при нажатии кнопки А
- */
-void 
-btnAPoint(void){
-  // Если линия еще не задавалась, то устанавливаем точку A
 
-  if( !(abline.flags >> ABLineSet & 0x01) )  {
-
-    vec3 fix = position.pivotAxlePos;
-
-    abline.refPoint1.easting  = fix.easting;
-    abline.refPoint1.northing = fix.northing;
-    abline.abHeading          = fix.heading;
-
-    abline.flags |= 1 << APointSet;    // Выставлям флаг Точки А
-//    LCD_Send_String(0, "A-point is Set.");
-    strToDisplay (lcdQueue, 0, "A-point is Set.");
-  }
-  else{
-//    LCD_Send_String(0, "ABline-Line is set already.");
-    strToDisplay (lcdQueue, 0, "ABline-Line is set already.");
-//    LCD_Send_String(1, "Try B to change A-point.");
-    strToDisplay (lcdQueue, 1, "Try B to change A-point.");
-  }
-}
-
-/*
- * Дейстивя при нажатии кнопки B
- */
-void 
-btnBPoint(void){
-  //Если не установлена точка А
-  if(! (abline.flags >> APointSet & 0x01 )){
-    //LCD_Send_String(0, "First set A-Point.");
-    strToDisplay (lcdQueue, 0, "First set A-Point.");
-    return;
-  }
-//<commentingTAG>
-/*
-  // Если расстояние между точками не достаточно для корректного 
-  // определения направления линии
-  //x2-x1
-  double dx = abline.refABLineP2.easting - abline.refABLineP1.easting;
-  //z2-z1
-  double dy = abline.refABLineP2.northing - abline.refABLineP1.northing;
-  double distInPoint = sqrt( (dx * dx) + (dy * dy));
-	if(distInPoint < 0.00001){
-    LCD_Send_String(0, "abline-Line error.");
-		return;
-  }
-*/ 
-//</commentingTAG>
-
-  // Если линия АБ установлена( установлена точка А и В)
-  // то делаем "замещение точек"
-  if(abline.flags >> ABLineSet & 0x01){
-		abline.refPoint1 = abline.refPoint2;
-    lineParam t;
-    initLCDstruct (&t, 0, "Changed Points.");
-    xQueueSendToBack(lcdQueue, &t, 50);
-  }
-
-  abline.refPoint2.easting  = nmea.fix.easting;
-  abline.refPoint2.northing = nmea.fix.northing;
-
-  abline.abHeading = atan2(abline.refPoint2.easting  - abline.refPoint1.easting, 
-                           abline.refPoint2.northing - abline.refPoint1.northing);
-  if (abline.abHeading < 0)
-    abline.abHeading += twoPI;
-
-  //sin x cos z for endpoints, opposite for additional lines
-  abline.refABLineP1.easting  = abline.refPoint1.easting  - (sin(abline.abHeading) * 1600.0);
-  abline.refABLineP1.northing = abline.refPoint1.northing - (cos(abline.abHeading) * 1600.0);
-
-  abline.refABLineP2.easting  = abline.refPoint1.easting  + (sin(abline.abHeading) * 1600.0);
-  abline.refABLineP2.northing = abline.refPoint1.northing + (cos(abline.abHeading) * 1600.0);
-
-  abline.flags |= 1 << BPointSet;    // Выставлям флаг Точки B
-  abline.flags |= 1 << ABLineSet;    // Выставляем флаг линии
-
-  lineParam t;
-  initLCDstruct (&t, 0, "B-point is Set.");
-  xQueueSendToBack(lcdQueue, &t, 50);
-}
 
 void 
 SetABLineByHeading(void) {
@@ -168,13 +84,11 @@ GetCurrentABLine(vec3 pivot) {
                           / sqrt((dy * dy) + (dx * dx));
 
   //sign of distance determines which side of line we are on
-  abline.refLineSide = abline.distanceFromCurrentLine > 0
-                     ?  1
-                     : -1;
+  abline.refLineSide = abline.distanceFromRefLine > 0 ?  1 : -1;
   //absolute the distance
-  abline.distanceFromRefLine  = abs(abline.distanceFromRefLine);
+  abline.distanceFromRefLine  = module(abline.distanceFromRefLine);
   //Which ABLine is the vehicle on, negative is left and positive is right side
-  abline.howManyPathsAway = (( abline.distanceFromCurrentLine / abline.widthMinusOverlap) < 0.0)
+  abline.howManyPathsAway = (( abline.distanceFromRefLine / abline.widthMinusOverlap) < 0.0)
                       ?  floor(abline.distanceFromRefLine / abline.widthMinusOverlap)
                       :  ceil( abline.distanceFromRefLine / abline.widthMinusOverlap);
 
@@ -227,7 +141,7 @@ GetCurrentABLine(vec3 pivot) {
             : abline.flags & ~(1 << isOnRightSideCurrentLine);
   
   //absolute the distance
-  abline.distanceFromCurrentLine = abs(abline.distanceFromCurrentLine);
+  abline.distanceFromCurrentLine = module(abline.distanceFromCurrentLine);
 //-------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------
@@ -239,10 +153,10 @@ GetCurrentABLine(vec3 pivot) {
 */
 // </ComentingTag>  
   //Subtract the two headings, if > 1.57 its going the opposite heading as refAB
-  abline.abFixHeadingDelta = (abs (position.fixHeading - abline.abHeading));
+  abline.abFixHeadingDelta = (module(position.fixHeading - abline.abHeading));
 
   if (abline.abFixHeadingDelta >= PI) 
-      abline.abFixHeadingDelta = abs(abline.abFixHeadingDelta - twoPI);
+      abline.abFixHeadingDelta = module(abline.abFixHeadingDelta - twoPI);
 
   // ** Pure pursuit ** - calc point on ABLine closest to current position
   double U = ( ((pivot.easting  - abline.currentABLineP1.easting ) * dx)
@@ -303,7 +217,7 @@ GetCurrentABLine(vec3 pivot) {
                 * (tan(toRadians(abline.steerAngleAB))) / vehicle.wheelbase;
 
   //clamp the steering angle to not exceed safe angular velocity
-  if (abs(abline.angVel) > vehicle.maxAngularVelocity) {
+  if (module(abline.angVel) > vehicle.maxAngularVelocity) {
     abline.steerAngleAB = toDegrees(abline.steerAngleAB > 0 
       ? (atan((vehicle.wheelbase * vehicle.maxAngularVelocity) 
               / (twoPI * nmea.speed * 0.277777)))
@@ -327,4 +241,9 @@ GetCurrentABLine(vec3 pivot) {
   position.guidanceLineSteerAngle  = (int16_t)(abline.steerAngleAB * 100);
 }
 
+double module(double var){
+  if(var < 0)
+    var *= -1;
+  return var;
+}
 /* -------------------------------------------------------------- */

@@ -48,7 +48,7 @@ receiveFromDMA(void *param){
 	initPosition();
 
 
-	xTaskCreate(taskParseNMEA, "ParseTask", 200,  		// Создаем задачу обработки NMEA-сообщени.
+	xTaskCreate(taskParseNMEA, "ParseTask", 300,  		// Создаем задачу обработки NMEA-сообщени.
 							&toBlue[0], 3, &xParseTaskHandle);
 
 	uint8_t c = 0;						
@@ -171,7 +171,7 @@ keyboardScan(void *param){
         continue;
 			}
 			if ( (GPIOB->IDR >> 2) & 0x01){    //key=A
-				btnAPoint();
+				xTaskCreate(btnAPoint, "APoint", 100, NULL, 3, NULL);
 				vTaskDelay(300);
         continue;
 			}
@@ -193,12 +193,12 @@ keyboardScan(void *param){
 			}
 			if ( (GPIOE->IDR >> 8) & 0x01){    //key=6
 				GPIOD->ODR ^= 0x380;
-				btnBPoint();
+				//btnBPoint();
 				vTaskDelay(300);
         continue;
 			}
 			if ( (GPIOB->IDR >> 2) & 0x01){    //key=B
-				btnBPoint();
+				xTaskCreate(btnBPoint, "BPoint", 100, NULL, 3, NULL);
 				vTaskDelay(300);
         continue;
 			}
@@ -282,7 +282,8 @@ taskLCD_QueueObserver(void *prm){
 }
 
 /* Генерация строк в очередь. */
-void  taskGenStrings(void *prm){
+void  
+taskGenStrings(void *prm){
 	BaseType_t result;
 	lineParam temp;
 	uint16_t queueSize = 0x00;
@@ -307,3 +308,89 @@ void  taskGenStrings(void *prm){
 }
 
 /* ------------------------------------------------- */
+
+/*
+ * Дейстивя при нажатии кнопки А
+ */
+void 
+btnAPoint(void *prm){
+  // Если линия еще не задавалась, то устанавливаем точку A
+  if( !(abline.flags >> ABLineSet & 0x01) )  {
+
+    vec3 fix = position.pivotAxlePos;
+
+    abline.refPoint1.easting  = fix.easting;
+    abline.refPoint1.northing = fix.northing;
+    abline.abHeading          = fix.heading;
+
+    abline.flags |= 1 << APointSet;    // Выставлям флаг Точки А
+    strToDisplay (lcdQueue, 0, "A-point is Set.");
+		vTaskDelete(NULL);
+  }
+  else{
+    strToDisplay (lcdQueue, 0, "ABline-Line is set already.");
+    strToDisplay (lcdQueue, 1, "Try B to change A-point.");
+		vTaskDelete(NULL);
+  }
+}
+
+/*
+ * Дейстивя при нажатии кнопки B
+ */
+void 
+btnBPoint(void* prm){
+  //Если не установлена точка А
+  if(! (abline.flags >> APointSet & 0x01 )){
+    //LCD_Send_String(0, "First set A-Point.");
+    strToDisplay (lcdQueue, 0, "First set A-Point.");
+		vTaskDelete(NULL);
+  //  return;
+  }
+//<commentingTAG>
+/*
+  // Если расстояние между точками не достаточно для корректного 
+  // определения направления линии
+  //x2-x1
+  double dx = abline.refABLineP2.easting - abline.refABLineP1.easting;
+  //z2-z1
+  double dy = abline.refABLineP2.northing - abline.refABLineP1.northing;
+  double distInPoint = sqrt( (dx * dx) + (dy * dy));
+	if(distInPoint < 0.00001){
+    LCD_Send_String(0, "abline-Line error.");
+		return;
+  }
+*/ 
+//</commentingTAG>
+
+  // Если линия АБ установлена( установлена точка А и В)
+  // то делаем "замещение точек"
+  if(abline.flags >> ABLineSet & 0x01){
+		abline.refPoint1 = abline.refPoint2;
+    lineParam t;
+    initLCDstruct (&t, 0, "Changed Points.");
+    xQueueSendToBack(lcdQueue, &t, 50);
+  }
+
+  abline.refPoint2.easting  = nmea.fix.easting;
+  abline.refPoint2.northing = nmea.fix.northing;
+
+  abline.abHeading = atan2(abline.refPoint2.easting  - abline.refPoint1.easting, 
+                           abline.refPoint2.northing - abline.refPoint1.northing);
+  if (abline.abHeading < 0)
+    abline.abHeading += twoPI;
+
+  //sin x cos z for endpoints, opposite for additional lines
+  abline.refABLineP1.easting  = abline.refPoint1.easting  - (sin(abline.abHeading) * 1600.0);
+  abline.refABLineP1.northing = abline.refPoint1.northing - (cos(abline.abHeading) * 1600.0);
+
+  abline.refABLineP2.easting  = abline.refPoint1.easting  + (sin(abline.abHeading) * 1600.0);
+  abline.refABLineP2.northing = abline.refPoint1.northing + (cos(abline.abHeading) * 1600.0);
+
+  abline.flags |= 1 << BPointSet;    // Выставлям флаг Точки B
+  abline.flags |= 1 << ABLineSet;    // Выставляем флаг линии
+
+  lineParam t;
+  initLCDstruct (&t, 0, "B-point is Set.");
+  xQueueSendToBack(lcdQueue, &t, 50);
+	vTaskDelete(NULL);
+}

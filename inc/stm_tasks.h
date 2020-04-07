@@ -23,8 +23,12 @@ void  keyboardScan(void *param);
 
 void  taskLCD_Send_String(void *prm);
 
-
 void  taskLCD_QueueObserver(void *prm);
 
 void  taskGenStrings(void *prm);
+
+void  btnAPoint(void *prm);
+
+void  btnBPoint(void* prm);
+
 #endif

@@ -59,13 +59,6 @@ pop(char *dest, queue *q){
 		return 0;
 	}
 }
-	
-
-
-
-
-
-
 
 void 
 create(queue *new){

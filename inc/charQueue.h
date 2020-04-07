@@ -10,7 +10,6 @@
 
 typedef struct {
 	char queue[strlen_t];
-	uint16_t empty;
 	uint16_t full;
 	void (*push)	 (void*, char*, uint16_t);
 	uint16_t (*pop)(char*, void*);

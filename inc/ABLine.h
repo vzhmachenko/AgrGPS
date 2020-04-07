@@ -49,15 +49,16 @@ typedef struct {
 
 void initABl(void);
 
-void btnAPoint(void);
+//void btnAPoint(void);
 
-void btnBPoint(void);
 
 void SetABLineByHeading(void);
 
 void MoveABLine(double dist);
 
 void GetCurrentABLine(vec3 pivot); 
+
+double module(double var);
 
 /* ------------------------------------------------------- */
 #endif
