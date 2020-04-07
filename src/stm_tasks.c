@@ -36,13 +36,11 @@ tempTask2(void *tem){
 /* Задача чтения NMEA-сообщений по DMA */
 void 
 receiveFromDMA(void *param){
-	static queue btQueue;									// Создаем очередь сообщений
-	TaskHandle_t xParseTaskHandle;
-	TaskHandle_t lcdTaskHandler;
-	TaskHandle_t lcdTaskObserver;
-
+	queue btQueue;									// Создаем очередь сообщений
 	btQueue.create = &create;							// Делаем метод-функцию, для ООП
 	btQueue.create(&btQueue);							// Инициализируем начальные значения и другие методы-функции
+
+	TaskHandle_t xParseTaskHandle;
 
 	createStartNMEA();
 	initVehicle();
@@ -52,28 +50,33 @@ receiveFromDMA(void *param){
 
 	xTaskCreate(taskParseNMEA, "ParseTask", 200,  		// Создаем задачу обработки NMEA-сообщени.
 							&toBlue[0], 3, &xParseTaskHandle);
-							
+
+	uint8_t c = 0;						
 	for(;;){
 		BaseType_t xStatus1 = xQueueReceive(xpQueue, &receivePointer, 50);		//Receiving the data
 		if(xStatus1 == pdPASS){										//Check if data received
+			c++;
+			GPIOD->ODR ^= 0x8;
+
 			btQueue.push(&btQueue, receivePointer, strlen_r);		//Add data to general queue
 
-			DMA2_Stream7->NDTR = pop(toBlue, &btQueue);        	//Number of charachters to send by bluetooth
-			DMA2_Stream7->CR |= DMA_SxCR_EN;
+			//DMA2_Stream7->NDTR = pop(toBlue, &btQueue);        	//Number of charachters to send by bluetooth
+			//DMA2_Stream7->CR |= DMA_SxCR_EN;
 
-			while( findEOS(&btQueue) ){								//If we have a new-line charachter '\n'
-				DMA2_Stream7->NDTR = pop(toBlue, &btQueue);        	//Number of charachters to send by bluetooth 
-				//toBlue[0]='\n';		//Or first symbol of toBlue = '$'	//It's fo debugging
-				DMA2_Stream7->CR |= DMA_SxCR_EN;					//Enable transmit by DMA
+			//while( findEOS(&btQueue) ){								//If we have a new-line charachter '\n'
+				//DMA2_Stream7->NDTR = pop(toBlue, &btQueue);        	//Number of charachters to send by bluetooth 
+					//toBlue[0]='\n';		//Or first symbol of toBlue = '$'	//It's fo debugging
+				//DMA2_Stream7->CR |= DMA_SxCR_EN;					//Enable transmit by DMA
 
+			while( DMA2_Stream7->NDTR = pop(toBlue, &btQueue)){        	//Number of charachters to send by bluetooth
+				DMA2_Stream7->CR |= DMA_SxCR_EN;
 				vTaskResume(xParseTaskHandle);					//После запуска просто возобновляем выполнение работы
+				GPIOD->ODR ^= 0x800;
 
 				if(abline.flags >> ABLineSet & 0x01){
 					//doubleToDisplay(abline.distanceFromCurrentLine, 3);
 					addToQueue_doubleToDisplay(lcdQueue, abline.distanceFromCurrentLine, 3);
 				}
-
-
 				//LCD_SendCommand(0x01);
 			}
 		}

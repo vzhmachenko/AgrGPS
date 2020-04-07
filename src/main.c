@@ -3,8 +3,8 @@
 //		Char buffer variables and pointers
 extern char  rxDMAbuf0	[strlen_r];     
 extern char  rxDMAbuf1	[strlen_r];
-char* rxDMA[2] = {	&rxDMAbuf0[0], 
-                  	&rxDMAbuf1[0]	};
+char* rxDMA[2] = {	rxDMAbuf0, 
+                  	rxDMAbuf1	};
 
 /*------RTOS variables------*/
 QueueHandle_t	  xpQueue;      	///< Указатель на очередь взаимодействия между задачей и прерыванием (dma --> nmea)
@@ -22,13 +22,13 @@ int main(void) {
 	initAllPeriph();
 /* ---------------------------------------------------------- */
 
-	xpQueue 	= xQueueCreate(1, sizeof(char*) ); 			//Создаем очередь
+	xpQueue 	= xQueueCreate(2, sizeof(char*) ); 			//Создаем очередь
 	lcdQueue	= xQueueCreate(5, sizeof(lineParam));		// Максимально хранится 5 структур
 
 	//xTaskCreate(taskGenStrings, "gen", 64, NULL, 1, NULL);
 
 	/* Задача наблюдения за наличием объектов в очереди вывода на дисплей. */
-	xTaskCreate(taskLCD_QueueObserver, "obs", 64, (void*)(lcdQueue), 1, NULL);
+	xTaskCreate(taskLCD_QueueObserver, "obs", 64, (void*)(lcdQueue), 3, NULL);
 	
 /* Временные тестовые задачи. */
 	/*xTaskCreate(tempTask,  "temp", 32, NULL, 1, NULL);
@@ -38,13 +38,13 @@ int main(void) {
 /******************************************************************************/
 /******************* Задача получения NMEA сообщений через DMA ****************/
 /******************************************************************************/
-	xTaskCreate(receiveFromDMA, "NMEAbyDMA", 300, NULL, 3, NULL);
+	xTaskCreate(receiveFromDMA, "NMEAbyDMA", 100, NULL, 3, NULL);
 
 
 //******************************************************************************/
 //******************* Задача сканирования клавиатуры*********** ****************/
 //******************************************************************************/
-	xTaskCreate(keyboardScan, "ScanKeyb", 200, NULL, 1, NULL);
+	//xTaskCreate(keyboardScan, "ScanKeyb", 200, NULL, 1, NULL);
 
 
 // Запускаем планировщик заданий
@@ -65,15 +65,14 @@ DMA1_Stream5_IRQHandler(){
 
 	if( (DMA1->HISR & DMA_HISR_TCIF5 ) == DMA_HISR_TCIF5){
 		DMA1->HIFCR |= DMA_HIFCR_CTCIF5;        //Сбросить бит прервания
+		GPIOD->ODR ^= 0x8000;
 		if(	(DMA1_Stream5->CR & DMA_SxCR_CT) == DMA_SxCR_CT){
 			//if CT bit == 1 -> Memory 1 write mode
 			//have to send Memory 0
-			xQueueSendToBackFromISR(xpQueue, &rxDMA[0], 
-															&xHigherPriorityTaskWoken);
+			xQueueSendToBackFromISR(xpQueue, &rxDMA[0], &xHigherPriorityTaskWoken);
 		}
 		else {
-			xQueueSendToBackFromISR(xpQueue, &rxDMA[1], 
-															&xHigherPriorityTaskWoken);
+			xQueueSendToBackFromISR(xpQueue, &rxDMA[1], &xHigherPriorityTaskWoken);
 		}				
 
     // Если при отправке данных, появилась более приоритетная

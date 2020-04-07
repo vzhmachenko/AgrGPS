@@ -73,13 +73,13 @@ void doubleToDisplay(double num, uint8_t strNum);
 
 /* Инициализация структуры, для представления выводан на дисплей,
  * посредством очереди freeRTOS. */
-void initLCDstruct(lineParam* line, uint8_t string_num, char *str);
+void initLCDstruct(lineParam* line, const uint8_t string_num, char *str);
 
 /* Выводим строку на дисплей через очередь и задачу. */
-void strToDisplay(QueueHandle_t destQueue, uint8_t strNum, char* str);
+void strToDisplay(QueueHandle_t destQueue, const uint8_t strNum, char* str);
 
 /* Додаем ДаблЧисло в очередь на вывод. */
-void addToQueue_doubleToDisplay(QueueHandle_t destQueue, double num, 
-																uint8_t strNum);
+void addToQueue_doubleToDisplay(QueueHandle_t destQueue, const double num, 
+																const uint8_t strNum);
 
 #endif /* GPIO_H_ */

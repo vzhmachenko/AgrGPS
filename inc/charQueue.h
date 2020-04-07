@@ -18,11 +18,10 @@ typedef struct {
 
 } queue;
 
-void      strAllcpy(char *to, char *from, uint16_t size);
 void      push	 (queue *q, char *str, uint16_t size);
 void      create (queue *new);
-uint16_t  findEOS(queue *q);
 uint16_t  pop	(char *to, queue *q);
+void 			moveDollToBegin(queue *q);
 
 
 #endif /* GPIO_H_ */

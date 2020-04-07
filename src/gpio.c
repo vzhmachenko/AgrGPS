@@ -126,14 +126,14 @@ doubleToDisplay(double num, uint8_t strNum){
 
 /* Инициализация структуры, для представления выводан на дисплей,
  * посредством очереди freeRTOS. */
-void initLCDstruct(lineParam* line, uint8_t string_num, char *str){
+void initLCDstruct(lineParam* line, const uint8_t string_num, char *str){
   line->lineNumber = string_num;
   memset(line->string, 0, 30);
   strncpy(line->string, str, 29);
 }
 
 /* Выводим строку на дисплей через очередь и задачу. */
-void strToDisplay (QueueHandle_t	destQueue, uint8_t strNum, char* str){
+void strToDisplay (QueueHandle_t	destQueue, const uint8_t strNum, char* str){
   lineParam lp;
   initLCDstruct(&lp, strNum, str);
   xQueueSend(destQueue, &lp, 50);
@@ -141,8 +141,8 @@ void strToDisplay (QueueHandle_t	destQueue, uint8_t strNum, char* str){
 
 /* Додаем ДаблЧисло в очередь на вывод. */
 void 
-addToQueue_doubleToDisplay(QueueHandle_t destQueue, double num, 
-                          uint8_t strNum){
+addToQueue_doubleToDisplay(QueueHandle_t destQueue, const double num, 
+                          const uint8_t strNum){
 	char doubleStr[9] = {0};
 	itoa( (int)num, doubleStr, 10); 	//При необходимости умножить для повышения точности
 	uint8_t strL = strlen(doubleStr);

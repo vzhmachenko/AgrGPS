@@ -76,7 +76,8 @@ void    ParseGGA(void);
 void    ParseGLL(void);
 void    ParseRMC(void);
 void    ParseVTG(void); 
-void    checkLatLon(char* lat, char* lon);
+int8_t  checkLatLon(char* lat, char* lon);
+int8_t  calcSphere(char* w1, char* w2);
 
 /* ---------------------------------------------------- */
  #endif

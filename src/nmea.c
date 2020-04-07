@@ -15,20 +15,64 @@ const   double    koef = 0.01666666666;          ///< Коефициент пе�
 /*!
  * Проверяем наличие значений долготы и широты
 */
-void  checkLatLon(char *lat, char *lon){
+int8_t 
+checkLatLon(char *lat, char *lon){
   nmea.latitude = NMEAtoDecimal(lat);  // Получаем десятичное значение широты
   if( strchr(lat, '.'))              // Выставляем бит коректности данных
     nmea.flags |= 0x01 << latitudeOk;
-  else
+  else{
     nmea.flags &= ~(0x01 << latitudeOk);
+    nmea.flags &= ~(0x01 << longtitudeOk);
+    return 0;
+  }
+
 
   nmea.longitude = NMEAtoDecimal(lon);  // Получаем десятичное значение долготы
   if( strchr(lon, '.'))              // Выставляем бит коректности данных
     nmea.flags |= 0x01 << longtitudeOk;
-  else
+  else{
     nmea.flags &= ~(0x01 << longtitudeOk);
+    nmea.flags &= ~(0x01 << latitudeOk);
+    return 0;
+  }
+  return 1;
 }
 
+/*!
+*  Расчет полушарий
+*/
+int8_t
+calcSphere(char* w1, char* w2){
+  if(*w1 == 'S'){
+    nmea.latitude  *= -1;
+    nmea.hemisphere = 'S';
+  }
+  else{
+    if(*w1 == 'N'){
+      nmea.hemisphere = 'N';
+    }
+    else {
+      nmea.flags &= ~(0x01 << latitudeOk);
+      nmea.flags &= ~(0x01 << longtitudeOk);
+      return 0;
+    }
+  }
+
+  if(*w2 == 'W'){
+    nmea.longitude *= -1;
+    return 1;
+  }
+  else{
+    if(*w2 == 'E'){
+      return 1;
+    }
+    else {
+      nmea.flags &= ~(0x01 << latitudeOk);
+      nmea.flags &= ~(0x01 << longtitudeOk);
+      return 0;
+    }
+  }
+}
 /*! 
   Задаем начальные значения при создании структуры
  */
@@ -121,6 +165,7 @@ DecDeg2UTM(double latitude, double longitude){    //!!!!!!!!
  */
 void 
 UpdateNorthingEasting(void){
+  GPIOD->ODR ^= 0x2;
   DecDeg2UTM(nmea.latitude, nmea.longitude);
   //keep a copy of actual easting and northings
   nmea.actualEasting  = xy[0];
@@ -158,22 +203,6 @@ splitString(char *from){
 }
 
 
-/*!
-*  Расчет полушарий
-*/
-void 
-calcSphere(char* w1, char* w2){
-  if (w1 == "S"){
-    nmea.latitude  *= -1;
-    nmea.hemisphere = 'S';
-  }
-  else{
-    nmea.hemisphere = 'N';
-  }
-  if (w2 == "W"){
-    nmea.longitude *= -1;
-  }
-}
 
 /*! 
  * Переводим координаты, полученные в сообщении, из минут в 
@@ -220,19 +249,15 @@ NMEAtoDecimal(char *str){
 void 
 ParseGGA(void){
   // Мигаем светлодиодом, для индикации
-  GPIOD->ODR ^= 0x4;
 
-  checkLatLon(words[2], words[4]);
-
-  if( (nmea.flags >> latitudeOk & 0x01)
-  &&  (nmea.flags >> longtitudeOk & 0x01)) { // Если обе координаты коректны, то обрабатываем полученные данные
-    UpdateNorthingEasting();
-  }
-  else                                    // Если нет, то не мусорим и выходим
+  if(!checkLatLon(words[2], words[4])){
     return;
-
+  }
   // Положение по полушариям
-  calcSphere(words[3], words[5]);
+  if(!calcSphere(words[3], words[5])){
+    return;
+  }
+  UpdateNorthingEasting();
 
   // Остальная информация
   nmea.fixQuality        = atoi(words[6]);
@@ -263,20 +288,13 @@ ParseGGA(void){
 */
 void 
 ParseGLL(void){
-  GPIOD->ODR ^= 0x20;
-
-  checkLatLon(words[1], words[3]);
-
-  if( (nmea.flags >> latitudeOk & 0x01)
-  &&  (nmea.flags >> longtitudeOk & 0x01)) { // Если обе координаты коректны, то обрабатываем полученные данные
-    UpdateNorthingEasting();
-  }
-  else{                                    // Если нет, то не мусорим и выходим
+  if(!checkLatLon(words[1], words[3])){
     return;
   }
-
-  // Положение по полушариям
-  calcSphere(words[2], words[4]);
+  if(!calcSphere(words[2], words[4])){
+    return;
+  }
+  UpdateNorthingEasting();
   strncpy(nmea.time, words[5], 6);
 }
 
@@ -305,20 +323,14 @@ ParseGLL(void){
 */
 void 
 ParseRMC(void){
-  GPIOD->ODR ^= 0x10;
-
-  checkLatLon(words[3], words[5]);
-
-  if( (nmea.flags >> latitudeOk & 0x01)
-  &&  (nmea.flags >> longtitudeOk & 0x01)) { // Если обе координаты коректны, то обрабатываем полученные данные
-    UpdateNorthingEasting();
-  }
-  else{                                    // Если нет, то не мусорим и выходим
+  if(!checkLatLon(words[3], words[5])){
     return;
   }
-
   // Положение по полушариям
-  calcSphere(words[4], words[6]);
+  if(!calcSphere(words[4], words[6])){
+    return;
+  }
+  UpdateNorthingEasting();
 
   nmea.speed = atof(words[7]);
   nmea.speed = round(nmea.speed * 1.852);
@@ -346,7 +358,7 @@ ParseRMC(void){
 */ 
 void 
 ParseVTG(void){
-  GPIOD->ODR ^= 0x8;
+  GPIOD->ODR ^= 0x8000;
   nmea.headingTrue  = atof(words[1]);
   nmea.speed        = atof(words[5]);
   nmea.speed        = round(nmea.speed * 1.852);
