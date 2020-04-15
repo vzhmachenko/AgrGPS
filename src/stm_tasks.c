@@ -374,6 +374,14 @@ btnBPoint(void* prm){
   abline.refPoint2.easting  = nmea.fix.easting;
   abline.refPoint2.northing = nmea.fix.northing;
 
+/*
+	abline.refPoint2.easting = 0.7269;
+	abline.refPoint2.northing = 32.4804;
+	abline.refPoint1.easting = 0.7269;
+	abline.refPoint1.northing = 17.7733;
+	*/
+
+
   abline.abHeading = atan2(abline.refPoint2.easting  - abline.refPoint1.easting, 
                            abline.refPoint2.northing - abline.refPoint1.northing);
   if (abline.abHeading < 0)
@@ -385,6 +393,7 @@ btnBPoint(void* prm){
 
   abline.refABLineP2.easting  = abline.refPoint1.easting  + (sin(abline.abHeading) * 1600.0);
   abline.refABLineP2.northing = abline.refPoint1.northing + (cos(abline.abHeading) * 1600.0);
+	
 
   abline.flags |= 1 << BPointSet;    // Выставлям флаг Точки B
   abline.flags |= 1 << ABLineSet;    // Выставляем флаг линии

@@ -76,6 +76,12 @@ GetCurrentABLine(vec3 pivot) {
   double dx = abline.refABLineP2.easting - abline.refABLineP1.easting;
   //z2-z1
   double dy = abline.refABLineP2.northing - abline.refABLineP1.northing;
+
+/*
+  pivot.easting = 0.70;
+  pivot.northing = 18.10;
+  */
+
   //------------Расчитываем как далеко мы от первой линии АВ--------------
   //how far are we away from the reference line at 90 degrees
   abline.distanceFromRefLine  = ((dy * pivot.easting)     - (dx * pivot.northing) 
@@ -88,9 +94,27 @@ GetCurrentABLine(vec3 pivot) {
   //absolute the distance
   abline.distanceFromRefLine  = module(abline.distanceFromRefLine);
   //Which ABLine is the vehicle on, negative is left and positive is right side
+  if(( abline.distanceFromRefLine / abline.widthMinusOverlap) < 0.0){
+    if( (uint8_t)( abline.distanceFromRefLine / abline.widthMinusOverlap * (-10)) < 5)
+      abline.howManyPathsAway = ceil( abline.distanceFromRefLine / abline.widthMinusOverlap);
+    else
+      abline.howManyPathsAway = floor(abline.distanceFromRefLine / abline.widthMinusOverlap);
+
+  }
+  else{
+    if( (uint8_t)( abline.distanceFromRefLine / abline.widthMinusOverlap * 10) < 5)
+      abline.howManyPathsAway = floor(abline.distanceFromRefLine / abline.widthMinusOverlap);
+    else
+      abline.howManyPathsAway = ceil( abline.distanceFromRefLine / abline.widthMinusOverlap );
+
+  }
+
+
+/*
   abline.howManyPathsAway = (( abline.distanceFromRefLine / abline.widthMinusOverlap) < 0.0)
-                      ?  floor(abline.distanceFromRefLine / abline.widthMinusOverlap)
-                      :  ceil( abline.distanceFromRefLine / abline.widthMinusOverlap);
+                      ?  floor(abline.distanceFromRefLine / abline.widthMinusOverlap - 0.5)
+                      :  ceil( abline.distanceFromRefLine / abline.widthMinusOverlap + 0.5);
+                      */
 
   //generate that pass number as signed integer
   abline.passNumber = (int8_t)(abline.refLineSide * abline.howManyPathsAway);
