@@ -76,6 +76,7 @@ receiveFromDMA(void *param){
 				if(abline.flags >> ABLineSet & 0x01){
 					//doubleToDisplay(abline.distanceFromCurrentLine, 3);
 					addToQueue_doubleToDisplay(lcdQueue, abline.distanceFromCurrentLine, 3);
+					addToQueue_doubleToDisplay(lcdQueue, abline.passNumber, 0);
 				}
 				//LCD_SendCommand(0x01);
 			}
@@ -318,7 +319,9 @@ btnAPoint(void *prm){
   if( !(abline.flags >> ABLineSet & 0x01) )  {
 
     vec3 fix = position.pivotAxlePos;
-
+    			fix.easting = nmea.fix.easting;
+    			fix.northing = nmea.fix.northing;
+    			fix.heading = nmea.headingTrue;
     abline.refPoint1.easting  = fix.easting;
     abline.refPoint1.northing = fix.northing;
     abline.abHeading          = fix.heading;

@@ -69,6 +69,7 @@ MoveABLine(double dist) {
 
 void 
 GetCurrentABLine(vec3 pivot) {
+
   //move the ABLine over based on the overlap amount set in vehicle
   double widthMinusOverlap = vehicle.toolWidth - vehicle.toolOverlap;
 
@@ -94,20 +95,22 @@ GetCurrentABLine(vec3 pivot) {
   //absolute the distance
   abline.distanceFromRefLine  = module(abline.distanceFromRefLine);
   //Which ABLine is the vehicle on, negative is left and positive is right side
+  abline.howManyPathsAway = roundAwayFromZero( abline.distanceFromRefLine / abline.widthMinusOverlap, 0);
+
+  /*
   if(( abline.distanceFromRefLine / abline.widthMinusOverlap) < 0.0){
-    if( (uint8_t)( abline.distanceFromRefLine / abline.widthMinusOverlap * (-10)) < 5)
+    if( (int8_t)( abline.distanceFromRefLine / abline.widthMinusOverlap * (-10)) < 5)
       abline.howManyPathsAway = ceil( abline.distanceFromRefLine / abline.widthMinusOverlap);
     else
       abline.howManyPathsAway = floor(abline.distanceFromRefLine / abline.widthMinusOverlap);
-
   }
   else{
-    if( (uint8_t)( abline.distanceFromRefLine / abline.widthMinusOverlap * 10) < 5)
+    if( (int8_t)( abline.distanceFromRefLine / abline.widthMinusOverlap * 10) < 5)
       abline.howManyPathsAway = floor(abline.distanceFromRefLine / abline.widthMinusOverlap);
     else
       abline.howManyPathsAway = ceil( abline.distanceFromRefLine / abline.widthMinusOverlap );
-
   }
+  */
 
 
 /*
@@ -126,18 +129,18 @@ GetCurrentABLine(vec3 pivot) {
 
   //depending which way you are going, the offset can be either side
   point1 = (abline.flags >> isABSameAsVehicleHeading & 0x1) 
-        ? (vec2){(cos(-abline.abHeading)     * ((abline.widthMinusOverlap
+        ? (vec2){   (cos(-abline.abHeading)     * ((abline.widthMinusOverlap
                       * abline.howManyPathsAway * abline.refLineSide) 
-                      - vehicle.toolOffset))+ abline.refPoint1.easting,
+                      - vehicle.toolOffset))    + abline.refPoint1.easting,
                     (sin(-abline.abHeading)     * ((abline.widthMinusOverlap 
                       * abline.howManyPathsAway * abline.refLineSide) 
-                      - vehicle.toolOffset))+ abline.refPoint1.northing}
-        : (vec2){(cos(-abline.abHeading)   * ((abline.widthMinusOverlap
+                      - vehicle.toolOffset))    + abline.refPoint1.northing}
+        : (vec2){   (cos(-abline.abHeading)     * ((abline.widthMinusOverlap
                       * abline.howManyPathsAway * abline.refLineSide) 
-                      + vehicle.toolOffset))+ abline.refPoint1.easting,
+                      + vehicle.toolOffset))    + abline.refPoint1.easting,
                       (sin(-abline.abHeading)   * ((abline.widthMinusOverlap 
                       * abline.howManyPathsAway * abline.refLineSide) 
-                      + vehicle.toolOffset))+ abline.refPoint1.northing};
+                      + vehicle.toolOffset))    + abline.refPoint1.northing};
   
 
   //create the new line extent points for current ABLine based on original heading of ablineline
@@ -158,6 +161,12 @@ GetCurrentABLine(vec3 pivot) {
                               + (abline.currentABLineP2.easting
                               * abline.currentABLineP1.northing) - (abline.currentABLineP2.northing 
                               * abline.currentABLineP1.easting)) / sqrt((dy * dy) + (dx * dx));
+  if(abline.distanceFromCurrentLine < 0){
+    GPIOD->ODR |= 0x80;
+  }
+  else{
+    GPIOD->ODR &= ~0x80;
+  }
 
   //are we on the right side or not
   abline.flags = (abline.distanceFromCurrentLine > 0)
@@ -166,6 +175,7 @@ GetCurrentABLine(vec3 pivot) {
   
   //absolute the distance
   abline.distanceFromCurrentLine = module(abline.distanceFromCurrentLine);
+
 //-------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------
@@ -230,11 +240,14 @@ GetCurrentABLine(vec3 pivot) {
 
   abline.radiusPointAB.easting  = pivot.easting  + (abline.ppRadiusAB * cos(localHeading));
   abline.radiusPointAB.northing = pivot.northing + (abline.ppRadiusAB * sin(localHeading));
+  abline.distanceFromCurrentLine = roundAwayFromZero(abline.distanceFromCurrentLine * 1000.0, 0);
 
+/*
   //Convert to millimeters
   abline.distanceFromCurrentLine = (abline.distanceFromCurrentLine < 0) 
       ? floor(abline.distanceFromCurrentLine * 1000.0) 
       : ceil(abline.distanceFromCurrentLine * 1000.0);
+      */
 
   //angular velocity in rads/sec  = 2PI * m/sec * radians/meters
   abline.angVel = twoPI * 0.277777 * nmea.speed 
@@ -271,3 +284,24 @@ double module(double var){
   return var;
 }
 /* -------------------------------------------------------------- */
+double 
+roundAwayFromZero(double var, uint8_t decimal){
+  // -0.1 0
+  int round = (int)(var * pow(10, decimal + 1)) % 10;//(int)pow(10, decimal + 1);
+  if(var < 0){
+    if(-1 * round < 5){
+      return ceil(var * pow(10, decimal)) / pow(10, decimal);
+    }
+    else {
+      return floor(var * pow(10, decimal)) / pow(10, decimal);
+    }
+  }
+  else {
+    if(round < 5){
+      return floor(var * pow(10, decimal)) / pow(10, decimal);
+    }
+    else {
+      return ceil(var * pow(10, decimal)) / pow(10, decimal);
+    }
+  }
+}

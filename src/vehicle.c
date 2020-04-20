@@ -29,7 +29,7 @@ UpdateGoalPointDistance(double distanceFromCurrentLine) {
 
 void 
 initVehicle(void){
-  vehicle.toolWidth     = 10;
+  vehicle.toolWidth     = 3;
   vehicle.toolOverlap   = 0;
   vehicle.toolOffset    = 0;
 

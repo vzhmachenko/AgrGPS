@@ -59,6 +59,7 @@ void MoveABLine(double dist);
 void GetCurrentABLine(vec3 pivot); 
 
 double module(double var);
+double roundAwayFromZero(double var, uint8_t decimal);
 
 /* ------------------------------------------------------- */
 #endif
