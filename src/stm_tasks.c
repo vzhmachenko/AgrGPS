@@ -98,11 +98,8 @@ taskParseNMEA(void *parameter){
     // Ошибка в координатах, товыходим
     if( (nmea.flags >> latitudeOk   & 0x01)
     &&  (nmea.flags >> longtitudeOk & 0x01) ) {
-
       UpdateFixPosition();
 
-//      doubleToDisplay(nmea.latitude,  1);
-//      doubleToDisplay(nmea.longitude, 2);
       //print
       addToQueue_doubleToDisplay(lcdQueue, nmea.latitude,  1);
       //print
@@ -111,7 +108,7 @@ taskParseNMEA(void *parameter){
       if (abline.flags >> ABLineSet & 0x01) {
         pivotAxlePos.easting  = nmea.fix.easting - (sin(position.pivotAxlePos.heading) 
                               * vehicle.antennaPivot);
-        pivotAxlePos.northing = nmea.fix.easting - (cos(position.pivotAxlePos.heading) 
+        pivotAxlePos.northing = nmea.fix.northing - (cos(position.pivotAxlePos.heading) 
                               * vehicle.antennaPivot);
         pivotAxlePos.heading  = position.fixHeading;
 
@@ -317,16 +314,11 @@ void
 btnAPoint(void *prm){
   // Если линия еще не задавалась, то устанавливаем точку A
   if( !(abline.flags >> ABLineSet & 0x01) )  {
+    abline.refPoint1.easting  = nmea.fix.easting;
+    abline.refPoint1.northing = nmea.fix.northing;
+    abline.abHeading          = nmea.headingTrue;
 
-    vec3 fix = position.pivotAxlePos;
-    			fix.easting = nmea.fix.easting;
-    			fix.northing = nmea.fix.northing;
-    			fix.heading = nmea.headingTrue;
-    abline.refPoint1.easting  = fix.easting;
-    abline.refPoint1.northing = fix.northing;
-    abline.abHeading          = fix.heading;
-
-    abline.flags |= 1 << APointSet;    // Выставлям флаг Точки А
+    abline.flags |= 0x01 << APointSet;    // Выставлям флаг Точки А
     strToDisplay (lcdQueue, 0, "A-point is Set.");
 		vTaskDelete(NULL);
   }
@@ -398,8 +390,8 @@ btnBPoint(void* prm){
   abline.refABLineP2.northing = abline.refPoint1.northing + (cos(abline.abHeading) * 1600.0);
 	
 
-  abline.flags |= 1 << BPointSet;    // Выставлям флаг Точки B
-  abline.flags |= 1 << ABLineSet;    // Выставляем флаг линии
+  abline.flags |= 0x1 << BPointSet;    // Выставлям флаг Точки B
+  abline.flags |= 0x1 << ABLineSet;    // Выставляем флаг линии
 
   lineParam t;
   initLCDstruct (&t, 0, "B-point is Set.");

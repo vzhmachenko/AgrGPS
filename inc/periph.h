@@ -4,7 +4,7 @@
 #include "stm32f4xx.h"
 
 #define strlen_t 	200            //Максимальная длина строки
-#define strlen_r 	40
+#define strlen_r 	80
 
 void gpio_ini(void);
 

@@ -97,27 +97,6 @@ GetCurrentABLine(vec3 pivot) {
   //Which ABLine is the vehicle on, negative is left and positive is right side
   abline.howManyPathsAway = roundAwayFromZero( abline.distanceFromRefLine / abline.widthMinusOverlap, 0);
 
-  /*
-  if(( abline.distanceFromRefLine / abline.widthMinusOverlap) < 0.0){
-    if( (int8_t)( abline.distanceFromRefLine / abline.widthMinusOverlap * (-10)) < 5)
-      abline.howManyPathsAway = ceil( abline.distanceFromRefLine / abline.widthMinusOverlap);
-    else
-      abline.howManyPathsAway = floor(abline.distanceFromRefLine / abline.widthMinusOverlap);
-  }
-  else{
-    if( (int8_t)( abline.distanceFromRefLine / abline.widthMinusOverlap * 10) < 5)
-      abline.howManyPathsAway = floor(abline.distanceFromRefLine / abline.widthMinusOverlap);
-    else
-      abline.howManyPathsAway = ceil( abline.distanceFromRefLine / abline.widthMinusOverlap );
-  }
-  */
-
-
-/*
-  abline.howManyPathsAway = (( abline.distanceFromRefLine / abline.widthMinusOverlap) < 0.0)
-                      ?  floor(abline.distanceFromRefLine / abline.widthMinusOverlap - 0.5)
-                      :  ceil( abline.distanceFromRefLine / abline.widthMinusOverlap + 0.5);
-                      */
 
   //generate that pass number as signed integer
   abline.passNumber = (int8_t)(abline.refLineSide * abline.howManyPathsAway);

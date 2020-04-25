@@ -39,10 +39,6 @@ void
 CalculatePositionHeading(void){
   position.fixHeading = toRadians(nmea.headingTrue);
 
-// ...
-// ...
-// ...
-
   //translate world to the pivot axle
   position.pivotAxlePos.easting  = nmea.fix.easting  - (sin(position.fixHeading) 
                                  * vehicle.antennaPivot);
@@ -57,7 +53,7 @@ CalculatePositionHeading(void){
 void 
 InitializeFirstFewGPSPositions(void){
   static uint8_t histChange = 0;
-          histChange %= 10;
+          histChange %= 6;//10
 
   if ( !(position.flags << isFirstFixPositionSet & 0x01)) {
 
@@ -75,25 +71,34 @@ InitializeFirstFewGPSPositions(void){
                           * tan( toRadians( nmea.longitude - nmea.centralMeridian) ) );
 
     //Draw a grid once we know where in the world we are.
-    position.flags |= 0x01 << isFirstFixPositionSet;
     position.stepFixPts[0].heading   = 0;
+    position.stepFixPts[0].northing  = nmea.fix.northing;
+    position.stepFixPts[0].easting   = nmea.fix.easting;
+
+    position.flags |= 0x01 << isFirstFixPositionSet;
+
+    return;
   }
   else { 
+    position.prevFix.easting  = nmea.fix.easting;
+    position.prevFix.northing = nmea.fix.northing;
     // Пишем в историю каждое десятое измерение
     // Типа большая дискретизация
-    if(!histChange){
-      for (int i = histSize - 1; i > 0; --i) {
-        position.stepFixPts[i].easting  = position.stepFixPts[i - 1].easting;
-        position.stepFixPts[i].northing = position.stepFixPts[i - 1].northing;
-        position.stepFixPts[i].heading  = position.stepFixPts[i - 1].heading;
-      }
+    for (int i = histSize - 1; i > 0; i--) {
+      position.stepFixPts[i].easting  = position.stepFixPts[i - 1].easting;
+      position.stepFixPts[i].northing = position.stepFixPts[i - 1].northing;
+      position.stepFixPts[i].heading  = position.stepFixPts[i - 1].heading;
     }
 
     position.stepFixPts[0].heading  = DistanceVec2Vec3(nmea.fix, position.stepFixPts[0]);
+    position.stepFixPts[0].easting  = nmea.fix.easting;
+    position.stepFixPts[0].northing = nmea.fix.northing;
+
     // Если заполнили весь журнал коордитанами, то считаем,
     // что gps инициализирован
-    if( (int) (position.stepFixPts[histSize - 1].easting) )
+    if( histChange > histSize/2){
       position.flags |= 0x01 << isGPSPositionInitialized;
+    }
 
     //in radians
     position.fixHeading = atan2(nmea.fix.easting  - position.stepFixPts[histSize - 1].easting,
@@ -101,10 +106,6 @@ InitializeFirstFewGPSPositions(void){
     if (position.fixHeading < 0) 
       position.fixHeading += twoPI;
   }
-
-  //most recent fixes
-  position.stepFixPts[0].easting  = position.prevFix.easting  = nmea.fix.easting;
-  position.stepFixPts[0].northing = position.prevFix.northing = nmea.fix.northing;
 
   histChange++;
 }
@@ -114,29 +115,29 @@ InitializeFirstFewGPSPositions(void){
 */
 void 
 UpdateFixPosition(void){
-  if( !(position.flags << isGPSPositionInitialized & 0x01)){
+  if( !(position.flags >> isGPSPositionInitialized & 0x01)){
     InitializeFirstFewGPSPositions();
     return;
   }
 
 //--------------------------------------------------------------------------//
 //                   region Antenne Offset
-//--------------------------------------------------------------------------//
+/*
   if(vehicle.antennaOffset != 0){
     position.offset = vehicle.antennaOffset;
     nmea.fix.easting  = cos(-position.fixHeading) * position.offset + nmea.fix.easting;
     nmea.fix.northing = sin(-position.fixHeading) * position.offset + nmea.fix.northing;
   }
-//--------------------------------------------------------------------------//
+//--------------------------------------------------------------------------// */
 
 
 
+/*
 //--------------------------------------------------------------------------//
 //                          REGION STEP FIX
 //--------------------------------------------------------------------------//
   //grab the most current fix and save the distance from the last fix
   // <comentingTag>
-  /*
   position.distanceCurrentStepFix  = DistanceVec2Vec3(nmea.fix, position.stepFixPts[0]);
   position.fixStepDist             = position.distanceCurrentStepFix;
 
@@ -190,23 +191,15 @@ UpdateFixPosition(void){
     position.stepFixPts[(histSize - 1)].northing  = position.vHold.northing;
   }
   else { //distance is exceeded, time to do all calcs and next frame
-    //positions and headings 
-    CalculatePositionHeading();
-
     //get rid of hold position
     position.flags &= ~(0x01 << isFixHoldLoaded);
 
     //don't add the total distance again
     position.stepFixPts[( histSize - 1)].heading = 0;
 
-    //test if travelled far enough for new boundary point
-    //<commentingTag>
-    /* double boundaryDistance = DistanceVec2Vec2(nmea.fix, position.prevBoundaryPos);
-    if (boundaryDistance > position.boundaryTriggerDistance) 
-        AddBoundaryAndPerimiterPoint();*/
-    //</commentingTag>
+    //positions and headings 
+    CalculatePositionHeading();
 
-    //calc distance travelled since last GPS fix
     //Отключаю полевые вычисления
     position.distance = DistanceVec2Vec2(nmea.fix, position.prevFix);
 
